@@ -1,0 +1,34 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: black;
+}
+
+#no-script {
+	z-index: 10000;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	background-image: url("out-transparent-29_400.gif");
+	background-position: 50% 30%;
+	background-repeat: no-repeat;
+	background-size: 30vmin;
+	image-rendering: crisp-edges;
+}
+
+#no-script p {
+	color: #dddddd;
+	position: relative;
+	text-align: center;
+	font-size: 3vmin;
+	top: 60%;
+}
+
+#main-canvas {
+	border: 2px white dashed;
+}
