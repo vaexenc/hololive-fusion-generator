@@ -11,7 +11,7 @@
 		"firstNameAfter": "chama"
 	},
 
-	"tokino": {
+	"sora": {
 		"lastName": ["To", "ki", "no"],
 		"firstName": ["So", "ra"],
 		"firstNameBefore": "So",
@@ -311,7 +311,7 @@
 		"lastNameAfter": "nade"
 	},
 
-	"arurandeisu": {
+	"aruran": {
 		"lastName": ["A", "ru", "ran", "dei", "su"],
 		"lastNameBefore": "Aruran",
 		"lastNameAfter": "deisu"
@@ -323,7 +323,7 @@
 		"lastNameAfter": "kka"
 	},
 
-	"leda": {
+	"astel": {
 		"lastName": ["As", "tel"],
 		"firstName": ["Le", "da"],
 		"firstNameBefore": "As",
@@ -404,7 +404,7 @@
 		"lastNameAfter": "reiji"
 	},
 
-	"melfissa": {
+	"anya": {
 		"lastName": ["An", "ya"],
 		"firstName": ["Mel", "fi", "ssa"],
 		"firstNameBefore": "An",
