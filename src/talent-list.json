@@ -1,14 +1,12 @@
 {
 	"yagoo": {
 		"firstName": "Yagoo",
-		"firstNameSyllables": ["Ya", "goo"],
 		"firstNameBefore": "Ya",
 		"firstNameAfter": "goo"
 	},
 
 	"haachama": {
 		"firstName": "Haachama",
-		"firstNameSyllables": ["Haa", "cha", "ma"],
 		"firstNameBefore": "Haacha",
 		"firstNameAfter": "chama"
 	},
@@ -16,8 +14,6 @@
 	"sora": {
 		"lastName": "Tokino",
 		"firstName": "Sora",
-		"lastNameSyllables": ["To", "ki", "no"],
-		"firstNameSyllables": ["So", "ra"],
 		"firstNameBefore": "So",
 		"firstNameAfter": "ra",
 		"lastNameBefore": "Toki",
@@ -26,14 +22,12 @@
 
 	"azki": {
 		"firstName": "AZKi",
-		"firstNameSyllables": ["AZ", "Ki"],
 		"firstNameBefore": "AZ",
 		"firstNameAfter": "ZKi"
 	},
 
 	"roboco": {
 		"firstName": "Roboco",
-		"firstNameSyllables": ["Ro", "bo", "co"],
 		"firstNameBefore": "Robo",
 		"firstNameAfter": "boco"
 	},
@@ -41,8 +35,6 @@
 	"miko": {
 		"lastName": "Sakura",
 		"firstName": "Miko",
-		"lastNameSyllables": ["Sa", "ku", "ra"],
-		"firstNameSyllables": ["Mi", "ko"],
 		"firstNameBefore": "Mi",
 		"firstNameAfter": "ko",
 		"lastNameBefore": "Saku",
@@ -52,8 +44,6 @@
 	"fubuki": {
 		"lastName": "Shirakami",
 		"firstName": "Fubuki",
-		"lastNameSyllables": ["Shi", "ra", "ka", "mi"],
-		"firstNameSyllables": ["Fu", "bu", "ki"],
 		"firstNameBefore": "Fubu",
 		"firstNameAfter": "buki",
 		"lastNameBefore": "Shira",
@@ -63,8 +53,6 @@
 	"matsuri": {
 		"lastName": "Natsuiro",
 		"firstName": "Matsuri",
-		"lastNameSyllables": ["Na", "tsu", "i", "ro"],
-		"firstNameSyllables": ["Ma", "tsu", "ri"],
 		"firstNameBefore": "Matsu",
 		"firstNameAfter": "tsuri",
 		"lastNameBefore": "Natsu",
@@ -74,8 +62,6 @@
 	"mel": {
 		"lastName": "Yozora",
 		"firstName": "Mel",
-		"lastNameSyllables": ["Yo", "zo", "ra"],
-		"firstNameSyllables": ["Me", "l"],
 		"firstNameBefore": "Me",
 		"firstNameAfter": "el",
 		"lastNameBefore": "Yozo",
@@ -85,8 +71,6 @@
 	"haato": {
 		"lastName": "Akai",
 		"firstName": "Haato",
-		"lastNameSyllables": ["A", "kai"],
-		"firstNameSyllables": ["Haa", "to"],
 		"firstNameBefore": "Haa",
 		"firstNameAfter": "aato",
 		"lastNameBefore": "Aka",
@@ -96,8 +80,6 @@
 	"aki": {
 		"lastName": "Rosenthal",
 		"firstName": "Aki",
-		"lastNameSyllables": ["Ro", "sen", "thal"],
-		"firstNameSyllables": ["A", "ki"],
 		"firstNameBefore": "Aki",
 		"firstNameAfter": "ki",
 		"lastNameBefore": "Rosen",
@@ -107,8 +89,6 @@
 	"aqua": {
 		"lastName": "Minato",
 		"firstName": "Aqua",
-		"lastNameSyllables": ["Mi", "na", "to"],
-		"firstNameSyllables": ["A", "qua"],
 		"firstNameBefore": "Aqu",
 		"firstNameAfter": "qua",
 		"lastNameBefore": "Mina",
@@ -118,8 +98,6 @@
 	"choco": {
 		"lastName": "Yuzuki",
 		"firstName": "Choco",
-		"lastNameSyllables": ["Yu", "zu", "ki"],
-		"firstNameSyllables": ["Cho", "co"],
 		"firstNameBefore": "Cho",
 		"firstNameAfter": "co",
 		"lastNameBefore": "Yuzu",
@@ -129,8 +107,6 @@
 	"ayame": {
 		"lastName": "Nakiri",
 		"firstName": "Ayame",
-		"lastNameSyllables": ["Na", "ki", "ri"],
-		"firstNameSyllables": ["Ay", "a", "me"],
 		"firstNameBefore": "Aya",
 		"firstNameAfter": "yame",
 		"lastNameBefore": "Naki",
@@ -140,8 +116,6 @@
 	"shion": {
 		"lastName": "Murasaki",
 		"firstName": "Shion",
-		"lastNameSyllables": ["Mu", "ra", "sa", "ki"],
-		"firstNameSyllables": ["Shi", "on"],
 		"firstNameBefore": "Shi",
 		"firstNameAfter": "on",
 		"lastNameBefore": "Mura",
@@ -151,8 +125,6 @@
 	"subaru": {
 		"lastName": "Oozora",
 		"firstName": "Subaru",
-		"lastNameSyllables": ["Oo", "zo", "ra"],
-		"firstNameSyllables": ["Su", "ba", "ru"],
 		"firstNameBefore": "Suba",
 		"firstNameAfter": "baru",
 		"lastNameBefore": "Oozo",
@@ -162,8 +134,6 @@
 	"mio": {
 		"lastName": "Ookami",
 		"firstName": "Mio",
-		"lastNameSyllables": ["Oo", "ka", "mi"],
-		"firstNameSyllables": ["Mi", "o"],
 		"firstNameBefore": "Mio",
 		"firstNameAfter": "io",
 		"lastNameBefore": "Ooka",
@@ -173,8 +143,6 @@
 	"okayu": {
 		"lastName": "Nekomata",
 		"firstName": "Okayu",
-		"lastNameSyllables": ["Ne", "ko", "ma", "ta"],
-		"firstNameSyllables": ["O", "ka", "yu"],
 		"firstNameBefore": "Oka",
 		"firstNameAfter": "kayu",
 		"lastNameBefore": "Neko",
@@ -184,8 +152,6 @@
 	"korone": {
 		"lastName": "Inugami",
 		"firstName": "Korone",
-		"lastNameSyllables": ["I", "nu", "ga", "mi"],
-		"firstNameSyllables": ["Ko", "ro", "ne"],
 		"firstNameBefore": "Koro",
 		"firstNameAfter": "rone",
 		"lastNameBefore": "Inu",
@@ -195,8 +161,6 @@
 	"flare": {
 		"lastName": "Shiranui",
 		"firstName": "Flare",
-		"lastNameSyllables": ["Shi", "ra", "nu", "i"],
-		"firstNameSyllables": ["Flare"],
 		"firstNameBefore": "Fla",
 		"firstNameAfter": "are",
 		"lastNameBefore": "Shira",
@@ -206,8 +170,6 @@
 	"noel": {
 		"lastName": "Shirogane",
 		"firstName": "Noel",
-		"lastNameSyllables": ["Shi", "ro", "ga", "ne"],
-		"firstNameSyllables": ["No", "el"],
 		"firstNameBefore": "No",
 		"firstNameAfter": "el",
 		"lastNameBefore": "Shiro",
@@ -217,8 +179,6 @@
 	"marine": {
 		"lastName": "Houshou",
 		"firstName": "Marine",
-		"lastNameSyllables": ["Hou", "shou"],
-		"firstNameSyllables": ["Ma", "rine"],
 		"firstNameBefore": "Mari",
 		"firstNameAfter": "rine",
 		"lastNameBefore": "Hou",
@@ -228,8 +188,6 @@
 	"pekora": {
 		"lastName": "Usada",
 		"firstName": "Pekora",
-		"lastNameSyllables": ["U", "sa", "da"],
-		"firstNameSyllables": ["Pe", "ko", "ra"],
 		"firstNameBefore": "Peko",
 		"firstNameAfter": "kora",
 		"lastNameBefore": "Usa",
@@ -239,8 +197,6 @@
 	"rushia": {
 		"lastName": "Uruha",
 		"firstName": "Rushia",
-		"lastNameSyllables": ["U", "ru", "ha"],
-		"firstNameSyllables": ["Ru", "shi", "a"],
 		"firstNameBefore": "Rushi",
 		"firstNameAfter": "shia",
 		"lastNameBefore": "Uru",
@@ -250,8 +206,6 @@
 	"suisei": {
 		"lastName": "Hoshimachi",
 		"firstName": "Suisei",
-		"lastNameSyllables": ["Ho", "shi", "ma", "chi"],
-		"firstNameSyllables": ["Su", "i", "se", "i"],
 		"firstNameBefore": "Sui",
 		"firstNameAfter": "sei",
 		"lastNameBefore": "Hoshi",
@@ -261,8 +215,6 @@
 	"kanata": {
 		"lastName": "Amane",
 		"firstName": "Kanata",
-		"lastNameSyllables": ["A", "ma", "ne"],
-		"firstNameSyllables": ["Ka", "na", "ta"],
 		"firstNameBefore": "Kana",
 		"firstNameAfter": "nata",
 		"lastNameBefore": "Ama",
@@ -272,8 +224,6 @@
 	"coco": {
 		"lastName": "Kiryu",
 		"firstName": "Coco",
-		"lastNameSyllables": ["Ki", "ryu"],
-		"firstNameSyllables": ["Co", "co"],
 		"firstNameBefore": "Coco",
 		"firstNameAfter": "coco",
 		"lastNameBefore": "Ki",
@@ -283,8 +233,6 @@
 	"watame": {
 		"lastName": "Tsunomaki",
 		"firstName": "Watame",
-		"lastNameSyllables": ["Tsu", "no", "ma", "ki"],
-		"firstNameSyllables": ["Wa", "ta", "me"],
 		"firstNameBefore": "Wata",
 		"firstNameAfter": "tame",
 		"lastNameBefore": "Tsuno",
@@ -294,8 +242,6 @@
 	"towa": {
 		"lastName": "Tokoyami",
 		"firstName": "Towa",
-		"lastNameSyllables": ["To", "ko", "ya", "mi"],
-		"firstNameSyllables": ["To", "wa"],
 		"firstNameBefore": "To",
 		"firstNameAfter": "wa",
 		"lastNameBefore": "Toko",
@@ -305,8 +251,6 @@
 	"luna": {
 		"lastName": "Himemori",
 		"firstName": "Luna",
-		"lastNameSyllables": ["Hi", "me", "mo", "ri"],
-		"firstNameSyllables": ["Lu", "na"],
 		"firstNameBefore": "Lu",
 		"firstNameAfter": "na",
 		"lastNameBefore": "Hime",
@@ -316,8 +260,6 @@
 	"lamy": {
 		"lastName": "Yukihana",
 		"firstName": "Lamy",
-		"lastNameSyllables": ["Yu", "ki", "ha", "na"],
-		"firstNameSyllables": ["La", "my"],
 		"firstNameBefore": "La",
 		"firstNameAfter": "my",
 		"lastNameBefore": "Yuki",
@@ -327,8 +269,6 @@
 	"nene": {
 		"lastName": "Momosuzu",
 		"firstName": "Nene",
-		"lastNameSyllables": ["Mo", "mo", "su", "zu"],
-		"firstNameSyllables": ["Ne", "ne"],
 		"firstNameBefore": "Ne",
 		"firstNameAfter": "ne",
 		"lastNameBefore": "Momo",
@@ -338,8 +278,6 @@
 	"botan": {
 		"lastName": "Shishiro",
 		"firstName": "Botan",
-		"lastNameSyllables": ["Shi", "shi", "ro"],
-		"firstNameSyllables": ["Bo", "tan"],
 		"firstNameBefore": "Bo",
 		"firstNameAfter": "tan",
 		"lastNameBefore": "Shishi",
@@ -349,8 +287,6 @@
 	"polka": {
 		"lastName": "Omaru",
 		"firstName": "Polka",
-		"lastNameSyllables": ["O", "ma", "ru"],
-		"firstNameSyllables": ["Pol", "ka"],
 		"firstNameBefore": "Pol",
 		"firstNameAfter": "ka",
 		"lastNameBefore": "Oma",
@@ -360,8 +296,6 @@
 	"miyabi": {
 		"lastName": "Hanasaki",
 		"firstName": "Miyabi",
-		"lastNameSyllables": ["Ha", "na", "sa", "ki"],
-		"firstNameSyllables": ["Mi", "ya", "bi"],
 		"firstNameBefore": "Miya",
 		"firstNameAfter": "yabi",
 		"lastNameBefore": "Hana",
@@ -371,8 +305,6 @@
 	"izuru": {
 		"lastName": "Kanade",
 		"firstName": "Izuru",
-		"lastNameSyllables": ["Ka", "na", "de"],
-		"firstNameSyllables": ["I", "zu", "ru"],
 		"firstNameBefore": "Izu",
 		"firstNameAfter": "zuru",
 		"lastNameBefore": "Kana",
@@ -381,14 +313,12 @@
 
 	"aruran": {
 		"lastName": "Arurandeisu",
-		"lastNameSyllables": ["A", "ru", "ran", "dei", "su"],
 		"lastNameBefore": "Aruran",
 		"lastNameAfter": "deisu"
 	},
 
 	"rikka": {
 		"lastName": "Rikka",
-		"lastNameSyllables": ["Ri", "kka"],
 		"lastNameBefore": "Ri",
 		"lastNameAfter": "kka"
 	},
@@ -396,8 +326,6 @@
 	"astel": {
 		"lastName": "Astel",
 		"firstName": "Leda",
-		"lastNameSyllables": ["As", "tel"],
-		"firstNameSyllables": ["Le", "da"],
 		"firstNameBefore": "As",
 		"firstNameAfter": "tel",
 		"lastNameBefore": "Le",
@@ -407,8 +335,6 @@
 	"temma": {
 		"lastName": "Kishido",
 		"firstName": "Temma",
-		"lastNameSyllables": ["Ki", "shi", "do"],
-		"firstNameSyllables": ["Te", "mma"],
 		"firstNameBefore": "Te",
 		"firstNameAfter": "mma",
 		"lastNameBefore": "Kishi",
@@ -418,8 +344,6 @@
 	"roberu": {
 		"lastName": "Yukoku",
 		"firstName": "Roberu",
-		"lastNameSyllables": ["Yu", "ko", "ku"],
-		"firstNameSyllables": ["Ro", "be", "ru"],
 		"firstNameBefore": "Robe",
 		"firstNameAfter": "beru",
 		"lastNameBefore": "Yuko",
@@ -429,8 +353,6 @@
 	"shien": {
 		"lastName": "Kageyama",
 		"firstName": "Shien",
-		"lastNameSyllables": ["Ka", "ge", "ya", "ma"],
-		"firstNameSyllables": ["Shi", "en"],
 		"firstNameBefore": "Shi",
 		"firstNameAfter": "ien",
 		"lastNameBefore": "Kage",
@@ -440,8 +362,6 @@
 	"oga": {
 		"lastName": "Aragami",
 		"firstName": "Oga",
-		"lastNameSyllables": ["Ar", "agami"],
-		"firstNameSyllables": ["O", "ga"],
 		"firstNameBefore": "O",
 		"firstNameAfter": "ga",
 		"lastNameBefore": "Ara",
@@ -451,8 +371,6 @@
 	"risu": {
 		"lastName": "Ayunda",
 		"firstName": "Risu",
-		"lastNameSyllables": ["A", "yun", "da"],
-		"firstNameSyllables": ["Ri", "su"],
 		"firstNameBefore": "Ri",
 		"firstNameAfter": "su",
 		"lastNameBefore": "Ayu",
@@ -462,8 +380,6 @@
 	"moona": {
 		"lastName": "Hoshinova",
 		"firstName": "Moona",
-		"lastNameSyllables": ["Ho", "shi", "no", "va"],
-		"firstNameSyllables": ["Moo", "na"],
 		"firstNameBefore": "Moo",
 		"firstNameAfter": "oona",
 		"lastNameBefore": "Hoshi",
@@ -473,8 +389,6 @@
 	"iofi": {
 		"lastName": "Airani",
 		"firstName": "Iofifteen",
-		"lastNameSyllables": ["Ai", "ra", "ni"],
-		"firstNameSyllables": ["I", "o", "fif", "teen"],
 		"firstNameBefore": "Iofi",
 		"firstNameAfter": "fifteen",
 		"lastNameBefore": "Aira",
@@ -484,8 +398,6 @@
 	"ollie": {
 		"lastName": "Kureiji",
 		"firstName": "Ollie",
-		"lastNameSyllables": ["Ku", "rei", "ji"],
-		"firstNameSyllables": ["O", "llie"],
 		"firstNameBefore": "Olli",
 		"firstNameAfter": "llie",
 		"lastNameBefore": "Kurei",
@@ -495,8 +407,6 @@
 	"anya": {
 		"lastName": "Anya",
 		"firstName": "Melfissa",
-		"lastNameSyllables": ["An", "ya"],
-		"firstNameSyllables": ["Mel", "fi", "ssa"],
 		"firstNameBefore": "An",
 		"firstNameAfter": "nya",
 		"lastNameBefore": "Melfi",
@@ -506,8 +416,6 @@
 	"reine": {
 		"lastName": "Pavolia",
 		"firstName": "Reine",
-		"lastNameSyllables": ["Pa", "vo", "lia"],
-		"firstNameSyllables": ["Rei", "ne"],
 		"firstNameBefore": "Rei",
 		"firstNameAfter": "ne",
 		"lastNameBefore": "Pavo",
@@ -517,8 +425,6 @@
 	"calli": {
 		"lastName": "Mori",
 		"firstName": "Calliope",
-		"lastNameSyllables": ["Mo", "ri"],
-		"firstNameSyllables": ["Ca", "lli", "o", "pe"],
 		"firstNameBefore": "Calli",
 		"firstNameAfter": "lliope",
 		"lastNameBefore": "Mori",
@@ -528,8 +434,6 @@
 	"kiara": {
 		"lastName": "Takanashi",
 		"firstName": "Kiara",
-		"lastNameSyllables": ["Ta", "ka", "na", "shi"],
-		"firstNameSyllables": ["Ki", "a", "ra"],
 		"firstNameBefore": "Ki",
 		"firstNameAfter": "ara",
 		"lastNameBefore": "Taka",
@@ -546,8 +450,6 @@
 	"ina": {
 		"lastName": "Ninomae",
 		"firstName": "Ina'nis",
-		"lastNameSyllables": ["Ni", "no", "ma", "e"],
-		"firstNameSyllables": ["Ina", "'nis"],
 		"firstNameBefore": "Ina",
 		"firstNameAfter": "'nis",
 		"lastNameBefore": "Nino",
@@ -559,8 +461,6 @@
 	"gura": {
 		"lastName": "Gawr",
 		"firstName": "Gura",
-		"lastNameSyllables": ["Ga", "wr"],
-		"firstNameSyllables": ["Gu", "ra"],
 		"firstNameBefore": "Gu",
 		"firstNameAfter": "ra",
 		"lastNameBefore": "Gaw",
@@ -570,8 +470,6 @@
 	"ame": {
 		"lastName": "Watson",
 		"firstName": "Amelia",
-		"lastNameSyllables": ["Wa", "tson"],
-		"firstNameSyllables": ["A", "me", "li", "a"],
 		"firstNameBefore": "Ame",
 		"firstNameAfter": "lia",
 		"lastNameBefore": "Wa",
