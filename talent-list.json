@@ -1,4 +1,4 @@
-export default Object.freeze([
+[
 	{
 		"id": "yagoo",
 		"firstName": ["Ya", "goo"]
@@ -272,4 +272,4 @@ export default Object.freeze([
 		"lastName": ["Wa", "tson"],
 		"firstName": ["A", "me", "li", "a"]
 	}
-]);
+]
