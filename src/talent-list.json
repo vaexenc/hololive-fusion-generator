@@ -1,442 +1,442 @@
 {
 	"yagoo": {
-		"firstName": "Yagoo",
-		"firstNameBefore": "Ya",
+		"firstName": "yagoo",
+		"firstNameBefore": "ya",
 		"firstNameAfter": "goo"
 	},
 
 	"haachama": {
-		"firstName": "Haachama",
-		"firstNameBefore": "Haacha",
+		"firstName": "haachama",
+		"firstNameBefore": "haacha",
 		"firstNameAfter": "chama"
 	},
 
 	"sora": {
-		"lastName": "Tokino",
-		"firstName": "Sora",
-		"lastNameBefore": "Toki",
+		"lastName": "tokino",
+		"firstName": "sora",
+		"lastNameBefore": "toki",
 		"lastNameAfter": "kino",
-		"firstNameBefore": "So",
+		"firstNameBefore": "so",
 		"firstNameAfter": "ra"
 	},
 
 	"azki": {
-		"firstName": "AZKi",
-		"firstNameBefore": "AZ",
+		"firstName": "aZKi",
+		"firstNameBefore": "aZ",
 		"firstNameAfter": "ZKi"
 	},
 
 	"roboco": {
-		"firstName": "Roboco",
-		"firstNameBefore": "Robo",
+		"firstName": "roboco",
+		"firstNameBefore": "robo",
 		"firstNameAfter": "boco"
 	},
 
 	"miko": {
-		"lastName": "Sakura",
-		"firstName": "Miko",
-		"lastNameBefore": "Saku",
+		"lastName": "sakura",
+		"firstName": "miko",
+		"lastNameBefore": "saku",
 		"lastNameAfter": "kura",
-		"firstNameBefore": "Mi",
+		"firstNameBefore": "mi",
 		"firstNameAfter": "ko"
 	},
 
 	"fubuki": {
-		"lastName": "Shirakami",
-		"firstName": "Fubuki",
-		"lastNameBefore": "Shira",
+		"lastName": "shirakami",
+		"firstName": "fubuki",
+		"lastNameBefore": "shira",
 		"lastNameAfter": "kami",
-		"firstNameBefore": "Fubu",
+		"firstNameBefore": "fubu",
 		"firstNameAfter": "buki"
 	},
 
 	"matsuri": {
-		"lastName": "Natsuiro",
-		"firstName": "Matsuri",
-		"lastNameBefore": "Natsu",
+		"lastName": "natsuiro",
+		"firstName": "matsuri",
+		"lastNameBefore": "natsu",
 		"lastNameAfter": "iro",
-		"firstNameBefore": "Matsu",
+		"firstNameBefore": "matsu",
 		"firstNameAfter": "tsuri"
 	},
 
 	"mel": {
-		"lastName": "Yozora",
-		"firstName": "Mel",
-		"lastNameBefore": "Yozo",
+		"lastName": "yozora",
+		"firstName": "mel",
+		"lastNameBefore": "yozo",
 		"lastNameAfter": "zora",
-		"firstNameBefore": "Me",
+		"firstNameBefore": "me",
 		"firstNameAfter": "el"
 	},
 
 	"haato": {
-		"lastName": "Akai",
-		"firstName": "Haato",
-		"lastNameBefore": "Aka",
+		"lastName": "akai",
+		"firstName": "haato",
+		"lastNameBefore": "aka",
 		"lastNameAfter": "kai",
-		"firstNameBefore": "Haa",
+		"firstNameBefore": "haa",
 		"firstNameAfter": "aato"
 	},
 
 	"aki": {
-		"lastName": "Rosenthal",
-		"firstName": "Aki",
-		"lastNameBefore": "Rosen",
+		"lastName": "rosenthal",
+		"firstName": "aki",
+		"lastNameBefore": "rosen",
 		"lastNameAfter": "thal",
-		"firstNameBefore": "Aki",
+		"firstNameBefore": "aki",
 		"firstNameAfter": "ki"
 	},
 
 	"aqua": {
-		"lastName": "Minato",
-		"firstName": "Aqua",
-		"lastNameBefore": "Mina",
+		"lastName": "minato",
+		"firstName": "aqua",
+		"lastNameBefore": "mina",
 		"lastNameAfter": "nato",
-		"firstNameBefore": "Aqu",
+		"firstNameBefore": "aqu",
 		"firstNameAfter": "qua"
 	},
 
 	"choco": {
-		"lastName": "Yuzuki",
-		"firstName": "Choco",
-		"lastNameBefore": "Yuzu",
+		"lastName": "yuzuki",
+		"firstName": "choco",
+		"lastNameBefore": "yuzu",
 		"lastNameAfter": "zuki",
-		"firstNameBefore": "Cho",
+		"firstNameBefore": "cho",
 		"firstNameAfter": "co"
 	},
 
 	"ayame": {
-		"lastName": "Nakiri",
-		"firstName": "Ayame",
-		"lastNameBefore": "Naki",
+		"lastName": "nakiri",
+		"firstName": "ayame",
+		"lastNameBefore": "naki",
 		"lastNameAfter": "kiri",
-		"firstNameBefore": "Aya",
+		"firstNameBefore": "aya",
 		"firstNameAfter": "yame"
 	},
 
 	"shion": {
-		"lastName": "Murasaki",
-		"firstName": "Shion",
-		"lastNameBefore": "Mura",
+		"lastName": "murasaki",
+		"firstName": "shion",
+		"lastNameBefore": "mura",
 		"lastNameAfter": "saki",
-		"firstNameBefore": "Shi",
+		"firstNameBefore": "shi",
 		"firstNameAfter": "on"
 	},
 
 	"subaru": {
-		"lastName": "Oozora",
-		"firstName": "Subaru",
-		"lastNameBefore": "Oozo",
+		"lastName": "oozora",
+		"firstName": "subaru",
+		"lastNameBefore": "oozo",
 		"lastNameAfter": "zora",
-		"firstNameBefore": "Suba",
+		"firstNameBefore": "suba",
 		"firstNameAfter": "baru"
 	},
 
 	"mio": {
-		"lastName": "Ookami",
-		"firstName": "Mio",
-		"lastNameBefore": "Ooka",
+		"lastName": "ookami",
+		"firstName": "mio",
+		"lastNameBefore": "ooka",
 		"lastNameAfter": "kami",
-		"firstNameBefore": "Mio",
+		"firstNameBefore": "mio",
 		"firstNameAfter": "io"
 	},
 
 	"okayu": {
-		"lastName": "Nekomata",
-		"firstName": "Okayu",
-		"lastNameBefore": "Neko",
+		"lastName": "nekomata",
+		"firstName": "okayu",
+		"lastNameBefore": "neko",
 		"lastNameAfter": "mata",
-		"firstNameBefore": "Oka",
+		"firstNameBefore": "oka",
 		"firstNameAfter": "kayu"
 	},
 
 	"korone": {
-		"lastName": "Inugami",
-		"firstName": "Korone",
-		"lastNameBefore": "Inu",
+		"lastName": "inugami",
+		"firstName": "korone",
+		"lastNameBefore": "inu",
 		"lastNameAfter": "gami",
-		"firstNameBefore": "Koro",
+		"firstNameBefore": "koro",
 		"firstNameAfter": "rone"
 	},
 
 	"flare": {
-		"lastName": "Shiranui",
-		"firstName": "Flare",
-		"lastNameBefore": "Shira",
+		"lastName": "shiranui",
+		"firstName": "flare",
+		"lastNameBefore": "shira",
 		"lastNameAfter": "nui",
-		"firstNameBefore": "Fla",
+		"firstNameBefore": "fla",
 		"firstNameAfter": "are"
 	},
 
 	"noel": {
-		"lastName": "Shirogane",
-		"firstName": "Noel",
-		"lastNameBefore": "Shiro",
+		"lastName": "shirogane",
+		"firstName": "noel",
+		"lastNameBefore": "shiro",
 		"lastNameAfter": "gane",
-		"firstNameBefore": "No",
+		"firstNameBefore": "no",
 		"firstNameAfter": "el"
 	},
 
 	"marine": {
-		"lastName": "Houshou",
-		"firstName": "Marine",
-		"lastNameBefore": "Hou",
+		"lastName": "houshou",
+		"firstName": "marine",
+		"lastNameBefore": "hou",
 		"lastNameAfter": "shou",
-		"firstNameBefore": "Mari",
+		"firstNameBefore": "mari",
 		"firstNameAfter": "rine"
 	},
 
 	"pekora": {
-		"lastName": "Usada",
-		"firstName": "Pekora",
-		"lastNameBefore": "Usa",
+		"lastName": "usada",
+		"firstName": "pekora",
+		"lastNameBefore": "usa",
 		"lastNameAfter": "sada",
-		"firstNameBefore": "Peko",
+		"firstNameBefore": "peko",
 		"firstNameAfter": "kora"
 	},
 
 	"rushia": {
-		"lastName": "Uruha",
-		"firstName": "Rushia",
-		"lastNameBefore": "Uru",
+		"lastName": "uruha",
+		"firstName": "rushia",
+		"lastNameBefore": "uru",
 		"lastNameAfter": "ruha",
-		"firstNameBefore": "Rushi",
+		"firstNameBefore": "rushi",
 		"firstNameAfter": "shia"
 	},
 
 	"suisei": {
-		"lastName": "Hoshimachi",
-		"firstName": "Suisei",
-		"lastNameBefore": "Hoshi",
+		"lastName": "hoshimachi",
+		"firstName": "suisei",
+		"lastNameBefore": "hoshi",
 		"lastNameAfter": "machi",
-		"firstNameBefore": "Sui",
+		"firstNameBefore": "sui",
 		"firstNameAfter": "sei"
 	},
 
 	"kanata": {
-		"lastName": "Amane",
-		"firstName": "Kanata",
-		"lastNameBefore": "Ama",
+		"lastName": "amane",
+		"firstName": "kanata",
+		"lastNameBefore": "ama",
 		"lastNameAfter": "mane",
-		"firstNameBefore": "Kana",
+		"firstNameBefore": "kana",
 		"firstNameAfter": "nata"
 	},
 
 	"coco": {
-		"lastName": "Kiryu",
-		"firstName": "Coco",
-		"lastNameBefore": "Ki",
+		"lastName": "kiryu",
+		"firstName": "coco",
+		"lastNameBefore": "ki",
 		"lastNameAfter": "ryu",
-		"firstNameBefore": "Coco",
+		"firstNameBefore": "coco",
 		"firstNameAfter": "coco"
 	},
 
 	"watame": {
-		"lastName": "Tsunomaki",
-		"firstName": "Watame",
-		"lastNameBefore": "Tsuno",
+		"lastName": "tsunomaki",
+		"firstName": "watame",
+		"lastNameBefore": "tsuno",
 		"lastNameAfter": "maki",
-		"firstNameBefore": "Wata",
+		"firstNameBefore": "wata",
 		"firstNameAfter": "tame"
 	},
 
 	"towa": {
-		"lastName": "Tokoyami",
-		"firstName": "Towa",
-		"lastNameBefore": "Toko",
+		"lastName": "tokoyami",
+		"firstName": "towa",
+		"lastNameBefore": "toko",
 		"lastNameAfter": "yami",
-		"firstNameBefore": "To",
+		"firstNameBefore": "to",
 		"firstNameAfter": "wa"
 	},
 
 	"luna": {
-		"lastName": "Himemori",
-		"firstName": "Luna",
-		"lastNameBefore": "Hime",
+		"lastName": "himemori",
+		"firstName": "luna",
+		"lastNameBefore": "hime",
 		"lastNameAfter": "mori",
-		"firstNameBefore": "Lu",
+		"firstNameBefore": "lu",
 		"firstNameAfter": "na"
 	},
 
 	"lamy": {
-		"lastName": "Yukihana",
-		"firstName": "Lamy",
-		"lastNameBefore": "Yuki",
+		"lastName": "yukihana",
+		"firstName": "lamy",
+		"lastNameBefore": "yuki",
 		"lastNameAfter": "hana",
-		"firstNameBefore": "La",
+		"firstNameBefore": "la",
 		"firstNameAfter": "my"
 	},
 
 	"nene": {
-		"lastName": "Momosuzu",
-		"firstName": "Nene",
-		"lastNameBefore": "Momo",
+		"lastName": "momosuzu",
+		"firstName": "nene",
+		"lastNameBefore": "momo",
 		"lastNameAfter": "suzu",
-		"firstNameBefore": "Ne",
+		"firstNameBefore": "ne",
 		"firstNameAfter": "ne"
 	},
 
 	"botan": {
-		"lastName": "Shishiro",
-		"firstName": "Botan",
-		"lastNameBefore": "Shishi",
+		"lastName": "shishiro",
+		"firstName": "botan",
+		"lastNameBefore": "shishi",
 		"lastNameAfter": "shiro",
-		"firstNameBefore": "Bo",
+		"firstNameBefore": "bo",
 		"firstNameAfter": "tan"
 	},
 
 	"polka": {
-		"lastName": "Omaru",
-		"firstName": "Polka",
-		"lastNameBefore": "Oma",
+		"lastName": "omaru",
+		"firstName": "polka",
+		"lastNameBefore": "oma",
 		"lastNameAfter": "maru",
-		"firstNameBefore": "Pol",
+		"firstNameBefore": "pol",
 		"firstNameAfter": "ka"
 	},
 
 	"miyabi": {
-		"lastName": "Hanasaki",
-		"firstName": "Miyabi",
-		"lastNameBefore": "Hana",
+		"lastName": "hanasaki",
+		"firstName": "miyabi",
+		"lastNameBefore": "hana",
 		"lastNameAfter": "saki",
-		"firstNameBefore": "Miya",
+		"firstNameBefore": "miya",
 		"firstNameAfter": "yabi"
 	},
 
 	"izuru": {
-		"lastName": "Kanade",
-		"firstName": "Izuru",
-		"lastNameBefore": "Kana",
+		"lastName": "kanade",
+		"firstName": "izuru",
+		"lastNameBefore": "kana",
 		"lastNameAfter": "nade",
-		"firstNameBefore": "Izu",
+		"firstNameBefore": "izu",
 		"firstNameAfter": "zuru"
 	},
 
 	"aruran": {
-		"lastName": "Arurandeisu",
-		"lastNameBefore": "Aruran",
+		"lastName": "arurandeisu",
+		"lastNameBefore": "aruran",
 		"lastNameAfter": "deisu"
 	},
 
 	"rikka": {
-		"lastName": "Rikka",
-		"lastNameBefore": "Ri",
+		"lastName": "rikka",
+		"lastNameBefore": "ri",
 		"lastNameAfter": "kka"
 	},
 
 	"astel": {
-		"lastName": "Astel",
-		"firstName": "Leda",
-		"lastNameBefore": "Le",
+		"lastName": "astel",
+		"firstName": "leda",
+		"lastNameBefore": "le",
 		"lastNameAfter": "da",
-		"firstNameBefore": "As",
+		"firstNameBefore": "as",
 		"firstNameAfter": "tel"
 	},
 
 	"temma": {
-		"lastName": "Kishido",
-		"firstName": "Temma",
-		"lastNameBefore": "Kishi",
+		"lastName": "kishido",
+		"firstName": "temma",
+		"lastNameBefore": "kishi",
 		"lastNameAfter": "do",
-		"firstNameBefore": "Te",
+		"firstNameBefore": "te",
 		"firstNameAfter": "mma"
 	},
 
 	"roberu": {
-		"lastName": "Yukoku",
-		"firstName": "Roberu",
-		"lastNameBefore": "Yuko",
+		"lastName": "yukoku",
+		"firstName": "roberu",
+		"lastNameBefore": "yuko",
 		"lastNameAfter": "koku",
-		"firstNameBefore": "Robe",
+		"firstNameBefore": "robe",
 		"firstNameAfter": "beru"
 	},
 
 	"shien": {
-		"lastName": "Kageyama",
-		"firstName": "Shien",
-		"lastNameBefore": "Kage",
+		"lastName": "kageyama",
+		"firstName": "shien",
+		"lastNameBefore": "kage",
 		"lastNameAfter": "yama",
-		"firstNameBefore": "Shi",
+		"firstNameBefore": "shi",
 		"firstNameAfter": "ien"
 	},
 
 	"oga": {
-		"lastName": "Aragami",
-		"firstName": "Oga",
-		"lastNameBefore": "Ara",
+		"lastName": "aragami",
+		"firstName": "oga",
+		"lastNameBefore": "ara",
 		"lastNameAfter": "gami",
-		"firstNameBefore": "O",
+		"firstNameBefore": "o",
 		"firstNameAfter": "ga"
 	},
 
 	"risu": {
-		"lastName": "Ayunda",
-		"firstName": "Risu",
-		"lastNameBefore": "Ayu",
+		"lastName": "ayunda",
+		"firstName": "risu",
+		"lastNameBefore": "ayu",
 		"lastNameAfter": "yunda",
-		"firstNameBefore": "Ri",
+		"firstNameBefore": "ri",
 		"firstNameAfter": "su"
 	},
 
 	"moona": {
-		"lastName": "Hoshinova",
-		"firstName": "Moona",
-		"lastNameBefore": "Hoshi",
+		"lastName": "hoshinova",
+		"firstName": "moona",
+		"lastNameBefore": "hoshi",
 		"lastNameAfter": "nova",
-		"firstNameBefore": "Moo",
+		"firstNameBefore": "moo",
 		"firstNameAfter": "oona"
 	},
 
 	"iofi": {
-		"lastName": "Airani",
-		"firstName": "Iofifteen",
-		"lastNameBefore": "Aira",
+		"lastName": "airani",
+		"firstName": "iofifteen",
+		"lastNameBefore": "aira",
 		"lastNameAfter": "rani",
-		"firstNameBefore": "Iofi",
+		"firstNameBefore": "iofi",
 		"firstNameAfter": "fifteen"
 	},
 
 	"ollie": {
-		"lastName": "Kureiji",
-		"firstName": "Ollie",
-		"lastNameBefore": "Kurei",
+		"lastName": "kureiji",
+		"firstName": "ollie",
+		"lastNameBefore": "kurei",
 		"lastNameAfter": "reiji",
-		"firstNameBefore": "Olli",
+		"firstNameBefore": "olli",
 		"firstNameAfter": "llie"
 	},
 
 	"anya": {
-		"lastName": "Anya",
-		"firstName": "Melfissa",
-		"lastNameBefore": "Melfi",
+		"lastName": "anya",
+		"firstName": "melfissa",
+		"lastNameBefore": "melfi",
 		"lastNameAfter": "fissa",
-		"firstNameBefore": "An",
+		"firstNameBefore": "an",
 		"firstNameAfter": "nya"
 	},
 
 	"reine": {
-		"lastName": "Pavolia",
-		"firstName": "Reine",
-		"lastNameBefore": "Pavo",
+		"lastName": "pavolia",
+		"firstName": "reine",
+		"lastNameBefore": "pavo",
 		"lastNameAfter": "volia",
-		"firstNameBefore": "Rei",
+		"firstNameBefore": "rei",
 		"firstNameAfter": "ne"
 	},
 
 	"calli": {
-		"lastName": "Mori",
-		"firstName": "Calliope",
-		"lastNameBefore": "Mori",
+		"lastName": "mori",
+		"firstName": "calliope",
+		"lastNameBefore": "mori",
 		"lastNameAfter": "mori",
-		"firstNameBefore": "Calli",
+		"firstNameBefore": "calli",
 		"firstNameAfter": "lliope"
 	},
 
 	"kiara": {
-		"lastName": "Takanashi",
-		"firstName": "Kiara",
-		"lastNameBefore": "Taka",
+		"lastName": "takanashi",
+		"firstName": "kiara",
+		"lastNameBefore": "taka",
 		"lastNameAfter": "nashi",
-		"firstNameBefore": "Ki",
+		"firstNameBefore": "ki",
 		"firstNameAfter": "ara",
 		"eyePosL": [],
 		"eyePosR": [],
@@ -448,31 +448,31 @@
 	},
 
 	"ina": {
-		"lastName": "Ninomae",
-		"firstName": "Ina'nis",
-		"lastNameBefore": "Nino",
+		"lastName": "ninomae",
+		"firstName": "ina'nis",
+		"lastNameBefore": "nino",
 		"lastNameAfter": "mae",
-		"firstNameBefore": "Ina",
+		"firstNameBefore": "ina",
 		"firstNameAfter": "'nis",
 		"colors": ["68587f", "f5a663"],
 		"enabled": true
 	},
 
 	"gura": {
-		"lastName": "Gawr",
-		"firstName": "Gura",
-		"lastNameBefore": "Gaw",
+		"lastName": "gawr",
+		"firstName": "gura",
+		"lastNameBefore": "gaw",
 		"lastNameAfter": "awr",
-		"firstNameBefore": "Gu",
+		"firstNameBefore": "gu",
 		"firstNameAfter": "ra"
 	},
 
 	"ame": {
-		"lastName": "Watson",
-		"firstName": "Amelia",
-		"lastNameBefore": "Wa",
+		"lastName": "watson",
+		"firstName": "amelia",
+		"lastNameBefore": "wa",
 		"lastNameAfter": "tson",
-		"firstNameBefore": "Ame",
+		"firstNameBefore": "ame",
 		"firstNameAfter": "lia"
 	}
 }
