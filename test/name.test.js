@@ -103,13 +103,13 @@ describe("fuseTalentFullNamesByID()", () => {
 		expect(fullName).toEqual({lastName: undefined, firstName: "RoboKi"});
 	});
 
-	// it("creates '?' from ame and haachama", () => {
-	// 	const fullName = name.fuseFullNameOfTalentsByID("ame", "haachama");
-	// 	expect(fullName).toEqual({lastName: "?", firstName: "Amechama"});
-	// });
+	it("creates 'Watson Amechama' from ame and haachama", () => {
+		const fullName = name.fuseTalentFullNamesByID("ame", "haachama");
+		expect(fullName).toEqual({lastName: "Watson", firstName: "Amechama"});
+	});
 
-	// it("creates '?' from haachama and ame", () => {
-	// 	const fullName = name.fuseFullNameOfTalentsByID("haachama", "ame");
-	// 	expect(fullName).toEqual({lastName: "?", firstName: "Haachamelia"});
-	// });
+	it("creates 'Watson Haachamelia' from haachama and ame", () => {
+		const fullName = name.fuseTalentFullNamesByID("haachama", "ame");
+		expect(fullName).toEqual({lastName: "Watson", firstName: "Haachamelia"});
+	});
 });
