@@ -1,5 +1,10 @@
 const talent = require("./talent");
 
+const nameType = {
+	LAST_NAME: "lastName",
+	FIRST_NAME: "firstName"
+};
+
 function changeFirstCharToUppercase(string) {
 	return string[0].toUpperCase() + string.slice(1);
 }
@@ -12,67 +17,62 @@ function removeLastCharOfString(string) {
 	return string.slice(0, -1);
 }
 
-function getFullNameOfTalent(talent) {
+function getTalentFullName(talent) {
 	return {
 		lastName: changeFirstCharToUppercase(talent.lastName),
 		firstName: changeFirstCharToUppercase(talent.firstName)
 	};
 }
 
-function fuseNames(name1, name2) {
-	let firstChunk = changeFirstCharToUppercase(name1);
-	if (isLastCharOfStr1SameAsFirstCharOfStr2(firstChunk, name2))
+function fuseNameChunks(chunk1, chunk2) {
+	let firstChunk = changeFirstCharToUppercase(chunk1);
+	if (isLastCharOfStr1SameAsFirstCharOfStr2(firstChunk, chunk2))
 		firstChunk = removeLastCharOfString(firstChunk);
-	return firstChunk + name2;
+	return firstChunk + chunk2;
 }
 
-function fuseNamesOfSameTypeOfTalents(
-	talent1,
-	talent2,
-	nameType // either "lastName" or "firstName"
-) {
+function fuseTalentNamesOfSameType(talent1, talent2, nameType) {
 	const nameBefore = talent1[nameType + "Before"];
 	const nameAfter = talent2[nameType + "After"];
-	return fuseNames(nameBefore, nameAfter);
+	return fuseNameChunks(nameBefore, nameAfter);
 }
 
-function fuseLastNamesOfTalents(talent1, talent2) {
-	return fuseNamesOfSameTypeOfTalents(talent1, talent2, "lastName");
+function fuseTalentLastNames(talent1, talent2) {
+	return fuseTalentNamesOfSameType(talent1, talent2, nameType.LAST_NAME);
 }
 
-function fuseFirstNamesOfTalents(talent1, talent2) {
-	return fuseNamesOfSameTypeOfTalents(talent1, talent2, "firstName");
+function fuseTalentFirstNames(talent1, talent2) {
+	return fuseTalentNamesOfSameType(talent1, talent2, nameType.FIRST_NAME);
 }
 
-function fuseFullNameOfTalents(talent1, talent2) {
+function fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, nameType) {
+	if (talent1[nameType] && talent2[nameType])
+		return fuseTalentNamesOfSameType(talent1, talent2, nameType);
+	const name = talent1[nameType] || talent2[nameType];
+	if (name)
+		return changeFirstCharToUppercase(name);
+}
+
+function fuseTalentFullNames(talent1, talent2) {
 	if (talent1 === talent2)
-		return getFullNameOfTalent(talent1);
-
-	let lastName, firstName;
-
-	if (talent1.lastName && talent2.lastName)
-		lastName = fuseLastNamesOfTalents(talent1, talent2);
-
-	if (talent1.firstName && talent2.firstName)
-		firstName = fuseFirstNamesOfTalents(talent1, talent2);
-
+		return getTalentFullName(talent1);
 	return {
-		lastName: lastName,
-		firstName: firstName
+		lastName: fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, nameType.LAST_NAME),
+		firstName: fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, nameType.FIRST_NAME)
 	};
 }
 
-function fuseFullNameOfTalentsByID(id1, id2) {
-	return fuseFullNameOfTalents(
+function fuseTalentFullNamesByID(id1, id2) {
+	return fuseTalentFullNames(
 		talent.getTalentByID(id1),
 		talent.getTalentByID(id2)
 	);
 }
 
 module.exports = {
-	fuseNames,
-	fuseLastNamesOfTalents,
-	fuseFirstNamesOfTalents,
-	fuseFullNameOfTalents,
-	fuseFullNameOfTalentsByID
+	fuseNameChunks,
+	fuseTalentLastNames,
+	fuseTalentFirstNames,
+	fuseTalentFullNames,
+	fuseTalentFullNamesByID
 };
