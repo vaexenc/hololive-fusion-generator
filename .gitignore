@@ -1,6 +1,7 @@
 /.eslintrc.json
 /node_modules/
 /coverage/
+/src/sandbox.js
 
 # for now
 /package-lock.json
