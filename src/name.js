@@ -62,10 +62,10 @@ function fuseTalentFullNames(talent1, talent2) {
 	};
 }
 
-function fuseTalentFullNamesByID(id1, id2) {
+function fuseTalentFullNamesById(id1, id2) {
 	return fuseTalentFullNames(
-		talent.getTalentByID(id1),
-		talent.getTalentByID(id2)
+		talent.getTalentById(id1),
+		talent.getTalentById(id2)
 	);
 }
 
@@ -88,13 +88,13 @@ function printNameFusionFormatted(talent1, talent2, fullName) {
 	console.log(talent1FullName + " + " + talent2FullName + " = " + fusionFullName);
 }
 
-function printAllNameVariationsForTalent(talentID) {
-	const talentIDs = talent.getAllTalentIDs();
-	for (const currentID of talentIDs) {
-		if (talentID === currentID)
+function printAllNameVariationsForTalent(talentId) {
+	const talentIds = talent.getAllTalentIds();
+	for (const currentId of talentIds) {
+		if (talentId === currentId)
 			continue;
-		const talent1 = talent.getTalentByID(talentID);
-		const talent2 = talent.getTalentByID(currentID);
+		const talent1 = talent.getTalentById(talentId);
+		const talent2 = talent.getTalentById(currentId);
 		let fullName = fuseTalentFullNames(talent1, talent2);
 		printNameFusionFormatted(talent1, talent2, fullName);
 		fullName = fuseTalentFullNames(talent2, talent1);
@@ -103,11 +103,11 @@ function printAllNameVariationsForTalent(talentID) {
 }
 
 function printAllNameVariations() {
-	const talentIDs = talent.getAllTalentIDs();
-	for (let i = 0; i < talentIDs.length; i++) {
-		for (let j = i+1; j < talentIDs.length; j++) {
-			const talent1 = talent.getTalentByID(talentIDs[i]);
-			const talent2 = talent.getTalentByID(talentIDs[j]);
+	const talentIds = talent.getAllTalentIds();
+	for (let i = 0; i < talentIds.length; i++) {
+		for (let j = i+1; j < talentIds.length; j++) {
+			const talent1 = talent.getTalentById(talentIds[i]);
+			const talent2 = talent.getTalentById(talentIds[j]);
 			let fullName = fuseTalentFullNames(talent1, talent2);
 			printNameFusionFormatted(talent1, talent2, fullName);
 			fullName = fuseTalentFullNames(talent2, talent1);
@@ -121,7 +121,7 @@ module.exports = {
 	fuseTalentLastNames,
 	fuseTalentFirstNames,
 	fuseTalentFullNames,
-	fuseTalentFullNamesByID,
+	fuseTalentFullNamesById,
 	printAllNameVariationsForTalent,
 	printAllNameVariations
 };

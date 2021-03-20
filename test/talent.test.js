@@ -1,49 +1,49 @@
 const talent = require("../src/talent");
 const util = require("../src/util");
 
-describe("getTalentByID()", () => {
+describe("getTalentById()", () => {
 	it("always returns the same object when called with the same id", () => {
-		expect(talent.getTalentByID("coco")).toEqual(talent.getTalentByID("coco"));
+		expect(talent.getTalentById("coco")).toEqual(talent.getTalentById("coco"));
 	});
 
 	it("throws when talent with given id doesn't exist", () => {
-		expect(() => talent.getTalentByID("")).toThrow();
-		expect(() => talent.getTalentByID(" ")).toThrow();
-		expect(() => talent.getTalentByID("1")).toThrow();
-		expect(() => talent.getTalentByID("abcdefg")).toThrow();
+		expect(() => talent.getTalentById("")).toThrow();
+		expect(() => talent.getTalentById(" ")).toThrow();
+		expect(() => talent.getTalentById("1")).toThrow();
+		expect(() => talent.getTalentById("abcdefg")).toThrow();
 	});
 
 	it("works with 'calli'", () => {
-		const t = talent.getTalentByID("calli");
+		const t = talent.getTalentById("calli");
 		expect(t.lastName).toEqual("mori");
 		expect(t.firstName).toEqual("calliope");
 	});
 
 	it("works with 'ina'", () => {
-		const t = talent.getTalentByID("ina");
+		const t = talent.getTalentById("ina");
 		expect(t.lastName).toEqual("ninomae");
 		expect(t.firstName).toEqual("ina'nis");
 	});
 
 	it("works with 'ame'", () => {
-		const t = talent.getTalentByID("ame");
+		const t = talent.getTalentById("ame");
 		expect(t.lastName).toEqual("watson");
 		expect(t.firstName).toEqual("amelia");
 	});
 
 	it("works with 'pekora'", () => {
-		const t = talent.getTalentByID("pekora");
+		const t = talent.getTalentById("pekora");
 		expect(t.lastName).toEqual("usada");
 		expect(t.firstName).toEqual("pekora");
 	});
 
 	it("doesn't return an array", () => {
-		const t = talent.getTalentByID("pekora");
+		const t = talent.getTalentById("pekora");
 		expect(Array.isArray(t)).toBe(false);
 	});
 
 	it("returns an object", () => {
-		const t = talent.getTalentByID("pekora");
+		const t = talent.getTalentById("pekora");
 		expect(typeof t).toBe("object");
 	});
 });
@@ -60,15 +60,15 @@ describe("getAmountOfTalents()", () => {
 	});
 });
 
-describe("getIDsOfEnabledTalents()", () => {
-	const enabledTalentIDs = talent.getIDsOfEnabledTalents();
+describe("getIdsOfEnabledTalents()", () => {
+	const enabledTalentIds = talent.getIdsOfEnabledTalents();
 
 	it("returns an array", () => {
-		expect(Array.isArray(enabledTalentIDs)).toBe(true);
+		expect(Array.isArray(enabledTalentIds)).toBe(true);
 	});
 
 	it("has a length equal to getAmountOfEnabledTalents()", () => {
-		expect(enabledTalentIDs.length).toBe(talent.getAmountOfEnabledTalents());
+		expect(enabledTalentIds.length).toBe(talent.getAmountOfEnabledTalents());
 	});
 });
 
