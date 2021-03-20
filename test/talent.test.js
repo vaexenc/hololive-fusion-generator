@@ -95,3 +95,17 @@ describe("getAmountOfEnabledTalentVariations()", () => {
 		.toBe(util.getAmountOfVariations(talent.getAmountOfEnabledTalents(), 2));
 	});
 });
+
+describe("getAmountOfTotalTalentVariations()", () => {
+	it("returns the same thing as when calculating manually", () => {
+		expect(talent.getAmountOfTotalTalentVariations())
+		.toBe(util.getAmountOfVariations(talent.getAmountOfTalents(), 2));
+	});
+});
+
+describe("getAllTalentIds()", () => {
+	it("has a length equal to getAmountOfTalents()", () => {
+		const talentIds = talent.getAllTalentIds();
+		expect(talentIds.length).toBe(talent.getAmountOfTalents());
+	});
+});
