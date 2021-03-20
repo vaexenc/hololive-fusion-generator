@@ -69,10 +69,59 @@ function fuseTalentFullNamesByID(id1, id2) {
 	);
 }
 
+function returnUndefinedStringOrArgument(string) {
+	return string || "undefined";
+}
+
+function getFullNameString(talentOrFullName) {
+	const fullNameString =
+		changeFirstCharToUppercase(returnUndefinedStringOrArgument(talentOrFullName.lastName))
+		+ " "
+		+ changeFirstCharToUppercase(returnUndefinedStringOrArgument(talentOrFullName.firstName));
+	return fullNameString;
+}
+
+function printNameFusionFormatted(talent1, talent2, fullName) {
+	const talent1FullName = getFullNameString(talent1);
+	const talent2FullName = getFullNameString(talent2);
+	const fusionFullName = getFullNameString(fullName);
+	console.log(talent1FullName + " + " + talent2FullName + " = " + fusionFullName);
+}
+
+function printAllNameVariationsForTalent(talentID) {
+	const talentIDs = talent.getAllTalentIDs();
+	for (const currentID of talentIDs) {
+		if (talentID === currentID)
+			continue;
+		const talent1 = talent.getTalentByID(talentID);
+		const talent2 = talent.getTalentByID(currentID);
+		let fullName = fuseTalentFullNames(talent1, talent2);
+		printNameFusionFormatted(talent1, talent2, fullName);
+		fullName = fuseTalentFullNames(talent2, talent1);
+		printNameFusionFormatted(talent2, talent1, fullName);
+	}
+}
+
+function printAllNameVariations() {
+	const talentIDs = talent.getAllTalentIDs();
+	for (let i = 0; i < talentIDs.length; i++) {
+		for (let j = i+1; j < talentIDs.length; j++) {
+			const talent1 = talent.getTalentByID(talentIDs[i]);
+			const talent2 = talent.getTalentByID(talentIDs[j]);
+			let fullName = fuseTalentFullNames(talent1, talent2);
+			printNameFusionFormatted(talent1, talent2, fullName);
+			fullName = fuseTalentFullNames(talent2, talent1);
+			printNameFusionFormatted(talent2, talent1, fullName);
+		}
+	}
+}
+
 module.exports = {
 	fuseNameChunks,
 	fuseTalentLastNames,
 	fuseTalentFirstNames,
 	fuseTalentFullNames,
-	fuseTalentFullNamesByID
+	fuseTalentFullNamesByID,
+	printAllNameVariationsForTalent,
+	printAllNameVariations
 };
