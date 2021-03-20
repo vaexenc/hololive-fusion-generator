@@ -24,10 +24,20 @@ function getAmountOfEnabledTalentVariations() {
 	return util.getAmountOfVariations(getAmountOfEnabledTalents(), 2);
 }
 
+function getAmountOfTotalTalentVariations() {
+	return util.getAmountOfVariations(getAmountOfTalents(), 2);
+}
+
+function getAllTalentIDs() {
+	return Object.keys(talentList);
+}
+
 module.exports = {
 	getTalentByID,
 	getAmountOfTalents,
 	getIDsOfEnabledTalents,
 	getAmountOfEnabledTalents,
-	getAmountOfEnabledTalentVariations
+	getAmountOfEnabledTalentVariations,
+	getAmountOfTotalTalentVariations,
+	getAllTalentIDs
 };
