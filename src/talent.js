@@ -20,7 +20,7 @@ function getAmountOfEnabledTalents() {
 	return getIDsOfEnabledTalents().length;
 }
 
-function getAmountOfTalentVariations() {
+function getAmountOfEnabledTalentVariations() {
 	return util.getAmountOfVariations(getAmountOfEnabledTalents(), 2);
 }
 
@@ -29,5 +29,5 @@ module.exports = {
 	getAmountOfTalents,
 	getIDsOfEnabledTalents,
 	getAmountOfEnabledTalents,
-	getAmountOfTalentVariations
+	getAmountOfEnabledTalentVariations
 };

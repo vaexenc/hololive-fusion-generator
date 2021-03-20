@@ -89,9 +89,9 @@ describe("getAmountOfEnabledTalents()", () => {
 	});
 });
 
-describe("getAmountOfTalentVariations()", () => {
+describe("getAmountOfEnabledTalentVariations()", () => {
 	it("returns the same thing as when calculating manually", () => {
-		expect(talent.getAmountOfTalentVariations())
+		expect(talent.getAmountOfEnabledTalentVariations())
 		.toBe(util.getAmountOfVariations(talent.getAmountOfEnabledTalents(), 2));
 	});
 });
