@@ -1,19 +1,19 @@
-const talentList = require("./talent-list.json");
+const talents = require("./talents.json");
 const util = require("./util");
 
 function getTalentById(id) {
-	const talent = talentList[id];
+	const talent = talents[id];
 	if (!talent)
 		throw new Error("talent not found");
 	return talent;
 }
 
 function getAmountOfTalents() {
-	return util.getLengthOfObject(talentList);
+	return util.getLengthOfObject(talents);
 }
 
 function getIdsOfEnabledTalents() {
-	return Object.entries(talentList).filter(e => e[1].enabled).map(e => e[0]);
+	return Object.entries(talents).filter(e => e[1].enabled).map(e => e[0]);
 }
 
 function getAmountOfEnabledTalents() {
@@ -29,7 +29,7 @@ function getAmountOfTotalTalentVariations() {
 }
 
 function getAllTalentIds() {
-	return Object.keys(talentList);
+	return Object.keys(talents);
 }
 
 module.exports = {
