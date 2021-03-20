@@ -1,2 +1,6 @@
 .eslintrc.json
 node_modules
+coverage
+
+# for now
+package-lock.json
