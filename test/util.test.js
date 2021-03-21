@@ -29,20 +29,20 @@ describe("factorial()", () => {
 	});
 });
 
-describe("getAmountOfVariations()", () => {
+describe("calculateVariations()", () => {
 	it("seems to work", () => {
-		expect(util.getAmountOfVariations(10, 1)).toBe(10);
-		expect(util.getAmountOfVariations(10, 2)).toBe(90);
-		expect(util.getAmountOfVariations(10, 3)).toBe(720);
-		expect(util.getAmountOfVariations(50, 2)).toBe(2450);
-		expect(util.getAmountOfVariations(100, 4)).toBe(94109400);
+		expect(util.calculateVariations(10, 1)).toBe(10);
+		expect(util.calculateVariations(10, 2)).toBe(90);
+		expect(util.calculateVariations(10, 3)).toBe(720);
+		expect(util.calculateVariations(50, 2)).toBe(2450);
+		expect(util.calculateVariations(100, 4)).toBe(94109400);
 	});
 });
 
-describe("getLengthOfObject()", () => {
+describe("getObjectLength()", () => {
 	it("seems to work", () => {
-		expect(util.getLengthOfObject({})).toBe(0);
-		expect(util.getLengthOfObject({a: 123})).toBe(1);
-		expect(util.getLengthOfObject({a: 123, b: 456})).toBe(2);
+		expect(util.getObjectLength({})).toBe(0);
+		expect(util.getObjectLength({a: 123})).toBe(1);
+		expect(util.getObjectLength({a: 123, b: 456})).toBe(2);
 	});
 });

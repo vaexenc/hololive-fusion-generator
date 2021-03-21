@@ -48,8 +48,8 @@ describe("getTalentById()", () => {
 	});
 });
 
-describe("getAmountOfTalents()", () => {
-	const amountOfTalents = talent.getAmountOfTalents();
+describe("getTalentCountAll()", () => {
+	const amountOfTalents = talent.getTalentCountAll();
 
 	it("should be greater than 40", () => {
 		expect(amountOfTalents).toBeGreaterThan(40);
@@ -60,21 +60,21 @@ describe("getAmountOfTalents()", () => {
 	});
 });
 
-describe("getIdsOfEnabledTalents()", () => {
-	const enabledTalentIds = talent.getIdsOfEnabledTalents();
+describe("getTalentIdsEnabled()", () => {
+	const enabledTalentIds = talent.getTalentIdsEnabled();
 
 	it("returns an array", () => {
 		expect(Array.isArray(enabledTalentIds)).toBe(true);
 	});
 
-	it("has a length equal to getAmountOfEnabledTalents()", () => {
-		expect(enabledTalentIds.length).toBe(talent.getAmountOfEnabledTalents());
+	it("has a length equal to getTalentCountEnabled()", () => {
+		expect(enabledTalentIds.length).toBe(talent.getTalentCountEnabled());
 	});
 });
 
-describe("getAmountOfEnabledTalents()", () => {
-	const amountOfEnabledTalents = talent.getAmountOfEnabledTalents();
-	const amountOfTalents = talent.getAmountOfTalents();
+describe("getTalentCountEnabled()", () => {
+	const amountOfEnabledTalents = talent.getTalentCountEnabled();
+	const amountOfTalents = talent.getTalentCountAll();
 
 	it("should be greater than or equal to 0", () => {
 		expect(amountOfEnabledTalents).toBeGreaterThanOrEqual(0);
@@ -89,23 +89,23 @@ describe("getAmountOfEnabledTalents()", () => {
 	});
 });
 
-describe("getAmountOfEnabledTalentVariations()", () => {
+describe("calculateTalentVariationsEnabled()", () => {
 	it("returns the same thing as when calculating manually", () => {
-		expect(talent.getAmountOfEnabledTalentVariations())
-		.toBe(util.getAmountOfVariations(talent.getAmountOfEnabledTalents(), 2));
+		expect(talent.calculateTalentVariationsEnabled())
+		.toBe(util.calculateVariations(talent.getTalentCountEnabled(), 2));
 	});
 });
 
-describe("getAmountOfTotalTalentVariations()", () => {
+describe("calculateTalentVariationsAll()", () => {
 	it("returns the same thing as when calculating manually", () => {
-		expect(talent.getAmountOfTotalTalentVariations())
-		.toBe(util.getAmountOfVariations(talent.getAmountOfTalents(), 2));
+		expect(talent.calculateTalentVariationsAll())
+		.toBe(util.calculateVariations(talent.getTalentCountAll(), 2));
 	});
 });
 
-describe("getAllTalentIds()", () => {
-	it("has a length equal to getAmountOfTalents()", () => {
-		const talentIds = talent.getAllTalentIds();
-		expect(talentIds.length).toBe(talent.getAmountOfTalents());
+describe("getTalentIdsAll()", () => {
+	it("has a length equal to getTalentCountAll()", () => {
+		const talentIds = talent.getTalentIdsAll();
+		expect(talentIds.length).toBe(talent.getTalentCountAll());
 	});
 });

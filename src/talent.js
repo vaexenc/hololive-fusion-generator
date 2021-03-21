@@ -8,36 +8,36 @@ function getTalentById(id) {
 	return talent;
 }
 
-function getAmountOfTalents() {
-	return util.getLengthOfObject(talents);
+function getTalentCountAll() {
+	return util.getObjectLength(talents);
 }
 
-function getIdsOfEnabledTalents() {
+function getTalentIdsEnabled() {
 	return Object.entries(talents).filter(e => e[1].enabled).map(e => e[0]);
 }
 
-function getAmountOfEnabledTalents() {
-	return getIdsOfEnabledTalents().length;
+function getTalentCountEnabled() {
+	return getTalentIdsEnabled().length;
 }
 
-function getAmountOfEnabledTalentVariations() {
-	return util.getAmountOfVariations(getAmountOfEnabledTalents(), 2);
+function calculateTalentVariationsEnabled() {
+	return util.calculateVariations(getTalentCountEnabled(), 2);
 }
 
-function getAmountOfTotalTalentVariations() {
-	return util.getAmountOfVariations(getAmountOfTalents(), 2);
+function calculateTalentVariationsAll() {
+	return util.calculateVariations(getTalentCountAll(), 2);
 }
 
-function getAllTalentIds() {
+function getTalentIdsAll() {
 	return Object.keys(talents);
 }
 
 module.exports = {
 	getTalentById,
-	getAmountOfTalents,
-	getIdsOfEnabledTalents,
-	getAmountOfEnabledTalents,
-	getAmountOfEnabledTalentVariations,
-	getAmountOfTotalTalentVariations,
-	getAllTalentIds
+	getTalentCountAll,
+	getTalentIdsEnabled,
+	getTalentCountEnabled,
+	calculateTalentVariationsEnabled,
+	calculateTalentVariationsAll,
+	getTalentIdsAll
 };

@@ -89,7 +89,7 @@ function printNameFusionFormatted(talent1, talent2, fullName) {
 }
 
 function printAllNameVariationsForTalent(talentId) {
-	const talentIds = talent.getAllTalentIds();
+	const talentIds = talent.getTalentIdsAll();
 	for (const currentId of talentIds) {
 		if (talentId === currentId)
 			continue;
@@ -103,7 +103,7 @@ function printAllNameVariationsForTalent(talentId) {
 }
 
 function printAllNameVariations() {
-	const talentIds = talent.getAllTalentIds();
+	const talentIds = talent.getTalentIdsAll();
 	for (let i = 0; i < talentIds.length; i++) {
 		for (let j = i+1; j < talentIds.length; j++) {
 			const talent1 = talent.getTalentById(talentIds[i]);

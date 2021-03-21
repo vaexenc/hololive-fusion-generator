@@ -8,17 +8,17 @@ function factorial(number) {
 	return number * factorial(number - 1);
 }
 
-function getAmountOfVariations(totalElements, elementsToChoose) {
+function calculateVariations(totalElements, elementsToChoose) {
 	// order important, no repetitions
 	return factorial(totalElements) / factorial(totalElements - elementsToChoose);
 }
 
-function getLengthOfObject(obj) {
+function getObjectLength(obj) {
 	return Object.keys(obj).length;
 }
 
 module.exports = {
 	factorial,
-	getAmountOfVariations,
-	getLengthOfObject
+	calculateVariations,
+	getObjectLength
 };

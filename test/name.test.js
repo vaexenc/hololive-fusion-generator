@@ -118,7 +118,7 @@ describe("printAllNameVariationsForTalent()", () => {
 	it("calls console.log() the correct amount of times", () => {
 		const logSpy = jest.spyOn(console, "log").mockImplementation();
 		name.printAllNameVariationsForTalent("gura");
-		expect(logSpy).toHaveBeenCalledTimes((talent.getAmountOfTalents() - 1) * 2);
+		expect(logSpy).toHaveBeenCalledTimes((talent.getTalentCountAll() - 1) * 2);
 		logSpy.mockRestore();
 	});
 });
@@ -127,7 +127,7 @@ describe("printAllNameVariations()", () => {
 	it("calls console.log() the correct amount of times", () => {
 		const logSpy = jest.spyOn(console, "log").mockImplementation();
 		name.printAllNameVariations("gura");
-		expect(logSpy).toHaveBeenCalledTimes(talent.getAmountOfTotalTalentVariations());
+		expect(logSpy).toHaveBeenCalledTimes(talent.calculateTalentVariationsAll());
 		logSpy.mockRestore();
 	});
 });
