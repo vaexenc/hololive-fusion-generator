@@ -68,42 +68,6 @@ describe("fuseNameChunks()", () => {
 	});
 });
 
-describe("fuseTalentLastNames()", () => {
-	it("creates 'Inumata' from korone and okayu", () => {
-		const lastName = name.fuseTalentLastNames(
-			talent.getTalentById("korone"),
-			talent.getTalentById("okayu")
-		);
-		expect(lastName).toBe("Inumata");
-	});
-
-	it("creates 'Nekogami' from okayu and korone", () => {
-		const lastName = name.fuseTalentLastNames(
-			talent.getTalentById("okayu"),
-			talent.getTalentById("korone")
-		);
-		expect(lastName).toBe("Nekogami");
-	});
-});
-
-describe("fuseTalentFirstNames()", () => {
-	it("creates 'Korokayu' from korone and okayu", () => {
-		const firstName = name.fuseTalentFirstNames(
-			talent.getTalentById("korone"),
-			talent.getTalentById("okayu")
-		);
-		expect(firstName).toBe("Korokayu");
-	});
-
-	it("creates 'Okarone' from okayu and korone", () => {
-		const firstName = name.fuseTalentFirstNames(
-			talent.getTalentById("okayu"),
-			talent.getTalentById("korone")
-		);
-		expect(firstName).toBe("Okarone");
-	});
-});
-
 describe("fuseTalentFullNames()", () => {
 	it("returns name unchanged when both talents are the same", () => {
 		const fullName = name.fuseTalentFullNames(

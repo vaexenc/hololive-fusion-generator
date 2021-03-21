@@ -37,14 +37,6 @@ function fuseTalentNamesOfSameType(talent1, talent2, nameType) {
 	return fuseNameChunks(nameBefore, nameAfter);
 }
 
-function fuseTalentLastNames(talent1, talent2) {
-	return fuseTalentNamesOfSameType(talent1, talent2, nameType.LAST_NAME);
-}
-
-function fuseTalentFirstNames(talent1, talent2) {
-	return fuseTalentNamesOfSameType(talent1, talent2, nameType.FIRST_NAME);
-}
-
 function fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, nameType) {
 	if (talent1[nameType] && talent2[nameType])
 		return fuseTalentNamesOfSameType(talent1, talent2, nameType);
@@ -118,8 +110,6 @@ function printAllNameVariations() {
 
 module.exports = {
 	fuseNameChunks,
-	fuseTalentLastNames,
-	fuseTalentFirstNames,
 	fuseTalentFullNames,
 	fuseTalentFullNamesById,
 	printAllNameVariationsForTalent,
