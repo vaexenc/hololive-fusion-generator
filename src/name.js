@@ -1,3 +1,4 @@
+const customNames = require("./customNames.json");
 const talent = require("./talent");
 
 const nameType = {
@@ -45,9 +46,24 @@ function fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, nameType) {
 		return changeFirstCharToUppercase(name);
 }
 
+function getNameTupleString(talent1, talent2) {
+	const talentId1 = talent.getTalentId(talent1);
+	const talentId2 = talent.getTalentId(talent2);
+	return talentId1 + " " + talentId2;
+}
+
+function getCustomName(talent1, talent2) {
+	const nameTupleString = getNameTupleString(talent1, talent2);
+	if (nameTupleString in customNames)
+		return customNames[nameTupleString];
+}
+
 function fuseTalentFullNames(talent1, talent2) {
 	if (talent1 === talent2)
 		return getTalentFullName(talent1);
+	const customName = getCustomName(talent1, talent2);
+	if (customName)
+		return customName;
 	return {
 		lastName: fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, nameType.LAST_NAME),
 		firstName: fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, nameType.FIRST_NAME)
