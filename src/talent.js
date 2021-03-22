@@ -32,6 +32,13 @@ function getTalentIdsAll() {
 	return Object.keys(talents);
 }
 
+function getTalentId(talentObj) {
+	for (const currentTalent of Object.entries(talents)) {
+		if (talentObj === currentTalent[1])
+			return currentTalent[0];
+	}
+}
+
 module.exports = {
 	getTalentById,
 	getTalentCountAll,
@@ -39,5 +46,6 @@ module.exports = {
 	getTalentCountEnabled,
 	calculateTalentVariationsEnabled,
 	calculateTalentVariationsAll,
-	getTalentIdsAll
+	getTalentIdsAll,
+	getTalentId
 };
