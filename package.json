@@ -4,7 +4,8 @@
   "description": "",
   "main": "",
   "scripts": {
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "vaexenc",
