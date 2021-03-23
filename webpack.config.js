@@ -21,5 +21,6 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({template: "./src/index.html"}),
 		new MiniCssExtractPlugin({filename: "style.css"})
-	]
+	],
+	mode: "production"
 };
