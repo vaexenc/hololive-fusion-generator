@@ -2,6 +2,9 @@
 /node_modules/
 /coverage/
 /src/sandbox.js
+/dist/*
+
+!/dist/images
 
 # for now
 /package-lock.json
