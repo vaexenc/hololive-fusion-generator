@@ -14,7 +14,7 @@ body {
 	width: 100%;
 	height: 100%;
 	background-color: black;
-	background-image: url("out-transparent-29_400.gif");
+	/* background-image: url("out-transparent-29_400.gif"); */
 	background-position: 50% 30%;
 	background-repeat: no-repeat;
 	background-size: 30vmin;
