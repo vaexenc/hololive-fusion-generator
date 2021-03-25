@@ -5,7 +5,8 @@
   "main": "",
   "scripts": {
     "test": "jest --verbose",
-    "build": "webpack"
+    "build": "webpack --config ./webpack.prod.js",
+    "build:dev": "webpack --config ./webpack.dev.js"
   },
   "keywords": [],
   "author": "vaexenc",

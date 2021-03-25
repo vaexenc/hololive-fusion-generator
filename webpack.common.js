@@ -23,6 +23,5 @@ module.exports = {
 		new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["**/*", "!images/**"]}),
 		new HtmlWebpackPlugin({template: "./src/index.html"}),
 		new MiniCssExtractPlugin({filename: "style.css"})
-	],
-	mode: "production"
+	]
 };
