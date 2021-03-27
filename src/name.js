@@ -89,6 +89,48 @@ function getFullNameString(talentOrFullName) {
 	return fullNameString;
 }
 
+function getVariationsTwoTalents(talent1, talent2) {
+	const variations = [
+		{
+			talent1: talent1,
+			talent2: talent2,
+			fusion: fuseTalentFullNames(talent1, talent2)
+		},
+		{
+			talent1: talent2,
+			talent2: talent1,
+			fusion: fuseTalentFullNames(talent2, talent1)
+		}
+	];
+	return variations;
+}
+
+function getAllNameVariations() {
+	const nameVariations = [];
+	const talentIds = talent.getTalentIdsAll();
+	for (let i = 0; i < talentIds.length; i++) {
+		for (let j = i + 1; j < talentIds.length; j++) {
+			const talent1 = talent.getTalentById(talentIds[i]);
+			const talent2 = talent.getTalentById(talentIds[j]);
+			nameVariations.push(...getVariationsTwoTalents(talent1, talent2));
+		}
+	}
+	return nameVariations;
+}
+
+function getAllNameVariationsForTalent(talentId) {
+	const nameVariations = [];
+	const talentIds = talent.getTalentIdsAll();
+	for (const currentId of talentIds) {
+		if (talentId === currentId)
+			continue;
+		const talent1 = talent.getTalentById(talentId);
+		const talent2 = talent.getTalentById(currentId);
+		nameVariations.push(...getVariationsTwoTalents(talent1, talent2));
+	}
+	return nameVariations;
+}
+
 function printNameFusionFormatted(talent1, talent2, fullName) {
 	const talent1FullName = getFullNameString(talent1);
 	const talent2FullName = getFullNameString(talent2);
@@ -96,31 +138,17 @@ function printNameFusionFormatted(talent1, talent2, fullName) {
 	console.log(talent1FullName + " + " + talent2FullName + " = " + fusionFullName);
 }
 
-function printAllNameVariationsForTalent(talentId) {
-	const talentIds = talent.getTalentIdsAll();
-	for (const currentId of talentIds) {
-		if (talentId === currentId)
-			continue;
-		const talent1 = talent.getTalentById(talentId);
-		const talent2 = talent.getTalentById(currentId);
-		let fullName = fuseTalentFullNames(talent1, talent2);
-		printNameFusionFormatted(talent1, talent2, fullName);
-		fullName = fuseTalentFullNames(talent2, talent1);
-		printNameFusionFormatted(talent2, talent1, fullName);
+function printAllNameVariations() {
+	const variations = getAllNameVariations();
+	for (const variation of variations) {
+		printNameFusionFormatted(variation.talent1, variation.talent2, variation.fusion);
 	}
 }
 
-function printAllNameVariations() {
-	const talentIds = talent.getTalentIdsAll();
-	for (let i = 0; i < talentIds.length; i++) {
-		for (let j = i+1; j < talentIds.length; j++) {
-			const talent1 = talent.getTalentById(talentIds[i]);
-			const talent2 = talent.getTalentById(talentIds[j]);
-			let fullName = fuseTalentFullNames(talent1, talent2);
-			printNameFusionFormatted(talent1, talent2, fullName);
-			fullName = fuseTalentFullNames(talent2, talent1);
-			printNameFusionFormatted(talent2, talent1, fullName);
-		}
+function printAllNameVariationsForTalent(talentId) {
+	const variations = getAllNameVariationsForTalent(talentId);
+	for (const variation of variations) {
+		printNameFusionFormatted(variation.talent1, variation.talent2, variation.fusion);
 	}
 }
 
@@ -128,6 +156,8 @@ module.exports = {
 	fuseNameChunks,
 	fuseTalentFullNames,
 	fuseTalentFullNamesById,
-	printAllNameVariationsForTalent,
-	printAllNameVariations
+	getAllNameVariations,
+	getAllNameVariationsForTalent,
+	printAllNameVariations,
+	printAllNameVariationsForTalent
 };
