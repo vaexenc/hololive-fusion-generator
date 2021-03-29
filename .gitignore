@@ -3,6 +3,7 @@
 /coverage/
 /src/sandbox.js
 /dist/*
+/.vscode/
 
 !/dist/images
 
