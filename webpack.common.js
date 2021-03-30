@@ -23,5 +23,8 @@ module.exports = {
 		new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["**/*", "!images/**"]}),
 		new HtmlWebpackPlugin({template: "./src/index.html"}),
 		new MiniCssExtractPlugin({filename: "style.css"})
-	]
+	],
+	devServer: {
+		contentBase: path.join(__dirname, "dist")
+	}
 };
