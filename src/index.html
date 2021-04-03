@@ -2,12 +2,38 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>HLFG</title>
 </head>
 <body>
 	<noscript>
-		<div id="no-script"><p>Please enable Javascript</p></div>
+		<div class="no-script"><p class="script__text">Please enable Javascript</p></div>
 	</noscript>
-	<canvas id="main-canvas" width="500" height="500"></canvas>
+
+	<template class="template-talent-select-box">
+		<div class="talent-select-container">
+			<div class="talent-select-box box">
+				<div class="talent-select-content">
+					<div class="talent-select-image">
+						<img class="talent-select-image__image" src="https://picsum.photos/300">
+					</div>
+					<div class="talent-select-name fusion-name">Name here</div>
+					<input class="talent-select-input" type="text">
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<div class="background"></div>
+	<div class="logo"></div>
+	<div class="main">
+		<div class="result-box box">
+			<canvas class="result-canvas" width="500" height="500"></canvas>
+			<div class="result-name">Name here</div>
+			<div class="result-buttons"></div>
+		</div>
+	</div>
+	<div class="bottom-content">
+	</div>
 </body>
 </html>

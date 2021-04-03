@@ -1,14 +1,14 @@
+:root {
+
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-body {
-	background-color: black;
-}
-
-#no-script {
+.no-script {
 	z-index: 10000;
 	position: fixed;
 	width: 100%;
@@ -21,7 +21,7 @@ body {
 	image-rendering: crisp-edges;
 }
 
-#no-script p {
+.no-script__text {
 	color: #dddddd;
 	position: relative;
 	text-align: center;
@@ -29,6 +29,117 @@ body {
 	top: 60%;
 }
 
-#main-canvas {
-	border: 2px white dashed;
+body {
+	background-color: #eee;
+}
+
+.background {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: -999999;
+	background-image: url("images/backgrounds/bg0.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	filter: saturate(90%) contrast(90%);
+}
+
+.logo {
+	position: absolute;
+	top: 0px;
+	width: 200px;
+	height: 80px;
+	background-color: black;
+	z-index: 100;
+}
+
+.main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100.5vh;
+}
+
+.talent-select-container {
+	perspective: 200px;
+}
+
+.talent-select-box {
+	width: 350px;
+	height: 400px;
+	padding: 10px;
+}
+
+.talent-select-box-1 {
+	background: linear-gradient(225deg, rgba(95%, 95%, 95%, 1), rgba(231, 237, 238, 0.9));
+	margin-right: 20px;
+	transform: rotateY(5deg);
+}
+
+.talent-select-box-2 {
+	background: linear-gradient(135deg, rgba(95%, 95%, 95%, 1), rgba(231, 237, 238, 0.9));
+	margin-left: 20px;
+	transform: rotateY(-5deg);
+}
+
+.talent-select-content {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	flex-shrink: 0;
+}
+
+.talent-select-image {
+	max-width: 300px;
+	width: 100%;
+}
+
+.talent-select-image__image {
+	border-radius: 10px;
+	width: 100%;
+}
+
+.talent-select-input {
+	border-radius: 5px;
+	border: none;
+}
+
+.result-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: linear-gradient(rgba(100%, 100%, 100%, 1), rgba(90%, 90%, 90%, 0.9));
+}
+
+.result-canvas {
+	border: 2px gray dashed;
+	border-radius: 10px;
+	width: 500px;
+	height: 500px;
+}
+
+.result-buttons {
+	width: 80px;
+	height: 40px;
+	background-color: gray;
+	margin-top: 100px;
+}
+
+.box {
+	padding: 30px;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.bottom-content {
+	z-index: 50;
+	height: 60vh;
+	background-color: rgb(95%, 95%, 95%, 90%);
+	border-top: 1px solid rgba(50%, 50%, 50%, 0.2);
+	padding: 50px;
 }
