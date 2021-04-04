@@ -47,14 +47,14 @@ body {
 	filter: saturate(90%) contrast(90%);
 }
 
-.logo {
+/* .logo {
 	position: absolute;
 	top: 0px;
 	width: 200px;
 	height: 80px;
 	background-color: black;
 	z-index: 100;
-}
+} */
 
 .main {
 	display: flex;
