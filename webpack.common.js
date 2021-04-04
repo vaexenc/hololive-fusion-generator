@@ -28,7 +28,7 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["**/*", "!images/**"]}),
+		new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["**/*", "!images/**", "!favicon.ico"]}),
 		new HtmlWebpackPlugin({template: "./src/index.html"}),
 		new MiniCssExtractPlugin({filename: "style.css"})
 	],
