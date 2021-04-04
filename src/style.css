@@ -44,7 +44,7 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	filter: saturate(90%) contrast(90%);
+	filter: contrast(110%);
 }
 
 /* .logo {
