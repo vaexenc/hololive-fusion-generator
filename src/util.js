@@ -17,8 +17,13 @@ function getObjectLength(obj) {
 	return Object.keys(obj).length;
 }
 
+function getRandomInt(max) {
+	return Math.floor(max * Math.random());
+}
+
 module.exports = {
 	factorial,
 	calculateVariations,
-	getObjectLength
+	getObjectLength,
+	getRandomInt
 };
