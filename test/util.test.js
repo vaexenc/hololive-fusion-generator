@@ -46,3 +46,20 @@ describe("getObjectLength()", () => {
 		expect(util.getObjectLength({a: 123, b: 456})).toBe(2);
 	});
 });
+
+describe("getRandomInt()", () => {
+	it("returns 0 when argument is 0", () => {
+		for (let i = 0; i < 100; i++)
+			expect(util.getRandomInt(0)).toBe(0);
+	});
+
+	it("returns 0 when argument is 1", () => {
+		for (let i = 0; i < 100; i++)
+			expect(util.getRandomInt(1)).toBe(0);
+	});
+
+	it("doesn't return anything >= 5 when argument is 5", () => {
+		for (let i = 0; i < 100; i++)
+			expect(util.getRandomInt(5)).toBeLessThan(5);
+	});
+});
