@@ -6,7 +6,7 @@ const elemMain = document.querySelector(".main");
 const elemResult = document.querySelector(".result-box");
 const elemBackground = document.querySelector(".background");
 
-function createAndInsertTalentSelectElements() {
+function createAndInsertTalentSelectContainers() {
 	const template = document.querySelector(".template-talent-select-box");
 	const firstClone = template.content.cloneNode(true);
 	const secondClone = template.content.cloneNode(true);
@@ -28,5 +28,5 @@ function setBackgroundRandom() {
 	setBackground(backgroundImages[getRandomInt(backgroundImages.length)]);
 }
 
-createAndInsertTalentSelectElements();
+createAndInsertTalentSelectContainers();
 setBackgroundRandom();
