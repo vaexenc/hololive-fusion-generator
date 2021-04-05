@@ -24,6 +24,10 @@ module.exports = {
 						}
 					}
 				]
+			},
+			{
+				test: /backgroundImages\.js$/,
+				use: "val-loader"
 			}
 		]
 	},
