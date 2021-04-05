@@ -28,5 +28,9 @@ function setBackgroundRandom() {
 	setBackground(backgroundImages[getRandomInt(backgroundImages.length)]);
 }
 
-createAndInsertTalentSelectContainers();
-setBackgroundRandom();
+function main() {
+	createAndInsertTalentSelectContainers();
+	setBackgroundRandom();
+}
+
+main();
