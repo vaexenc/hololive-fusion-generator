@@ -21,9 +21,14 @@ function getRandomInt(max) {
 	return Math.floor(max * Math.random());
 }
 
+function mod(x, m) {
+	return (x % m + m) % m;
+}
+
 module.exports = {
 	factorial,
 	calculateVariations,
 	getObjectLength,
-	getRandomInt
+	getRandomInt,
+	mod
 };
