@@ -1,7 +1,10 @@
 import "./style.css";
+import {backgroundImages} from "./backgroundImages.js";
+import {getRandomInt} from "./util.js";
 
 const elemMain = document.querySelector(".main");
 const elemResult = document.querySelector(".result-box");
+const elemBackground = document.querySelector(".background");
 
 function createAndInsertTalentSelectElements() {
 	const template = document.querySelector(".template-talent-select-box");
@@ -13,4 +16,17 @@ function createAndInsertTalentSelectElements() {
 	elemMain.appendChild(secondClone);
 }
 
+function getBackgroundCurrent() {
+	return elemBackground.style.backgroundImage;
+}
+
+function setBackground(filename) {
+	elemBackground.style.backgroundImage = `url(images/backgrounds/${filename})`;
+}
+
+function setBackgroundRandom() {
+	setBackground(backgroundImages[getRandomInt(backgroundImages.length)]);
+}
+
 createAndInsertTalentSelectElements();
+setBackgroundRandom();
