@@ -31,6 +31,8 @@
 
 body {
 	background-color: #eee;
+	font-family: "Lato", sans-serif;
+	color: rgb(15%, 15%, 15%);
 }
 
 .background {
@@ -135,4 +137,15 @@ body {
 	padding: 30px;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
+}
+
+.talent-select-name {
+	font-size: 1.5em;
+	font-weight: 500;
+}
+
+.result-name {
+	font-size: 3em;
+	font-weight: 600;
+	letter-spacing: -0.02em;
 }
