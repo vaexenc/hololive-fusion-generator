@@ -18,6 +18,10 @@ function createAndInsertTalentSelectContainers() {
 	elemMain.appendChild(secondClone);
 }
 
+function deleteSavedBackgroundIndex() {
+	localStorage.removeItem("backgroundIndex");
+}
+
 function setBackground(index) {
 	backgroundIndex = index;
 	elemBackground.style.backgroundImage = `url(images/backgrounds/${backgroundImages[index]})`;
@@ -25,6 +29,7 @@ function setBackground(index) {
 
 function setBackgroundRandom() {
 	setBackground(getRandomInt(backgroundImages.length));
+	deleteSavedBackgroundIndex();
 }
 
 function saveCurrentBackgroundIndex() {
@@ -32,15 +37,19 @@ function saveCurrentBackgroundIndex() {
 }
 
 function loadSavedBackgroundIndex() {
-	return localStorage.getItem("backgroundIndex");
-}
-
-function deleteSavedBackgroundIndex() {
-	localStorage.removeItem("backgroundIndex");
+	const index = localStorage.getItem("backgroundIndex");
+	if (typeof index === "string" && index.match(/^\d+/))
+		return parseInt(index);
 }
 
 function keepBackgroundIndexWithinBounds(index) {
 	return mod(index, backgroundImages.length);
+}
+
+function isBackgroundIndexValid(index) {
+	if (typeof index !== "number" || index < 0 || index >= backgroundImages.length)
+		return false;
+	return true;
 }
 
 function cycleBackgroundForwards() {
@@ -57,10 +66,10 @@ function cycleBackgroundBackwards() {
 
 function decideBackground() {
 	const saved = loadSavedBackgroundIndex();
-	if (saved)
-		setBackground(saved);
-	else
+	if (!isBackgroundIndexValid(saved))
 		setBackgroundRandom();
+	else
+		setBackground(saved);
 }
 
 function main() {
