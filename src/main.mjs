@@ -7,6 +7,8 @@ const $ = document.querySelector.bind(document);
 const elemMain = $(".main");
 const elemResult = $(".result-box");
 const elemBackground = $(".background");
+const elemInfo = $(".info");
+const elemInfoButton = $(".info-button");
 
 let backgroundIndex;
 
@@ -74,8 +76,30 @@ function decideBackground() {
 		setBackground(saved);
 }
 
+function initInfo() {
+	const classList = elemInfo.classList;
+
+	elemInfoButton.onclick = function(event) {
+		if (classList.contains("info--in")) return;
+		classList.remove("info--out");
+		classList.add("info--in");
+		event.stopPropagation();
+	};
+
+	window.onclick = function() {
+		if (!classList.contains("info--in")) return;
+		classList.remove("info--in");
+		classList.add("info--out");
+	};
+
+	elemInfo.onclick = function(event) {
+		event.stopPropagation();
+	};
+}
+
 function main() {
 	createAndInsertTalentSelectContainers();
+	initInfo();
 	decideBackground();
 }
 
