@@ -36,7 +36,7 @@ body {
 }
 
 .background {
-	background-image: url(""); /* set with javascript */
+	background-image: url(""); /* modified by js */
 	position: fixed;
 	top: 0px;
 	left: 0px;
