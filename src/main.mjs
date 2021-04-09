@@ -2,14 +2,16 @@ import "./style.css";
 import {backgroundImages} from "./backgroundImages.js";
 import {getRandomInt, mod} from "./util.js";
 
-const elemMain = document.querySelector(".main");
-const elemResult = document.querySelector(".result-box");
-const elemBackground = document.querySelector(".background");
+const $ = document.querySelector.bind(document);
+
+const elemMain = $(".main");
+const elemResult = $(".result-box");
+const elemBackground = $(".background");
 
 let backgroundIndex;
 
 function createAndInsertTalentSelectContainers() {
-	const template = document.querySelector(".template-talent-select-box");
+	const template = $(".template-talent-select-box");
 	const firstClone = template.content.cloneNode(true);
 	const secondClone = template.content.cloneNode(true);
 	firstClone.querySelector(".talent-select-box").classList.add("talent-select-box-1");
