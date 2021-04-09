@@ -76,6 +76,13 @@ function decideBackground() {
 		setBackground(saved);
 }
 
+function initBackground() {
+	decideBackground();
+	$(".background-forwards").onclick = () => cycleBackgroundForwards();
+	$(".background-backwards").onclick = () => cycleBackgroundBackwards();
+	$(".background-random").onclick = () => setBackgroundRandom();
+}
+
 function initInfo() {
 	const classList = elemInfo.classList;
 
@@ -100,7 +107,7 @@ function initInfo() {
 function main() {
 	createAndInsertTalentSelectContainers();
 	initInfo();
-	decideBackground();
+	initBackground();
 }
 
 main();
