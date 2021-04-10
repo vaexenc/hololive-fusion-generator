@@ -1,6 +1,7 @@
 import "./style.css";
 import {backgroundImages} from "./backgroundImages.js";
 import {getRandomInt, mod} from "./util.js";
+import {getTalentCountEnabled, calculateTalentVariationsEnabled} from "./talent.js";
 
 const $ = document.querySelector.bind(document);
 
@@ -116,6 +117,9 @@ function initInfo() {
 	elemInfo.onclick = function(event) {
 		event.stopPropagation();
 	};
+
+	$(".current-progress").innerHTML = getTalentCountEnabled();
+	$(".possible-variations").innerHTML = calculateTalentVariationsEnabled();
 }
 
 function main() {
