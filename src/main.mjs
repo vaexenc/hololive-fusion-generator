@@ -83,20 +83,28 @@ function initBackground() {
 	$(".background-random").onclick = () => setBackgroundRandom();
 }
 
+function showInfo() {
+	elemInfo.classList.remove("info--out");
+	elemInfo.classList.add("info--in");
+}
+
+function hideInfo() {
+	elemInfo.classList.remove("info--in");
+	elemInfo.classList.add("info--out");
+}
+
 function initInfo() {
 	const classList = elemInfo.classList;
 
 	elemInfoButton.onclick = function(event) {
 		if (classList.contains("info--in")) return;
-		classList.remove("info--out");
-		classList.add("info--in");
+		showInfo();
 		event.stopPropagation();
 	};
 
 	window.onclick = function() {
 		if (!classList.contains("info--in")) return;
-		classList.remove("info--in");
-		classList.add("info--out");
+		hideInfo();
 	};
 
 	elemInfo.onclick = function(event) {
