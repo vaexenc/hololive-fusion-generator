@@ -37,6 +37,14 @@ function setBackgroundRandom() {
 	deleteSavedBackgroundIndex();
 }
 
+function setBackgroundRandomDifferent() {
+	let newBackgroundIndex = backgroundIndex;
+	while (newBackgroundIndex === backgroundIndex)
+		newBackgroundIndex = getRandomInt(backgroundImages.length);
+	setBackground(newBackgroundIndex);
+	deleteSavedBackgroundIndex();
+}
+
 function saveCurrentBackgroundIndex() {
 	localStorage.setItem("backgroundIndex", backgroundIndex);
 }
@@ -113,7 +121,7 @@ function initInfo() {
 
 	$(".background-forwards").onclick = () => cycleBackgroundForwards();
 	$(".background-backwards").onclick = () => cycleBackgroundBackwards();
-	$(".background-random").onclick = () => setBackgroundRandom();
+	$(".background-random").onclick = () => setBackgroundRandomDifferent();
 	$(".current-progress").innerHTML = getTalentCountEnabled();
 	$(".possible-variations").innerHTML = calculateTalentVariationsEnabled();
 }
