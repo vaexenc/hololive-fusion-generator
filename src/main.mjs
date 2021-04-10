@@ -77,13 +77,6 @@ function decideBackground() {
 		setBackground(saved);
 }
 
-function initBackground() {
-	decideBackground();
-	$(".background-forwards").onclick = () => cycleBackgroundForwards();
-	$(".background-backwards").onclick = () => cycleBackgroundBackwards();
-	$(".background-random").onclick = () => setBackgroundRandom();
-}
-
 function showInfo() {
 	elemInfo.classList.remove("info--out");
 	elemInfo.classList.add("info--in");
@@ -118,14 +111,17 @@ function initInfo() {
 		event.stopPropagation();
 	};
 
+	$(".background-forwards").onclick = () => cycleBackgroundForwards();
+	$(".background-backwards").onclick = () => cycleBackgroundBackwards();
+	$(".background-random").onclick = () => setBackgroundRandom();
 	$(".current-progress").innerHTML = getTalentCountEnabled();
 	$(".possible-variations").innerHTML = calculateTalentVariationsEnabled();
 }
 
 function main() {
 	createAndInsertTalentSelectContainers();
+	decideBackground();
 	initInfo();
-	initBackground();
 }
 
 main();
