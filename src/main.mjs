@@ -102,6 +102,12 @@ function initInfo() {
 		event.stopPropagation();
 	};
 
+	window.onkeydown = function(event) {
+		if (classList.contains("info--in") && event.key === "Escape") {
+			hideInfo();
+		}
+	};
+
 	window.onclick = function() {
 		if (!classList.contains("info--in")) return;
 		hideInfo();
