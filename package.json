@@ -7,7 +7,7 @@
     "test": "jest --verbose",
     "build": "webpack --config ./webpack.prod.js",
     "build:dev": "webpack --config ./webpack.dev.js",
-    "dev": "webpack serve --config ./webpack.dev.js"
+    "dev": "webpack serve --config ./webpack.dev.js --host 0.0.0.0"
   },
   "keywords": [],
   "author": "vaexenc",
