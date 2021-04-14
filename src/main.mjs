@@ -10,6 +10,7 @@ const elemResult = $(".result-box");
 const elemBackground = $(".background");
 const elemInfo = $(".info");
 const elemInfoButton = $(".info-button");
+const elemInfoClose = $(".info__close");
 
 let backgroundIndex;
 
@@ -112,6 +113,10 @@ function initInfo() {
 
 	window.onclick = function() {
 		if (!classList.contains("info--in")) return;
+		hideInfo();
+	};
+
+	elemInfoClose.onclick = function() {
 		hideInfo();
 	};
 

@@ -237,3 +237,12 @@ body::after { /* weird preload hack, thanks firefox */
 		transform: rotateZ(360deg);
 	}
 }
+
+.info__close {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	cursor: pointer;
+	width: 2em;
+	height: 2em;
+}
