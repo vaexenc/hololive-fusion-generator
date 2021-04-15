@@ -4,6 +4,7 @@
 /src/sandbox.js
 /dist/*
 /.vscode/
+desktop.ini
 
 !/dist/images
 
