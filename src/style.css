@@ -39,7 +39,7 @@ body::after { /* weird preload hack, thanks firefox */
 	height: 1px;
 	opacity: 0.00001;
 	z-index: -99999999;
-	content: url("images/info-button-animated.png"); /* urls here */
+	content: url("images/info-button-animated.webp"); /* urls here */
 }
 
 .background {
@@ -156,7 +156,7 @@ body::after { /* weird preload hack, thanks firefox */
 	height: max(60px, 3vmax);
 	z-index: 1000;
 	cursor: pointer;
-	background-image: url("images/info-button.png");
+	background-image: url("images/info-button.webp");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
@@ -170,7 +170,7 @@ body::after { /* weird preload hack, thanks firefox */
 
 .info-button:hover {
 	animation-play-state: running;
-	background-image: url("images/info-button-animated.png");
+	background-image: url("images/info-button-animated.webp");
 }
 
 .info {
