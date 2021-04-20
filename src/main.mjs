@@ -6,7 +6,6 @@ import {getTalentCountEnabled, calculateTalentVariationsEnabled} from "./talent.
 const $ = document.querySelector.bind(document);
 
 const elemMain = $(".main");
-const elemResult = $(".result-box");
 const elemBackground = $(".background");
 const elemInfo = $(".info");
 const elemInfoButton = $(".info-button");
@@ -14,14 +13,15 @@ const elemInfoClose = $(".info__close");
 
 let backgroundIndex;
 
+/* todo: use a proper html template engine maybe */
 function createAndInsertTalentSelectContainers() {
 	const template = $(".template-talent-select-box");
-	const firstClone = template.content.cloneNode(true);
-	const secondClone = template.content.cloneNode(true);
-	firstClone.querySelector(".talent-select-box").classList.add("talent-select-box-1");
-	secondClone.querySelector(".talent-select-box").classList.add("talent-select-box-2");
-	elemMain.insertBefore(firstClone, elemResult);
-	elemMain.appendChild(secondClone);
+	for (let i = 1; i <= 2; i++) {
+		const clone = template.content.cloneNode(true);
+		clone.querySelector(".talent-select-container").classList.add(`talent-select-container-${i}`);
+		clone.querySelector(".talent-select-box").classList.add(`talent-select-box-${i}`);
+		elemMain.appendChild(clone);
+	}
 }
 
 function deleteSavedBackgroundIndex() {

@@ -10,7 +10,7 @@
 	width: 100%;
 	height: 100%;
 	background-color: black;
-	/* background-image: url("out-transparent-29_400.gif"); */
+	/* background-image: url(""); */
 	background-position: 50% 30%;
 	background-repeat: no-repeat;
 	background-size: 30vmin;
@@ -28,10 +28,12 @@
 body {
 	background-color: #eee;
 	font-family: "Lato", sans-serif;
-	color: rgb(15%, 15%, 15%);
+	font-size: 1rem;
 }
 
-body::after { /* weird preload hack, thanks firefox */
+/* weird preload hack, fixes flickering when changing info-button image
+   on hover in firefox */
+body::after {
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -39,7 +41,9 @@ body::after { /* weird preload hack, thanks firefox */
 	height: 1px;
 	opacity: 0.00001;
 	z-index: -99999999;
-	content: url("images/info-button-animated.webp"); /* urls here */
+
+	/* urls seperated by space, e.g. url("a") url("b") */
+	content: url("images/info-button-animated.webp");
 }
 
 .background {
@@ -48,7 +52,7 @@ body::after { /* weird preload hack, thanks firefox */
 	top: 0px;
 	left: 0px;
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	z-index: -999999;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -56,34 +60,79 @@ body::after { /* weird preload hack, thanks firefox */
 	filter: contrast(110%);
 }
 
-.main {
+.header {
+	position: relative;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	width: 100vw;
-	height: 100vh;
+	font-size: 1rem;
+	padding-left: 0.5em;
+	padding-right: 0.6em; /* beware info-button rotation overflow */
+	padding-top: 0.2em;
+}
+
+.header__title {
+	font-family: "Pacifico";
+	font-size: 1.4em;
+	color: white;
+	text-shadow: 0px 0px 0.75em rgba(5%, 5%, 5%, 0.3);
+	user-select: none;
+}
+
+.icon {
+	width: 1em;
+	height: 1em;
+	filter:
+		invert()
+		drop-shadow(0 0 0.25em rgba(5%, 5%, 5%, 0.3))
+		drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.6))
+	;
+	cursor: pointer;
+	user-select: none;
+}
+
+.icon-random {
+	filter:
+		invert()
+		drop-shadow(0 0 0.25em rgba(5%, 5%, 5%, 0.2))
+		drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.5))
+	;
+}
+
+.name {
+	word-break: break-word;
+}
+
+.main {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .talent-select-container {
-	perspective: 200px;
+	flex-basis: 50%;
 }
 
-.talent-select-box {
-	width: 350px;
-	height: 400px;
-	padding: 10px;
+/* .talent-select-box {
+} */
+
+.box {
+	margin: 0.25em;
+	padding: 0.25em;
+	color: white;
+	text-shadow:
+		0px 0px 0.3em rgba(0, 0, 0, 0.6),
+		0px 0px 0.2em rgba(0, 0, 0, 0.4)
+	;
 }
 
 .talent-select-box-1 {
-	background: linear-gradient(225deg, rgba(95%, 95%, 95%, 1), rgba(231, 237, 238, 0.9));
-	margin-right: 20px;
-	transform: rotateY(5deg);
+	margin-right: 0;
 }
 
 .talent-select-box-2 {
-	background: linear-gradient(135deg, rgba(95%, 95%, 95%, 1), rgba(231, 237, 238, 0.9));
-	margin-left: 20px;
-	transform: rotateY(-5deg);
+	margin-left: 0;
 }
 
 .talent-select-content {
@@ -92,80 +141,87 @@ body::after { /* weird preload hack, thanks firefox */
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	flex-shrink: 0;
 }
 
 .talent-select-image {
-	max-width: 300px;
 	width: 100%;
 }
 
 .talent-select-image__image {
-	border-radius: 10px;
+	border-radius: 8px;
 	width: 100%;
 }
 
-.talent-select-input {
-	border-radius: 5px;
-	border: none;
-}
-
-.result-box {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background: linear-gradient(rgba(100%, 100%, 100%, 1), rgba(90%, 90%, 90%, 0.9));
-}
-
-.result-canvas {
-	border: 2px gray dashed;
-	border-radius: 10px;
-	width: 500px;
-	height: 500px;
-}
-
-.result-buttons {
-	width: 80px;
-	height: 40px;
-	background-color: gray;
-	margin-top: 100px;
-}
-
-.box {
-	padding: 30px;
-	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-	border-radius: 10px;
-}
-
 .talent-select-name {
-	font-size: 1.5em;
+	min-height: 2.5em;
+	text-align: center;
 	font-weight: 500;
 }
 
+.talent-select-icons {
+	font-size: 2em;
+	margin-top: 0.25em;
+	order: -1;
+}
+
+.result-box {
+	flex-basis: 70%;
+	order: 3;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 1.5em;
+}
+
+.result-canvas {
+	border-radius: 8px;
+	width: 100%;
+	background-color: white;
+}
+
+.result-icons {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	font-size: 2.6em;
+	margin-top: 0.2em;
+}
+
+.result-icons__screenshot {
+	position: absolute;
+	right: 0px;
+	top: 50%;
+	transform: translateY(-42%);
+	font-size: 0.8em;
+}
+
 .result-name {
-	font-size: 3em;
+	min-height: 2.5em;
+	text-align: center;
+	font-size: 1.5em;
 	font-weight: 600;
 	letter-spacing: -0.02em;
 }
 
 .info-button {
-	position: fixed;
-	bottom: 0.5vh;
-	right: 0.5vw;
-	width: max(60px, 3vmax);
-	height: max(60px, 3vmax);
-	z-index: 1000;
+	width: 2.5em;
+	height: 2.5em;
 	cursor: pointer;
 	background-image: url("images/info-button.webp");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
+	z-index: 1000;
 	animation-name: info-button-anim;
 	animation-duration: 2s;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 	animation-play-state: paused;
-	backface-visibility: hidden; /* fixes flickering issue in firefox */
+
+	/* fixes flickering when resuming rotation animation in firefox */
+	backface-visibility: hidden;
 }
 
 .info-button:hover {
@@ -174,20 +230,35 @@ body::after { /* weird preload hack, thanks firefox */
 }
 
 .info {
-	position: fixed;
-	width: 700px;
-	height: 700px;
-	max-width: 90vw;
-	max-height: 90vh;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%) scale(1);
-	background-image: linear-gradient(rgba(100%, 100%, 100%, 1), rgba(90%, 90%, 90%, 1));
-	box-shadow: 0 0 7vmin rgba(0, 0, 0, 0.9);
-	border-radius: 10px;
 	visibility: hidden;
 	opacity: 0;
 	animation-fill-mode: forwards;
+	position: fixed;
+	width: 80vw;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(1);
+	padding: 0.6em;
+	padding-top: 2em;
+	background-color: whitesmoke;
+	box-shadow: 0 0 7vmin rgba(0, 0, 0, 0.9);
+	border-radius: 10px;
+}
+
+.info__inner {
+	width: 100%;
+	max-height: 60vh;
+	overflow: auto;
+}
+
+.info__close {
+	position: absolute;
+	right: 0.2em;
+	top: 0.2em;
+	cursor: pointer;
+	width: 2em;
+	height: 2em;
+	filter: invert() brightness(30%);
 }
 
 .info--in {
@@ -198,6 +269,16 @@ body::after { /* weird preload hack, thanks firefox */
 .info--out {
 	animation-name: info-out;
 	animation-duration: 0.2s;
+}
+
+@keyframes info-button-anim {
+	from {
+		transform: rotateZ(0deg);
+	}
+
+	to {
+		transform: rotateZ(360deg);
+	}
 }
 
 @keyframes info-in {
@@ -228,21 +309,95 @@ body::after { /* weird preload hack, thanks firefox */
 	}
 }
 
-@keyframes info-button-anim {
-	from {
-		transform: rotateZ(0deg);
+/* Desktop */
+@media (min-width: 450px), (min-aspect-ratio: 0.57), (orientation: landscape) {
+	:root {
+		--max-width: 1200px;
+		--min-width: 600px;
+		--perspective-angle: 5deg;
 	}
 
-	to {
-		transform: rotateZ(360deg);
+	.header {
+		padding-right: 0.8em; /* beware info-button overflow */
+		min-width: var(--min-width);
 	}
-}
 
-.info__close {
-	position: absolute;
-	right: 0px;
-	top: 0px;
-	cursor: pointer;
-	width: 2em;
-	height: 2em;
+	.header__title {
+		font-size: 2em;
+	}
+
+	.info-button {
+		width: 3em;
+		height: 3em;
+	}
+
+	.main {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: center;
+		max-width: var(--max-width);
+		min-width: var(--min-width);
+		margin: auto;
+	}
+
+	.box {
+		padding: 0;
+	}
+
+	.talent-select-container {
+		flex-basis: 60%;
+		flex-grow: 1;
+		perspective: max(calc(900px - 60vw), 200px);
+	}
+
+	.talent-select-container-1 {
+		order: 1;
+		margin-left: 1em;
+	}
+
+	.talent-select-container-2 {
+		order: 3;
+		margin-right: 1em;
+	}
+
+	.talent-select-box-1 {
+		transform: rotateY(var(--perspective-angle));
+	}
+
+	.talent-select-box-2 {
+		transform: rotateY(calc(var(--perspective-angle) * -1));
+	}
+
+	.talent-select-name {
+		font-size: 1.5em;
+	}
+
+	.talent-select-icons {
+		order: 99;
+	}
+
+	.icon {
+		width: 1.2em;
+		height: 1.2em;
+	}
+
+	.result-box {
+		order: 2;
+		flex-basis: 100%;
+		flex-grow: 1;
+		margin: auto 2em;
+	}
+
+	.result-name {
+		font-size: 2.5em;
+	}
+
+	.info {
+		max-width: 60ch;
+	}
 }
