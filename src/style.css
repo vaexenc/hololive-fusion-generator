@@ -162,8 +162,10 @@ body::after {
 }
 
 .talent-select-icons {
+	display: flex;
 	font-size: 2em;
 	margin-top: 0.25em;
+	margin-bottom: 0.25em;
 	order: -1;
 }
 
