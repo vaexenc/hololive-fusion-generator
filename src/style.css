@@ -87,8 +87,11 @@ body::after {
 		drop-shadow(0 0 0.25em rgba(5%, 5%, 5%, 0.3))
 		drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.6))
 	;
-	cursor: pointer;
 	user-select: none;
+}
+
+.icon:hover {
+	cursor: pointer;
 }
 
 .icon-random {
@@ -208,7 +211,6 @@ body::after {
 .info-button {
 	width: 2.5em;
 	height: 2.5em;
-	cursor: pointer;
 	background-image: url("images/info-button.webp");
 	background-repeat: no-repeat;
 	background-position: center;
@@ -225,6 +227,7 @@ body::after {
 }
 
 .info-button:hover {
+	cursor: pointer;
 	animation-play-state: running;
 	background-image: url("images/info-button-animated.webp");
 }
@@ -255,10 +258,13 @@ body::after {
 	position: absolute;
 	right: 0.2em;
 	top: 0.2em;
-	cursor: pointer;
 	width: 2em;
 	height: 2em;
 	filter: invert() brightness(30%);
+}
+
+.info__close:hover {
+	cursor: pointer;
 }
 
 .info--in {
