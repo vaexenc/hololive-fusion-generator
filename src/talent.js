@@ -40,12 +40,12 @@ function getTalentId(talentObj) {
 }
 
 module.exports = {
+	calculateTalentVariationsAll,
+	calculateTalentVariationsEnabled,
 	getTalentById,
 	getTalentCountAll,
-	getTalentIdsEnabled,
 	getTalentCountEnabled,
-	calculateTalentVariationsEnabled,
-	calculateTalentVariationsAll,
+	getTalentId,
 	getTalentIdsAll,
-	getTalentId
+	getTalentIdsEnabled
 };
