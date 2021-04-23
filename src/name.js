@@ -158,6 +158,7 @@ module.exports = {
 	fuseTalentFullNamesById,
 	getAllNameVariations,
 	getAllNameVariationsForTalent,
+	getTalentFullName,
 	printAllNameVariations,
 	printAllNameVariationsForTalent
 };
