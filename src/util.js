@@ -17,8 +17,8 @@ function getObjectLength(obj) {
 	return Object.keys(obj).length;
 }
 
-function getRandomInt(max) {
-	return Math.floor(max * Math.random());
+function getRandomInt(maxExclusive) {
+	return Math.floor(maxExclusive * Math.random());
 }
 
 function mod(x, m) {
