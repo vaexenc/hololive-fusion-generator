@@ -25,6 +25,10 @@ function getTalentFullName(talent) {
 	};
 }
 
+function getTalentFullNameById(talentId) {
+	return getTalentFullName(talent.getTalentById(talentId));
+}
+
 function fuseNameChunks(chunk1, chunk2) {
 	let firstChunk = changeFirstCharToUppercase(chunk1);
 	if (isLastCharOfStr1SameAsFirstCharOfStr2(firstChunk, chunk2))
@@ -87,6 +91,14 @@ function getFullNameString(talentOrFullName) {
 		+ " "
 		+ changeFirstCharToUppercase(returnUndefinedStringOrArgument(talentOrFullName.firstName));
 	return fullNameString;
+}
+
+function getFullNameStringById(id) {
+	return getFullNameString(talent.getTalentById(id));
+}
+
+function getFusionStringByIds(id1, id2) {
+	return getFullNameString(fuseTalentFullNamesById(id1, id2));
 }
 
 function getVariationsTwoTalents(talent1, talent2) {
@@ -158,7 +170,11 @@ module.exports = {
 	fuseTalentFullNamesById,
 	getAllNameVariations,
 	getAllNameVariationsForTalent,
+	getFullNameString,
+	getFullNameStringById,
+	getFusionStringByIds,
 	getTalentFullName,
+	getTalentFullNameById,
 	printAllNameVariations,
 	printAllNameVariationsForTalent
 };
