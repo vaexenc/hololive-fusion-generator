@@ -86,6 +86,15 @@ function returnUndefinedStringOrArgument(string) {
 }
 
 function getFullNameString(talentOrFullName) {
+	const fullNameString = [];
+	for (const nameType of ["lastName", "firstName"]) {
+		if (talentOrFullName[nameType])
+			fullNameString.push(changeFirstCharToUppercase(talentOrFullName[nameType]));
+	}
+	return fullNameString.join(" ");
+}
+
+function getFullNameStringDebug(talentOrFullName) {
 	const fullNameString =
 		changeFirstCharToUppercase(returnUndefinedStringOrArgument(talentOrFullName.lastName))
 		+ " "
@@ -96,6 +105,10 @@ function getFullNameString(talentOrFullName) {
 function getFullNameStringById(id) {
 	return getFullNameString(talent.getTalentById(id));
 }
+
+// function getFullNameStringByIdDebug(id) {
+// 	return getFullNameStringDebug(talent.getTalentById(id));
+// }
 
 function getFusionStringByIds(id1, id2) {
 	return getFullNameString(fuseTalentFullNamesById(id1, id2));
@@ -144,9 +157,9 @@ function getAllNameVariationsForTalent(talentId) {
 }
 
 function printNameFusionFormatted(talent1, talent2, fullName) {
-	const talent1FullName = getFullNameString(talent1);
-	const talent2FullName = getFullNameString(talent2);
-	const fusionFullName = getFullNameString(fullName);
+	const talent1FullName = getFullNameStringDebug(talent1);
+	const talent2FullName = getFullNameStringDebug(talent2);
+	const fusionFullName = getFullNameStringDebug(fullName);
 	console.log(talent1FullName + " + " + talent2FullName + " = " + fusionFullName);
 }
 
