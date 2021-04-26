@@ -8,22 +8,36 @@
 	<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-	<template class="template-talent-select-box">
+	<template class="template-talent-select">
 		<section class="talent-select-container">
 			<div class="talent-select-box box">
 				<div class="talent-select-content">
 					<div class="talent-select-image">
 						<img class="talent-select-image__image" src="https://picsum.photos/300">
 					</div>
-					<div class="talent-select-name name">Name here</div>
+					<div class="talent-dropdown">
+						<div class="talent-dropdown-content">
+							<div class="talent-dropdown-entries"></div>
+						</div>
+					</div>
+					<div class="talent-select-name">
+						<div class="talent-select-name__name name">Name here</div>
+					</div>
 					<div class="talent-select-icons">
-						<img class="icon" src="images/up.svg">
-						<img class="icon" src="images/down.svg">
+						<img class="icon icon-up" src="images/up.svg">
+						<img class="icon icon-down" src="images/down.svg">
 						<img class="icon icon-random" src="images/random.svg">
 					</div>
 				</div>
 			</div>
 		</section>
+	</template>
+
+	<template class="template-talent-dropdown-entry">
+		<div class="talent-dropdown-entries__entry" data-talent-index="">
+			<div class="talent-dropdown-entries__entry__image"></div>
+			<div class="talent-dropdown-entries__entry__name"></div>
+		</div>
 	</template>
 
 	<noscript>
@@ -41,10 +55,10 @@
 			<canvas class="result-canvas" width="500" height="500"></canvas>
 			<div class="result-name name">Name here</div>
 			<div class="result-icons">
-				<img class="icon" src="images/swap.svg">
+				<img class="icon icon-swap" src="images/swap.svg">
 				<img class="icon icon-random" src="images/random.svg">
 				<div class="result-icons__screenshot">
-					<img class="icon" src="images/screenshot.svg">
+					<img class="icon icon-screenshot" src="images/screenshot.svg">
 				</div>
 			</div>
 		</section>
