@@ -15,13 +15,6 @@ const dropdownModifierSelectors = [
 ];
 const talentIds = getTalentIdsEnabled();
 const talentSelectContainers = [];
-
-const elemMain = $(".main");
-const elemBackground = $(".background");
-const elemInfo = $(".info");
-const elemInfoButton = $(".info-button");
-const elemInfoClose = $(".info__close");
-
 let backgroundIndex;
 
 // ------------------------------------------------------------------
@@ -47,7 +40,7 @@ function createAndInsertTalentSelectContainerElements() {
 		clone.querySelector(".talent-select-container").classList.add(`talent-select-container-${i}`);
 		clone.querySelector(".talent-select-box").classList.add(`talent-select-box-${i}`);
 		clone.querySelector(".talent-dropdown").classList.add(`talent-dropdown-${i}`);
-		elemMain.appendChild(clone);
+		$(".main").appendChild(clone);
 	}
 }
 
@@ -356,7 +349,7 @@ function deleteSavedBackgroundIndex() {
 
 function setBackground(index) {
 	backgroundIndex = index;
-	elemBackground.style.backgroundImage = `url(images/backgrounds/${backgroundImages[index]})`;
+	$(".background").style.backgroundImage = `url(images/backgrounds/${backgroundImages[index]})`;
 }
 
 function setBackgroundRandom() {
@@ -415,19 +408,19 @@ function decideBackground() {
 // ------------------------------------------------------------------
 
 function showInfo() {
-	elemInfo.classList.remove("info--out");
-	elemInfo.classList.add("info--in");
+	$(".info").classList.remove("info--out");
+	$(".info").classList.add("info--in");
 }
 
 function hideInfo() {
-	elemInfo.classList.remove("info--in");
-	elemInfo.classList.add("info--out");
+	$(".info").classList.remove("info--in");
+	$(".info").classList.add("info--out");
 }
 
 function initInfo() {
-	const classList = elemInfo.classList;
+	const classList = $(".info").classList;
 
-	elemInfoButton.onclick = (event) => {
+	$(".info-button").onclick = (event) => {
 		if (classList.contains("info--in")) return;
 		showInfo();
 		event.stopPropagation();
@@ -444,11 +437,11 @@ function initInfo() {
 		hideInfo();
 	};
 
-	elemInfoClose.onclick = () => {
+	$(".info__close").onclick = () => {
 		hideInfo();
 	};
 
-	elemInfo.onclick = (event) => {
+	$(".info").onclick = (event) => {
 		event.stopPropagation();
 	};
 
