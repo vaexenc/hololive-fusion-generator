@@ -209,6 +209,7 @@ body::after {
 }
 
 .talent-dropdown-entries {
+	position: relative;
 	max-height: 25em;
 	overflow-y: auto;
 	margin-top: 0.5em;

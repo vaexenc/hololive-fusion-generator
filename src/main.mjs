@@ -221,7 +221,12 @@ function unhighlightDropdownEntries(dropdownElement) {
 }
 
 function scrollToDropdownEntry(dropdownEntry) {
-	dropdownEntry.scrollIntoView({block: "center"});
+	const dropdownEntriesContainer = dropdownEntry.closest(".talent-dropdown-entries");
+	const position =
+		dropdownEntry.offsetTop
+		- dropdownEntriesContainer.offsetHeight / 2
+		+ dropdownEntry.offsetHeight / 2;
+	dropdownEntriesContainer.scrollTop = position;
 }
 
 function enableDropdown(talentSelectContainer) {
