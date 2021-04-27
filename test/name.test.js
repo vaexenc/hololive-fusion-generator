@@ -58,15 +58,15 @@ describe("fuseTalentFullNamesById()", () => {
 	});
 });
 
-describe("fuseNameChunks()", () => {
-	it("creates 'Takamori' from 'taka' and 'mori'", () => {
-		expect(name.fuseNameChunks("taka", "mori")).toBe("Takamori");
-	});
+// describe("fuseNameChunks()", () => {
+// 	it("creates 'Takamori' from 'taka' and 'mori'", () => {
+// 		expect(name.fuseNameChunks("taka", "mori")).toBe("Takamori");
+// 	});
 
-	it("creates 'Inara' from 'ina' and 'ara' (same letter in the middle)", () => {
-		expect(name.fuseNameChunks("ina", "ara")).toBe("Inara");
-	});
-});
+// 	it("creates 'Inara' from 'ina' and 'ara' (same letter in the middle)", () => {
+// 		expect(name.fuseNameChunks("ina", "ara")).toBe("Inara");
+// 	});
+// });
 
 describe("fuseTalentFullNames()", () => {
 	it("returns name unchanged when both talents are the same", () => {

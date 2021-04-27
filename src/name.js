@@ -178,7 +178,6 @@ function printAllNameVariationsForTalent(talentId) {
 }
 
 module.exports = {
-	fuseNameChunks,
 	fuseTalentFullNames,
 	fuseTalentFullNamesById,
 	getAllNameVariations,
