@@ -449,6 +449,7 @@ body::after {
 		flex-basis: 60%;
 		flex-grow: 1;
 		perspective: max(calc(900px - 60vw), 200px);
+		margin: auto;
 	}
 
 	.talent-select-container-1 {
