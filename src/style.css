@@ -80,14 +80,16 @@ body::after {
 }
 
 .icon {
-	width: 1em;
-	height: 1em;
+	width: 1.3em;
+	height: 1.3em;
 	filter:
 		invert()
 		drop-shadow(0 0 0.25em rgba(5%, 5%, 5%, 0.3))
 		drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.6))
 	;
 	user-select: none;
+	margin-left: 0.1em;
+	margin-right: 0.1em;
 }
 
 .icon:hover {
@@ -522,6 +524,8 @@ body::after {
 	.icon {
 		width: 1.2em;
 		height: 1.2em;
+		margin-left: 0.05em;
+		margin-right: 0.05em;
 	}
 
 	.result-box {
