@@ -27,16 +27,6 @@ describe("fuseTalentFullNamesById()", () => {
 		expect(fullName).toEqual({lastName: "Morinashi", firstName: "Calliara"});
 	});
 
-	it("creates 'Haachagoo' from haachama and yagoo (firstName)", () => {
-		const fullName = name.fuseTalentFullNamesById("haachama", "yagoo");
-		expect(fullName).toEqual({lastName: undefined, firstName: "Haachagoo"});
-	});
-
-	it("creates 'Yachama' from yagoo and haachama (firstName)", () => {
-		const fullName = name.fuseTalentFullNamesById("yagoo", "haachama");
-		expect(fullName).toEqual({lastName: undefined, firstName: "Yachama"});
-	});
-
 	it("creates 'AZboco' from azki and roboco (firstName)", () => {
 		const fullName = name.fuseTalentFullNamesById("azki", "roboco");
 		expect(fullName).toEqual({lastName: undefined, firstName: "AZboco"});
@@ -47,14 +37,14 @@ describe("fuseTalentFullNamesById()", () => {
 		expect(fullName).toEqual({lastName: undefined, firstName: "RoboKi"});
 	});
 
-	it("creates 'Watson Amechama' from ame and haachama", () => {
-		const fullName = name.fuseTalentFullNamesById("ame", "haachama");
-		expect(fullName).toEqual({lastName: "Watson", firstName: "Amechama"});
+	it("creates 'Watson Ameboco' from ame and roboco", () => {
+		const fullName = name.fuseTalentFullNamesById("ame", "roboco");
+		expect(fullName).toEqual({lastName: "Watson", firstName: "Ameboco"});
 	});
 
-	it("creates 'Watson Haachamelia' from haachama and ame", () => {
-		const fullName = name.fuseTalentFullNamesById("haachama", "ame");
-		expect(fullName).toEqual({lastName: "Watson", firstName: "Haachamelia"});
+	it("creates 'Watson Robomelia' from roboco and ame", () => {
+		const fullName = name.fuseTalentFullNamesById("roboco", "ame");
+		expect(fullName).toEqual({lastName: "Watson", firstName: "Robomelia"});
 	});
 });
 
