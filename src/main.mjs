@@ -311,7 +311,7 @@ function onClickTalentDropdown(event) {
 
 function addDropdownEntry(dropdownElement, talentIndex, id) {
 	const entry = cloneNode($(".template-talent-dropdown-entry"));
-	entry.querySelector(".talent-dropdown-entries__entry__image").style.backgroundImage = "url(https://picsum.photos/100)";
+	entry.querySelector(".talent-dropdown-entries__entry__image").style.setProperty("--image-url", "url(https://picsum.photos/100)");
 	const fullName = getFullNameStringById(id);
 	entry.querySelector(".talent-dropdown-entries__entry__name").innerHTML = fullName;
 	dropdownElement.querySelector(".talent-dropdown-entries").appendChild(entry);
@@ -354,7 +354,7 @@ function deleteSavedBackgroundIndex() {
 
 function setBackground(index) {
 	backgroundIndex = index;
-	$(".background").style.backgroundImage = `url(images/backgrounds/${backgroundImages[index]})`;
+	$(".background").style.setProperty("--image-url", `url(images/backgrounds/${backgroundImages[index]})`);
 }
 
 function setBackgroundRandom() {
