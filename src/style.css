@@ -150,21 +150,20 @@ body::after {
 }
 
 .talent-select-image {
+	--image-url: url("https://picsum.photos/300");
+	background-image: var(--image-url);
 	width: 100%;
+	padding-top: 100%; /* aspect ratio hack */
+	border-radius: 8px;
+	background-position: center;
+	background-size: cover;
 }
 
 .talent-select-image:hover {
 	cursor: pointer;
 }
 
-.talent-select-image__image {
-	display: block;
-	width: 100%;
-	border-radius: 8px;
-	user-select: none;
-}
-
-.talent-select-image__image.dropdown-enabled {
+.talent-select-image.dropdown-enabled {
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
 }

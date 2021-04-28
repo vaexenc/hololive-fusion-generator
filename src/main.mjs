@@ -11,7 +11,7 @@ const dropdownModifierSelectors = [
 	".talent-dropdown",
 	".talent-select-icons",
 	".talent-select-name",
-	".talent-select-image__image"
+	".talent-select-image"
 ];
 const talentIds = getTalentIdsEnabled();
 const talentSelectContainers = [];
