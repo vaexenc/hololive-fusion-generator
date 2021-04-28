@@ -1,16 +1,4 @@
 {
-	"yagoo": {
-		"firstName": "yagoo",
-		"firstNameBefore": "ya",
-		"firstNameAfter": "goo"
-	},
-
-	"haachama": {
-		"firstName": "haachama",
-		"firstNameBefore": "haacha",
-		"firstNameAfter": "chama"
-	},
-
 	"sora": {
 		"lastName": "tokino",
 		"firstName": "sora",
