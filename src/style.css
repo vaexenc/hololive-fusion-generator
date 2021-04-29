@@ -150,7 +150,7 @@ body::after {
 }
 
 .talent-select-image {
-	--image-url: url("https://picsum.photos/300");
+	--image-url: url("");
 	background-image: var(--image-url);
 	width: 100%;
 	padding-top: 100%; /* aspect ratio hack */

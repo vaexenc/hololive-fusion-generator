@@ -165,11 +165,21 @@ function initResult() {
 	resultContainer.querySelector(".icon-swap").onclick = onClickSwap;
 }
 
-function updateTalentSelectContainer(talentSelectContainer) {
+function updateTalentSelectImage(talentSelectContainer) {
+	talentSelectContainer.querySelector(".talent-select-image")
+		.style.setProperty("--image-url", "url(https://picsum.photos/300)");
+}
+
+function updateTalentSelectName(talentSelectContainer) {
 	talentSelectContainer.querySelector(".talent-select-name__name").innerHTML
-		= getFullNameStringById(
-			talentIds[getTalentSelectContainerTalentIndex(talentSelectContainer)]
-		);
+	= getFullNameStringById(
+		talentIds[getTalentSelectContainerTalentIndex(talentSelectContainer)]
+	);
+}
+
+function updateTalentSelectContainer(talentSelectContainer) {
+	updateTalentSelectImage(talentSelectContainer);
+	updateTalentSelectName(talentSelectContainer);
 }
 
 function updateTalentSelectContainers() {
