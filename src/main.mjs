@@ -5,6 +5,7 @@ import {getFullNameStringById, getFusionStringByIds} from "./name.js";
 import {
 	calculateTalentVariationsEnabled, getTalentCountEnabled, getTalentIdsEnabled
 } from "./talent.js";
+import {drawFusion} from "./draw.mjs";
 
 const $ = document.querySelector.bind(document);
 const dropdownModifierSelectors = [
@@ -188,9 +189,12 @@ function updateTalentSelectContainers() {
 	}
 }
 
-// function updateResultImage() {
-
-// }
+function updateResultImage() {
+	drawFusion(
+		$(".result-canvas"),
+		...getTalentSelectContainerTalentIds()
+	);
+}
 
 function updateResultName() {
 	const [talentId1, talentId2] = getTalentSelectContainerTalentIds();
@@ -204,7 +208,7 @@ function updateResultName() {
 
 function updateResult() {
 	updateResultName();
-	// updateResultImage();
+	updateResultImage();
 }
 
 function update() {
