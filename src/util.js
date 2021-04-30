@@ -10,7 +10,7 @@ function factorial(number) {
 
 function calculateVariations(totalElements, elementsToChoose) {
 	// order important, no repetitions
-	return factorial(totalElements) / factorial(totalElements - elementsToChoose);
+	return Math.round(factorial(totalElements) / factorial(totalElements - elementsToChoose));
 }
 
 function getObjectLength(obj) {
