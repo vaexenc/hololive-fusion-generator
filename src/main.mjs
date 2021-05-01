@@ -225,12 +225,12 @@ function getDropdownEntry(dropdownElement, talentIndex) {
 }
 
 function highlightDropdownEntry(dropdownEntry) {
-	dropdownEntry.classList.add("talent-dropdown-entries__entry--active");
+	dropdownEntry.classList.add("talent-dropdown-entries__entry--highlighted");
 }
 
 function unhighlightDropdownEntries(dropdownElement) {
 	for (const entry of dropdownElement.querySelectorAll(".talent-dropdown-entries__entry")) {
-		entry.classList.remove("talent-dropdown-entries__entry--active");
+		entry.classList.remove("talent-dropdown-entries__entry--highlighted");
 	}
 }
 
@@ -243,23 +243,38 @@ function scrollToDropdownEntry(dropdownEntry) {
 	dropdownEntriesContainer.scrollTop = position;
 }
 
-function showDropdown(talentSelectContainer) {
+function addDropdownModifierToElements(talentSelectContainer) {
 	for (const selector of dropdownModifierSelectors) {
 		talentSelectContainer.querySelector(selector).classList.add("dropdown-visible");
 	}
-	const dropdownElement = talentSelectContainer.querySelector(".talent-dropdown");
-	const activeEntry = getDropdownEntry(
-		dropdownElement,
-		getTalentSelectContainerTalentIndex(talentSelectContainer)
-	);
-	highlightDropdownEntry(activeEntry);
-	scrollToDropdownEntry(activeEntry);
 }
 
-function hideDropdown(talentSelectContainer) {
+function getDropdownEntryOfCurrentlySelectedTalent(dropdownElement) {
+	return getDropdownEntry(
+		dropdownElement,
+		getTalentSelectContainerTalentIndex(
+			getTalentSelectContainerFromChild(dropdownElement)
+		)
+	);
+}
+
+function showDropdown(talentSelectContainer) {
+	addDropdownModifierToElements(talentSelectContainer);
+	const selectedEntry = getDropdownEntryOfCurrentlySelectedTalent(
+		talentSelectContainer.querySelector(".talent-dropdown")
+	);
+	highlightDropdownEntry(selectedEntry);
+	scrollToDropdownEntry(selectedEntry);
+}
+
+function removeDropdownModifierFromElements(talentSelectContainer) {
 	for (const selector of dropdownModifierSelectors) {
 		talentSelectContainer.querySelector(selector).classList.remove("dropdown-visible");
 	}
+}
+
+function hideDropdown(talentSelectContainer) {
+	removeDropdownModifierFromElements(talentSelectContainer);
 	unhighlightDropdownEntries(talentSelectContainer.querySelector(".talent-dropdown"));
 }
 
