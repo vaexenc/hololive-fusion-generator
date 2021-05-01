@@ -243,9 +243,9 @@ function scrollToDropdownEntry(dropdownEntry) {
 	dropdownEntriesContainer.scrollTop = position;
 }
 
-function enableDropdown(talentSelectContainer) {
+function showDropdown(talentSelectContainer) {
 	for (const selector of dropdownModifierSelectors) {
-		talentSelectContainer.querySelector(selector).classList.add("dropdown-enabled");
+		talentSelectContainer.querySelector(selector).classList.add("dropdown-visible");
 	}
 	const dropdownElement = talentSelectContainer.querySelector(".talent-dropdown");
 	const activeEntry = getDropdownEntry(
@@ -256,9 +256,9 @@ function enableDropdown(talentSelectContainer) {
 	scrollToDropdownEntry(activeEntry);
 }
 
-function disableDropdown(talentSelectContainer) {
+function hideDropdown(talentSelectContainer) {
 	for (const selector of dropdownModifierSelectors) {
-		talentSelectContainer.querySelector(selector).classList.remove("dropdown-enabled");
+		talentSelectContainer.querySelector(selector).classList.remove("dropdown-visible");
 	}
 	unhighlightDropdownEntries(talentSelectContainer.querySelector(".talent-dropdown"));
 }
@@ -308,19 +308,19 @@ function onClickDropdownEntry(event) {
 		talentSelectContainer,
 		entry.dataset.talentIndex
 	);
-	disableDropdown(talentSelectContainer);
+	hideDropdown(talentSelectContainer);
 	update();
 }
 
-function isDropdownEnabled(talentSelectContainer) {
-	return talentSelectContainer.querySelector(".talent-dropdown").classList.contains("dropdown-enabled");
+function isDropdownVisible(talentSelectContainer) {
+	return talentSelectContainer.querySelector(".talent-dropdown").classList.contains("dropdown-visible");
 }
 
 function onClickTalentDropdown(event) {
 	const talentSelectContainer = getTalentSelectContainerFromChild(event.target);
-	if (isDropdownEnabled(talentSelectContainer)) return;
-	enableDropdown(talentSelectContainer);
-	event.dropdownElementIfJustEnabled = talentSelectContainer.querySelector(".talent-dropdown");
+	if (isDropdownVisible(talentSelectContainer)) return;
+	showDropdown(talentSelectContainer);
+	event.ifDropdownElementJustShown = talentSelectContainer.querySelector(".talent-dropdown");
 }
 
 function addDropdownEntry(dropdownElement, talentIndex, id) {
@@ -344,8 +344,8 @@ function addEnabledTalentsToDropdown(dropdownElement) {
 }
 
 function onClickOutsideDropdown(event, dropdownElement) {
-	if (event.dropdownElementIfJustEnabled === dropdownElement) return;
-	disableDropdown(getTalentSelectContainerFromChild(dropdownElement));
+	if (event.ifDropdownElementJustShown === dropdownElement) return;
+	hideDropdown(getTalentSelectContainerFromChild(dropdownElement));
 }
 
 function initDropdowns() {
