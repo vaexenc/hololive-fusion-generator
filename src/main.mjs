@@ -181,6 +181,7 @@ function updateTalentSelectName(talentSelectContainer) {
 function updateTalentSelectContainer(talentSelectContainer) {
 	updateTalentSelectImage(talentSelectContainer);
 	updateTalentSelectName(talentSelectContainer);
+	updateTalentSelectDropdown(talentSelectContainer);
 }
 
 function updateTalentSelectContainers() {
@@ -260,11 +261,11 @@ function getDropdownEntryOfCurrentlySelectedTalent(dropdownElement) {
 
 function showDropdown(talentSelectContainer) {
 	addDropdownModifierToElements(talentSelectContainer);
-	const selectedEntry = getDropdownEntryOfCurrentlySelectedTalent(
-		talentSelectContainer.querySelector(".talent-dropdown")
+	scrollToDropdownEntry(
+		getDropdownEntryOfCurrentlySelectedTalent(
+			talentSelectContainer.querySelector(".talent-dropdown")
+		)
 	);
-	highlightDropdownEntry(selectedEntry);
-	scrollToDropdownEntry(selectedEntry);
 }
 
 function removeDropdownModifierFromElements(talentSelectContainer) {
@@ -275,7 +276,6 @@ function removeDropdownModifierFromElements(talentSelectContainer) {
 
 function hideDropdown(talentSelectContainer) {
 	removeDropdownModifierFromElements(talentSelectContainer);
-	unhighlightDropdownEntries(talentSelectContainer.querySelector(".talent-dropdown"));
 }
 
 function dropdownSortFunctionTalentIndex(dropdownEntry1, dropdownEntry2) {
@@ -371,6 +371,13 @@ function initDropdowns() {
 			onClickOutsideDropdown(event, dropdownElement);
 		});
 	}
+}
+
+function updateTalentSelectDropdown(talentSelectContainer) {
+	unhighlightDropdownEntries(talentSelectContainer.querySelector(".talent-dropdown"));
+	const entryOfCurrentTalent = getDropdownEntryOfCurrentlySelectedTalent(talentSelectContainer);
+	highlightDropdownEntry(entryOfCurrentTalent);
+	scrollToDropdownEntry(entryOfCurrentTalent);
 }
 
 // ------------------------------------------------------------------
