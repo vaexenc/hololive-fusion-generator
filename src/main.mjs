@@ -145,7 +145,7 @@ function initTalentSelectContainers() {
 		setTalentSelectContainerTalentIndex(talentSelectContainer, talentIndex);
 
 		talentSelectContainer.querySelector(".talent-select-image").onclick = onClickTalentDropdown;
-		talentSelectContainer.querySelector(".talent-select-name").onclick = onClickTalentDropdown;
+		talentSelectContainer.querySelector(".talent-select-name__name").onclick = onClickTalentDropdown;
 		talentSelectContainer.querySelector(".icon-up").onclick = onClickTalentPrevious;
 		talentSelectContainer.querySelector(".icon-down").onclick = onClickTalentNext;
 		talentSelectContainer.querySelector(".icon-random").onclick = onClickTalentRandom;
