@@ -81,13 +81,19 @@ body::after {
 }
 
 .icon {
+	font-size: inherit;
+	font-family: inherit;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	border: none;
 	width: 1.3em;
 	height: 1.3em;
 	filter:
 		drop-shadow(0 0 0.25em rgba(5%, 5%, 5%, 0.3))
 		drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.6))
 	;
-	user-select: none;
 	margin-left: 0.1em;
 	margin-right: 0.1em;
 }
@@ -96,11 +102,28 @@ body::after {
 	cursor: pointer;
 }
 
+.icon-up {
+	background-image: url("images/up.svg");
+}
+
+.icon-down {
+	background-image: url("images/down.svg");
+}
+
+.icon-swap {
+	background-image: url("images/swap.svg");
+}
+
 .icon-random {
+	background-image: url("images/random.svg");
 	filter:
 		drop-shadow(0 0 0.25em rgba(5%, 5%, 5%, 0.2))
 		drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.5))
 	;
+}
+
+.icon-screenshot {
+	background-image: url("images/screenshot.svg");
 }
 
 .name {
@@ -283,9 +306,11 @@ body::after {
 
 .result-icons__screenshot {
 	position: absolute;
+	display: grid;
+	place-items: center;
 	right: 0px;
 	top: 50%;
-	transform: translateY(-42%);
+	transform: translateY(-50%);
 	font-size: 0.8em;
 }
 
@@ -526,6 +551,10 @@ body::after {
 		height: 1.2em;
 		margin-left: 0.05em;
 		margin-right: 0.05em;
+	}
+
+	.icon:focus {
+		outline: 2px dotted rgba(100%, 100%, 100%, 0.6);
 	}
 
 	.result-box {
