@@ -368,12 +368,39 @@ function onClickOutsideDropdown(event, dropdownElement) {
 	hideDropdown(getTalentSelectContainerFromChild(dropdownElement));
 }
 
+function onKeydownDropdown(event, dropdownElement) {
+	const talentSelectContainer = getTalentSelectContainerFromChild(dropdownElement);
+	if (!isDropdownVisible(talentSelectContainer)) return;
+
+	const keyFunctions = {
+		"ArrowUp": () => {
+			talentPrevious(talentSelectContainer);
+		},
+
+		"ArrowDown": () => {
+			talentNext(talentSelectContainer);
+		},
+
+		"Enter": () => {
+			hideDropdown(talentSelectContainer);
+		}
+	};
+
+	if (keyFunctions[event.key]) {
+		keyFunctions[event.key]();
+		event.preventDefault();
+	}
+}
+
 function initDropdowns() {
 	for (const talentSelectContainer of talentSelectContainers) {
 		const dropdownElement = talentSelectContainer.querySelector(".talent-dropdown");
 		addEnabledTalentsToDropdown(dropdownElement);
 		document.addEventListener("click", (event) => {
 			onClickOutsideDropdown(event, dropdownElement);
+		});
+		document.addEventListener("keydown", (event) => {
+			onKeydownDropdown(event, dropdownElement);
 		});
 	}
 }
