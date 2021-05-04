@@ -70,9 +70,7 @@ function getTalentSelectContainerFromChild(element) {
 	return element.closest(".talent-select-container");
 }
 
-
-function onClickTalentPrevious(event) {
-	const talentSelectContainer = getTalentSelectContainerFromChild(event.target);
+function talentPrevious(talentSelectContainer) {
 	setTalentSelectContainerTalentIndex(
 		talentSelectContainer,
 		keepTalentIndexWithinBounds(
@@ -82,8 +80,7 @@ function onClickTalentPrevious(event) {
 	update();
 }
 
-function onClickTalentNext(event) {
-	const talentSelectContainer = getTalentSelectContainerFromChild(event.target);
+function talentNext(talentSelectContainer) {
 	setTalentSelectContainerTalentIndex(
 		talentSelectContainer,
 		keepTalentIndexWithinBounds(
@@ -91,6 +88,14 @@ function onClickTalentNext(event) {
 		)
 	);
 	update();
+}
+
+function onClickTalentPrevious(event) {
+	talentPrevious(getTalentSelectContainerFromChild(event.target));
+}
+
+function onClickTalentNext(event) {
+	talentNext(getTalentSelectContainerFromChild(event.target));
 }
 
 function talentSelectContainerRandomize(talentSelectContainer) {
