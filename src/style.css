@@ -172,6 +172,7 @@ body::after {
 
 .talent-select-image {
 	--image-url: url("");
+	background-color: white;
 	background-image: var(--image-url);
 	width: 100%;
 	padding-top: 100%; /* aspect ratio hack */
