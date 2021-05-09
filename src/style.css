@@ -317,6 +317,7 @@ body::after {
 	top: 50%;
 	transform: translateY(-50%);
 	font-size: 0.8em;
+	visibility: hidden;
 }
 
 .result-name {
