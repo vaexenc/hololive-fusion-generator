@@ -10,7 +10,7 @@ import {drawFusion} from "./draw.mjs";
 const $ = document.querySelector.bind(document);
 const dropdownModifierSelectors = [
 	".talent-dropdown",
-	".talent-select-icons",
+	".talent-select-button-imgs",
 	".talent-select-name",
 	".talent-select-image"
 ];
@@ -151,9 +151,9 @@ function initTalentSelectContainers() {
 
 		talentSelectContainer.querySelector(".talent-select-image").onclick = onClickTalentDropdown;
 		talentSelectContainer.querySelector(".talent-select-name__name").onclick = onClickTalentDropdown;
-		talentSelectContainer.querySelector(".icon-up").onclick = onClickTalentPrevious;
-		talentSelectContainer.querySelector(".icon-down").onclick = onClickTalentNext;
-		talentSelectContainer.querySelector(".icon-random").onclick = onClickTalentRandom;
+		talentSelectContainer.querySelector(".button-img-up").onclick = onClickTalentPrevious;
+		talentSelectContainer.querySelector(".button-img-down").onclick = onClickTalentNext;
+		talentSelectContainer.querySelector(".button-img-random").onclick = onClickTalentRandom;
 
 		talentSelectContainers[i] = talentSelectContainer;
 	}
@@ -167,8 +167,8 @@ function initTalentSelect() {
 
 function initResult() {
 	const resultContainer = $(".result-box");
-	resultContainer.querySelector(".icon-random").onclick = onClickRandomBoth;
-	resultContainer.querySelector(".icon-swap").onclick = onClickSwap;
+	resultContainer.querySelector(".button-img-random").onclick = onClickRandomBoth;
+	resultContainer.querySelector(".button-img-swap").onclick = onClickSwap;
 }
 
 function updateTalentSelectImage(talentSelectContainer) {
