@@ -381,6 +381,14 @@ body::after {
 	top: 0.2em;
 	width: 2em;
 	height: 2em;
+	font-size: inherit;
+	font-family: inherit;
+	border: none;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-image: url("images/info-close.svg");
 }
 
 .info__close:hover {
