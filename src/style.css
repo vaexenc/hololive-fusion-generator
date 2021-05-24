@@ -481,6 +481,7 @@ body::after {
 
 	.box {
 		padding: 0;
+		margin: 0;
 	}
 
 	.talent-select-container {
