@@ -30,6 +30,12 @@ function cloneNode(template) {
 	return template.content.cloneNode(true);
 }
 
+function resetCSSAnimation(element) {
+	element.style.animation = "none";
+	element.offsetHeight; // trigger reflow
+	element.style.animation = null;
+}
+
 // ------------------------------------------------------------------
 // TALENT SELECT, TALENT RESULT
 // ------------------------------------------------------------------
@@ -196,8 +202,10 @@ function updateTalentSelectContainers() {
 }
 
 function updateResultImage() {
+	const resultCanvas = $(".result-canvas");
+	resetCSSAnimation(resultCanvas);
 	drawFusion(
-		$(".result-canvas"),
+		resultCanvas,
 		...getTalentSelectContainerTalentIds()
 	);
 }

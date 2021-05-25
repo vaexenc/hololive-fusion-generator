@@ -293,10 +293,12 @@ body::after {
 	border-radius: 8px;
 	width: 100%;
 	background-color: white;
-	background-image: url("images/loading-indicator.webp");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 40%;
+	animation-name: result-canvas-loading-delay;
+	animation-duration: 0.15s;
+	animation-fill-mode: forwards;
 }
 
 .result-button-imgs {
@@ -440,6 +442,16 @@ body::after {
 		opacity: 0;
 		visibility: hidden;
 		transform: translate(-50%, -50%) scale(0.8);
+	}
+}
+
+@keyframes result-canvas-loading-delay {
+	from {
+		background-image: url("");
+	}
+
+	to {
+		background-image: url("images/loading-indicator.webp");
 	}
 }
 
