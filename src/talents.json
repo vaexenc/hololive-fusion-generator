@@ -300,9 +300,9 @@
 	},
 
 	"aruran": {
-		"lastName": "arurandeisu",
-		"lastNameBefore": "aruran",
-		"lastNameAfter": "deisu"
+		"firstName": "arurandeisu",
+		"firstNameBefore": "aruran",
+		"firstNameAfter": "deisu"
 	},
 
 	"rikka": {
