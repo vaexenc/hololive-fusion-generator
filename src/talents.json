@@ -398,7 +398,8 @@
 		"lastNameBefore": "melfi",
 		"lastNameAfter": "fissa",
 		"firstNameBefore": "an",
-		"firstNameAfter": "nya"
+		"firstNameAfter": "nya",
+		"enabled": true
 	},
 
 	"reine": {
@@ -416,7 +417,8 @@
 		"lastNameBefore": "mori",
 		"lastNameAfter": "mori",
 		"firstNameBefore": "calli",
-		"firstNameAfter": "lliope"
+		"firstNameAfter": "lliope",
+		"enabled": true
 	},
 
 	"kiara": {
@@ -443,7 +445,7 @@
 		"firstNameBefore": "ina",
 		"firstNameAfter": "'nis",
 		"colors": ["68587f", "f5a663"],
-		"enabled": true
+		"enabled": false
 	},
 
 	"gura": {
@@ -452,7 +454,8 @@
 		"lastNameBefore": "gaw",
 		"lastNameAfter": "awr",
 		"firstNameBefore": "gu",
-		"firstNameAfter": "ra"
+		"firstNameAfter": "ra",
+		"enabled": true
 	},
 
 	"ame": {
