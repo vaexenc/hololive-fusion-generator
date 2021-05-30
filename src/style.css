@@ -258,7 +258,11 @@ body::after {
 
 .talent-dropdown-entries__entry__image {
 	--image-url: url("");
+	background-color: white;
 	background-image: var(--image-url);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 	flex-shrink: 0;
 	border-radius: 0.2em;
 	width: 2.5em;
