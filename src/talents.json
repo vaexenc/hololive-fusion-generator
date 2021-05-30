@@ -402,13 +402,32 @@
 	},
 
 	"anya": {
+		"enabled": true,
 		"lastName": "melfissa",
 		"firstName": "anya",
 		"lastNameBefore": "melfi",
 		"lastNameAfter": "fissa",
 		"firstNameBefore": "an",
 		"firstNameAfter": "nya",
-		"enabled": true
+		"drawFirst": {
+			"hair": {
+				"colors": ["#99797e", "#f8d176", "#bf977a"]
+			},
+			"body": {
+				"colors": ["#61637c", "#f8d176", "#9a7e90"]
+			},
+			"etc": {
+				"colors": ["#f8d176", "#61637c", "#9a7e90", "#cec8bc"]
+			}
+		},
+		"drawSecond": {
+			"hair": {
+				"count": 2
+			},
+			"body": {
+				"count": 2
+			}
+		}
 	},
 
 	"reine": {
@@ -421,29 +440,67 @@
 	},
 
 	"calli": {
+		"enabled": true,
 		"lastName": "mori",
 		"firstName": "calliope",
 		"lastNameBefore": "mori",
 		"lastNameAfter": "mori",
 		"firstNameBefore": "calli",
 		"firstNameAfter": "lliope",
-		"enabled": true
+		"drawFirst": {
+			"hair": {
+				"colors": ["#f8ccde", "#e48096"]
+			},
+			"body": {
+				"colors": ["#302c2c", "#9b7f6c"]
+			},
+			"etc": {
+				"colors": ["#ca1748", "#f68d9f"]
+			}
+		},
+		"drawSecond": {
+			"hair": {
+				"count": 1
+			},
+			"body": {
+				"count": 2
+			},
+			"etc": {
+				"count": 1
+			}
+		}
 	},
 
 	"kiara": {
+		"enabled": true,
 		"lastName": "takanashi",
 		"firstName": "kiara",
 		"lastNameBefore": "taka",
 		"lastNameAfter": "nashi",
 		"firstNameBefore": "ki",
 		"firstNameAfter": "ara",
-		"eyePosL": [],
-		"eyePosR": [],
-		"mouthPos": [],
-		"hairPos": [],
-		"colors": ["fe8161", "afebe3"],
-		"differentEyes": false,
-		"enabled": true
+		"drawFirst": {
+			"hair": {
+				"colors": ["#ff8161", "#bdead7", "#63b8d6"]
+			},
+			"body": {
+				"colors": ["#fd622a", "#393e78", "#f2270a"]
+			},
+			"etc": {
+				"colors": ["#69ebc9", "#febc6e", "#e0f962"]
+			}
+		},
+		"drawSecond": {
+			"hair": {
+				"count": 3
+			},
+			"body": {
+				"count": 3
+			},
+			"etc": {
+				"count": 3
+			}
+		}
 	},
 
 	"ina": {
@@ -452,19 +509,36 @@
 		"lastNameBefore": "nino",
 		"lastNameAfter": "mae",
 		"firstNameBefore": "ina",
-		"firstNameAfter": "'nis",
-		"colors": ["68587f", "f5a663"],
-		"enabled": false
+		"firstNameAfter": "'nis"
 	},
 
 	"gura": {
+		"enabled": true,
 		"lastName": "gawr",
 		"firstName": "gura",
 		"lastNameBefore": "gaw",
 		"lastNameAfter": "awr",
 		"firstNameBefore": "gu",
 		"firstNameAfter": "ra",
-		"enabled": true
+		"drawFirst": {
+			"hair": {
+				"colors": ["#f3f3f3", "#5e9ad2"]
+			},
+			"body": {
+				"colors": ["#33739d", "#b3b3b3", "#ffffff"]
+			},
+			"etc": {
+				"colors": ["#b3b3b3", "#ffffff"]
+			}
+		},
+		"drawSecond": {
+			"hair": {
+				"count": 2
+			},
+			"body": {
+				"count": 2
+			}
+		}
 	},
 
 	"ame": {
