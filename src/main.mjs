@@ -178,8 +178,12 @@ function initResult() {
 }
 
 function updateTalentSelectImage(talentSelectContainer) {
+	const talentId = talentIds[getTalentSelectContainerTalentIndex(talentSelectContainer)];
 	talentSelectContainer.querySelector(".talent-select-image")
-		.style.setProperty("--image-url", "url(https://picsum.photos/300)");
+		.style.setProperty(
+			"--image-url",
+			`url(images/talents/${talentId}-medium.webp)`
+		);
 }
 
 function updateTalentSelectName(talentSelectContainer) {
@@ -353,7 +357,7 @@ function onClickTalentDropdown(event) {
 
 function addDropdownEntry(dropdownElement, talentIndex, id) {
 	const entry = cloneNode($(".template-talent-dropdown-entry"));
-	entry.querySelector(".talent-dropdown-entries__entry__image").style.setProperty("--image-url", "url(https://picsum.photos/100)");
+	entry.querySelector(".talent-dropdown-entries__entry__image").style.setProperty("--image-url", `url(images/talents/${id}-small.webp)`);
 	const fullName = getFullNameStringById(id);
 	entry.querySelector(".talent-dropdown-entries__entry__name").innerHTML = fullName;
 	dropdownElement.querySelector(".talent-dropdown-entries").appendChild(entry);
