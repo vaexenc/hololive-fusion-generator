@@ -122,6 +122,10 @@ body::after {
 	;
 }
 
+.talent-select-container .button-img-random {
+	display: none;
+}
+
 .button-img-screenshot {
 	background-image: url("images/screenshot.svg");
 }
