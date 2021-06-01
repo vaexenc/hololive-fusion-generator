@@ -567,8 +567,8 @@
 		"enabled": true,
 		"lastName": "gawr",
 		"firstName": "gura",
-		"lastNameBefore": "gaw",
-		"lastNameAfter": "awr",
+		"lastNameBefore": "gawr",
+		"lastNameAfter": "gawr",
 		"firstNameBefore": "gu",
 		"firstNameAfter": "ra",
 		"drawFirst": {
