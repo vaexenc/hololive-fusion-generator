@@ -32,6 +32,29 @@ async function createManifest(id1, id2) {
 	manifest.baseImage = baseImage;
 	addImageToImageLoadPromises(baseImage, imageLoadPromises);
 
+	manifest.faceCenterX = talent2.drawSecond.faceCenterX;
+
+	const mouthImage = createImage(path + id1 + "-mouth" + ext);
+	manifest.mouth = {
+		image: mouthImage,
+		x: talent1.drawFirst.mouth.x,
+		y: talent1.drawFirst.mouth.y,
+		width: talent1.drawFirst.mouth.width,
+		yFace: talent2.drawSecond.mouth.y,
+		widthFace: talent2.drawSecond.mouth.width
+	};
+
+	addImageToImageLoadPromises(mouthImage, imageLoadPromises);
+
+	const noseImage = createImage(path + id1 + "-nose" + ext);
+	manifest.nose = {
+		image: noseImage,
+		x: talent1.drawFirst.nose.x,
+		y: talent1.drawFirst.nose.y,
+		yFace: talent2.drawSecond.nose.y
+	};
+	addImageToImageLoadPromises(noseImage, imageLoadPromises);
+
 	for (const paletteType of paletteTypes) {
 		if (!talent2.drawSecond[paletteType])
 			continue;
@@ -194,6 +217,39 @@ async function drawResultCanvas(id1, id2) {
 
 	ctx.drawImage(manifest.baseImage, 0, 0);
 	ctx.drawImage(baseImageBlackAndWhite, 0, 0);
+
+	const faceCenterX = manifest.baseImage.width * manifest.faceCenterX;
+
+	const mouthImage = manifest.mouth.image;
+	const mouthWidth = mouthImage.width * manifest.mouth.width;
+	const mouthWidthFace = manifest.baseImage.width * manifest.mouth.widthFace;
+	const mouthYFace = manifest.mouth.yFace * manifest.baseImage.height;
+	const mouthWidthFaceToMouthWidthRatio = mouthWidthFace / mouthWidth;
+	const mouthSize = proportionalScaleWidth(
+		mouthWidthFaceToMouthWidthRatio * mouthImage.width,
+		mouthImage.width,
+		mouthImage.height
+	);
+	const mouthX = faceCenterX - mouthSize.width * manifest.mouth.x;
+	const mouthY = mouthYFace - mouthSize.height * manifest.mouth.y;
+	ctx.save();
+	ctx.globalCompositeOperation = "difference";
+	ctx.drawImage(mouthImage, mouthX, mouthY, mouthSize.width, mouthSize.height);
+	ctx.restore();
+
+	const noseImage = manifest.nose.image;
+	const noseYFace = manifest.nose.yFace * manifest.baseImage.height;
+	const noseSize = proportionalScaleWidth(
+		mouthWidthFaceToMouthWidthRatio * noseImage.width,
+		noseImage.width,
+		noseImage.height
+	);
+	const noseX = faceCenterX - noseSize.width * manifest.nose.x;
+	const noseY = noseYFace - noseSize.height * manifest.nose.y;
+	ctx.save();
+	ctx.globalCompositeOperation = "difference";
+	ctx.drawImage(noseImage, noseX, noseY, noseSize.width, noseSize.height);
+	ctx.restore();
 
 	for (const paletteType of paletteTypes) {
 		if (!manifest[paletteType]) continue;
