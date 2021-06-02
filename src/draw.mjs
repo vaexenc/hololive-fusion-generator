@@ -92,14 +92,6 @@ function getAspectRatio(width, height) {
 	return width / height;
 }
 
-// function isWidthGreaterThanHeight(width, height) {
-// 	return getAspectRatio(width, height) > 1;
-// }
-
-// function isHeightGreaterThanWidth(width, height) {
-// 	return !isWidthGreaterThanHeight(width, height);
-// }
-
 function proportionalScaleWidth(widthNew, widthOld, heightOld) {
 	const factor = widthNew / widthOld;
 	return {
