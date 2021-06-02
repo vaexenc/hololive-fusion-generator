@@ -128,6 +128,7 @@ function resizeToContain(widthTarget, heightTarget, width, height) {
 	return proportionalScaleHeight(heightTarget, width, height);
 }
 
+// eslint-disable-next-line no-unused-vars
 function resizeToCover(widthTarget, heightTarget, width, height) {
 	if (isAspectRatioGreaterThanOther(width, height, widthTarget, heightTarget))
 		return proportionalScaleHeight(heightTarget, width, height);
@@ -149,6 +150,7 @@ function drawBg(ctx) {
 	ctx.restore();
 }
 
+// eslint-disable-next-line no-unused-vars
 function drawDebugNames(ctx, id1, id2) {
 	ctx.save();
 	ctx.fillStyle = "black";
