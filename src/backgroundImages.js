@@ -3,7 +3,7 @@
 const fs = require("fs");
 
 function getBgFileNumber(fileName) {
-	return parseInt(fileName.match(/^bg(\d+)\.(jpg|png)/)[1]);
+	return parseInt(fileName.match(/^bg(\d+)\.(jpg|png|webp)/)[1]);
 }
 
 function bgFilenameSort(a, b) {
