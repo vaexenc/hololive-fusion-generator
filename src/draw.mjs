@@ -55,6 +55,27 @@ async function createManifest(id1, id2) {
 	};
 	addImageToImageLoadPromises(noseImage, imageLoadPromises);
 
+	manifest.eyes = {
+		images: {},
+		left: talent1.drawFirst.eyes.left,
+		right: talent1.drawFirst.eyes.right,
+		y: talent1.drawFirst.eyes.y,
+		sides: talent2.drawSecond.eyes.sides,
+		widthFace: talent2.drawSecond.eyes.width,
+		yFace: talent2.drawSecond.eyes.y,
+		faceCenterXToEyeDistance: talent2.drawSecond.eyes.faceCenterXToEyeDistance
+	};
+	if (!(talent1.drawFirst.eyes.areDifferent && manifest.sides === "right")) {
+		const eyeImageLeft = createImage(path + id1 + "-eye-left" + ext);
+		manifest.eyes.images.left = eyeImageLeft;
+		addImageToImageLoadPromises(eyeImageLeft, imageLoadPromises);
+	}
+	if (talent1.drawFirst.eyes.areDifferent && (manifest.eyes.sides === "both" || manifest.eyes.sides === "right")) {
+		const eyeImageRight = createImage(path + id1 + "-eye-right" + ext);
+		manifest.eyes.images.right = eyeImageRight;
+		addImageToImageLoadPromises(eyeImageRight, imageLoadPromises);
+	}
+
 	for (const paletteType of paletteTypes) {
 		if (!talent2.drawSecond[paletteType])
 			continue;
@@ -239,6 +260,32 @@ async function drawResultCanvas(id1, id2) {
 	ctx.globalCompositeOperation = "difference";
 	ctx.drawImage(noseImage, noseX, noseY, noseSize.width, noseSize.height);
 	ctx.restore();
+
+	assertImagesAreSameSize(Object.values(manifest.eyes.images));
+	const eyeImage = manifest.eyes.images.left || manifest.eyes.images.right;
+	const eyeWidth = (manifest.eyes.right - manifest.eyes.left) * eyeImage.width;
+	const eyeWidthFace = manifest.baseImage.width * manifest.eyes.widthFace;
+	const eyeWidthFaceToEyeWidthRatio = eyeWidthFace / eyeWidth;
+	const faceCenterXToEyeDistance = manifest.baseImage.width * manifest.eyes.faceCenterXToEyeDistance;
+	const eyeSize = proportionalScaleWidth(
+		eyeWidthFaceToEyeWidthRatio * eyeImage.width,
+		eyeImage.width,
+		eyeImage.height
+	);
+	const eyeY = manifest.eyes.yFace * manifest.baseImage.height - eyeSize.height * manifest.eyes.y;
+	if (manifest.eyes.sides === "both" || manifest.eyes.sides === "left") {
+		const eyeX = faceCenterX - faceCenterXToEyeDistance - eyeSize.width * manifest.eyes.right;
+		ctx.drawImage(eyeImage, eyeX, eyeY, eyeSize.width, eyeSize.height);
+	}
+	if (manifest.eyes.sides === "both" || manifest.eyes.sides === "right") {
+		const eyeImage = manifest.eyes.images.right || manifest.eyes.images.left;
+		const eyeX = manifest.baseImage.width - faceCenterX - faceCenterXToEyeDistance - eyeSize.width * manifest.eyes.right;
+		ctx.save();
+		ctx.translate(manifest.baseImage.width, 0);
+		ctx.scale(-1, 1);
+		ctx.drawImage(eyeImage, eyeX, eyeY, eyeSize.width, eyeSize.height);
+		ctx.restore();
+	}
 
 	for (const paletteType of paletteTypes) {
 		if (!manifest[paletteType]) continue;
