@@ -152,11 +152,6 @@ function drawDebugNames(ctx, id1, id2) {
 	ctx.restore();
 }
 
-// function copyCanvasOntoAnother(canvas1, canvas2) {
-// 	const ctx = canvas2.getContext("2d");
-// 	ctx.drawImage(canvas1, 0, 0, canvas1.width, canvas2.height);
-// }
-
 function createCanvasSameSize(canvas) {
 	const newCanvas = document.createElement("canvas");
 	newCanvas.width = canvas.width;
