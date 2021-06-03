@@ -411,7 +411,7 @@
 		"firstNameAfter": "nya",
 		"drawFirst": {
 			"hair": {
-				"colors": ["#99797e", "#f8d176", "#bf977a"]
+				"colors": ["#99797e", "#f8d176", "#bf977a", "#f6b575"]
 			},
 			"body": {
 				"colors": ["#61637c", "#f8d176", "#9a7e90"]
