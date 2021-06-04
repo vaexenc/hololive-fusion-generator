@@ -7,6 +7,3 @@
 desktop.ini
 
 !/dist/images
-
-# for now
-/package-lock.json
