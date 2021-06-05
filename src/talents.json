@@ -521,8 +521,8 @@
 			},
 			"eyes": {
 				"sides": "both",
-				"faceCenterXToEyeDistance": 0.052,
-				"width": 0.094,
+				"faceCenterXToEyeDistance": 0.0535,
+				"width": 0.0925,
 				"y": 0.4247856586126267
 			},
 			"faceCenterX": 0.49571317225253314
