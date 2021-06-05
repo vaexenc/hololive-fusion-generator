@@ -340,12 +340,15 @@ body::after {
 }
 
 .info-button {
+	font-size: inherit;
 	width: 2.5em;
 	height: 2.5em;
+	background-color: transparent;
 	background-image: url("images/info-button.webp");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
+	border: none;
 	z-index: 1000;
 	animation-name: info-button-anim;
 	animation-duration: 2s;
