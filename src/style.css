@@ -195,7 +195,7 @@ body::after {
 }
 
 .talent-select-name {
-	min-height: 2.5em;
+	min-height: 2.05em;
 	text-align: center;
 	font-weight: 500;
 	user-select: none;
@@ -283,9 +283,10 @@ body::after {
 .talent-select-button-imgs {
 	display: flex;
 	font-size: 2em;
-	margin-top: 0.25em;
-	margin-bottom: 0.25em;
-	order: -1;
+}
+
+.talent-select-button-imgs.dropdown-visible {
+	visibility: hidden;
 }
 
 .result-box {
@@ -578,10 +579,6 @@ body::after {
 		font-size: 1.5em;
 	}
 
-	.talent-select-button-imgs.dropdown-visible {
-		visibility: hidden;
-	}
-
 	/* .talent-dropdown {
 	} */
 
@@ -620,10 +617,6 @@ body::after {
 	.talent-dropdown-entries__entry__name {
 		white-space: nowrap;
 		font-size: 1em;
-	}
-
-	.talent-select-button-imgs {
-		order: 99;
 	}
 
 	.button-img {
