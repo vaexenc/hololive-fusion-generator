@@ -9,7 +9,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, "dist"),
-		filename: "./bundle.js"
+		filename: "./bundle-[contenthash].js"
 	},
 	module: {
 		rules: [
@@ -34,7 +34,7 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["**/*", "!images/**", "!favicon.ico"]}),
 		new HtmlWebpackPlugin({template: "./src/index.html"}),
-		new MiniCssExtractPlugin({filename: "style.css"})
+		new MiniCssExtractPlugin({filename: "style-[contenthash].css"})
 	],
 	devServer: {
 		contentBase: path.join(__dirname, "dist")
