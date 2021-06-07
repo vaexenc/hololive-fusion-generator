@@ -542,7 +542,7 @@
 				"colors": ["#ff8161", "#bdead7", "#63b8d6"]
 			},
 			"body": {
-				"colors": ["#fd622a", "#393e78", "#f2270a"]
+				"colors": ["#fd622a", "#393e78", "#ffffff", "#f2270a"]
 			},
 			"etc": {
 				"colors": ["#69ebc9", "#febc6e", "#e0f962"]
