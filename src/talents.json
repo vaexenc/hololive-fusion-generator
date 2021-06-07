@@ -591,12 +591,64 @@
 	},
 
 	"ina": {
+		"enabled": true,
 		"lastName": "ninomae",
 		"firstName": "ina'nis",
 		"lastNameBefore": "nino",
 		"lastNameAfter": "mae",
 		"firstNameBefore": "ina",
-		"firstNameAfter": "'nis"
+		"firstNameAfter": "'nis",
+		"drawFirst": {
+			"hair": {
+				"colors": ["#695982", "#f3a35f", "#50445e", "#ffba76"]
+			},
+			"body": {
+				"colors": ["#554d5f", "#876b9c", "#e8e4ed"]
+			},
+			"etc": {
+				"colors": ["#a94665", "#ad6ca2", "#e8e4ed"]
+			},
+			"mouth": {
+				"x": 0.46153846153846156,
+				"y": 0.36,
+				"width": 1.2
+			},
+			"nose": {
+				"x": 0.48717948717948717,
+				"y": 0.7246376811594203
+			},
+			"eyes": {
+				"areDifferent": false,
+				"left": 0.16037735849056603,
+				"right": 0.9716981132075472,
+				"y": 0.5
+			}
+		},
+		"drawSecond": {
+			"hair": {
+				"count": 3
+			},
+			"body": {
+				"count": 3
+			},
+			"etc": {
+				"count": 1
+			},
+			"mouth": {
+				"y": 0.5663538873994638,
+				"width": 0.04
+			},
+			"nose": {
+				"y": 0.524798927613941
+			},
+			"eyes": {
+				"sides": "both",
+				"faceCenterXToEyeDistance": 0.036193029490616625,
+				"width": 0.062,
+				"y": 0.48525469168900803
+			},
+			"faceCenterX": 0.5013404825737265
+		}
 	},
 
 	"gura": {
