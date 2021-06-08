@@ -22,9 +22,9 @@ function addImageToImageLoadPromises(image, imageLoadPromises) {
 	imageLoadPromises.push(createImageLoadPromise(image));
 }
 
-async function createManifest(id1, id2) {
-	const talent1 = getTalentById(id1);
-	const talent2 = getTalentById(id2);
+async function createImageManifest(id1, id2) {
+	const talent1Draw = getTalentById(id1).drawFirst;
+	const talent2Draw = getTalentById(id2).drawSecond;
 	const manifest = {};
 	const imageLoadPromises = [];
 
@@ -32,67 +32,43 @@ async function createManifest(id1, id2) {
 	manifest.baseImage = baseImage;
 	addImageToImageLoadPromises(baseImage, imageLoadPromises);
 
-	manifest.faceCenterX = talent2.drawSecond.faceCenterX;
-
-	if (talent1.drawFirst.mouth && talent2.drawSecond.mouth) {
+	if (talent1Draw.mouth && talent2Draw.mouth) {
 		const mouthImage = createImage(path + id1 + "-mouth" + ext);
-		manifest.mouth = {
-			image: mouthImage,
-			x: talent1.drawFirst.mouth.x,
-			y: talent1.drawFirst.mouth.y,
-			width: talent1.drawFirst.mouth.width,
-			yFace: talent2.drawSecond.mouth.y,
-			widthFace: talent2.drawSecond.mouth.width
-		};
+		manifest.mouth = mouthImage;
 		addImageToImageLoadPromises(mouthImage, imageLoadPromises);
 	}
 
-	if (talent1.drawFirst.nose && talent2.drawSecond.nose) {
+	if (talent1Draw.nose && talent2Draw.nose) {
 		const noseImage = createImage(path + id1 + "-nose" + ext);
-		manifest.nose = {
-			image: noseImage,
-			x: talent1.drawFirst.nose.x,
-			y: talent1.drawFirst.nose.y,
-			yFace: talent2.drawSecond.nose.y
-		};
+		manifest.nose = noseImage;
 		addImageToImageLoadPromises(noseImage, imageLoadPromises);
 	}
 
-	if (talent1.drawFirst.eyes && talent2.drawSecond.eyes) {
-		manifest.eyes = {
-			images: {},
-			left: talent1.drawFirst.eyes.left,
-			right: talent1.drawFirst.eyes.right,
-			y: talent1.drawFirst.eyes.y,
-			sides: talent2.drawSecond.eyes.sides,
-			widthFace: talent2.drawSecond.eyes.width,
-			yFace: talent2.drawSecond.eyes.y,
-			faceCenterXToEyeDistance: talent2.drawSecond.eyes.faceCenterXToEyeDistance
-		};
-		if (!(talent1.drawFirst.eyes.areDifferent && manifest.sides === "right")) {
+	if (talent1Draw.eyes && talent2Draw.eyes) {
+		const sides = talent2Draw.eyes.sides;
+		manifest.eyes = {};
+
+		if (!(talent1Draw.eyes.areDifferent && sides === "right")) {
 			const eyeImageLeft = createImage(path + id1 + "-eye-left" + ext);
-			manifest.eyes.images.left = eyeImageLeft;
+			manifest.eyes.left = eyeImageLeft;
 			addImageToImageLoadPromises(eyeImageLeft, imageLoadPromises);
 		}
-		if (talent1.drawFirst.eyes.areDifferent && (manifest.eyes.sides === "both" || manifest.eyes.sides === "right")) {
+
+		if (talent1Draw.eyes.areDifferent && (sides === "both" || sides === "right")) {
 			const eyeImageRight = createImage(path + id1 + "-eye-right" + ext);
-			manifest.eyes.images.right = eyeImageRight;
+			manifest.eyes.right = eyeImageRight;
 			addImageToImageLoadPromises(eyeImageRight, imageLoadPromises);
 		}
 	}
 
 	for (const paletteType of paletteTypes) {
-		if (!talent1.drawFirst[paletteType] || !talent2.drawSecond[paletteType])
+		if (!talent1Draw[paletteType] || !talent2Draw[paletteType])
 			continue;
 
-		manifest[paletteType] = {};
-
-		manifest[paletteType].colors = talent1.drawFirst[paletteType].colors;
-
-		manifest[paletteType].images = [];
-		for (let i = 0; i < talent2.drawSecond[paletteType].count; i++) {
+		manifest[paletteType] = [];
+		for (let i = 0; i < talent2Draw[paletteType].count; i++) {
 			const image = createImage(path + id2 + "-" + paletteType + "-" + i + ext);
-			manifest[paletteType].images.push(image);
+			manifest[paletteType].push(image);
 			addImageToImageLoadPromises(image, imageLoadPromises);
 		}
 	}
@@ -185,41 +161,49 @@ function createCanvasSameSize(canvas) {
 	return newCanvas;
 }
 
-async function drawResultCanvas(id1, id2) {
-	const canvas = document.createElement("canvas");
+async function drawOriginalTalent(canvas, id) {
+	const originalImage = createImage(path + id + "-original" + ext);
+	await createImageLoadPromise(originalImage);
+	canvas.width = originalImage.width;
+	canvas.height = originalImage.height;
 	const ctx = canvas.getContext("2d");
+	ctx.drawImage(originalImage, 0, 0);
+	return canvas;
+}
+
+async function drawResult(id1, id2) {
+	const canvas = document.createElement("canvas");
 
 	if (id1 === id2) {
-		const originalImage = createImage(path + id1 + "-original" + ext);
-		await createImageLoadPromise(originalImage);
-		canvas.width = originalImage.width;
-		canvas.height = originalImage.height;
-		ctx.drawImage(originalImage, 0, 0);
-		return canvas;
+		return drawOriginalTalent(canvas, id1);
 	}
 
-	const manifest = await createManifest(id1, id2);
-
+	const ctx = canvas.getContext("2d");
+	const imageManifest = await createImageManifest(id1, id2);
+	const talent1Draw = getTalentById(id1).drawFirst;
+	const talent2Draw = getTalentById(id2).drawSecond;
+	const baseImage = imageManifest.baseImage;
 	const paletteImages = [];
+
 	for (const paletteType of paletteTypes) {
-		if (manifest[paletteType]) {
-			for (const image of manifest[paletteType].images) {
+		if (imageManifest[paletteType]) {
+			for (const image of imageManifest[paletteType]) {
 				paletteImages.push(image);
 			}
 		}
 	}
 
-	assertImagesAreSameSize(paletteImages.concat([manifest.baseImage]));
+	assertImagesAreSameSize(paletteImages.concat([baseImage]));
 
-	canvas.width = manifest.baseImage.width;
-	canvas.height = manifest.baseImage.height;
+	canvas.width = baseImage.width;
+	canvas.height = baseImage.height;
 
-	const baseImageBlackAndWhite = createCanvasSameSize(canvas);
-	const ctxbw = baseImageBlackAndWhite.getContext("2d");
-	ctxbw.drawImage(manifest.baseImage, 0, 0);
+	const baseImagePaletteAreasBlackAndWhite = createCanvasSameSize(canvas);
+	const ctxbw = baseImagePaletteAreasBlackAndWhite.getContext("2d");
+	ctxbw.drawImage(baseImage, 0, 0);
 	ctxbw.globalCompositeOperation = "saturation";
 	ctxbw.fillStyle = "black";
-	ctxbw.fillRect(0, 0, baseImageBlackAndWhite.width, baseImageBlackAndWhite.height);
+	ctxbw.fillRect(0, 0, baseImagePaletteAreasBlackAndWhite.width, baseImagePaletteAreasBlackAndWhite.height);
 
 	const rawPalettes = createCanvasSameSize(canvas);
 	const ctxp = rawPalettes.getContext("2d");
@@ -230,39 +214,39 @@ async function drawResultCanvas(id1, id2) {
 	ctxbw.globalCompositeOperation = "destination-in";
 	ctxbw.drawImage(rawPalettes, 0, 0);
 
-	ctx.drawImage(manifest.baseImage, 0, 0);
-	ctx.drawImage(baseImageBlackAndWhite, 0, 0);
+	ctx.drawImage(baseImage, 0, 0);
+	ctx.drawImage(baseImagePaletteAreasBlackAndWhite, 0, 0);
 
-	const faceCenterX = manifest.baseImage.width * manifest.faceCenterX;
+	const faceCenterX = baseImage.width * talent2Draw.faceCenterX;
 
-	if (manifest.mouth) {
-		const mouthImage = manifest.mouth.image;
-		const mouthWidth = mouthImage.width * manifest.mouth.width;
-		const mouthWidthFace = manifest.baseImage.width * manifest.mouth.widthFace;
-		const mouthYFace = manifest.mouth.yFace * manifest.baseImage.height;
+	if (imageManifest.mouth) {
+		const mouthImage = imageManifest.mouth;
+		const mouthWidth = mouthImage.width * talent1Draw.mouth.width;
+		const mouthWidthFace = baseImage.width * talent2Draw.mouth.width;
+		const mouthYFace = baseImage.height * talent2Draw.mouth.y;
 		const mouthWidthFaceToMouthWidthRatio = mouthWidthFace / mouthWidth;
 		const mouthSize = proportionalScaleWidth(
 			mouthWidthFaceToMouthWidthRatio * mouthImage.width,
 			mouthImage.width,
 			mouthImage.height
 		);
-		const mouthX = faceCenterX - mouthSize.width * manifest.mouth.x;
-		const mouthY = mouthYFace - mouthSize.height * manifest.mouth.y;
+		const mouthX = faceCenterX - mouthSize.width * talent1Draw.mouth.x;
+		const mouthY = mouthYFace - mouthSize.height * talent1Draw.mouth.y;
 		ctx.save();
 		ctx.globalCompositeOperation = "difference";
 		ctx.drawImage(mouthImage, mouthX, mouthY, mouthSize.width, mouthSize.height);
 		ctx.restore();
 
-		if (manifest.nose) {
-			const noseImage = manifest.nose.image;
-			const noseYFace = manifest.nose.yFace * manifest.baseImage.height;
+		if (imageManifest.nose) {
+			const noseImage = imageManifest.nose;
+			const noseYFace = baseImage.height * talent2Draw.nose.y;
 			const noseSize = proportionalScaleWidth(
 				mouthWidthFaceToMouthWidthRatio * noseImage.width,
 				noseImage.width,
 				noseImage.height
 			);
-			const noseX = faceCenterX - noseSize.width * manifest.nose.x;
-			const noseY = noseYFace - noseSize.height * manifest.nose.y;
+			const noseX = faceCenterX - noseSize.width * talent1Draw.nose.x;
+			const noseY = noseYFace - noseSize.height * talent1Draw.nose.y;
 			ctx.save();
 			ctx.globalCompositeOperation = "difference";
 			ctx.drawImage(noseImage, noseX, noseY, noseSize.width, noseSize.height);
@@ -270,28 +254,31 @@ async function drawResultCanvas(id1, id2) {
 		}
 	}
 
-	if (manifest.eyes) {
-		assertImagesAreSameSize(Object.values(manifest.eyes.images));
-		const eyeImage = manifest.eyes.images.left || manifest.eyes.images.right;
-		const eyeWidth = (manifest.eyes.right - manifest.eyes.left) * eyeImage.width;
-		const eyeWidthFace = manifest.baseImage.width * manifest.eyes.widthFace;
+	if (imageManifest.eyes) {
+		assertImagesAreSameSize(Object.values(imageManifest.eyes));
+		const eyeImage = imageManifest.eyes.left || imageManifest.eyes.right;
+		const eyeWidth = eyeImage.width * (talent1Draw.eyes.right - talent1Draw.eyes.left);
+		const eyeWidthFace = baseImage.width * talent2Draw.eyes.width;
 		const eyeWidthFaceToEyeWidthRatio = eyeWidthFace / eyeWidth;
-		const faceCenterXToEyeDistance = manifest.baseImage.width * manifest.eyes.faceCenterXToEyeDistance;
+		const faceCenterXToEyeDistance = baseImage.width * talent2Draw.eyes.faceCenterXToEyeDistance;
 		const eyeSize = proportionalScaleWidth(
 			eyeWidthFaceToEyeWidthRatio * eyeImage.width,
 			eyeImage.width,
 			eyeImage.height
 		);
-		const eyeY = manifest.eyes.yFace * manifest.baseImage.height - eyeSize.height * manifest.eyes.y;
-		if (manifest.eyes.sides === "both" || manifest.eyes.sides === "left") {
-			const eyeX = faceCenterX - faceCenterXToEyeDistance - eyeSize.width * manifest.eyes.right;
+		const eyeY = baseImage.height * talent2Draw.eyes.y - eyeSize.height * talent1Draw.eyes.y;
+		const sides = talent2Draw.eyes.sides;
+
+		if (sides === "both" || sides === "left") {
+			const eyeX = faceCenterX - faceCenterXToEyeDistance - eyeSize.width * talent1Draw.eyes.right;
 			ctx.drawImage(eyeImage, eyeX, eyeY, eyeSize.width, eyeSize.height);
 		}
-		if (manifest.eyes.sides === "both" || manifest.eyes.sides === "right") {
-			const eyeImage = manifest.eyes.images.right || manifest.eyes.images.left;
-			const eyeX = manifest.baseImage.width - faceCenterX - faceCenterXToEyeDistance - eyeSize.width * manifest.eyes.right;
+
+		if (sides === "both" || sides === "right") {
+			const eyeImage = imageManifest.eyes.right || imageManifest.eyes.left;
+			const eyeX = baseImage.width - faceCenterX - faceCenterXToEyeDistance - eyeSize.width * talent1Draw.eyes.right;
 			ctx.save();
-			ctx.translate(manifest.baseImage.width, 0);
+			ctx.translate(baseImage.width, 0);
 			ctx.scale(-1, 1);
 			ctx.drawImage(eyeImage, eyeX, eyeY, eyeSize.width, eyeSize.height);
 			ctx.restore();
@@ -299,10 +286,10 @@ async function drawResultCanvas(id1, id2) {
 	}
 
 	for (const paletteType of paletteTypes) {
-		if (!manifest[paletteType]) continue;
-		for (const [i, paletteImage] of manifest[paletteType].images.entries()) {
+		if (!imageManifest[paletteType]) continue;
+		for (const [i, paletteImage] of imageManifest[paletteType].entries()) {
 			ctx.save();
-			const color = manifest[paletteType].colors[mod(i, manifest[paletteType].colors.length)];
+			const color = talent1Draw[paletteType].colors[mod(i, talent1Draw[paletteType].colors.length)];
 			const paletteLayer = createCanvasSameSize(canvas);
 			const ctxl = paletteLayer.getContext("2d");
 			ctxl.drawImage(paletteImage, 0, 0);
@@ -325,7 +312,7 @@ async function drawFusion(canvasDOM, id1, id2) {
 	const drawId = ++currentDrawId;
 	const ctx = canvasDOM.getContext("2d");
 	clearCanvas(ctx);
-	const canvasResult = await drawResultCanvas(id1, id2);
+	const canvasResult = await drawResult(id1, id2);
 	if (currentDrawId !== drawId) return;
 	drawBg(ctx);
 	const {width: w, height: h} = resizeToContain(canvasDOM.width, canvasDOM.height, canvasResult.width, canvasResult.height);
