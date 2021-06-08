@@ -661,7 +661,7 @@
 		"firstNameAfter": "ra",
 		"drawFirst": {
 			"hair": {
-				"colors": ["#f3f3f3", "#5e9ad2"]
+				"colors": ["#f3f3f3", "#5e9ad2", "#e2e3e5", "#afebe3"]
 			},
 			"body": {
 				"colors": ["#33739d", "#b3b3b3", "#ffffff"]
