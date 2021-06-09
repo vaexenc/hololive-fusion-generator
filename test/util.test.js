@@ -64,6 +64,17 @@ describe("getRandomInt()", () => {
 	});
 });
 
+describe("getRandomIntUnique()", () => {
+	it("returns a unique random number", () => {
+		for (let i = 0; i < 100; i++)
+			expect(util.getRandomIntUnique(2, 1)).not.toBe(1);
+		for (let i = 0; i < 100; i++)
+			expect(util.getRandomIntUnique(3, 2)).not.toBe(2);
+		for (let i = 0; i < 100; i++)
+			expect(util.getRandomIntUnique(5, [0, 1, 2, 3])).toBe(4);
+	});
+});
+
 describe("mod()", () => {
 	it("returns 0 when mod(0, 10)", () => {
 		expect(util.mod(0, 10)).toBe(0);
