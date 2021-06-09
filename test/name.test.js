@@ -17,9 +17,9 @@ describe("fuseTalentFullNamesById()", () => {
 		expect(fullName).toEqual({lastName: "Tsunoshiro", firstName: "Watatan"});
 	});
 
-	it("creates 'Takamori Killiope' from kiara and calli", () => {
+	it("creates 'Takamori Kialliope' from kiara and calli", () => {
 		const fullName = name.fuseTalentFullNamesById("kiara", "calli");
-		expect(fullName).toEqual({lastName: "Takamori", firstName: "Killiope"});
+		expect(fullName).toEqual({lastName: "Takamori", firstName: "Kialliope"});
 	});
 
 	it("creates 'Morinashi Calliara' from calli and kiara", () => {
