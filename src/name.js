@@ -29,17 +29,24 @@ function getTalentFullNameById(talentId) {
 	return getTalentFullName(talent.getTalentById(talentId));
 }
 
-function fuseNameChunks(chunk1, chunk2) {
-	let firstChunk = changeFirstCharToUppercase(chunk1);
-	if (isLastCharOfStr1SameAsFirstCharOfStr2(firstChunk, chunk2))
-		firstChunk = removeLastCharOfString(firstChunk);
-	return firstChunk + chunk2;
+function concatStringWithoutSameCharInMiddle(string1, string2) {
+	if (isLastCharOfStr1SameAsFirstCharOfStr2(string1, string2))
+		return removeLastCharOfString(string1) + string2;
+	return string1 + string2;
 }
 
 function fuseTalentNamesOfSameType(talent1, talent2, nameType) {
+	const talent1Name = talent1[nameType];
+	const talent2Name = talent2[nameType];
 	const nameBefore = talent1[nameType + "Before"];
 	const nameAfter = talent2[nameType + "After"];
-	return fuseNameChunks(nameBefore, nameAfter);
+	const fusion = concatStringWithoutSameCharInMiddle(nameBefore, nameAfter);
+	if (fusion === talent1Name || fusion === talent2Name) {
+		return changeFirstCharToUppercase(
+			concatStringWithoutSameCharInMiddle(nameBefore, talent2Name)
+		);
+	}
+	return changeFirstCharToUppercase(fusion);
 }
 
 function fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, nameType) {
