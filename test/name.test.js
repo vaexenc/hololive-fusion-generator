@@ -46,6 +46,21 @@ describe("fuseTalentFullNamesById()", () => {
 		const fullName = name.fuseTalentFullNamesById("roboco", "ame");
 		expect(fullName).toEqual({lastName: "Watson", firstName: "Robomelia"});
 	});
+
+	it("creates 'Ninonashi Inara' from ina and kiara", () => {
+		const fullName = name.fuseTalentFullNamesById("ina", "kiara");
+		expect(fullName).toEqual({lastName: "Ninonashi", firstName: "Inara"});
+	});
+
+	it("creates 'Gawrkino Gusora' from gura and sora", () => {
+		const fullName = name.fuseTalentFullNamesById("gura", "sora");
+		expect(fullName).toEqual({lastName: "Gawrkino", firstName: "Gusora"});
+	});
+
+	it("creates 'Tokigawr Sogura' from sora and gura", () => {
+		const fullName = name.fuseTalentFullNamesById("sora", "gura");
+		expect(fullName).toEqual({lastName: "Tokigawr", firstName: "Sogura"});
+	});
 });
 
 describe("fuseTalentFullNames()", () => {
