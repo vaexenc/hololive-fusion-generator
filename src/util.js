@@ -36,7 +36,6 @@ function mod(x, m) {
 }
 
 module.exports = {
-	factorial,
 	calculateVariations,
 	getObjectLength,
 	getRandomInt,
