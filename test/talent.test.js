@@ -3,7 +3,7 @@ const util = require("../src/util");
 
 describe("getTalentById()", () => {
 	it("always returns the same object when called with the same id", () => {
-		expect(talent.getTalentById("coco")).toEqual(talent.getTalentById("coco"));
+		expect(talent.getTalentById("gura")).toEqual(talent.getTalentById("gura"));
 	});
 
 	it("throws when talent with given id doesn't exist", () => {
@@ -26,9 +26,9 @@ describe("getTalentById()", () => {
 	});
 
 	it("works with 'ame'", () => {
-		const t = talent.getTalentById("ame");
-		expect(t.lastName).toEqual("watson");
-		expect(t.firstName).toEqual("amelia");
+		const t = talent.getTalentById("gura");
+		expect(t.lastName).toEqual("gawr");
+		expect(t.firstName).toEqual("gura");
 	});
 
 	it("works with 'pekora'", () => {
@@ -45,18 +45,6 @@ describe("getTalentById()", () => {
 	it("returns an object", () => {
 		const t = talent.getTalentById("pekora");
 		expect(typeof t).toBe("object");
-	});
-});
-
-describe("getTalentCountAll()", () => {
-	const amountOfTalents = talent.getTalentCountAll();
-
-	it("should be greater than 40", () => {
-		expect(amountOfTalents).toBeGreaterThan(40);
-	});
-
-	it("should be less than 100", () => {
-		expect(amountOfTalents).toBeLessThan(100);
 	});
 });
 
