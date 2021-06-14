@@ -216,12 +216,7 @@ function updateResultImage() {
 
 function updateResultName() {
 	const [talentId1, talentId2] = getTalentSelectContainerTalentIds();
-	let name;
-	if (talentId1 === talentId2)
-		name = getFullNameStringById(talentId1);
-	else
-		name = getFusionStringByIds(talentId1, talentId2);
-	$(".result-name").innerHTML = name;
+	$(".result-name").innerHTML = getFusionStringByIds(talentId1, talentId2);
 }
 
 function updateResult() {
