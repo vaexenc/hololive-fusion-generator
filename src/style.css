@@ -318,7 +318,6 @@ body::after {
 	align-items: center;
 	width: 100%;
 	font-size: 2.6em;
-	margin-top: 0.2em;
 }
 
 .result-button-imgs__screenshot {
@@ -648,10 +647,6 @@ body::after {
 	.result-name {
 		font-size: 2.5em;
 		min-height: 2.4em;
-	}
-
-	.result-button-imgs {
-		margin-top: 0;
 	}
 
 	.info {
