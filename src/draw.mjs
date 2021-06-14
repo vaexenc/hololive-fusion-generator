@@ -36,6 +36,12 @@ async function createImageManifest(id1, id2) {
 		const mouthImage = createImage(path + id1 + "-mouth" + ext);
 		manifest.mouth = mouthImage;
 		addImageToImageLoadPromises(mouthImage, imageLoadPromises);
+
+		if (talent1Draw.mouth.hasCutout) {
+			const mouthCutoutImage = createImage(path + id1 + "-mouth-cutout" + ext);
+			manifest.mouthCutout = mouthCutoutImage;
+			addImageToImageLoadPromises(mouthCutoutImage, imageLoadPromises);
+		}
 	}
 
 	if (talent1Draw.nose && talent2Draw.nose) {
@@ -236,6 +242,11 @@ async function drawResult(id1, id2) {
 		ctx.globalCompositeOperation = "difference";
 		ctx.drawImage(mouthImage, mouthX, mouthY, mouthSize.width, mouthSize.height);
 		ctx.restore();
+		if (imageManifest.mouthCutout) {
+			const mouthCutoutImage = imageManifest.mouthCutout;
+			assertImagesAreSameSize([mouthImage, mouthCutoutImage]);
+			ctx.drawImage(mouthCutoutImage, mouthX, mouthY, mouthSize.width, mouthSize.height);
+		}
 
 		if (imageManifest.nose) {
 			const noseImage = imageManifest.nose;
