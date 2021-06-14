@@ -174,12 +174,62 @@
 	},
 
 	"pekora": {
+		"enabled": true,
 		"lastName": "usada",
 		"firstName": "pekora",
 		"lastNameBefore": "usa",
 		"lastNameAfter": "sada",
 		"firstNameBefore": "peko",
-		"firstNameAfter": "kora"
+		"firstNameAfter": "kora",
+		"drawFirst": {
+			"hair": {
+				"colors": ["#acc0f2", "#ffffff", "#5f6aaf", "#bdbdd7"]
+			},
+			"body": {
+				"colors": ["#ffffff", "#4375f5", "#a0cdfb", "#dce5f1"]
+			},
+			"etc": {
+				"colors": ["#ff8437", "#4375f5", "#a0cdfb"]
+			},
+			"mouth": {
+				"x": 0.509090909090909,
+				"y": 0.32,
+				"width": 0.7,
+				"hasCutout": true
+			},
+			"nose": {
+				"x": 0.5,
+				"y": 0.6867469879518072
+			},
+			"eyes": {
+				"areDifferent": false,
+				"left": 0.16,
+				"right": 0.89,
+				"y": 0.49044585987261147
+			}
+		},
+		"drawSecond": {
+			"hair": {
+				"count": 2
+			},
+			"body": {
+				"count": 3
+			},
+			"mouth": {
+				"y": 0.522,
+				"width": 0.045
+			},
+			"nose": {
+				"y": 0.48433333333333334
+			},
+			"eyes": {
+				"sides": "both",
+				"faceCenterXToEyeDistance": 0.033,
+				"width": 0.055,
+				"y": 0.44666666666666666
+			},
+			"faceCenterX": 0.5
+		}
 	},
 
 	"rushia": {
