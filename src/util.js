@@ -1,16 +1,5 @@
-function factorial(number) {
-	if (!Number.isInteger(number))
-		throw new Error("number must be an integer");
-	if (number < 0)
-		throw new Error("number must be positive");
-	if (number === 0)
-		return 1;
-	return number * factorial(number - 1);
-}
-
-function calculateVariations(totalElements, elementsToChoose) {
-	// order important, no repetitions
-	return Math.round(factorial(totalElements) / factorial(totalElements - elementsToChoose));
+function calculateVariations(n) {
+	return n * n - n;
 }
 
 function getObjectLength(obj) {

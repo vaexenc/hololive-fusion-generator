@@ -21,11 +21,11 @@ function getTalentCountEnabled() {
 }
 
 function calculateTalentVariationsEnabled() {
-	return util.calculateVariations(getTalentCountEnabled(), 2);
+	return util.calculateVariations(getTalentCountEnabled());
 }
 
 function calculateTalentVariationsAll() {
-	return util.calculateVariations(getTalentCountAll(), 2);
+	return util.calculateVariations(getTalentCountAll());
 }
 
 function getTalentIdsAll() {

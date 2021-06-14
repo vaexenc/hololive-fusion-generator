@@ -2,24 +2,9 @@ const util = require("../src/util");
 
 describe("calculateVariations()", () => {
 	it("seems to work", () => {
-		expect(util.calculateVariations(10, 1)).toBe(10);
-		expect(util.calculateVariations(10, 2)).toBe(90);
-		expect(util.calculateVariations(10, 3)).toBe(720);
-		expect(util.calculateVariations(50, 2)).toBe(2450);
-		expect(util.calculateVariations(100, 4)).toBe(94109400);
-	});
-
-	it("throws when number is not an integer", () => {
-		expect(() => util.calculateVariations()).toThrow("int");
-		expect(() => util.calculateVariations("")).toThrow();
-		expect(() => util.calculateVariations({})).toThrow();
-		expect(() => util.calculateVariations([])).toThrow();
-		expect(() => util.calculateVariations("1")).toThrow();
-	});
-
-	it("throws when number negative", () => {
-		expect(() => util.calculateVariations(-1)).toThrow(/positive|negative/);
-		expect(() => util.calculateVariations(-10)).toThrow();
+		expect(util.calculateVariations(6)).toBe(30);
+		expect(util.calculateVariations(10)).toBe(90);
+		expect(util.calculateVariations(43)).toBe(1806);
 	});
 });
 
