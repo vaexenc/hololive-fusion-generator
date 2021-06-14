@@ -1,5 +1,4 @@
 import {getTalentById} from "./talent.js";
-import {mod} from "./util.js";
 
 const path = "images/talents/";
 const ext = ".webp";
@@ -300,7 +299,7 @@ async function drawResult(id1, id2) {
 		if (!imageManifest[paletteType]) continue;
 		for (const [i, paletteImage] of imageManifest[paletteType].entries()) {
 			ctx.save();
-			const color = talent1Draw[paletteType].colors[mod(i, talent1Draw[paletteType].colors.length)];
+			const color = talent1Draw[paletteType].colors[i % talent1Draw[paletteType].colors.length];
 			const paletteLayer = createCanvasSameSize(canvas);
 			const ctxl = paletteLayer.getContext("2d");
 			ctxl.drawImage(paletteImage, 0, 0);
