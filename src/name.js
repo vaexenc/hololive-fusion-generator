@@ -1,7 +1,7 @@
 const customNames = require("./customNames.json");
 const talent = require("./talent");
 
-const nameType = {
+const NameType = {
 	LAST_NAME: "lastName",
 	FIRST_NAME: "firstName"
 };
@@ -18,6 +18,22 @@ function removeLastCharOfString(string) {
 	return string.slice(0, -1);
 }
 
+function concatStringWithoutSameCharInMiddle(string1, string2) {
+	if (isLastCharOfStr1SameAsFirstCharOfStr2(string1, string2))
+		return removeLastCharOfString(string1) + string2;
+	return string1 + string2;
+}
+
+function getCustomNameTupleString(talent1, talent2) {
+	const talentId1 = talent.getTalentId(talent1);
+	const talentId2 = talent.getTalentId(talent2);
+	return talentId1 + " " + talentId2;
+}
+
+function returnUndefinedStringOrArgument(string) {
+	return string || "undefined";
+}
+
 function getTalentFullName(talent) {
 	return {
 		lastName: changeFirstCharToUppercase(talent.lastName),
@@ -25,48 +41,33 @@ function getTalentFullName(talent) {
 	};
 }
 
-function getTalentFullNameById(talentId) {
-	return getTalentFullName(talent.getTalentById(talentId));
+function getCustomName(talent1, talent2) {
+	const nameTupleString = getCustomNameTupleString(talent1, talent2);
+	if (nameTupleString in customNames)
+		return customNames[nameTupleString];
 }
 
-function concatStringWithoutSameCharInMiddle(string1, string2) {
-	if (isLastCharOfStr1SameAsFirstCharOfStr2(string1, string2))
-		return removeLastCharOfString(string1) + string2;
-	return string1 + string2;
+function fuseTalentNameChunks(chunkBefore, chunkAfter, talent1Name, talent2Name) {
+	const fusion = concatStringWithoutSameCharInMiddle(chunkBefore, chunkAfter);
+	if (fusion === talent1Name || fusion === talent2Name) {
+		return concatStringWithoutSameCharInMiddle(chunkBefore, talent2Name);
+	}
+	return fusion;
 }
 
 function fuseTalentNamesOfSameType(talent1, talent2, nameType) {
-	const talent1Name = talent1[nameType];
-	const talent2Name = talent2[nameType];
-	const nameBefore = talent1[nameType + "Before"];
-	const nameAfter = talent2[nameType + "After"];
-	const fusion = concatStringWithoutSameCharInMiddle(nameBefore, nameAfter);
-	if (fusion === talent1Name || fusion === talent2Name) {
-		return changeFirstCharToUppercase(
-			concatStringWithoutSameCharInMiddle(nameBefore, talent2Name)
-		);
-	}
-	return changeFirstCharToUppercase(fusion);
+	return fuseTalentNameChunks(
+		talent1[nameType + "Before"],
+		talent2[nameType + "After"],
+		talent1[nameType],
+		talent2[nameType]
+	);
 }
 
 function fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, nameType) {
 	if (talent1[nameType] && talent2[nameType])
 		return fuseTalentNamesOfSameType(talent1, talent2, nameType);
-	const name = talent1[nameType] || talent2[nameType];
-	if (name)
-		return changeFirstCharToUppercase(name);
-}
-
-function getNameTupleString(talent1, talent2) {
-	const talentId1 = talent.getTalentId(talent1);
-	const talentId2 = talent.getTalentId(talent2);
-	return talentId1 + " " + talentId2;
-}
-
-function getCustomName(talent1, talent2) {
-	const nameTupleString = getNameTupleString(talent1, talent2);
-	if (nameTupleString in customNames)
-		return customNames[nameTupleString];
+	return talent1[nameType] || talent2[nameType];
 }
 
 function fuseTalentFullNames(talent1, talent2) {
@@ -76,8 +77,8 @@ function fuseTalentFullNames(talent1, talent2) {
 	if (customName)
 		return customName;
 	return {
-		lastName: fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, nameType.LAST_NAME),
-		firstName: fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, nameType.FIRST_NAME)
+		lastName: fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, NameType.LAST_NAME),
+		firstName: fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, NameType.FIRST_NAME)
 	};
 }
 
@@ -88,17 +89,21 @@ function fuseTalentFullNamesById(id1, id2) {
 	);
 }
 
-function returnUndefinedStringOrArgument(string) {
-	return string || "undefined";
-}
-
 function getFullNameString(talentOrFullName) {
-	const fullNameString = [];
+	const fullName = [];
 	for (const nameType of ["lastName", "firstName"]) {
 		if (talentOrFullName[nameType])
-			fullNameString.push(changeFirstCharToUppercase(talentOrFullName[nameType]));
+			fullName.push(changeFirstCharToUppercase(talentOrFullName[nameType]));
 	}
-	return fullNameString.join(" ");
+	return fullName.join(" ");
+}
+
+function getFullNameStringById(id) {
+	return getFullNameString(talent.getTalentById(id));
+}
+
+function getFusionStringByIds(id1, id2) {
+	return getFullNameString(fuseTalentFullNamesById(id1, id2));
 }
 
 function getFullNameStringDebug(talentOrFullName) {
@@ -107,18 +112,6 @@ function getFullNameStringDebug(talentOrFullName) {
 		+ " "
 		+ changeFirstCharToUppercase(returnUndefinedStringOrArgument(talentOrFullName.firstName));
 	return fullNameString;
-}
-
-function getFullNameStringById(id) {
-	return getFullNameString(talent.getTalentById(id));
-}
-
-// function getFullNameStringByIdDebug(id) {
-// 	return getFullNameStringDebug(talent.getTalentById(id));
-// }
-
-function getFusionStringByIds(id1, id2) {
-	return getFullNameString(fuseTalentFullNamesById(id1, id2));
 }
 
 function getVariationsTwoTalents(talent1, talent2) {
@@ -185,15 +178,8 @@ function printAllNameVariationsForTalent(talentId) {
 }
 
 module.exports = {
-	fuseTalentFullNames,
-	fuseTalentFullNamesById,
-	getAllNameVariations,
-	getAllNameVariationsForTalent,
-	getFullNameString,
 	getFullNameStringById,
 	getFusionStringByIds,
-	getTalentFullName,
-	getTalentFullNameById,
 	printAllNameVariations,
 	printAllNameVariationsForTalent
 };
