@@ -637,10 +637,6 @@ button {
 		margin-right: 0.05em;
 	}
 
-	.button-img:focus {
-		outline: 2px dotted rgba(100%, 100%, 100%, 0.6);
-	}
-
 	.result-box {
 		order: 2;
 		flex-basis: 100%;
