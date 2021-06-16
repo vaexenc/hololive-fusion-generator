@@ -47,6 +47,9 @@ body::after {
 }
 
 button {
+	font-size: inherit;
+	font-family: inherit;
+	border: none;
 	outline: none;
 }
 
@@ -85,13 +88,10 @@ button {
 }
 
 .button-img {
-	font-size: inherit;
-	font-family: inherit;
 	background-color: transparent;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
-	border: none;
 	width: 1.3em;
 	height: 1.3em;
 	filter:
@@ -344,7 +344,6 @@ button {
 }
 
 .info-button {
-	font-size: inherit;
 	width: 2.5em;
 	height: 2.5em;
 	background-color: transparent;
@@ -352,7 +351,6 @@ button {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
-	border: none;
 	z-index: 1000;
 	animation-name: info-button-anim;
 	animation-duration: 2s;
@@ -401,9 +399,6 @@ button {
 	top: 0.2em;
 	width: 2em;
 	height: 2em;
-	font-size: inherit;
-	font-family: inherit;
-	border: none;
 	background-color: transparent;
 	background-repeat: no-repeat;
 	background-position: center;
