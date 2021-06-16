@@ -1,3 +1,5 @@
+/* Mobile first */
+
 * {
 	margin: 0;
 	padding: 0;
@@ -142,11 +144,11 @@ button {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-around;
 }
 
 .talent-select-container {
-	flex-basis: 50%;
+	flex-basis: 46%;
 }
 
 /* .talent-select-box {
@@ -298,7 +300,6 @@ button {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 1.5em;
 }
 
 .result-canvas {
@@ -515,6 +516,29 @@ button {
 
 	100% {
 		background-image: url("images/loading-indicator.webp");
+	}
+}
+
+/* Mobile with longer screens */
+@media (
+	/* observations on chrome on android, with "max-aspect-ratio":
+	   decimal values don't work, it has to be a division of ints
+	   it works on a 16:9 screen up until reaching 9/14
+	   it works on a 20:9 screen up until reaching 9/18
+	*/
+	max-aspect-ratio: 9/16
+) {
+	.header {
+		margin-bottom: 0.25em;
+	}
+
+	.talent-select-container {
+		flex-basis: 48%;
+	}
+
+	.result-box {
+		flex-basis: 80%;
+		margin-top: 1em;
 	}
 }
 
