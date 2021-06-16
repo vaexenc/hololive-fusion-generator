@@ -32,13 +32,17 @@ async function createImageManifest(id1, id2) {
 	addImageToImageLoadPromises(baseImage, imageLoadPromises);
 
 	if (talent1Draw.mouth && talent2Draw.mouth) {
-		const mouthImage = createImage(path + id1 + "-mouth" + ext);
-		manifest.mouth = mouthImage;
-		addImageToImageLoadPromises(mouthImage, imageLoadPromises);
+		manifest.mouth = {};
+
+		if (talent1Draw.mouth.hasBlend) {
+			const mouthBlendImage = createImage(path + id1 + "-mouth-blend" + ext);
+			manifest.mouth.blend = mouthBlendImage;
+			addImageToImageLoadPromises(mouthBlendImage, imageLoadPromises);
+		}
 
 		if (talent1Draw.mouth.hasCutout) {
 			const mouthCutoutImage = createImage(path + id1 + "-mouth-cutout" + ext);
-			manifest.mouthCutout = mouthCutoutImage;
+			manifest.mouth.cutout = mouthCutoutImage;
 			addImageToImageLoadPromises(mouthCutoutImage, imageLoadPromises);
 		}
 	}
@@ -225,7 +229,8 @@ async function drawResult(id1, id2) {
 	const faceCenterX = baseImage.width * talent2Draw.faceCenterX;
 
 	if (imageManifest.mouth) {
-		const mouthImage = imageManifest.mouth;
+		assertImagesAreSameSize(Object.values(imageManifest.mouth));
+		const mouthImage = imageManifest.mouth.blend || imageManifest.mouth.cutout;
 		const mouthWidth = mouthImage.width * talent1Draw.mouth.width;
 		const mouthWidthFace = baseImage.width * talent2Draw.mouth.width;
 		const mouthYFace = baseImage.height * talent2Draw.mouth.y;
@@ -237,14 +242,16 @@ async function drawResult(id1, id2) {
 		);
 		const mouthX = faceCenterX - mouthSize.width * talent1Draw.mouth.x;
 		const mouthY = mouthYFace - mouthSize.height * talent1Draw.mouth.y;
-		ctx.save();
-		ctx.globalCompositeOperation = "difference";
-		ctx.drawImage(mouthImage, mouthX, mouthY, mouthSize.width, mouthSize.height);
-		ctx.restore();
-		if (imageManifest.mouthCutout) {
-			const mouthCutoutImage = imageManifest.mouthCutout;
-			assertImagesAreSameSize([mouthImage, mouthCutoutImage]);
-			ctx.drawImage(mouthCutoutImage, mouthX, mouthY, mouthSize.width, mouthSize.height);
+
+		if (imageManifest.mouth.blend) {
+			ctx.save();
+			ctx.globalCompositeOperation = "difference";
+			ctx.drawImage(imageManifest.mouth.blend, mouthX, mouthY, mouthSize.width, mouthSize.height);
+			ctx.restore();
+		}
+
+		if (imageManifest.mouth.cutout) {
+			ctx.drawImage(imageManifest.mouth.cutout, mouthX, mouthY, mouthSize.width, mouthSize.height);
 		}
 
 		if (imageManifest.nose) {
