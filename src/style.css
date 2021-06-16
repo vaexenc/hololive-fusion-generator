@@ -7,24 +7,19 @@
 }
 
 .no-script {
-	z-index: 10000;
+	display: grid;
+	place-items: center;
 	position: fixed;
+	z-index: 10000;
 	width: 100%;
 	height: 100%;
 	background-color: black;
-	/* background-image: url(""); */
-	background-position: 50% 30%;
-	background-repeat: no-repeat;
-	background-size: 30vmin;
-	image-rendering: crisp-edges;
 }
 
 .no-script__text {
 	color: #dddddd;
-	position: relative;
 	text-align: center;
-	font-size: 3vmin;
-	top: 60%;
+	font-size: 8vmin;
 }
 
 body {
