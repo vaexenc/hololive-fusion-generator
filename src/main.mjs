@@ -362,6 +362,7 @@ function addDropdownEntry(dropdownElement, talentIndex, id) {
 	const appendedEntry = dropdownElement.querySelector(".talent-dropdown-entries").lastElementChild;
 	appendedEntry.dataset.talentIndex = talentIndex;
 	appendedEntry.onclick = onClickDropdownEntry;
+	appendedEntry.onmouseup = onClickDropdownEntry;
 }
 
 function addEnabledTalentsToDropdown(dropdownElement) {
