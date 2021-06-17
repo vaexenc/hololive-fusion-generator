@@ -7,3 +7,4 @@
 desktop.ini
 
 !/dist/images
+!/dist/favicon.ico
