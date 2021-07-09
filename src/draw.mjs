@@ -157,16 +157,6 @@ function drawBg(ctx) {
 	ctx.restore();
 }
 
-// eslint-disable-next-line no-unused-vars
-function drawDebugNames(ctx, id1, id2) {
-	ctx.save();
-	ctx.fillStyle = "black";
-	ctx.font = `${Math.min(ctx.canvas.width*0.08, ctx.canvas.height*0.08)}px Arial`;
-	ctx.textAlign = "left";
-	ctx.fillText(id1 + " " + id2, ctx.canvas.width*0.03, ctx.canvas.height*0.09);
-	ctx.restore();
-}
-
 function createCanvasSameSize(canvas) {
 	const newCanvas = document.createElement("canvas");
 	newCanvas.width = canvas.width;
