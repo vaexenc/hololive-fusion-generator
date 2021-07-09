@@ -125,6 +125,68 @@
 		}
 	},
 
+	"korone": {
+		"enabled": true,
+		"lastName": "inugami",
+		"firstName": "korone",
+		"lastNameBefore": "inu",
+		"lastNameAfter": "gami",
+		"firstNameBefore": "koro",
+		"firstNameAfter": "rone",
+		"drawFirst": {
+			"hair": {
+				"colors": ["#a6706a", "#844d45", "#d39c94"]
+			},
+			"body": {
+				"colors": ["#fae79a", "#ec5f7a", "#7ec9d5", "#d1d8d5"]
+			},
+			"etc": {
+				"colors": ["#ec5f7a", "#7ec9d5"]
+			},
+			"mouth": {
+				"x": 0.5076923076923077,
+				"y": 0.4,
+				"width": 0.8615384615384616,
+				"hasBlend": true
+			},
+			"nose": {
+				"x": 0.4523809523809524,
+				"y": 0.8285714285714286
+			},
+			"eyes": {
+				"areDifferent": false,
+				"left": 0.11,
+				"right": 0.89,
+				"y": 0.49206349206349204
+			}
+		},
+		"drawSecond": {
+			"hair": {
+				"count": 1
+			},
+			"body": {
+				"count": 2
+			},
+			"etc": {
+				"count": 3
+			},
+			"mouth": {
+				"y": 0.376,
+				"width": 0.051
+			},
+			"nose": {
+				"y": 0.342
+			},
+			"eyes": {
+				"sides": "both",
+				"faceCenterXToEyeDistance": 0.038,
+				"width": 0.065,
+				"y": 0.283
+			},
+			"faceCenterX": 0.5
+		}
+	},
+
 	"pekora": {
 		"enabled": true,
 		"lastName": "usada",
