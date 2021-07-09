@@ -103,6 +103,10 @@ function getAspectRatio(width, height) {
 	return width / height;
 }
 
+function degToRad(angle) {
+	return angle * Math.PI / 180;
+}
+
 function proportionalScaleWidth(widthNew, widthOld, heightOld) {
 	const factor = widthNew / widthOld;
 	return {
@@ -180,6 +184,17 @@ async function drawOriginalTalent(canvas, id) {
 	return canvas;
 }
 
+function setRotation(ctx, angle) {
+	if (!angle) return;
+	ctx.save();
+	ctx.rotate(degToRad(angle));
+}
+
+function unsetRotation(ctx, angle) {
+	if (!angle) return;
+	ctx.restore();
+}
+
 async function drawResult(id1, id2) {
 	const canvas = document.createElement("canvas");
 
@@ -227,6 +242,9 @@ async function drawResult(id1, id2) {
 	ctx.drawImage(baseImagePaletteAreasBlackAndWhite, 0, 0);
 
 	const faceCenterX = baseImage.width * talent2Draw.faceCenterX;
+	const rotation = talent2Draw.rotation;
+
+	setRotation(ctx, rotation);
 
 	if (imageManifest.mouth) {
 		assertImagesAreSameSize(Object.values(imageManifest.mouth));
@@ -301,6 +319,8 @@ async function drawResult(id1, id2) {
 			ctx.restore();
 		}
 	}
+
+	unsetRotation(ctx, rotation);
 
 	for (const paletteType of paletteTypes) {
 		if (!imageManifest[paletteType]) continue;
