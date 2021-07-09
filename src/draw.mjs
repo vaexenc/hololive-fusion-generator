@@ -195,6 +195,39 @@ function unsetRotation(ctx, angle) {
 	ctx.restore();
 }
 
+function drawEyes(ctx, imageManifest, talent1Draw, talent2Draw) {
+	assertImagesAreSameSize(Object.values(imageManifest.eyes));
+	const baseImage = imageManifest.baseImage;
+	const faceCenterX = baseImage.width * talent2Draw.faceCenterX;
+	const eyeImage = imageManifest.eyes.left || imageManifest.eyes.right;
+	const eyeWidth = eyeImage.width * (talent1Draw.eyes.right - talent1Draw.eyes.left);
+	const eyeWidthFace = baseImage.width * talent2Draw.eyes.width;
+	const eyeWidthFaceToEyeWidthRatio = eyeWidthFace / eyeWidth;
+	const faceCenterXToEyeDistance = baseImage.width * talent2Draw.eyes.faceCenterXToEyeDistance;
+	const eyeSize = proportionalScaleWidth(
+		eyeWidthFaceToEyeWidthRatio * eyeImage.width,
+		eyeImage.width,
+		eyeImage.height
+	);
+	const eyeY = baseImage.height * talent2Draw.eyes.y - eyeSize.height * talent1Draw.eyes.y;
+	const sides = talent2Draw.eyes.sides;
+
+	if (sides === "both" || sides === "left") {
+		const eyeX = faceCenterX - faceCenterXToEyeDistance - eyeSize.width * talent1Draw.eyes.right;
+		ctx.drawImage(eyeImage, eyeX, eyeY, eyeSize.width, eyeSize.height);
+	}
+
+	if (sides === "both" || sides === "right") {
+		const eyeImage = imageManifest.eyes.right || imageManifest.eyes.left;
+		const eyeX = baseImage.width - faceCenterX - faceCenterXToEyeDistance - eyeSize.width * talent1Draw.eyes.right;
+		ctx.save();
+		ctx.translate(baseImage.width, 0);
+		ctx.scale(-1, 1);
+		ctx.drawImage(eyeImage, eyeX, eyeY, eyeSize.width, eyeSize.height);
+		ctx.restore();
+	}
+}
+
 async function drawResult(id1, id2) {
 	const canvas = document.createElement("canvas");
 
@@ -289,35 +322,8 @@ async function drawResult(id1, id2) {
 		}
 	}
 
-	if (imageManifest.eyes) {
-		assertImagesAreSameSize(Object.values(imageManifest.eyes));
-		const eyeImage = imageManifest.eyes.left || imageManifest.eyes.right;
-		const eyeWidth = eyeImage.width * (talent1Draw.eyes.right - talent1Draw.eyes.left);
-		const eyeWidthFace = baseImage.width * talent2Draw.eyes.width;
-		const eyeWidthFaceToEyeWidthRatio = eyeWidthFace / eyeWidth;
-		const faceCenterXToEyeDistance = baseImage.width * talent2Draw.eyes.faceCenterXToEyeDistance;
-		const eyeSize = proportionalScaleWidth(
-			eyeWidthFaceToEyeWidthRatio * eyeImage.width,
-			eyeImage.width,
-			eyeImage.height
-		);
-		const eyeY = baseImage.height * talent2Draw.eyes.y - eyeSize.height * talent1Draw.eyes.y;
-		const sides = talent2Draw.eyes.sides;
-
-		if (sides === "both" || sides === "left") {
-			const eyeX = faceCenterX - faceCenterXToEyeDistance - eyeSize.width * talent1Draw.eyes.right;
-			ctx.drawImage(eyeImage, eyeX, eyeY, eyeSize.width, eyeSize.height);
-		}
-
-		if (sides === "both" || sides === "right") {
-			const eyeImage = imageManifest.eyes.right || imageManifest.eyes.left;
-			const eyeX = baseImage.width - faceCenterX - faceCenterXToEyeDistance - eyeSize.width * talent1Draw.eyes.right;
-			ctx.save();
-			ctx.translate(baseImage.width, 0);
-			ctx.scale(-1, 1);
-			ctx.drawImage(eyeImage, eyeX, eyeY, eyeSize.width, eyeSize.height);
-			ctx.restore();
-		}
+	if (imageManifest.eyes && !talent2Draw.areEyesOnTop) {
+		drawEyes(ctx, imageManifest, talent1Draw, talent2Draw);
 	}
 
 	unsetRotation(ctx, rotation);
@@ -338,6 +344,10 @@ async function drawResult(id1, id2) {
 			ctx.drawImage(paletteLayer, 0, 0);
 			ctx.restore();
 		}
+	}
+
+	if (imageManifest.eyes && talent2Draw.areEyesOnTop) {
+		drawEyes(ctx, imageManifest, talent1Draw, talent2Draw);
 	}
 
 	return canvas;
