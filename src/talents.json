@@ -125,6 +125,69 @@
 		}
 	},
 
+	"okayu": {
+		"enabled": true,
+		"lastName": "nekomata",
+		"firstName": "okayu",
+		"lastNameBefore": "neko",
+		"lastNameAfter": "mata",
+		"firstNameBefore": "oka",
+		"firstNameAfter": "kayu",
+		"drawFirst": {
+			"hair": {
+				"colors": ["#f7e8ff", "#e7c6ff"]
+			},
+			"body": {
+				"colors": ["#787d80", "#d36aed", "#3a383d"]
+			},
+			"etc": {
+				"colors": ["#d391e8", "#ffffff", "#353535"]
+			},
+			"mouth": {
+				"x": 0.49056603773584906,
+				"y": 0.4,
+				"width": 1.1,
+				"hasCutout": true,
+				"hasBlend": true
+			},
+			"nose": {
+				"x": 0.4642857142857143,
+				"y": 0.8518518518518519
+			},
+			"eyes": {
+				"areDifferent": false,
+				"left": 0.14,
+				"right": 0.91,
+				"y": 0.5402298850574713
+			}
+		},
+		"drawSecond": {
+			"hair": {
+				"count": 1
+			},
+			"body": {
+				"count": 2
+			},
+			"etc": {
+				"count": 1
+			},
+			"mouth": {
+				"y": 0.448,
+				"width": 0.047
+			},
+			"nose": {
+				"y": 0.3980836236933798
+			},
+			"eyes": {
+				"sides": "both",
+				"faceCenterXToEyeDistance": 0.044,
+				"width": 0.087,
+				"y": 0.356
+			},
+			"faceCenterX": 0.4991289198606272
+		}
+	},
+
 	"korone": {
 		"enabled": true,
 		"lastName": "inugami",
