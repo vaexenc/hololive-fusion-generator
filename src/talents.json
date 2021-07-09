@@ -1,4 +1,67 @@
 {
+	"sora": {
+		"enabled": true,
+		"lastName": "tokino",
+		"firstName": "sora",
+		"lastNameBefore": "toki",
+		"lastNameAfter": "kino",
+		"firstNameBefore": "so",
+		"firstNameAfter": "ora",
+		"drawFirst": {
+			"hair": {
+				"colors": ["#865147", "#bc8875", "#c2967e"]
+			},
+			"body": {
+				"colors": ["#868ef8", "#503aa4", "#fc2a73", "#ffffff"]
+			},
+			"etc": {
+				"colors": ["#fc2a73", "#fefdcc"]
+			},
+			"mouth": {
+				"x": 0.48444444444444446,
+				"y": 0.5079365079365079,
+				"width": 0.9333333333333333,
+				"hasBlend": true
+			},
+			"nose": {
+				"x": 0.5299145299145299,
+				"y": 0.5912408759124088
+			},
+			"eyes": {
+				"areDifferent": false,
+				"left": 0.12,
+				"right": 0.9276485788113695,
+				"y": 0.5174825174825175
+			}
+		},
+		"drawSecond": {
+			"hair": {
+				"count": 1
+			},
+			"body": {
+				"count": 2
+			},
+			"etc": {
+				"count": 2
+			},
+			"mouth": {
+				"y": 0.598,
+				"width": 0.06
+			},
+			"nose": {
+				"y": 0.545
+			},
+			"eyes": {
+				"sides": "both",
+				"faceCenterXToEyeDistance": 0.046,
+				"width": 0.091,
+				"y": 0.48
+			},
+			"faceCenterX": 0.38,
+			"rotation": -10.71
+		}
+	},
+
 	"pekora": {
 		"enabled": true,
 		"lastName": "usada",
