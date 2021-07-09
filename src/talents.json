@@ -62,6 +62,69 @@
 		}
 	},
 
+	"haato": {
+		"enabled": true,
+		"lastName": "akai",
+		"firstName": "haato",
+		"lastNameBefore": "aka",
+		"lastNameAfter": "kai",
+		"firstNameBefore": "haa",
+		"firstNameAfter": "aato",
+		"drawFirst": {
+			"hair": {
+				"colors": ["#ffe3ae", "#f9d3a7"]
+			},
+			"body": {
+				"colors": ["#3d70b8", "#de445d", "#fffffd"]
+			},
+			"etc": {
+				"colors": ["#de445d", "#3d70b8", "#ffdb90"]
+			},
+			"mouth": {
+				"x": 0.47651006711409394,
+				"y": 0.6875,
+				"width": 0.8590604026845637,
+				"hasBlend": true
+			},
+			"nose": {
+				"x": 0.711864406779661,
+				"y": 0.525
+			},
+			"eyes": {
+				"areDifferent": false,
+				"left": 0.095,
+				"right": 0.94,
+				"y": 0.49523809523809526
+			}
+		},
+		"drawSecond": {
+			"hair": {
+				"count": 2
+			},
+			"body": {
+				"count": 2
+			},
+			"etc": {
+				"count": 2
+			},
+			"mouth": {
+				"y": 0.3785,
+				"width": 0.043
+			},
+			"nose": {
+				"y": 0.339
+			},
+			"eyes": {
+				"sides": "both",
+				"faceCenterXToEyeDistance": 0.039,
+				"width": 0.0798,
+				"y": 0.29
+			},
+			"faceCenterX": 0.488,
+			"rotation": -1.6
+		}
+	},
+
 	"pekora": {
 		"enabled": true,
 		"lastName": "usada",
