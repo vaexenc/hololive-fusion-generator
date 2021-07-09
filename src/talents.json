@@ -572,7 +572,7 @@
 				"colors": ["#fd622a", "#393e78", "#ffffff", "#f2270a"]
 			},
 			"etc": {
-				"colors": ["#69ebc9", "#febc6e", "#e0f962"]
+				"colors": ["#69ebc9", "#e0f962", "#febc6e"]
 			},
 			"mouth": {
 				"x": 0.49382716049382713,
