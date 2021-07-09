@@ -379,6 +379,7 @@ button {
 	border-radius: 10px;
 	z-index: 900;
 	color: rgb(10%, 10%, 10%);
+	user-select: none;
 }
 
 .info__inner {
@@ -451,6 +452,7 @@ button {
 .info--in {
 	animation-name: info-in;
 	animation-duration: 0.2s;
+	user-select: auto;
 }
 
 .info--out {
