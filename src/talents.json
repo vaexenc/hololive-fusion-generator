@@ -31,8 +31,8 @@
 				},
 				"eyes": {
 					"areDifferent": false,
-					"left": 0.12,
-					"right": 0.9276485788113695,
+					"xLeft": 0.12,
+					"xRight": 0.9276485788113695,
 					"y": 0.5174825174825175
 				}
 			},
@@ -97,8 +97,8 @@
 				},
 				"eyes": {
 					"areDifferent": false,
-					"left": 0.095,
-					"right": 0.94,
+					"xLeft": 0.095,
+					"xRight": 0.94,
 					"y": 0.49523809523809526
 				}
 			},
@@ -164,8 +164,8 @@
 				},
 				"eyes": {
 					"areDifferent": false,
-					"left": 0.14,
-					"right": 0.91,
+					"xLeft": 0.14,
+					"xRight": 0.91,
 					"y": 0.5402298850574713
 				}
 			},
@@ -229,8 +229,8 @@
 				},
 				"eyes": {
 					"areDifferent": false,
-					"left": 0.11,
-					"right": 0.89,
+					"xLeft": 0.11,
+					"xRight": 0.89,
 					"y": 0.49206349206349204
 				}
 			},
@@ -295,8 +295,8 @@
 				},
 				"eyes": {
 					"areDifferent": false,
-					"left": 0.16,
-					"right": 0.89,
+					"xLeft": 0.16,
+					"xRight": 0.89,
 					"y": 0.49044585987261147
 				}
 			},
@@ -357,8 +357,8 @@
 				},
 				"eyes": {
 					"areDifferent": false,
-					"left": 0.2,
-					"right": 0.8976744186046511,
+					"xLeft": 0.2,
+					"xRight": 0.8976744186046511,
 					"y": 0.5
 				}
 			},
@@ -423,8 +423,8 @@
 				},
 				"eyes": {
 					"areDifferent": true,
-					"left": 0.22,
-					"right": 0.93,
+					"xLeft": 0.22,
+					"xRight": 0.93,
 					"y": 0.5418994413407822
 				}
 			},
@@ -488,8 +488,8 @@
 				},
 				"eyes": {
 					"areDifferent": false,
-					"left": 0.11,
-					"right": 0.92,
+					"xLeft": 0.11,
+					"xRight": 0.92,
 					"y": 0.32
 				}
 			},
@@ -553,8 +553,8 @@
 				},
 				"eyes": {
 					"areDifferent": false,
-					"left": 0.15,
-					"right": 0.91,
+					"xLeft": 0.15,
+					"xRight": 0.91,
 					"y": 0.5638297872340425
 				}
 			},
@@ -618,8 +618,8 @@
 				},
 				"eyes": {
 					"areDifferent": false,
-					"left": 0.14583333333333334,
-					"right": 0.95,
+					"xLeft": 0.14583333333333334,
+					"xRight": 0.95,
 					"y": 0.5103448275862069
 				}
 			},
@@ -683,8 +683,8 @@
 				},
 				"eyes": {
 					"areDifferent": false,
-					"left": 0.16037735849056603,
-					"right": 0.9716981132075472,
+					"xLeft": 0.16037735849056603,
+					"xRight": 0.9716981132075472,
 					"y": 0.5
 				}
 			},
@@ -748,8 +748,8 @@
 				},
 				"eyes": {
 					"areDifferent": false,
-					"left": 0.052434456928838954,
-					"right": 0.9737827715355806,
+					"xLeft": 0.052434456928838954,
+					"xRight": 0.9737827715355806,
 					"y": 0.5
 				}
 			},
@@ -810,8 +810,8 @@
 				},
 				"eyes": {
 					"areDifferent": false,
-					"left": 0.20,
-					"right": 0.92,
+					"xLeft": 0.20,
+					"xRight": 0.92,
 					"y": 0.543
 				}
 			},

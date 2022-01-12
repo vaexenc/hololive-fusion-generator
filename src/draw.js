@@ -190,7 +190,7 @@ function drawEyes(ctx, imageManifest, talent1Draw, talent2Draw) {
 	const baseImage = imageManifest.baseImage;
 	const faceCenterX = baseImage.width * talent2Draw.faceCenterX;
 	const eyeImage = imageManifest.eyes.left || imageManifest.eyes.right;
-	const eyeWidth = eyeImage.width * (talent1Draw.eyes.right - talent1Draw.eyes.left);
+	const eyeWidth = eyeImage.width * (talent1Draw.eyes.xRight - talent1Draw.eyes.xLeft);
 	const eyeWidthFace = baseImage.width * talent2Draw.eyes.width;
 	const eyeWidthFaceToEyeWidthRatio = eyeWidthFace / eyeWidth;
 	const faceCenterXToEyeDistance = baseImage.width * talent2Draw.eyes.faceCenterXToEyeDistance;
@@ -203,13 +203,13 @@ function drawEyes(ctx, imageManifest, talent1Draw, talent2Draw) {
 	const sides = talent2Draw.eyes.sides;
 
 	if (sides === "both" || sides === "left") {
-		const eyeX = faceCenterX - faceCenterXToEyeDistance - eyeSize.width * talent1Draw.eyes.right;
+		const eyeX = faceCenterX - faceCenterXToEyeDistance - eyeSize.width * talent1Draw.eyes.xRight;
 		ctx.drawImage(eyeImage, eyeX, eyeY, eyeSize.width, eyeSize.height);
 	}
 
 	if (sides === "both" || sides === "right") {
 		const eyeImage = imageManifest.eyes.right || imageManifest.eyes.left;
-		const eyeX = baseImage.width - faceCenterX - faceCenterXToEyeDistance - eyeSize.width * talent1Draw.eyes.right;
+		const eyeX = baseImage.width - faceCenterX - faceCenterXToEyeDistance - eyeSize.width * talent1Draw.eyes.xRight;
 		ctx.save();
 		ctx.translate(baseImage.width, 0);
 		ctx.scale(-1, 1);
