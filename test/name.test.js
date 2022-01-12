@@ -16,8 +16,8 @@ describe("getFusionStringByIds()", () => {
 		expect(name.getFusionStringByIds("kiara", "calli")).toBe("Takamori Killiope");
 	});
 
-	it("creates 'Morinashi Calliara' from calli and kiara", () => {
-		expect(name.getFusionStringByIds("calli", "kiara")).toBe("Morinashi Calliara");
+	it("creates 'Morinashi Clara' from calli and kiara", () => {
+		expect(name.getFusionStringByIds("calli", "kiara")).toBe("Morinashi Clara");
 	});
 
 	it("creates 'Ninonashi Inara' from ina and kiara", () => {
