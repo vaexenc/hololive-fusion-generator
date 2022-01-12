@@ -22,8 +22,8 @@ function addImageToImageLoadPromises(image, imageLoadPromises) {
 }
 
 async function createImageManifest(id1, id2) {
-	const talent1Draw = getTalentById(id1).drawFirst;
-	const talent2Draw = getTalentById(id2).drawSecond;
+	const talent1Draw = getTalentById(id1).draw.first;
+	const talent2Draw = getTalentById(id2).draw.second;
 	const manifest = {};
 	const imageLoadPromises = [];
 
@@ -227,8 +227,8 @@ async function drawResult(id1, id2) {
 
 	const ctx = canvas.getContext("2d");
 	const imageManifest = await createImageManifest(id1, id2);
-	const talent1Draw = getTalentById(id1).drawFirst;
-	const talent2Draw = getTalentById(id2).drawSecond;
+	const talent1Draw = getTalentById(id1).draw.first;
+	const talent2Draw = getTalentById(id2).draw.second;
 	const baseImage = imageManifest.baseImage;
 	const paletteImages = [];
 
