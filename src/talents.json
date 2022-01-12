@@ -1,5 +1,6 @@
 {
 	"sora": {
+		"id": "sora",
 		"enabled": true,
 		"lastName": "tokino",
 		"firstName": "sora",
@@ -63,6 +64,7 @@
 	},
 
 	"haato": {
+		"id": "haato",
 		"enabled": true,
 		"lastName": "akai",
 		"firstName": "haato",
@@ -126,6 +128,7 @@
 	},
 
 	"okayu": {
+		"id": "okayu",
 		"enabled": true,
 		"lastName": "nekomata",
 		"firstName": "okayu",
@@ -189,6 +192,7 @@
 	},
 
 	"korone": {
+		"id": "korone",
 		"enabled": true,
 		"lastName": "inugami",
 		"firstName": "korone",
@@ -251,6 +255,7 @@
 	},
 
 	"pekora": {
+		"id": "pekora",
 		"enabled": true,
 		"lastName": "usada",
 		"firstName": "pekora",
@@ -311,6 +316,7 @@
 	},
 
 	"coco": {
+		"id": "coco",
 		"enabled": true,
 		"lastName": "kiryu",
 		"firstName": "coco",
@@ -374,6 +380,7 @@
 	},
 
 	"ollie": {
+		"id": "ollie",
 		"enabled": true,
 		"lastName": "kureiji",
 		"firstName": "ollie",
@@ -436,6 +443,7 @@
 	},
 
 	"anya": {
+		"id": "anya",
 		"enabled": true,
 		"lastName": "melfissa",
 		"firstName": "anya",
@@ -498,6 +506,7 @@
 	},
 
 	"calli": {
+		"id": "calli",
 		"enabled": true,
 		"lastName": "mori",
 		"firstName": "calliope",
@@ -560,6 +569,7 @@
 	},
 
 	"kiara": {
+		"id": "kiara",
 		"enabled": true,
 		"lastName": "takanashi",
 		"firstName": "kiara",
@@ -622,6 +632,7 @@
 	},
 
 	"ina": {
+		"id": "ina",
 		"enabled": true,
 		"lastName": "ninomae",
 		"firstName": "ina'nis",
@@ -684,6 +695,7 @@
 	},
 
 	"gura": {
+		"id": "gura",
 		"enabled": true,
 		"lastName": "gawr",
 		"firstName": "gura",
@@ -743,6 +755,7 @@
 	},
 
 	"ame": {
+		"id": "ame",
 		"enabled": true,
 		"lastName": "watson",
 		"firstName": "amelia",
