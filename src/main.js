@@ -329,6 +329,7 @@ function sortDropdownByAlphabet(dropdownElement) {
 }
 
 function onClickDropdownEntry(event) {
+	if (event.button !== 0) return;
 	const entry = event.currentTarget; // not .target, might have clicked on child element (image, name)
 	const talentSelectContainer = getTalentSelectContainerFromChild(entry);
 	setTalentSelectContainerTalentIndex(
