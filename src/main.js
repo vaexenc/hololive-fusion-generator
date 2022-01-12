@@ -5,7 +5,7 @@ import {getFullNameStringById, getFusionStringByIds} from "./name.js";
 import {
 	calculateTalentVariationsEnabled, getTalentCountEnabled, getTalentIdsEnabled
 } from "./talent.js";
-import {drawFusion} from "./draw.mjs";
+import {drawFusion} from "./draw.js";
 
 const $ = document.querySelector.bind(document);
 const dropdownModifierSelectors = [
