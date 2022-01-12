@@ -541,9 +541,9 @@ function initInfo() {
 function main() {
 	initTalentSelect();
 	initResult();
-	update();
 	decideBackground();
 	initInfo();
+	onClickRandomBoth();
 }
 
 main();
