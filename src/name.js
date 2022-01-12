@@ -25,9 +25,7 @@ function concatStringWithoutSameCharInMiddle(string1, string2) {
 }
 
 function getCustomNameTupleString(talent1, talent2) {
-	const talentId1 = talent.getTalentId(talent1);
-	const talentId2 = talent.getTalentId(talent2);
-	return talentId1 + " " + talentId2;
+	return talent1.id + " " + talent2.id;
 }
 
 function returnUndefinedStringOrArgument(string) {
