@@ -601,6 +601,10 @@ button {
 		transform: rotateY(calc(var(--perspective-angle) * -1));
 	}
 
+	.talent-select-image:hover {
+		filter: brightness(1.08);
+	}
+
 	.talent-select-name {
 		font-size: 1.5em;
 	}
