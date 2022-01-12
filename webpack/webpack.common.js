@@ -8,7 +8,7 @@ module.exports = {
 		main: "./src/main.mjs"
 	},
 	output: {
-		path: path.resolve(__dirname, "dist"),
+		path: path.resolve(__dirname, "../dist"),
 		filename: "./bundle-[contenthash].js"
 	},
 	module: {
@@ -37,6 +37,6 @@ module.exports = {
 		new MiniCssExtractPlugin({filename: "style-[contenthash].css"})
 	],
 	devServer: {
-		contentBase: path.join(__dirname, "dist")
+		contentBase: path.join(__dirname, "../dist")
 	}
 };

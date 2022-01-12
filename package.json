@@ -2,9 +2,9 @@
   "name": "hololive-fusion-generator",
   "scripts": {
     "test": "jest --verbose",
-    "build": "webpack --config ./webpack.prod.js",
-    "build:dev": "webpack --config ./webpack.dev.js",
-    "dev": "webpack serve --config ./webpack.dev.js --host 0.0.0.0",
+    "build": "webpack --config ./webpack/webpack.prod.js",
+    "build:dev": "webpack --config ./webpack/webpack.dev.js",
+    "dev": "webpack serve --config ./webpack/webpack.dev.js --host 0.0.0.0",
     "deploy": "npm run build && gh-pages --dist ./dist --message a --no-history"
   },
   "repository": {
