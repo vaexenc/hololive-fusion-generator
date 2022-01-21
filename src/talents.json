@@ -2,12 +2,14 @@
 	"sora": {
 		"id": "sora",
 		"enabled": true,
-		"lastName": "tokino",
-		"firstName": "sora",
-		"lastNameBefore": "toki",
-		"lastNameAfter": "kino",
-		"firstNameBefore": "so",
-		"firstNameAfter": "ora",
+		"name": {
+			"last": "tokino",
+			"first": "sora",
+			"lastBefore": "toki",
+			"lastAfter": "kino",
+			"firstBefore": "so",
+			"firstAfter": "ora"
+		},
 		"draw": {
 			"first": {
 				"hair": {
@@ -68,12 +70,14 @@
 	"haato": {
 		"id": "haato",
 		"enabled": true,
-		"lastName": "akai",
-		"firstName": "haato",
-		"lastNameBefore": "aka",
-		"lastNameAfter": "kai",
-		"firstNameBefore": "haa",
-		"firstNameAfter": "aato",
+		"name": {
+			"last": "akai",
+			"first": "haato",
+			"lastBefore": "aka",
+			"lastAfter": "kai",
+			"firstBefore": "haa",
+			"firstAfter": "aato"
+		},
 		"draw": {
 			"first": {
 				"hair": {
@@ -134,12 +138,14 @@
 	"okayu": {
 		"id": "okayu",
 		"enabled": true,
-		"lastName": "nekomata",
-		"firstName": "okayu",
-		"lastNameBefore": "neko",
-		"lastNameAfter": "mata",
-		"firstNameBefore": "oka",
-		"firstNameAfter": "kayu",
+		"name": {
+			"last": "nekomata",
+			"first": "okayu",
+			"lastBefore": "neko",
+			"lastAfter": "mata",
+			"firstBefore": "oka",
+			"firstAfter": "kayu"
+		},
 		"draw": {
 			"first": {
 				"hair": {
@@ -200,12 +206,14 @@
 	"korone": {
 		"id": "korone",
 		"enabled": true,
-		"lastName": "inugami",
-		"firstName": "korone",
-		"lastNameBefore": "inu",
-		"lastNameAfter": "gami",
-		"firstNameBefore": "koro",
-		"firstNameAfter": "rone",
+		"name": {
+			"last": "inugami",
+			"first": "korone",
+			"lastBefore": "inu",
+			"lastAfter": "gami",
+			"firstBefore": "koro",
+			"firstAfter": "rone"
+		},
 		"draw": {
 			"first": {
 				"hair": {
@@ -265,12 +273,14 @@
 	"pekora": {
 		"id": "pekora",
 		"enabled": true,
-		"lastName": "usada",
-		"firstName": "pekora",
-		"lastNameBefore": "usa",
-		"lastNameAfter": "sada",
-		"firstNameBefore": "peko",
-		"firstNameAfter": "kora",
+		"name": {
+			"last": "usada",
+			"first": "pekora",
+			"lastBefore": "usa",
+			"lastAfter": "sada",
+			"firstBefore": "peko",
+			"firstAfter": "kora"
+		},
 		"draw": {
 			"first": {
 				"hair": {
@@ -328,12 +338,14 @@
 	"coco": {
 		"id": "coco",
 		"enabled": true,
-		"lastName": "kiryu",
-		"firstName": "coco",
-		"lastNameBefore": "ki",
-		"lastNameAfter": "ryu",
-		"firstNameBefore": "coco",
-		"firstNameAfter": "coco",
+		"name": {
+			"last": "kiryu",
+			"first": "coco",
+			"lastBefore": "ki",
+			"lastAfter": "ryu",
+			"firstBefore": "coco",
+			"firstAfter": "coco"
+		},
 		"draw": {
 			"first": {
 				"hair": {
@@ -394,12 +406,14 @@
 	"ollie": {
 		"id": "ollie",
 		"enabled": true,
-		"lastName": "kureiji",
-		"firstName": "ollie",
-		"lastNameBefore": "kurei",
-		"lastNameAfter": "reiji",
-		"firstNameBefore": "olli",
-		"firstNameAfter": "llie",
+		"name": {
+			"last": "kureiji",
+			"first": "ollie",
+			"lastBefore": "kurei",
+			"lastAfter": "reiji",
+			"firstBefore": "olli",
+			"firstAfter": "llie"
+		},
 		"draw": {
 			"first": {
 				"hair": {
@@ -459,12 +473,14 @@
 	"anya": {
 		"id": "anya",
 		"enabled": true,
-		"lastName": "melfissa",
-		"firstName": "anya",
-		"lastNameBefore": "melfi",
-		"lastNameAfter": "fissa",
-		"firstNameBefore": "an",
-		"firstNameAfter": "nya",
+		"name": {
+			"last": "melfissa",
+			"first": "anya",
+			"lastBefore": "melfi",
+			"lastAfter": "fissa",
+			"firstBefore": "an",
+			"firstAfter": "nya"
+		},
 		"draw": {
 			"first": {
 				"hair": {
@@ -524,12 +540,14 @@
 	"calli": {
 		"id": "calli",
 		"enabled": true,
-		"lastName": "mori",
-		"firstName": "calliope",
-		"lastNameBefore": "mori",
-		"lastNameAfter": "mori",
-		"firstNameBefore": "calli",
-		"firstNameAfter": "lliope",
+		"name": {
+			"last": "mori",
+			"first": "calliope",
+			"lastBefore": "mori",
+			"lastAfter": "mori",
+			"firstBefore": "calli",
+			"firstAfter": "lliope"
+		},
 		"draw": {
 			"first": {
 				"hair": {
@@ -589,12 +607,14 @@
 	"kiara": {
 		"id": "kiara",
 		"enabled": true,
-		"lastName": "takanashi",
-		"firstName": "kiara",
-		"lastNameBefore": "taka",
-		"lastNameAfter": "nashi",
-		"firstNameBefore": "kia",
-		"firstNameAfter": "ara",
+		"name": {
+			"last": "takanashi",
+			"first": "kiara",
+			"lastBefore": "taka",
+			"lastAfter": "nashi",
+			"firstBefore": "kia",
+			"firstAfter": "ara"
+		},
 		"draw": {
 			"first": {
 				"hair": {
@@ -654,12 +674,14 @@
 	"ina": {
 		"id": "ina",
 		"enabled": true,
-		"lastName": "ninomae",
-		"firstName": "ina'nis",
-		"lastNameBefore": "nino",
-		"lastNameAfter": "mae",
-		"firstNameBefore": "ina",
-		"firstNameAfter": "'nis",
+		"name": {
+			"last": "ninomae",
+			"first": "ina'nis",
+			"lastBefore": "nino",
+			"lastAfter": "mae",
+			"firstBefore": "ina",
+			"firstAfter": "'nis"
+		},
 		"draw": {
 			"first": {
 				"hair": {
@@ -719,12 +741,14 @@
 	"gura": {
 		"id": "gura",
 		"enabled": true,
-		"lastName": "gawr",
-		"firstName": "gura",
-		"lastNameBefore": "gawr",
-		"lastNameAfter": "gawr",
-		"firstNameBefore": "gu",
-		"firstNameAfter": "ra",
+		"name": {
+			"last": "gawr",
+			"first": "gura",
+			"lastBefore": "gawr",
+			"lastAfter": "gawr",
+			"firstBefore": "gu",
+			"firstAfter": "ra"
+		},
 		"draw": {
 			"first": {
 				"hair": {
@@ -781,12 +805,14 @@
 	"ame": {
 		"id": "ame",
 		"enabled": true,
-		"lastName": "watson",
-		"firstName": "amelia",
-		"lastNameBefore": "watso",
-		"lastNameAfter": "tson",
-		"firstNameBefore": "ame",
-		"firstNameAfter": "melia",
+		"name": {
+			"last": "watson",
+			"first": "amelia",
+			"lastBefore": "watso",
+			"lastAfter": "tson",
+			"firstBefore": "ame",
+			"firstAfter": "melia"
+		},
 		"draw": {
 			"first": {
 				"hair": {

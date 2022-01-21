@@ -1,21 +1,21 @@
 {
 	"calli kiara": {
-		"lastName": "morinashi",
-		"firstName": "clara"
+		"last": "morinashi",
+		"first": "clara"
 	},
 
 	"kiara calli": {
-		"lastName": "takamori",
-		"firstName": "killiope"
+		"last": "takamori",
+		"first": "killiope"
 	},
 
 	"ame gura": {
-		"lastName": "watsogawr",
-		"firstName": "amesame"
+		"last": "watsogawr",
+		"first": "amesame"
 	},
 
 	"gura ame": {
-		"lastName": "gawrtson",
-		"firstName": "gurame"
+		"last": "gawrtson",
+		"first": "gurame"
 	}
 }

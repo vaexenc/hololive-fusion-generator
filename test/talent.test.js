@@ -15,26 +15,26 @@ describe("getTalentById()", () => {
 
 	it("works with 'calli'", () => {
 		const t = talent.getTalentById("calli");
-		expect(t.lastName).toEqual("mori");
-		expect(t.firstName).toEqual("calliope");
+		expect(t.name.last).toEqual("mori");
+		expect(t.name.first).toEqual("calliope");
 	});
 
 	it("works with 'ina'", () => {
 		const t = talent.getTalentById("ina");
-		expect(t.lastName).toEqual("ninomae");
-		expect(t.firstName).toEqual("ina'nis");
+		expect(t.name.last).toEqual("ninomae");
+		expect(t.name.first).toEqual("ina'nis");
 	});
 
 	it("works with 'ame'", () => {
 		const t = talent.getTalentById("gura");
-		expect(t.lastName).toEqual("gawr");
-		expect(t.firstName).toEqual("gura");
+		expect(t.name.last).toEqual("gawr");
+		expect(t.name.first).toEqual("gura");
 	});
 
 	it("works with 'pekora'", () => {
 		const t = talent.getTalentById("pekora");
-		expect(t.lastName).toEqual("usada");
-		expect(t.firstName).toEqual("pekora");
+		expect(t.name.last).toEqual("usada");
+		expect(t.name.first).toEqual("pekora");
 	});
 
 	it("doesn't return an array", () => {

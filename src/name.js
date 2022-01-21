@@ -2,8 +2,8 @@ const customNames = require("./customNames.json");
 const talent = require("./talent");
 
 const NameType = {
-	LAST_NAME: "lastName",
-	FIRST_NAME: "firstName"
+	LAST_NAME: "last",
+	FIRST_NAME: "first"
 };
 
 function changeFirstCharToUppercase(string) {
@@ -34,8 +34,8 @@ function returnUndefinedStringOrArgument(string) {
 
 function getTalentFullName(talent) {
 	return {
-		lastName: changeFirstCharToUppercase(talent.lastName),
-		firstName: changeFirstCharToUppercase(talent.firstName)
+		last: changeFirstCharToUppercase(talent.name.last),
+		first: changeFirstCharToUppercase(talent.name.first)
 	};
 }
 
@@ -55,17 +55,17 @@ function fuseTalentNameChunks(chunkBefore, chunkAfter, talent1Name, talent2Name)
 
 function fuseTalentNamesOfSameType(talent1, talent2, nameType) {
 	return fuseTalentNameChunks(
-		talent1[nameType + "Before"],
-		talent2[nameType + "After"],
-		talent1[nameType],
-		talent2[nameType]
+		talent1.name[nameType + "Before"],
+		talent2.name[nameType + "After"],
+		talent1.name[nameType],
+		talent2.name[nameType]
 	);
 }
 
 function fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, nameType) {
-	if (talent1[nameType] && talent2[nameType])
+	if (talent1.name[nameType] && talent2.name[nameType])
 		return fuseTalentNamesOfSameType(talent1, talent2, nameType);
-	return talent1[nameType] || talent2[nameType];
+	return talent1.name[nameType] || talent2.name[nameType];
 }
 
 function fuseTalentFullNames(talent1, talent2) {
@@ -75,8 +75,8 @@ function fuseTalentFullNames(talent1, talent2) {
 	if (customName)
 		return customName;
 	return {
-		lastName: fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, NameType.LAST_NAME),
-		firstName: fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, NameType.FIRST_NAME)
+		last: fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, NameType.LAST_NAME),
+		first: fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, NameType.FIRST_NAME)
 	};
 }
 
@@ -87,17 +87,17 @@ function fuseTalentFullNamesById(id1, id2) {
 	);
 }
 
-function getFullNameString(talentOrFullName) {
+function getFullNameString(nameObj) {
 	const fullName = [];
-	for (const nameType of ["lastName", "firstName"]) {
-		if (talentOrFullName[nameType])
-			fullName.push(changeFirstCharToUppercase(talentOrFullName[nameType]));
+	for (const nameType of ["last", "first"]) {
+		if (nameObj[nameType])
+			fullName.push(changeFirstCharToUppercase(nameObj[nameType]));
 	}
 	return fullName.join(" ");
 }
 
 function getFullNameStringById(id) {
-	return getFullNameString(talent.getTalentById(id));
+	return getFullNameString(talent.getTalentById(id).name);
 }
 
 function getFusionStringByIds(id1, id2) {
