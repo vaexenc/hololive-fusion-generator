@@ -37,6 +37,8 @@ module.exports = {
 		new MiniCssExtractPlugin({filename: "style-[contenthash].css"})
 	],
 	devServer: {
-		contentBase: path.join(__dirname, "../dist")
+		static: {
+			directory: path.join(__dirname, "../dist")
+		}
 	}
 };
