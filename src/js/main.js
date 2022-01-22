@@ -2,11 +2,10 @@ import "../style.css";
 import {$, cloneNode, resetCSSAnimation} from "./browser-util.js";
 import {getRandomInt, getRandomIntUnique, mod} from "./lib/util.js";
 import {getFullNameStringById, getFusionStringByIds} from "./lib/name.js";
-import {
-	calculateTalentVariationsEnabled, getTalentCountEnabled, getTalentIdsEnabled
-} from "./lib/talent.js";
+import {getTalentIdsEnabled} from "./lib/talent.js";
 import {drawFusion} from "./draw.js";
-import {cycleBackgroundForwards, cycleBackgroundBackwards, setBackgroundRandomDifferent, decideBackground} from "./background.js";
+import {decideBackground} from "./background.js";
+import {initInfo} from "./info.js";
 import "no-darkreader";
 
 // ------------------------------------------------------------------
@@ -406,55 +405,6 @@ function updateTalentSelectDropdown(talentSelectContainer) {
 	const entryOfCurrentTalent = getDropdownEntryOfCurrentlySelectedTalent(talentSelectContainer);
 	highlightDropdownEntry(entryOfCurrentTalent);
 	scrollToDropdownEntry(entryOfCurrentTalent);
-}
-
-// ------------------------------------------------------------------
-// INFO
-// ------------------------------------------------------------------
-
-function showInfo() {
-	$(".info").classList.remove("info--out");
-	$(".info").classList.add("info--in");
-}
-
-function hideInfo() {
-	$(".info").classList.remove("info--in");
-	$(".info").classList.add("info--out");
-}
-
-function initInfo() {
-	const classList = $(".info").classList;
-
-	$(".info-button").onclick = (event) => {
-		if (classList.contains("info--in")) return;
-		showInfo();
-		event.stopPropagation();
-	};
-
-	window.onkeydown = (event) => {
-		if (classList.contains("info--in") && event.key === "Escape") {
-			hideInfo();
-		}
-	};
-
-	window.onclick = () => {
-		if (!classList.contains("info--in")) return;
-		hideInfo();
-	};
-
-	$(".info__close").onclick = () => {
-		hideInfo();
-	};
-
-	$(".info").onclick = (event) => {
-		event.stopPropagation();
-	};
-
-	$(".background-forwards").onclick = () => cycleBackgroundForwards();
-	$(".background-backwards").onclick = () => cycleBackgroundBackwards();
-	$(".background-random").onclick = () => setBackgroundRandomDifferent();
-	$(".current-progress").innerHTML = getTalentCountEnabled();
-	$(".possible-variations").innerHTML = calculateTalentVariationsEnabled();
 }
 
 // ------------------------------------------------------------------
