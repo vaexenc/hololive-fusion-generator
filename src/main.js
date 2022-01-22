@@ -6,6 +6,7 @@ import {
 	calculateTalentVariationsEnabled, getTalentCountEnabled, getTalentIdsEnabled
 } from "./talent.js";
 import {drawFusion} from "./draw.js";
+import "no-darkreader";
 
 const $ = document.querySelector.bind(document);
 const dropdownModifierSelectors = [
