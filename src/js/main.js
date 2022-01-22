@@ -1,14 +1,14 @@
 import "../style.css";
-import {backgroundImages} from "./lib/backgroundImages.js";
+import {$} from "./browser-util.js";
 import {getRandomInt, getRandomIntUnique, mod} from "./lib/util.js";
 import {getFullNameStringById, getFusionStringByIds} from "./lib/name.js";
 import {
 	calculateTalentVariationsEnabled, getTalentCountEnabled, getTalentIdsEnabled
 } from "./lib/talent.js";
 import {drawFusion} from "./draw.js";
+import {cycleBackgroundForwards, cycleBackgroundBackwards, setBackgroundRandomDifferent, decideBackground} from "./background.js";
 import "no-darkreader";
 
-const $ = document.querySelector.bind(document);
 const dropdownModifierSelectors = [
 	".talent-dropdown",
 	".talent-select-button-imgs",
@@ -17,7 +17,6 @@ const dropdownModifierSelectors = [
 ];
 const talentIds = getTalentIdsEnabled();
 const talentSelectContainers = [];
-let backgroundIndex;
 
 // ------------------------------------------------------------------
 // GENERAL
@@ -420,70 +419,6 @@ function updateTalentSelectDropdown(talentSelectContainer) {
 	const entryOfCurrentTalent = getDropdownEntryOfCurrentlySelectedTalent(talentSelectContainer);
 	highlightDropdownEntry(entryOfCurrentTalent);
 	scrollToDropdownEntry(entryOfCurrentTalent);
-}
-
-// ------------------------------------------------------------------
-// BACKGROUND
-// ------------------------------------------------------------------
-
-function deleteSavedBackgroundIndex() {
-	localStorage.removeItem("backgroundIndex");
-}
-
-function setBackground(index) {
-	backgroundIndex = index;
-	$(".background").style.setProperty("--image-url", `url(images/backgrounds/${backgroundImages[index]})`);
-}
-
-function setBackgroundRandom() {
-	setBackground(getRandomInt(backgroundImages.length));
-	deleteSavedBackgroundIndex();
-}
-
-function setBackgroundRandomDifferent() {
-	const newBackgroundIndex = getRandomIntUnique(backgroundImages.length, backgroundIndex);
-	setBackground(newBackgroundIndex);
-	deleteSavedBackgroundIndex();
-}
-
-function saveCurrentBackgroundIndex() {
-	localStorage.setItem("backgroundIndex", backgroundIndex);
-}
-
-function loadSavedBackgroundIndex() {
-	const index = localStorage.getItem("backgroundIndex");
-	if (typeof index === "string" && index.match(/^\d+/))
-		return parseInt(index);
-}
-
-function keepBackgroundIndexWithinBounds(index) {
-	return mod(index, backgroundImages.length);
-}
-
-function isBackgroundIndexValid(index) {
-	if (typeof index !== "number" || index < 0 || index >= backgroundImages.length)
-		return false;
-	return true;
-}
-
-function cycleBackgroundForwards() {
-	backgroundIndex = keepBackgroundIndexWithinBounds(++backgroundIndex);
-	setBackground(backgroundIndex);
-	saveCurrentBackgroundIndex(backgroundIndex);
-}
-
-function cycleBackgroundBackwards() {
-	backgroundIndex = keepBackgroundIndexWithinBounds(--backgroundIndex);
-	setBackground(backgroundIndex);
-	saveCurrentBackgroundIndex(backgroundIndex);
-}
-
-function decideBackground() {
-	const saved = loadSavedBackgroundIndex();
-	if (!isBackgroundIndexValid(saved))
-		setBackgroundRandom();
-	else
-		setBackground(saved);
 }
 
 // ------------------------------------------------------------------
