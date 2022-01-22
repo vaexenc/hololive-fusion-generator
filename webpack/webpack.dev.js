@@ -11,7 +11,10 @@ module.exports = merge(common, {
 		static: {
 			directory: path.resolve(__dirname, "../dist")
 		},
-		watchFiles: ["src"]
+		watchFiles: ["src/*", "static/*"],
+		devMiddleware: {
+			writeToDisk: true
+		}
 	}
 	// devtool: false,
 });

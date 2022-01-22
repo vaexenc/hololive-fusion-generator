@@ -12,7 +12,7 @@ function bgFilenameSort(a, b) {
 	return 1;
 }
 
-const bgFilenames = fs.readdirSync("./dist/images/backgrounds");
+const bgFilenames = fs.readdirSync("./static/images/backgrounds");
 const bgFilenamesSorted = bgFilenames.sort(bgFilenameSort);
 
 module.exports = () => {
