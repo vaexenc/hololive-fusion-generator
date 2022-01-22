@@ -14,6 +14,7 @@
   "private": true,
   "dependencies": {
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^10.2.1",
     "css-loader": "^6.5.1",
     "css-minimizer-webpack-plugin": "^3.4.1",
     "gh-pages": "^3.2.3",
