@@ -9,11 +9,9 @@ module.exports = merge(common, {
 	},
 	devServer: {
 		static: {
-			directory: path.resolve(__dirname, "../dist")
+			directory: path.resolve(__dirname, "../static"),
+			watch: true
 		},
-		watchFiles: ["src/*", "static/*"],
-		devMiddleware: {
-			writeToDisk: true
-		}
+		watchFiles: ["src", "static"]
 	}
 });

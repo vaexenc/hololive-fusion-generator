@@ -1,4 +1,3 @@
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -10,7 +9,8 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, "../dist"),
-		filename: "./bundle-[contenthash].js"
+		filename: "./bundle-[contenthash].js",
+		clean: true
 	},
 	module: {
 		rules: [
@@ -33,7 +33,6 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({template: "./src/index.html"}),
 		new MiniCssExtractPlugin({filename: "style-[contenthash].css"}),
 		new CopyWebpackPlugin({patterns: [{from: "static"}]})
