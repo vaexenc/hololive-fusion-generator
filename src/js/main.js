@@ -9,26 +9,16 @@ import {drawFusion} from "./draw.js";
 import {cycleBackgroundForwards, cycleBackgroundBackwards, setBackgroundRandomDifferent, decideBackground} from "./background.js";
 import "no-darkreader";
 
-const dropdownModifierSelectors = [
-	".talent-dropdown",
-	".talent-select-button-imgs",
-	".talent-select-name",
-	".talent-select-image"
-];
+// ------------------------------------------------------------------
+// TALENT SELECT, TALENT RESULT
+// ------------------------------------------------------------------
+
 const talentIds = getTalentIdsEnabled();
 const talentSelectContainers = [];
-
-// ------------------------------------------------------------------
-// GENERAL
-// ------------------------------------------------------------------
 
 function keepTalentIndexWithinBounds(talentIndex) {
 	return mod(talentIndex, talentIds.length);
 }
-
-// ------------------------------------------------------------------
-// TALENT SELECT, TALENT RESULT
-// ------------------------------------------------------------------
 
 function createAndInsertTalentSelectContainerElements() {
 	const template = $(".template-talent-select");
@@ -222,6 +212,13 @@ function update() {
 // ------------------------------------------------------------------
 // TALENT SELECT DROPDOWN
 // ------------------------------------------------------------------
+
+const dropdownModifierSelectors = [
+	".talent-dropdown",
+	".talent-select-button-imgs",
+	".talent-select-name",
+	".talent-select-image"
+];
 
 function getDropdownEntry(dropdownElement, talentIndex) {
 	return dropdownElement.querySelector(`[data-talent-index="${talentIndex}"]`);
