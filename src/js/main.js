@@ -1,5 +1,5 @@
 import "../style.css";
-import {$} from "./browser-util.js";
+import {$, cloneNode, resetCSSAnimation} from "./browser-util.js";
 import {getRandomInt, getRandomIntUnique, mod} from "./lib/util.js";
 import {getFullNameStringById, getFusionStringByIds} from "./lib/name.js";
 import {
@@ -24,16 +24,6 @@ const talentSelectContainers = [];
 
 function keepTalentIndexWithinBounds(talentIndex) {
 	return mod(talentIndex, talentIds.length);
-}
-
-function cloneNode(template) {
-	return template.content.cloneNode(true);
-}
-
-function resetCSSAnimation(element) {
-	element.style.animation = "none";
-	element.offsetHeight; // trigger reflow
-	element.style.animation = null;
 }
 
 // ------------------------------------------------------------------
