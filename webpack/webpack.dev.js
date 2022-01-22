@@ -16,5 +16,4 @@ module.exports = merge(common, {
 			writeToDisk: true
 		}
 	}
-	// devtool: false,
 });
