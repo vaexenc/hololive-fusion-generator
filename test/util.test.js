@@ -1,4 +1,4 @@
-const util = require("../src/util");
+const util = require("../src/js/lib/util");
 
 describe("calculateVariations()", () => {
 	it("seems to work", () => {

@@ -1,10 +1,10 @@
-import "./style.css";
-import {backgroundImages} from "./backgroundImages.js";
-import {getRandomInt, getRandomIntUnique, mod} from "./util.js";
-import {getFullNameStringById, getFusionStringByIds} from "./name.js";
+import "../style.css";
+import {backgroundImages} from "./lib/backgroundImages.js";
+import {getRandomInt, getRandomIntUnique, mod} from "./lib/util.js";
+import {getFullNameStringById, getFusionStringByIds} from "./lib/name.js";
 import {
 	calculateTalentVariationsEnabled, getTalentCountEnabled, getTalentIdsEnabled
-} from "./talent.js";
+} from "./lib/talent.js";
 import {drawFusion} from "./draw.js";
 import "no-darkreader";
 

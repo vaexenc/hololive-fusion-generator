@@ -1,4 +1,4 @@
-const customNames = require("./customNames.json");
+const customNames = require("../json/customNames.json");
 const talent = require("./talent");
 
 const NameType = {

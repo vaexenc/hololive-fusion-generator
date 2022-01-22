@@ -1,5 +1,5 @@
-const talent = require("../src/talent");
-const util = require("../src/util");
+const talent = require("../src/js/lib/talent");
+const util = require("../src/js/lib/util");
 
 describe("getTalentById()", () => {
 	it("always returns the same object when called with the same id", () => {

@@ -1,4 +1,4 @@
-import {getTalentById} from "./talent.js";
+import {getTalentById} from "./lib/talent.js";
 
 const path = "images/talents/";
 const ext = ".webp";

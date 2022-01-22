@@ -1,4 +1,4 @@
-const talents = require("./talents.json");
+const talents = require("../json/talents.json");
 const util = require("./util");
 
 function getTalentById(id) {

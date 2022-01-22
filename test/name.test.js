@@ -1,5 +1,5 @@
-const name = require("../src/name");
-const talent = require("../src/talent");
+const name = require("../src/js/lib/name");
+const talent = require("../src/js/lib/talent");
 
 describe("getFullNameStringById()", () => {
 	it("returns 'Gawr Gura' on 'gura'", () => {
