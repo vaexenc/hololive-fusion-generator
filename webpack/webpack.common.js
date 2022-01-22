@@ -38,7 +38,8 @@ module.exports = {
 	],
 	devServer: {
 		static: {
-			directory: path.join(__dirname, "../dist")
-		}
+			directory: path.resolve(__dirname, "../dist")
+		},
+		watchFiles: ["src"]
 	}
 };
