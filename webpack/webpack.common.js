@@ -35,11 +35,5 @@ module.exports = {
 		new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ["**/*", "!images/**", "!favicon.ico"]}),
 		new HtmlWebpackPlugin({template: "./src/index.html"}),
 		new MiniCssExtractPlugin({filename: "style-[contenthash].css"})
-	],
-	devServer: {
-		static: {
-			directory: path.resolve(__dirname, "../dist")
-		},
-		watchFiles: ["src"]
-	}
+	]
 };
