@@ -660,6 +660,11 @@ button {
 		height: 2.4em;
 		margin-left: 0.15em;
 		margin-right: 0.15em;
+		transition: transform 0.035s;
+	}
+
+	.button-img:hover {
+		transform: scale(1.2);
 	}
 
 	.result-box {
