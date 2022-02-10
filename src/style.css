@@ -382,7 +382,20 @@ button {
 	user-select: none;
 }
 
+.info::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: 10px;
+	background-image: url("images/mogu.webp");
+	background-repeat: no-repeat;
+	background-size: 60%;
+	background-position: 101% 101%;
+	opacity: 0.45;
+}
+
 .info__inner {
+	position: relative;
 	width: 100%;
 	max-height: 60vh;
 	overflow: auto;
@@ -691,6 +704,11 @@ button {
 	.info {
 		max-width: 60ch;
 		padding-left: 1em;
+	}
+
+	.info::before {
+		background-size: 50%;
+		background-position: 105% 105%;
 	}
 
 	.info ul {
