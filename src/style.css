@@ -736,7 +736,11 @@ button {
 
 	.info {
 		max-width: 60ch;
+	}
+
+	.info__inner {
 		padding-left: 1em;
+		padding-right: 1em;
 	}
 
 	.info::before {
