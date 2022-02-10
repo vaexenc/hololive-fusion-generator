@@ -364,6 +364,7 @@ button {
 }
 
 .info {
+	--border-radius: 10px;
 	visibility: hidden;
 	opacity: 0;
 	animation-fill-mode: forwards;
@@ -376,7 +377,7 @@ button {
 	padding-top: 2.2em;
 	background-color: whitesmoke;
 	box-shadow: 0 0 7vmin rgba(0, 0, 0, 0.9);
-	border-radius: 10px;
+	border-radius: var(--border-radius);
 	z-index: 900;
 	color: rgb(10%, 10%, 10%);
 	user-select: none;
@@ -386,7 +387,7 @@ button {
 	content: '';
 	position: absolute;
 	inset: 0;
-	border-radius: 10px;
+	border-radius: var(--border-radius);
 	background-image: url("images/mogu.webp");
 	background-repeat: no-repeat;
 	background-size: 60%;
