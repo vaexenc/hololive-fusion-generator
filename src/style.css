@@ -462,6 +462,10 @@ button {
 	font-weight: bold;
 }
 
+.info a:hover {
+	color: rgb(121, 121, 121);
+}
+
 .info--in {
 	animation-name: info-in;
 	animation-duration: 0.2s;
