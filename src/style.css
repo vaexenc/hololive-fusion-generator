@@ -395,6 +395,23 @@ button {
 	opacity: 0.45;
 }
 
+.info::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: var(--border-radius);
+	background-image: url("images/loading-indicator.webp");
+	background-repeat: no-repeat;
+	background-size: 20%;
+	background-position: 100% 98%;
+	pointer-events: none;
+	animation-name: info-ame;
+	animation-duration: 30s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	transform: scaleX(-1)
+}
+
 .info__inner {
 	position: relative;
 	width: 100%;
@@ -514,6 +531,16 @@ button {
 		opacity: 0;
 		visibility: hidden;
 		transform: translate(-50%, -50%) scale(0.8);
+	}
+}
+
+@keyframes info-ame {
+	0% {
+		background-position: 400% 98%;
+	}
+
+	100% {
+		background-position: -400% 98%;
 	}
 }
 
@@ -715,6 +742,11 @@ button {
 	.info::before {
 		background-size: 50%;
 		background-position: 105% 105%;
+	}
+
+	.info::after {
+		background-size: 12%;
+		animation-duration: 50s;
 	}
 
 	.info ul {
