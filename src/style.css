@@ -431,6 +431,7 @@ button {
 	margin-bottom: 0;
 	background-color: inherit;
 	font-weight: bold;
+	cursor: pointer;
 }
 
 .info .background-button:hover {
