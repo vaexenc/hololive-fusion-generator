@@ -1,106 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Create fusions of Hololive members.">
-	<meta name="author" content="vaexenc">
-	<meta name="darkreader" content="NO-DARKREADER-PLUGIN">
-	<meta property="og:title" content="Hololive Fusion Generator">
-	<meta property="og:description" content="Create fusions of Hololive members.">
-	<meta property="og:image" content="https://i.imgur.com/Wp7GA2B.png">
-	<meta property="twitter:card" content="summary">
-	<meta property="twitter:image" content="https://i.imgur.com/Wp7GA2B.png">
-	<meta property="twitter:title" content="Hololive Fusion Generator">
-	<meta property="twitter:creator" content="@vaexenc">
-	<title>Hololive Fusion Generator</title>
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
-</head>
-<body>
-	<template class="template-talent-select">
-		<section class="talent-select-container">
-			<div class="talent-select-box box">
-				<div class="talent-select-content">
-					<div class="talent-select-image"></div>
-					<div class="talent-dropdown">
-						<div class="talent-dropdown-content">
-							<div class="talent-dropdown-entries"></div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Create fusions of Hololive members." />
+		<meta name="author" content="vaexenc" />
+		<meta name="darkreader" content="NO-DARKREADER-PLUGIN" />
+		<meta property="og:title" content="Hololive Fusion Generator" />
+		<meta property="og:description" content="Create fusions of Hololive members." />
+		<meta property="og:image" content="https://i.imgur.com/Wp7GA2B.png" />
+		<meta property="twitter:card" content="summary" />
+		<meta property="twitter:image" content="https://i.imgur.com/Wp7GA2B.png" />
+		<meta property="twitter:title" content="Hololive Fusion Generator" />
+		<meta property="twitter:creator" content="@vaexenc" />
+		<title>Hololive Fusion Generator</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lato:wght@100;300;400;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+	</head>
+	<body>
+		<template class="template-talent-select">
+			<section class="talent-select-container">
+				<div class="talent-select-box box">
+					<div class="talent-select-content">
+						<div class="talent-select-image"></div>
+						<div class="talent-dropdown">
+							<div class="talent-dropdown-content">
+								<div class="talent-dropdown-entries"></div>
+							</div>
+						</div>
+						<div class="talent-select-name">
+							<div class="talent-select-name__name name">Name here</div>
+						</div>
+						<div class="talent-select-button-imgs">
+							<button class="button-img button-img-up" title="Previous"></button>
+							<button class="button-img button-img-down" title="Next"></button>
+							<button class="button-img button-img-random" title="Random"></button>
 						</div>
 					</div>
-					<div class="talent-select-name">
-						<div class="talent-select-name__name name">Name here</div>
-					</div>
-					<div class="talent-select-button-imgs">
-						<button class="button-img button-img-up" title="Previous"></button>
-						<button class="button-img button-img-down" title="Next"></button>
-						<button class="button-img button-img-random" title="Random"></button>
+				</div>
+			</section>
+		</template>
+		<template class="template-talent-dropdown-entry">
+			<div class="talent-dropdown-entries__entry" data-talent-index="">
+				<div class="talent-dropdown-entries__entry__image"></div>
+				<div class="talent-dropdown-entries__entry__name"></div>
+			</div>
+		</template>
+		<noscript>
+			<div class="no-script">
+				<p class="no-script__text">(´・ω・`)<br />Please enable Javascript</p>
+			</div>
+		</noscript>
+		<div class="background"></div>
+		<header class="header">
+			<div class="header__title">hololive fusion generator</div>
+			<button class="info-button"></button>
+		</header>
+		<div class="main">
+			<section class="result-box box">
+				<canvas class="result-canvas" width="800" height="800"></canvas>
+				<div class="result-name name">Name here</div>
+				<div class="result-button-imgs">
+					<button class="button-img button-img-swap" title="Swap"></button>
+					<button class="button-img button-img-random" title="Random"></button>
+					<div class="result-button-imgs__screenshot">
+						<button class="button-img button-img-screenshot"></button>
 					</div>
 				</div>
+			</section>
+		</div>
+		<section class="info">
+			<button class="info__close"></button>
+			<div class="info__inner">
+				<h1>Background Switcher</h1>
+				<button class="background-button background-backwards">&lt; prev</button>
+				<button class="background-button background-forwards">next &gt;</button>
+				<button class="background-button background-random">random</button>
+				<h1>Info</h1>
+				<ul>
+					<li>
+						Current development progress:
+						<span style="white-space: nowrap"
+							><span class="current-progress"></span> / 50+ talents</span
+						>
+					</li>
+					<li>
+						Possible combinations:
+						<span class="possible-variations"></span>
+					</li>
+				</ul>
+				<h1>Credits</h1>
+				<ul>
+					<li>
+						Made by venaura (vaexenc) (<a
+							href="https://github.com/vaexenc/hololive-fusion-generator"
+							>Repository</a
+						>, <a href="https://twitter.com/vaexenc">Twitter</a>)
+					</li>
+					<li>
+						smol ame graphics by
+						<a href="https://twitter.com/walfieee">Walfie</a>
+					</li>
+					<li>
+						Okayu sprite from
+						<a href="https://www.youtube.com/watch?v=j6P_m6adkgc">もぐもぐYUMMY！</a>
+					</li>
+					<li>
+						Background graphics:
+						<ul>
+							<li>
+								<a href="https://www.youtube.com/watch?v=DlZYG2NVaqo"
+									>Hololive Alternative 30 sec teaser video</a
+								>
+							</li>
+							<li>
+								<a href="https://www.youtube.com/watch?v=3RxlzJWWzdY"
+									>Hololive Alternative full teaser video</a
+								>
+							</li>
+							<li>
+								<a href="https://alt.hololive.tv/en"
+									>Hololive Alternative website</a
+								>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="https://en.hololive.tv">Hololive</a>
+						/
+						<a href="https://cover-corp.com/">Cover Corporation</a>
+					</li>
+					<li>
+						Inspired by
+						<a href="https://pokemon.alexonsager.net/">Pokemon Fusion</a>
+					</li>
+				</ul>
+				<br />
+				<p>This is an independent fan project and is not affiliated with Hololive.</p>
 			</div>
 		</section>
-	</template>
-
-	<template class="template-talent-dropdown-entry">
-		<div class="talent-dropdown-entries__entry" data-talent-index="">
-			<div class="talent-dropdown-entries__entry__image"></div>
-			<div class="talent-dropdown-entries__entry__name"></div>
-		</div>
-	</template>
-
-	<noscript>
-		<div class="no-script"><p class="no-script__text">(´・ω・`)<br>Please enable Javascript</p></div>
-	</noscript>
-
-	<div class="background"></div>
-	<header class="header">
-		<div class="header__title">hololive fusion generator</div>
-		<button class="info-button"></button>
-	</header>
-	<div class="main">
-		<section class="result-box box">
-			<canvas class="result-canvas" width="800" height="800"></canvas>
-			<div class="result-name name">Name here</div>
-			<div class="result-button-imgs">
-				<button class="button-img button-img-swap" title="Swap"></button>
-				<button class="button-img button-img-random" title="Random"></button>
-				<div class="result-button-imgs__screenshot">
-					<button class="button-img button-img-screenshot">
-				</div>
-			</div>
-		</section>
-	</div>
-	<section class="info">
-		<button class="info__close"></button>
-		<div class="info__inner">
-			<h1>Background Switcher</h1>
-			<button class="background-button background-backwards">&lt; prev</button>
-			<button class="background-button background-forwards">next &gt;</button>
-			<button class="background-button background-random">random</button>
-			<h1>Info</h1>
-			<ul>
-				<li>Current development progress: <span style="white-space: nowrap;"><span class="current-progress"></span> / 50+ talents</span></li>
-				<li>Possible combinations: <span class="possible-variations"></span></li>
-			</ul>
-			<h1>Credits</h1>
-			<ul>
-				<li>Made by venaura (vaexenc) (<a href="https://github.com/vaexenc/hololive-fusion-generator">Repository</a>, <a href="https://twitter.com/vaexenc">Twitter</a>)</li>
-				<li>smol ame graphics by <a href="https://twitter.com/walfieee">Walfie</a></li>
-				<li>Okayu sprite from <a href="https://www.youtube.com/watch?v=j6P_m6adkgc">もぐもぐYUMMY！</a></li>
-				<li>Background graphics:
-					<ul>
-						<li><a href="https://www.youtube.com/watch?v=DlZYG2NVaqo">Hololive Alternative 30 sec teaser video</a></li>
-						<li><a href="https://www.youtube.com/watch?v=3RxlzJWWzdY">Hololive Alternative full teaser video</a></li>
-						<li><a href="https://alt.hololive.tv/en">Hololive Alternative website</a></li>
-					</ul>
-				</li>
-				<li><a href="https://en.hololive.tv">Hololive</a> / <a href="https://cover-corp.com/">Cover Corporation</a></li>
-				<li>Inspired by <a href="https://pokemon.alexonsager.net/">Pokemon Fusion</a></li>
-			</ul>
-			<br>
-			<p>This is an independent fan project and is not affiliated with Hololive.</p>
-		</div>
-	</section>
-</body>
+	</body>
 </html>

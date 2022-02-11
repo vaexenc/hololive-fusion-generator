@@ -29,7 +29,8 @@ body {
 }
 
 /* weird preload hack, fixes flickering when changing info-button image
-   on hover in firefox */
+ * on hover in firefox
+ */
 body::after {
 	position: fixed;
 	top: 0px;
@@ -91,10 +92,8 @@ button {
 	background-size: contain;
 	width: 2.6em;
 	height: 2.6em;
-	filter:
-		drop-shadow(0 0 0.25em rgba(5%, 5%, 5%, 0.3))
-		drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.6))
-	;
+	filter: drop-shadow(0 0 0.25em rgba(5%, 5%, 5%, 0.3))
+		drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.6));
 	margin-left: 0.2em;
 	margin-right: 0.2em;
 }
@@ -117,10 +116,8 @@ button {
 
 .button-img-random {
 	background-image: url("images/random.svg");
-	filter:
-		drop-shadow(0 0 0.25em rgba(5%, 5%, 5%, 0.2))
-		drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.5))
-	;
+	filter: drop-shadow(0 0 0.25em rgba(5%, 5%, 5%, 0.2))
+		drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.5));
 }
 
 .button-img-screenshot {
@@ -149,10 +146,7 @@ button {
 	margin: 0.25em;
 	padding: 0.25em;
 	color: white;
-	text-shadow:
-		0px 0px 0.3em rgba(0, 0, 0, 0.6),
-		0px 0px 0.2em rgba(0, 0, 0, 0.4)
-	;
+	text-shadow: 0px 0px 0.3em rgba(0, 0, 0, 0.6), 0px 0px 0.2em rgba(0, 0, 0, 0.4);
 }
 
 .talent-select-box-1 {
@@ -224,10 +218,7 @@ button {
 .talent-dropdown-content {
 	position: absolute;
 	width: 100%;
-	background-image: linear-gradient(
-		rgba(95%, 95%, 95%, 0.9),
-		rgba(85%, 85%, 85%, 0.85)
-	);
+	background-image: linear-gradient(rgba(95%, 95%, 95%, 0.9), rgba(85%, 85%, 85%, 0.85));
 	z-index: 100;
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
@@ -384,7 +375,7 @@ button {
 }
 
 .info::before {
-	content: '';
+	content: "";
 	position: absolute;
 	inset: 0;
 	border-radius: var(--border-radius);
@@ -396,7 +387,7 @@ button {
 }
 
 .info::after {
-	content: '';
+	content: "";
 	position: absolute;
 	inset: 0;
 	border-radius: var(--border-radius);
@@ -409,7 +400,7 @@ button {
 	animation-duration: 30s;
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
-	transform: scaleX(-1)
+	transform: scaleX(-1);
 }
 
 .info__inner {
@@ -524,7 +515,6 @@ button {
 	from {
 		opacity: 1;
 		visibility: visible;
-
 	}
 
 	to {
@@ -558,15 +548,12 @@ button {
 	}
 }
 
-/* Mobile with longer screens */
-@media (
-	/* observations on chrome on android, with "max-aspect-ratio":
-	   decimal values don't work, it has to be a division of ints
-	   it works on a 16:9 screen up until reaching 9/14
-	   it works on a 20:9 screen up until reaching 9/18
-	*/
-	max-aspect-ratio: 9/16
-) {
+/* Mobile with longer screens
+ * observations on chrome on android, with "max-aspect-ratio": decimal values don't work, it has to be a division of ints
+ * it works on a 16:9 screen up until reaching 9/14
+ * it works on a 20:9 screen up until reaching 9/18
+ */
+@media (max-aspect-ratio: 9/16) {
 	.header {
 		margin-bottom: 0.25em;
 	}
@@ -666,10 +653,7 @@ button {
 
 	.talent-dropdown-content {
 		background-color: unset;
-		background-image: linear-gradient(
-			rgba(100%, 100%, 100%, 0.5),
-			rgba(90%, 90%, 90%, 0.05)
-		);
+		background-image: linear-gradient(rgba(100%, 100%, 100%, 0.5), rgba(90%, 90%, 90%, 0.05));
 	}
 
 	.talent-dropdown-entries {
@@ -683,11 +667,7 @@ button {
 
 	.talent-dropdown-entries__entry--highlighted {
 		background-color: unset;
-		background-image: linear-gradient(
-			90deg,
-			rgba(100%, 100%, 100%, 0.8) 2%,
-			transparent 2%
-		);
+		background-image: linear-gradient(90deg, rgba(100%, 100%, 100%, 0.8) 2%, transparent 2%);
 	}
 
 	.talent-dropdown-entries__entry__image {

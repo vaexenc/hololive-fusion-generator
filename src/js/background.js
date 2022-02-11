@@ -10,7 +10,10 @@ function deleteSavedBackgroundIndex() {
 
 function setBackground(index) {
 	backgroundIndex = index;
-	$(".background").style.setProperty("--image-url", `url(images/backgrounds/${backgroundImages[index]})`);
+	$(".background").style.setProperty(
+		"--image-url",
+		`url(images/backgrounds/${backgroundImages[index]})`
+	);
 }
 
 function setBackgroundRandom() {
@@ -30,8 +33,7 @@ function saveCurrentBackgroundIndex() {
 
 function loadSavedBackgroundIndex() {
 	const index = localStorage.getItem("backgroundIndex");
-	if (typeof index === "string" && index.match(/^\d+/))
-		return parseInt(index);
+	if (typeof index === "string" && index.match(/^\d+/)) return parseInt(index);
 }
 
 function keepBackgroundIndexWithinBounds(index) {
@@ -39,8 +41,7 @@ function keepBackgroundIndexWithinBounds(index) {
 }
 
 function isBackgroundIndexValid(index) {
-	if (typeof index !== "number" || index < 0 || index >= backgroundImages.length)
-		return false;
+	if (typeof index !== "number" || index < 0 || index >= backgroundImages.length) return false;
 	return true;
 }
 
@@ -58,10 +59,8 @@ function cycleBackgroundBackwards() {
 
 function decideBackground() {
 	const saved = loadSavedBackgroundIndex();
-	if (!isBackgroundIndexValid(saved))
-		setBackgroundRandom();
-	else
-		setBackground(saved);
+	if (!isBackgroundIndexValid(saved)) setBackgroundRandom();
+	else setBackground(saved);
 }
 
 export {

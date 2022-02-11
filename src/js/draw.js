@@ -71,8 +71,7 @@ async function createImageManifest(id1, id2) {
 	}
 
 	for (const paletteType of paletteTypes) {
-		if (!talent1Draw[paletteType] || !talent2Draw[paletteType])
-			continue;
+		if (!talent1Draw[paletteType] || !talent2Draw[paletteType]) continue;
 
 		manifest[paletteType] = [];
 		for (let i = 0; i < talent2Draw[paletteType].count; i++) {
@@ -96,7 +95,7 @@ function assertImagesAreSameSize(images) {
 }
 
 function lerp(v0, v1, t) {
-	return v0 * (1-t) + v1 * t;
+	return v0 * (1 - t) + v1 * t;
 }
 
 function getAspectRatio(width, height) {
@@ -104,7 +103,7 @@ function getAspectRatio(width, height) {
 }
 
 function degToRad(angle) {
-	return angle * Math.PI / 180;
+	return (angle * Math.PI) / 180;
 }
 
 function proportionalScaleWidth(widthNew, widthOld, heightOld) {
@@ -124,8 +123,7 @@ function proportionalScaleHeight(heightNew, widthOld, heightOld) {
 }
 
 function isAspectRatioGreaterThanOther(width1, height1, width2, height2) {
-	if (getAspectRatio(width1, height1) > getAspectRatio(width2, height2))
-		return true;
+	if (getAspectRatio(width1, height1) > getAspectRatio(width2, height2)) return true;
 	return false;
 }
 
@@ -203,13 +201,18 @@ function drawEyes(ctx, imageManifest, talent1Draw, talent2Draw) {
 	const sides = talent2Draw.eyes.sides;
 
 	if (sides === "both" || sides === "left") {
-		const eyeX = faceCenterX - faceCenterXToEyeDistance - eyeSize.width * talent1Draw.eyes.xRight;
+		const eyeX =
+			faceCenterX - faceCenterXToEyeDistance - eyeSize.width * talent1Draw.eyes.xRight;
 		ctx.drawImage(eyeImage, eyeX, eyeY, eyeSize.width, eyeSize.height);
 	}
 
 	if (sides === "both" || sides === "right") {
 		const eyeImage = imageManifest.eyes.right || imageManifest.eyes.left;
-		const eyeX = baseImage.width - faceCenterX - faceCenterXToEyeDistance - eyeSize.width * talent1Draw.eyes.xRight;
+		const eyeX =
+			baseImage.width -
+			faceCenterX -
+			faceCenterXToEyeDistance -
+			eyeSize.width * talent1Draw.eyes.xRight;
 		ctx.save();
 		ctx.translate(baseImage.width, 0);
 		ctx.scale(-1, 1);
@@ -250,7 +253,12 @@ async function drawResult(id1, id2) {
 	ctxbw.drawImage(baseImage, 0, 0);
 	ctxbw.globalCompositeOperation = "saturation";
 	ctxbw.fillStyle = "black";
-	ctxbw.fillRect(0, 0, baseImagePaletteAreasBlackAndWhite.width, baseImagePaletteAreasBlackAndWhite.height);
+	ctxbw.fillRect(
+		0,
+		0,
+		baseImagePaletteAreasBlackAndWhite.width,
+		baseImagePaletteAreasBlackAndWhite.height
+	);
 
 	const rawPalettes = createCanvasSameSize(canvas);
 	const ctxp = rawPalettes.getContext("2d");
@@ -287,12 +295,24 @@ async function drawResult(id1, id2) {
 		if (imageManifest.mouth.blend) {
 			ctx.save();
 			ctx.globalCompositeOperation = "difference";
-			ctx.drawImage(imageManifest.mouth.blend, mouthX, mouthY, mouthSize.width, mouthSize.height);
+			ctx.drawImage(
+				imageManifest.mouth.blend,
+				mouthX,
+				mouthY,
+				mouthSize.width,
+				mouthSize.height
+			);
 			ctx.restore();
 		}
 
 		if (imageManifest.mouth.cutout) {
-			ctx.drawImage(imageManifest.mouth.cutout, mouthX, mouthY, mouthSize.width, mouthSize.height);
+			ctx.drawImage(
+				imageManifest.mouth.cutout,
+				mouthX,
+				mouthY,
+				mouthSize.width,
+				mouthSize.height
+			);
 		}
 
 		if (imageManifest.nose) {
@@ -322,7 +342,8 @@ async function drawResult(id1, id2) {
 		if (!imageManifest[paletteType]) continue;
 		for (const [i, paletteImage] of imageManifest[paletteType].entries()) {
 			ctx.save();
-			const color = talent1Draw[paletteType].colors[i % talent1Draw[paletteType].colors.length];
+			const color =
+				talent1Draw[paletteType].colors[i % talent1Draw[paletteType].colors.length];
 			const paletteLayer = createCanvasSameSize(canvas);
 			const ctxl = paletteLayer.getContext("2d");
 			ctxl.drawImage(paletteImage, 0, 0);
@@ -352,8 +373,19 @@ async function drawFusion(canvasDOM, id1, id2) {
 	const canvasResult = await drawResult(id1, id2);
 	if (currentDrawId !== drawId) return;
 	drawBg(ctx);
-	const {width: w, height: h} = resizeToContain(canvasDOM.width, canvasDOM.height, canvasResult.width, canvasResult.height);
-	ctx.drawImage(canvasResult, getAlignPos(canvasDOM.width, w, 0.5), getAlignPos(canvasDOM.height, h, 1), w, h);
+	const {width: w, height: h} = resizeToContain(
+		canvasDOM.width,
+		canvasDOM.height,
+		canvasResult.width,
+		canvasResult.height
+	);
+	ctx.drawImage(
+		canvasResult,
+		getAlignPos(canvasDOM.width, w, 0.5),
+		getAlignPos(canvasDOM.height, h, 1),
+		w,
+		h
+	);
 }
 
 export {drawFusion};

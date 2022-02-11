@@ -79,15 +79,17 @@ describe("getTalentCountEnabled()", () => {
 
 describe("calculateTalentVariationsEnabled()", () => {
 	it("returns the same thing as when calculating manually", () => {
-		expect(talent.calculateTalentVariationsEnabled())
-		.toBe(util.calculateVariations(talent.getTalentCountEnabled()));
+		expect(talent.calculateTalentVariationsEnabled()).toBe(
+			util.calculateVariations(talent.getTalentCountEnabled())
+		);
 	});
 });
 
 describe("calculateTalentVariationsAll()", () => {
 	it("returns the same thing as when calculating manually", () => {
-		expect(talent.calculateTalentVariationsAll())
-		.toBe(util.calculateVariations(talent.getTalentCountAll()));
+		expect(talent.calculateTalentVariationsAll()).toBe(
+			util.calculateVariations(talent.getTalentCountAll())
+		);
 	});
 });
 

@@ -3,8 +3,7 @@ const util = require("./util");
 
 function getTalentById(id) {
 	const talent = talents[id];
-	if (!talent)
-		throw new Error("talent not found");
+	if (!talent) throw new Error("talent not found");
 	return talent;
 }
 
@@ -13,7 +12,9 @@ function getTalentCountAll() {
 }
 
 function getTalentIdsEnabled() {
-	return Object.entries(talents).filter(e => e[1].enabled).map(e => e[0]);
+	return Object.entries(talents)
+		.filter((e) => e[1].enabled)
+		.map((e) => e[0]);
 }
 
 function getTalentCountEnabled() {

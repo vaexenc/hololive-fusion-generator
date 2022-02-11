@@ -10,8 +10,4 @@ function resetCSSAnimation(element) {
 	element.style.animation = null;
 }
 
-export {
-	$,
-	cloneNode,
-	resetCSSAnimation
-};
+export {$, cloneNode, resetCSSAnimation};

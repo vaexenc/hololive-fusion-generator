@@ -18,29 +18,23 @@ describe("getObjectLength()", () => {
 
 describe("getRandomInt()", () => {
 	it("returns 0 when argument is 0", () => {
-		for (let i = 0; i < 100; i++)
-			expect(util.getRandomInt(0)).toBe(0);
+		for (let i = 0; i < 100; i++) expect(util.getRandomInt(0)).toBe(0);
 	});
 
 	it("returns 0 when argument is 1", () => {
-		for (let i = 0; i < 100; i++)
-			expect(util.getRandomInt(1)).toBe(0);
+		for (let i = 0; i < 100; i++) expect(util.getRandomInt(1)).toBe(0);
 	});
 
 	it("doesn't return anything >= 5 when argument is 5", () => {
-		for (let i = 0; i < 100; i++)
-			expect(util.getRandomInt(5)).toBeLessThan(5);
+		for (let i = 0; i < 100; i++) expect(util.getRandomInt(5)).toBeLessThan(5);
 	});
 });
 
 describe("getRandomIntUnique()", () => {
 	it("returns a unique random number", () => {
-		for (let i = 0; i < 100; i++)
-			expect(util.getRandomIntUnique(2, 1)).not.toBe(1);
-		for (let i = 0; i < 100; i++)
-			expect(util.getRandomIntUnique(3, 2)).not.toBe(2);
-		for (let i = 0; i < 100; i++)
-			expect(util.getRandomIntUnique(5, [0, 1, 2, 3])).toBe(4);
+		for (let i = 0; i < 100; i++) expect(util.getRandomIntUnique(2, 1)).not.toBe(1);
+		for (let i = 0; i < 100; i++) expect(util.getRandomIntUnique(3, 2)).not.toBe(2);
+		for (let i = 0; i < 100; i++) expect(util.getRandomIntUnique(5, [0, 1, 2, 3])).toBe(4);
 	});
 });
 

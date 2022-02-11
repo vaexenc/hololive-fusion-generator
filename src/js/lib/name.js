@@ -41,8 +41,7 @@ function getTalentFullName(talent) {
 
 function getCustomName(talent1, talent2) {
 	const nameTupleString = getCustomNameTupleString(talent1, talent2);
-	if (nameTupleString in customNames)
-		return customNames[nameTupleString];
+	if (nameTupleString in customNames) return customNames[nameTupleString];
 }
 
 function fuseTalentNameChunks(chunkBefore, chunkAfter, talent1Name, talent2Name) {
@@ -69,11 +68,9 @@ function fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, nameType) {
 }
 
 function fuseTalentFullNames(talent1, talent2) {
-	if (talent1 === talent2)
-		return getTalentFullName(talent1);
+	if (talent1 === talent2) return getTalentFullName(talent1);
 	const customName = getCustomName(talent1, talent2);
-	if (customName)
-		return customName;
+	if (customName) return customName;
 	return {
 		last: fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, NameType.LAST_NAME),
 		first: fuseTalentNamesOfSameTypeEvenIfMissing(talent1, talent2, NameType.FIRST_NAME)
@@ -81,17 +78,13 @@ function fuseTalentFullNames(talent1, talent2) {
 }
 
 function fuseTalentFullNamesById(id1, id2) {
-	return fuseTalentFullNames(
-		talent.getTalentById(id1),
-		talent.getTalentById(id2)
-	);
+	return fuseTalentFullNames(talent.getTalentById(id1), talent.getTalentById(id2));
 }
 
 function getFullNameString(nameObj) {
 	const fullName = [];
 	for (const nameType of ["last", "first"]) {
-		if (nameObj[nameType])
-			fullName.push(changeFirstCharToUppercase(nameObj[nameType]));
+		if (nameObj[nameType]) fullName.push(changeFirstCharToUppercase(nameObj[nameType]));
 	}
 	return fullName.join(" ");
 }
@@ -106,9 +99,9 @@ function getFusionStringByIds(id1, id2) {
 
 function getFullNameStringDebug(talentOrFullName) {
 	const fullNameString =
-		changeFirstCharToUppercase(returnUndefinedStringOrArgument(talentOrFullName.lastName))
-		+ " "
-		+ changeFirstCharToUppercase(returnUndefinedStringOrArgument(talentOrFullName.firstName));
+		changeFirstCharToUppercase(returnUndefinedStringOrArgument(talentOrFullName.lastName)) +
+		" " +
+		changeFirstCharToUppercase(returnUndefinedStringOrArgument(talentOrFullName.firstName));
 	return fullNameString;
 }
 
@@ -145,8 +138,7 @@ function getAllNameVariationsForTalent(talentId) {
 	const nameVariations = [];
 	const talentIds = talent.getTalentIdsAll();
 	for (const currentId of talentIds) {
-		if (talentId === currentId)
-			continue;
+		if (talentId === currentId) continue;
 		const talent1 = talent.getTalentById(talentId);
 		const talent2 = talent.getTalentById(currentId);
 		nameVariations.push(...getVariationsTwoTalents(talent1, talent2));

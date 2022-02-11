@@ -1,5 +1,9 @@
 import {$} from "./browser-util.js";
-import {cycleBackgroundForwards, cycleBackgroundBackwards, setBackgroundRandomDifferent} from "./background.js";
+import {
+	cycleBackgroundForwards,
+	cycleBackgroundBackwards,
+	setBackgroundRandomDifferent
+} from "./background.js";
 import {calculateTalentVariationsEnabled, getTalentCountEnabled} from "./lib/talent.js";
 
 function showInfo() {
@@ -47,6 +51,4 @@ function initInfo() {
 	$(".possible-variations").innerHTML = calculateTalentVariationsEnabled();
 }
 
-export {
-	initInfo
-};
+export {initInfo};

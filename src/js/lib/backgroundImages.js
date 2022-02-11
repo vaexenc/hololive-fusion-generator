@@ -7,8 +7,7 @@ function getBgFileNumber(fileName) {
 }
 
 function bgFilenameSort(a, b) {
-	if (getBgFileNumber(a) < getBgFileNumber(b))
-		return -1;
+	if (getBgFileNumber(a) < getBgFileNumber(b)) return -1;
 	return 1;
 }
 

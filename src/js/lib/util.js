@@ -11,8 +11,7 @@ function getRandomInt(maxExclusive) {
 }
 
 function getRandomIntUnique(maxExclusive, restricted) {
-	if (typeof restricted === "number")
-		restricted = [restricted];
+	if (typeof restricted === "number") restricted = [restricted];
 	let newRandomInt = restricted[0];
 	while (restricted.includes(newRandomInt)) {
 		newRandomInt = getRandomInt(maxExclusive);
@@ -21,7 +20,7 @@ function getRandomIntUnique(maxExclusive, restricted) {
 }
 
 function mod(x, m) {
-	return (x % m + m) % m;
+	return ((x % m) + m) % m;
 }
 
 module.exports = {

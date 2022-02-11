@@ -836,7 +836,7 @@
 				},
 				"eyes": {
 					"areDifferent": false,
-					"xLeft": 0.20,
+					"xLeft": 0.2,
 					"xRight": 0.92,
 					"y": 0.543
 				}

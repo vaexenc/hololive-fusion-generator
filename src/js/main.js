@@ -23,7 +23,9 @@ function createAndInsertTalentSelectContainerElements() {
 	const template = $(".template-talent-select");
 	for (let i = 1; i <= 2; i++) {
 		const clone = cloneNode(template);
-		clone.querySelector(".talent-select-container").classList.add(`talent-select-container-${i}`);
+		clone
+			.querySelector(".talent-select-container")
+			.classList.add(`talent-select-container-${i}`);
 		clone.querySelector(".talent-select-box").classList.add(`talent-select-box-${i}`);
 		clone.querySelector(".talent-dropdown").classList.add(`talent-dropdown-${i}`);
 		$(".main").appendChild(clone);
@@ -46,8 +48,7 @@ function getTalentSelectContainerTalentIds() {
 }
 
 function getOtherTalentSelectContainer(talentSelectContainer) {
-	if (talentSelectContainer === talentSelectContainers[0])
-		return talentSelectContainers[1];
+	if (talentSelectContainer === talentSelectContainers[0]) return talentSelectContainers[1];
 	return talentSelectContainers[0];
 }
 
@@ -58,9 +59,7 @@ function getTalentSelectContainerFromChild(element) {
 function talentPrevious(talentSelectContainer) {
 	setTalentSelectContainerTalentIndex(
 		talentSelectContainer,
-		keepTalentIndexWithinBounds(
-			getTalentSelectContainerTalentIndex(talentSelectContainer) - 1
-		)
+		keepTalentIndexWithinBounds(getTalentSelectContainerTalentIndex(talentSelectContainer) - 1)
 	);
 	update();
 }
@@ -68,9 +67,7 @@ function talentPrevious(talentSelectContainer) {
 function talentNext(talentSelectContainer) {
 	setTalentSelectContainerTalentIndex(
 		talentSelectContainer,
-		keepTalentIndexWithinBounds(
-			getTalentSelectContainerTalentIndex(talentSelectContainer) + 1
-		)
+		keepTalentIndexWithinBounds(getTalentSelectContainerTalentIndex(talentSelectContainer) + 1)
 	);
 	update();
 }
@@ -131,11 +128,12 @@ function onClickSwap() {
 function initTalentSelectContainers() {
 	const talentIndex = getRandomInt(talentIds.length);
 	for (let i = 0; i < 2; i++) {
-		const talentSelectContainer = $(`.talent-select-container-${i+1}`);
+		const talentSelectContainer = $(`.talent-select-container-${i + 1}`);
 		setTalentSelectContainerTalentIndex(talentSelectContainer, talentIndex);
 
 		talentSelectContainer.querySelector(".talent-select-image").onclick = onClickTalentDropdown;
-		talentSelectContainer.querySelector(".talent-select-name__name").onclick = onClickTalentDropdown;
+		talentSelectContainer.querySelector(".talent-select-name__name").onclick =
+			onClickTalentDropdown;
 		talentSelectContainer.querySelector(".button-img-up").onclick = onClickTalentPrevious;
 		talentSelectContainer.querySelector(".button-img-down").onclick = onClickTalentNext;
 		talentSelectContainer.querySelector(".button-img-random").onclick = onClickTalentRandom;
@@ -158,18 +156,16 @@ function initResult() {
 
 function updateTalentSelectImage(talentSelectContainer) {
 	const talentId = talentIds[getTalentSelectContainerTalentIndex(talentSelectContainer)];
-	talentSelectContainer.querySelector(".talent-select-image")
-		.style.setProperty(
-			"--image-url",
-			`url(images/talents/${talentId}-medium.webp)`
-		);
+	talentSelectContainer
+		.querySelector(".talent-select-image")
+		.style.setProperty("--image-url", `url(images/talents/${talentId}-medium.webp)`);
 }
 
 function updateTalentSelectName(talentSelectContainer) {
-	talentSelectContainer.querySelector(".talent-select-name__name").innerHTML
-	= getFullNameStringById(
-		talentIds[getTalentSelectContainerTalentIndex(talentSelectContainer)]
-	);
+	talentSelectContainer.querySelector(".talent-select-name__name").innerHTML =
+		getFullNameStringById(
+			talentIds[getTalentSelectContainerTalentIndex(talentSelectContainer)]
+		);
 }
 
 function updateTalentSelectContainer(talentSelectContainer) {
@@ -187,10 +183,7 @@ function updateTalentSelectContainers() {
 function updateResultImage() {
 	const resultCanvas = $(".result-canvas");
 	resetCSSAnimation(resultCanvas);
-	drawFusion(
-		resultCanvas,
-		...getTalentSelectContainerTalentIds()
-	);
+	drawFusion(resultCanvas, ...getTalentSelectContainerTalentIds());
 }
 
 function updateResultName() {
@@ -236,9 +229,9 @@ function unhighlightDropdownEntries(dropdownElement) {
 function scrollToDropdownEntry(dropdownEntry) {
 	const dropdownEntriesContainer = dropdownEntry.closest(".talent-dropdown-entries");
 	const position =
-		dropdownEntry.offsetTop
-		- dropdownEntriesContainer.offsetHeight / 2
-		+ dropdownEntry.offsetHeight / 2;
+		dropdownEntry.offsetTop -
+		dropdownEntriesContainer.offsetHeight / 2 +
+		dropdownEntry.offsetHeight / 2;
 	dropdownEntriesContainer.scrollTop = position;
 }
 
@@ -251,9 +244,7 @@ function addDropdownModifierToElements(talentSelectContainer) {
 function getDropdownEntryOfCurrentlySelectedTalent(dropdownElement) {
 	return getDropdownEntry(
 		dropdownElement,
-		getTalentSelectContainerTalentIndex(
-			getTalentSelectContainerFromChild(dropdownElement)
-		)
+		getTalentSelectContainerTalentIndex(getTalentSelectContainerFromChild(dropdownElement))
 	);
 }
 
@@ -280,8 +271,7 @@ function dropdownSortFunctionTalentIndex(dropdownEntry1, dropdownEntry2) {
 	const [talentIndex1, talentIndex2] = [dropdownEntry1, dropdownEntry2].map((dropdownEntry) => {
 		return parseInt(dropdownEntry.dataset.talentIndex);
 	});
-	if (talentIndex1 < talentIndex2)
-		return -1;
+	if (talentIndex1 < talentIndex2) return -1;
 	return 1;
 }
 
@@ -289,8 +279,7 @@ function dropdownSortFunctionAlphabet(dropdownEntry1, dropdownEntry2) {
 	const [name1, name2] = [dropdownEntry1, dropdownEntry2].map((dropdownEntry) => {
 		return dropdownEntry.querySelector(".talent-dropdown-entries__entry__name").innerHTML;
 	});
-	if (name1 < name2)
-		return -1;
+	if (name1 < name2) return -1;
 	return 1;
 }
 
@@ -318,16 +307,15 @@ function onClickDropdownEntry(event) {
 	if (event.button !== 0) return;
 	const entry = event.currentTarget; // not .target, might have clicked on child element (image, name)
 	const talentSelectContainer = getTalentSelectContainerFromChild(entry);
-	setTalentSelectContainerTalentIndex(
-		talentSelectContainer,
-		entry.dataset.talentIndex
-	);
+	setTalentSelectContainerTalentIndex(talentSelectContainer, entry.dataset.talentIndex);
 	hideDropdown(talentSelectContainer);
 	update();
 }
 
 function isDropdownVisible(talentSelectContainer) {
-	return talentSelectContainer.querySelector(".talent-dropdown").classList.contains("dropdown-visible");
+	return talentSelectContainer
+		.querySelector(".talent-dropdown")
+		.classList.contains("dropdown-visible");
 }
 
 function onClickTalentDropdown(event) {
@@ -339,14 +327,18 @@ function onClickTalentDropdown(event) {
 
 function addDropdownEntry(dropdownElement, talentIndex, id) {
 	const entry = cloneNode($(".template-talent-dropdown-entry"));
-	entry.querySelector(".talent-dropdown-entries__entry__image").style.setProperty("--image-url", `url(images/talents/${id}-small.webp)`);
+	entry
+		.querySelector(".talent-dropdown-entries__entry__image")
+		.style.setProperty("--image-url", `url(images/talents/${id}-small.webp)`);
 	const fullName = getFullNameStringById(id);
 	entry.querySelector(".talent-dropdown-entries__entry__name").innerHTML = fullName;
 	dropdownElement.querySelector(".talent-dropdown-entries").appendChild(entry);
 
 	/* because entry is of type DocumentFragment things such as setAttribute(),
 	   dataset and events can't be used on it */
-	const appendedEntry = dropdownElement.querySelector(".talent-dropdown-entries").lastElementChild;
+	const appendedEntry = dropdownElement.querySelector(
+		".talent-dropdown-entries"
+	).lastElementChild;
 	appendedEntry.dataset.talentIndex = talentIndex;
 	appendedEntry.onclick = onClickDropdownEntry;
 	appendedEntry.onmouseup = onClickDropdownEntry;
@@ -368,15 +360,15 @@ function onKeydownDropdown(event, dropdownElement) {
 	if (!isDropdownVisible(talentSelectContainer)) return;
 
 	const keyFunctions = {
-		"ArrowUp": () => {
+		ArrowUp: () => {
 			talentPrevious(talentSelectContainer);
 		},
 
-		"ArrowDown": () => {
+		ArrowDown: () => {
 			talentNext(talentSelectContainer);
 		},
 
-		"Enter": () => {
+		Enter: () => {
 			hideDropdown(talentSelectContainer);
 		}
 	};
