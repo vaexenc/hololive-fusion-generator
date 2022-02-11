@@ -267,31 +267,31 @@ function hideDropdown(talentSelectContainer) {
 	removeDropdownModifierFromElements(talentSelectContainer);
 }
 
-function dropdownSortFunctionTalentIndex(dropdownEntry1, dropdownEntry2) {
-	const [talentIndex1, talentIndex2] = [dropdownEntry1, dropdownEntry2].map((dropdownEntry) => {
-		return parseInt(dropdownEntry.dataset.talentIndex);
-	});
-	if (talentIndex1 < talentIndex2) return -1;
-	return 1;
-}
+// function dropdownSortFunctionTalentIndex(dropdownEntry1, dropdownEntry2) {
+// 	const [talentIndex1, talentIndex2] = [dropdownEntry1, dropdownEntry2].map((dropdownEntry) => {
+// 		return parseInt(dropdownEntry.dataset.talentIndex);
+// 	});
+// 	if (talentIndex1 < talentIndex2) return -1;
+// 	return 1;
+// }
 
-function dropdownSortFunctionAlphabet(dropdownEntry1, dropdownEntry2) {
-	const [name1, name2] = [dropdownEntry1, dropdownEntry2].map((dropdownEntry) => {
-		return dropdownEntry.querySelector(".talent-dropdown-entries__entry__name").innerHTML;
-	});
-	if (name1 < name2) return -1;
-	return 1;
-}
+// function dropdownSortFunctionAlphabet(dropdownEntry1, dropdownEntry2) {
+// 	const [name1, name2] = [dropdownEntry1, dropdownEntry2].map((dropdownEntry) => {
+// 		return dropdownEntry.querySelector(".talent-dropdown-entries__entry__name").innerHTML;
+// 	});
+// 	if (name1 < name2) return -1;
+// 	return 1;
+// }
 
-function sortDropdown(dropdownElement, sortFunction) {
-	const entryElements = Array.from(
-		dropdownElement.querySelectorAll(".talent-dropdown-entries__entry")
-	);
-	entryElements.sort(sortFunction);
-	for (const entryElement of entryElements) {
-		dropdownElement.querySelector(".talent-dropdown-entries").appendChild(entryElement);
-	}
-}
+// function sortDropdown(dropdownElement, sortFunction) {
+// 	const entryElements = Array.from(
+// 		dropdownElement.querySelectorAll(".talent-dropdown-entries__entry")
+// 	);
+// 	entryElements.sort(sortFunction);
+// 	for (const entryElement of entryElements) {
+// 		dropdownElement.querySelector(".talent-dropdown-entries").appendChild(entryElement);
+// 	}
+// }
 
 // function sortDropdownByTalentIndex(dropdownElement) {
 // 	sortDropdown(dropdownElement, dropdownSortFunctionTalentIndex);
