@@ -133,12 +133,11 @@ function resizeToContain(widthTarget, heightTarget, width, height) {
 	return proportionalScaleHeight(heightTarget, width, height);
 }
 
-// eslint-disable-next-line no-unused-vars
-function resizeToCover(widthTarget, heightTarget, width, height) {
-	if (isAspectRatioGreaterThanOther(width, height, widthTarget, heightTarget))
-		return proportionalScaleHeight(heightTarget, width, height);
-	return proportionalScaleWidth(widthTarget, width, height);
-}
+// function resizeToCover(widthTarget, heightTarget, width, height) {
+// 	if (isAspectRatioGreaterThanOther(width, height, widthTarget, heightTarget))
+// 		return proportionalScaleHeight(heightTarget, width, height);
+// 	return proportionalScaleWidth(widthTarget, width, height);
+// }
 
 function getAlignPos(lengthTarget, length, t) {
 	return lerp(0, lengthTarget - length, t);

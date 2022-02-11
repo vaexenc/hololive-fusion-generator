@@ -293,15 +293,13 @@ function sortDropdown(dropdownElement, sortFunction) {
 	}
 }
 
-// eslint-disable-next-line
-function sortDropdownByTalentIndex(dropdownElement) {
-	sortDropdown(dropdownElement, dropdownSortFunctionTalentIndex);
-}
+// function sortDropdownByTalentIndex(dropdownElement) {
+// 	sortDropdown(dropdownElement, dropdownSortFunctionTalentIndex);
+// }
 
-// eslint-disable-next-line
-function sortDropdownByAlphabet(dropdownElement) {
-	sortDropdown(dropdownElement, dropdownSortFunctionAlphabet);
-}
+// function sortDropdownByAlphabet(dropdownElement) {
+// 	sortDropdown(dropdownElement, dropdownSortFunctionAlphabet);
+// }
 
 function onClickDropdownEntry(event) {
 	if (event.button !== 0) return;
