@@ -1,6 +1,6 @@
 const $ = document.querySelector.bind(document);
 
-function cloneNode(template) {
+function cloneTemplateContent(template) {
 	return template.content.cloneNode(true);
 }
 
@@ -10,4 +10,4 @@ function resetCSSAnimation(element) {
 	element.style.animation = null;
 }
 
-export {$, cloneNode, resetCSSAnimation};
+export {$, cloneTemplateContent, resetCSSAnimation};

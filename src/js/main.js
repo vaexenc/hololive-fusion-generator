@@ -1,5 +1,5 @@
 import "../style.css";
-import {$, cloneNode, resetCSSAnimation} from "./browser-util.js";
+import {$, cloneTemplateContent, resetCSSAnimation} from "./browser-util.js";
 import {getRandomInt, getRandomIntUnique, mod} from "./lib/util.js";
 import {getFullNameStringById, getFusionStringByIds} from "./lib/name.js";
 import {getTalentIdsEnabled} from "./lib/talent.js";
@@ -22,7 +22,7 @@ function keepTalentIndexWithinBounds(talentIndex) {
 function createAndInsertTalentSelectContainerElements() {
 	const template = $(".template-talent-select");
 	for (let i = 1; i <= 2; i++) {
-		const clone = cloneNode(template);
+		const clone = cloneTemplateContent(template);
 		clone
 			.querySelector(".talent-select-container")
 			.classList.add(`talent-select-container-${i}`);
@@ -324,7 +324,7 @@ function onClickTalentDropdown(event) {
 }
 
 function addDropdownEntry(dropdownElement, talentIndex, id) {
-	const entry = cloneNode($(".template-talent-dropdown-entry"));
+	const entry = cloneTemplateContent($(".template-talent-dropdown-entry"));
 	entry
 		.querySelector(".talent-dropdown-entries__entry__image")
 		.style.setProperty("--image-url", `url(images/talents/${id}-small.webp)`);
