@@ -828,7 +828,8 @@
 					"x": 0.5,
 					"y": 0.4,
 					"width": 0.95,
-					"hasCutout": true
+					"hasCutout": true,
+					"hasBlend": true
 				},
 				"nose": {
 					"x": 0.5571428571428572,
