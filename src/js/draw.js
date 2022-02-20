@@ -34,10 +34,16 @@ async function createImageManifest(id1, id2) {
 	if (talent1Draw.mouth && talent2Draw.mouth) {
 		manifest.mouth = {};
 
-		if (talent1Draw.mouth.hasBlend) {
-			const mouthBlendImage = createImage(path + id1 + "-mouth-blend" + ext);
-			manifest.mouth.blend = mouthBlendImage;
-			addImageToImageLoadPromises(mouthBlendImage, imageLoadPromises);
+		if (talent1Draw.mouth.hasSub) {
+			const mouthBlendSubImage = createImage(path + id1 + "-mouth-blend-sub" + ext);
+			manifest.mouth.sub = mouthBlendSubImage;
+			addImageToImageLoadPromises(mouthBlendSubImage, imageLoadPromises);
+		}
+
+		if (talent1Draw.mouth.hasAdd) {
+			const mouthBlendAddImage = createImage(path + id1 + "-mouth-blend-add" + ext);
+			manifest.mouth.add = mouthBlendAddImage;
+			addImageToImageLoadPromises(mouthBlendAddImage, imageLoadPromises);
 		}
 
 		if (talent1Draw.mouth.hasCutout) {
@@ -48,9 +54,19 @@ async function createImageManifest(id1, id2) {
 	}
 
 	if (talent1Draw.nose && talent2Draw.nose) {
-		const noseImage = createImage(path + id1 + "-nose" + ext);
-		manifest.nose = noseImage;
-		addImageToImageLoadPromises(noseImage, imageLoadPromises);
+		manifest.nose = {};
+
+		if (talent1Draw.nose.hasSub) {
+			const noseSubImage = createImage(path + id1 + "-nose-sub" + ext);
+			manifest.nose.sub = noseSubImage;
+			addImageToImageLoadPromises(noseSubImage, imageLoadPromises);
+		}
+
+		if (talent1Draw.nose.hasAdd) {
+			const noseAddImage = createImage(path + id1 + "-nose-add" + ext);
+			manifest.nose.add = noseAddImage;
+			addImageToImageLoadPromises(noseAddImage, imageLoadPromises);
+		}
 	}
 
 	if (talent1Draw.eyes && talent2Draw.eyes) {
@@ -278,7 +294,8 @@ async function drawResult(id1, id2) {
 
 	if (imageManifest.mouth) {
 		assertImagesAreSameSize(Object.values(imageManifest.mouth));
-		const mouthImage = imageManifest.mouth.blend || imageManifest.mouth.cutout;
+		const mouthImage =
+			imageManifest.mouth.sub || imageManifest.mouth.add || imageManifest.mouth.cutout;
 		const mouthWidth = mouthImage.width * talent1Draw.mouth.width;
 		const mouthWidthFace = baseImage.width * talent2Draw.mouth.width;
 		const mouthYFace = baseImage.height * talent2Draw.mouth.y;
@@ -291,11 +308,24 @@ async function drawResult(id1, id2) {
 		const mouthX = faceCenterX - mouthSize.width * talent1Draw.mouth.x;
 		const mouthY = mouthYFace - mouthSize.height * talent1Draw.mouth.y;
 
-		if (imageManifest.mouth.blend) {
+		if (imageManifest.mouth.sub) {
 			ctx.save();
 			ctx.globalCompositeOperation = "difference";
 			ctx.drawImage(
-				imageManifest.mouth.blend,
+				imageManifest.mouth.sub,
+				mouthX,
+				mouthY,
+				mouthSize.width,
+				mouthSize.height
+			);
+			ctx.restore();
+		}
+
+		if (imageManifest.mouth.add) {
+			ctx.save();
+			ctx.globalCompositeOperation = "lighter";
+			ctx.drawImage(
+				imageManifest.mouth.add,
 				mouthX,
 				mouthY,
 				mouthSize.width,
@@ -315,7 +345,8 @@ async function drawResult(id1, id2) {
 		}
 
 		if (imageManifest.nose) {
-			const noseImage = imageManifest.nose;
+			assertImagesAreSameSize(Object.values(imageManifest.nose));
+			const noseImage = imageManifest.nose.sub || imageManifest.nose.add;
 			const noseYFace = baseImage.height * talent2Draw.nose.y;
 			const noseSize = proportionalScaleWidth(
 				mouthWidthFaceToMouthWidthRatio * noseImage.width,
@@ -324,10 +355,32 @@ async function drawResult(id1, id2) {
 			);
 			const noseX = faceCenterX - noseSize.width * talent1Draw.nose.x;
 			const noseY = noseYFace - noseSize.height * talent1Draw.nose.y;
-			ctx.save();
-			ctx.globalCompositeOperation = "difference";
-			ctx.drawImage(noseImage, noseX, noseY, noseSize.width, noseSize.height);
-			ctx.restore();
+
+			if (imageManifest.nose.add) {
+				ctx.save();
+				ctx.globalCompositeOperation = "lighter";
+				ctx.drawImage(
+					imageManifest.nose.add,
+					noseX,
+					noseY,
+					noseSize.width,
+					noseSize.height
+				);
+				ctx.restore();
+			}
+
+			if (imageManifest.nose.sub) {
+				ctx.save();
+				ctx.globalCompositeOperation = "difference";
+				ctx.drawImage(
+					imageManifest.nose.sub,
+					noseX,
+					noseY,
+					noseSize.width,
+					noseSize.height
+				);
+				ctx.restore();
+			}
 		}
 	}
 

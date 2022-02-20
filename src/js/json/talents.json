@@ -25,11 +25,13 @@
 					"x": 0.48444444444444446,
 					"y": 0.5079365079365079,
 					"width": 0.9333333333333333,
-					"hasBlend": true
+					"hasSub": true,
+					"hasAdd": true
 				},
 				"nose": {
 					"x": 0.5299145299145299,
-					"y": 0.5912408759124088
+					"y": 0.5912408759124088,
+					"hasSub": true
 				},
 				"eyes": {
 					"areDifferent": false,
@@ -93,11 +95,13 @@
 					"x": 0.47651006711409394,
 					"y": 0.6875,
 					"width": 0.8590604026845637,
-					"hasBlend": true
+					"hasSub": true
 				},
 				"nose": {
 					"x": 0.711864406779661,
-					"y": 0.525
+					"y": 0.525,
+					"hasSub": true,
+					"hasAdd": true
 				},
 				"eyes": {
 					"areDifferent": false,
@@ -162,11 +166,13 @@
 					"y": 0.4,
 					"width": 1.1,
 					"hasCutout": true,
-					"hasBlend": true
+					"hasSub": true,
+					"hasAdd": true
 				},
 				"nose": {
 					"x": 0.4642857142857143,
-					"y": 0.8518518518518519
+					"y": 0.8518518518518519,
+					"hasSub": true
 				},
 				"eyes": {
 					"areDifferent": false,
@@ -229,11 +235,13 @@
 					"x": 0.5076923076923077,
 					"y": 0.4,
 					"width": 0.8615384615384616,
-					"hasBlend": true
+					"hasSub": true,
+					"hasAdd": true
 				},
 				"nose": {
 					"x": 0.4523809523809524,
-					"y": 0.8285714285714286
+					"y": 0.8285714285714286,
+					"hasSub": true
 				},
 				"eyes": {
 					"areDifferent": false,
@@ -297,11 +305,13 @@
 					"y": 0.32,
 					"width": 0.7,
 					"hasCutout": true,
-					"hasBlend": true
+					"hasSub": true,
+					"hasAdd": true
 				},
 				"nose": {
 					"x": 0.5,
-					"y": 0.6867469879518072
+					"y": 0.6867469879518072,
+					"hasSub": true
 				},
 				"eyes": {
 					"areDifferent": false,
@@ -361,11 +371,13 @@
 					"x": 0.472,
 					"y": 0.42105263157894735,
 					"width": 0.864,
-					"hasBlend": true
+					"hasSub": true
 				},
 				"nose": {
 					"x": 0.46875,
-					"y": 0.5681818181818182
+					"y": 0.5681818181818182,
+					"hasSub": true,
+					"hasAdd": true
 				},
 				"eyes": {
 					"areDifferent": false,
@@ -433,7 +445,8 @@
 				},
 				"nose": {
 					"x": 0.48936170212765956,
-					"y": 0.8769230769230769
+					"y": 0.8769230769230769,
+					"hasSub": true
 				},
 				"eyes": {
 					"areDifferent": true,
@@ -496,11 +509,12 @@
 					"x": 0.5328947368421053,
 					"y": 0.85,
 					"width": 0.868421052631579,
-					"hasBlend": true
+					"hasSub": true
 				},
 				"nose": {
 					"x": 0.5,
-					"y": 0.375
+					"y": 0.375,
+					"hasSub": true
 				},
 				"eyes": {
 					"areDifferent": false,
@@ -563,11 +577,12 @@
 					"x": 0.47668393782383417,
 					"y": 0.2871287128712871,
 					"width": 0.8497409326424871,
-					"hasBlend": true
+					"hasSub": true
 				},
 				"nose": {
 					"x": 0.4827586206896552,
-					"y": 0.5397727272727273
+					"y": 0.5397727272727273,
+					"hasSub": true
 				},
 				"eyes": {
 					"areDifferent": false,
@@ -630,11 +645,14 @@
 					"x": 0.49382716049382713,
 					"y": 0.6590909090909091,
 					"width": 0.9135802469135802,
-					"hasBlend": true
+					"hasSub": true,
+					"hasAdd": true
 				},
 				"nose": {
 					"x": 0.4,
-					"y": 0.6530612244897959
+					"y": 0.6530612244897959,
+					"hasSub": true,
+					"hasAdd": true
 				},
 				"eyes": {
 					"areDifferent": false,
@@ -697,11 +715,14 @@
 					"x": 0.46153846153846156,
 					"y": 0.36,
 					"width": 1.2,
-					"hasBlend": true
+					"hasSub": true,
+					"hasAdd": true
 				},
 				"nose": {
 					"x": 0.48717948717948717,
-					"y": 0.7246376811594203
+					"y": 0.7246376811594203,
+					"hasSub": true,
+					"hasAdd": true
 				},
 				"eyes": {
 					"areDifferent": false,
@@ -764,11 +785,12 @@
 					"x": 0.4895833333333333,
 					"y": 0.9090909090909091,
 					"width": 1,
-					"hasBlend": true
+					"hasSub": true
 				},
 				"nose": {
 					"x": 0.47619047619047616,
-					"y": 0.6166666666666667
+					"y": 0.6166666666666667,
+					"hasSub": true
 				},
 				"eyes": {
 					"areDifferent": false,
@@ -829,11 +851,12 @@
 					"y": 0.4,
 					"width": 0.95,
 					"hasCutout": true,
-					"hasBlend": true
+					"hasSub": true
 				},
 				"nose": {
 					"x": 0.5571428571428572,
-					"y": 0.7647058823529411
+					"y": 0.7647058823529411,
+					"hasSub": true
 				},
 				"eyes": {
 					"areDifferent": false,
