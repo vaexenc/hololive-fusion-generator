@@ -120,10 +120,6 @@ button {
 		drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.5));
 }
 
-.button-img-screenshot {
-	background-image: url("images/screenshot.svg");
-}
-
 .name {
 	word-break: break-word;
 }
@@ -308,17 +304,6 @@ button {
 .result-button-imgs .button-img {
 	width: 3.1em;
 	height: 3.1em;
-}
-
-.result-button-imgs__screenshot {
-	position: absolute;
-	display: grid;
-	place-items: center;
-	right: 0px;
-	top: 50%;
-	transform: translateY(-50%);
-	font-size: 0.8em;
-	visibility: hidden;
 }
 
 .result-name {
