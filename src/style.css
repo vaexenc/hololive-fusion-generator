@@ -1,681 +1,642 @@
 /* Mobile first */
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .no-script {
-	display: grid;
-	place-items: center;
-	position: fixed;
-	z-index: 10000;
-	width: 100%;
-	height: 100%;
-	background-color: black;
+    display: grid;
+    place-items: center;
+    position: fixed;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    background-color: black;
 }
 
 .no-script__text {
-	color: #dddddd;
-	text-align: center;
-	font-size: 8vmin;
+    color: #dddddd;
+    text-align: center;
+    font-size: 8vmin;
 }
 
 body {
-	background-color: #eee;
-	font-family: "Lato", sans-serif;
-	font-size: 1rem;
+    background-color: #eee;
+    font-family: "Lato", sans-serif;
+    font-size: 1rem;
 }
+
 
 /* weird preload hack, fixes flickering when changing info-button image
    on hover in firefox */
-body::after {
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	width: 1px;
-	height: 1px;
-	opacity: 0.00001;
-	z-index: -99999999;
 
-	/* urls seperated by space, e.g. url("a") url("b") */
-	content: url("images/info-button-animated.webp");
+body::after {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 1px;
+    height: 1px;
+    opacity: 0.00001;
+    z-index: -99999999;
+    /* urls seperated by space, e.g. url("a") url("b") */
+    content: url("images/info-button-animated.webp");
 }
 
 button {
-	font-size: inherit;
-	font-family: inherit;
-	border: none;
-	outline: none;
+    font-size: inherit;
+    font-family: inherit;
+    border: none;
+    outline: none;
 }
 
 .background {
-	--image-url: url("");
-	background-image: var(--image-url);
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	height: 100vh;
-	z-index: -999999;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	filter: contrast(110%);
+    --image-url: url("");
+    background-image: var(--image-url);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    z-index: -999999;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: contrast(110%);
 }
 
 .header {
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	font-size: 1rem;
-	padding-left: 0.5em;
-	padding-right: 0.6em; /* beware info-button rotation overflow */
-	padding-top: 0.2em;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    padding-left: 0.5em;
+    padding-right: 0.6em;
+    /* beware info-button rotation overflow */
+    padding-top: 0.2em;
 }
 
 .header__title {
-	font-family: "Pacifico";
-	font-size: 1.4em;
-	color: white;
-	text-shadow: 0px 0px 0.75em rgba(5%, 5%, 5%, 0.3);
-	user-select: none;
+    font-family: "Pacifico";
+    font-size: 1.4em;
+    color: white;
+    text-shadow: 0px 0px 0.75em rgba(5%, 5%, 5%, 0.3);
+    user-select: none;
 }
 
 .button-img {
-	background-color: transparent;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
-	width: 2.6em;
-	height: 2.6em;
-	filter:
-		drop-shadow(0 0 0.25em rgba(5%, 5%, 5%, 0.3))
-		drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.6))
-	;
-	margin-left: 0.2em;
-	margin-right: 0.2em;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 2.6em;
+    height: 2.6em;
+    filter: drop-shadow(0 0 0.25em rgba(5%, 5%, 5%, 0.3)) drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.6));
+    margin-left: 0.2em;
+    margin-right: 0.2em;
 }
 
 .button-img:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .button-img-up {
-	background-image: url("images/up.svg");
+    background-image: url("images/up.svg");
 }
 
 .button-img-down {
-	background-image: url("images/down.svg");
+    background-image: url("images/down.svg");
 }
 
 .button-img-swap {
-	background-image: url("images/swap.svg");
+    background-image: url("images/swap.svg");
 }
 
 .button-img-random {
-	background-image: url("images/random.svg");
-	filter:
-		drop-shadow(0 0 0.25em rgba(5%, 5%, 5%, 0.2))
-		drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.5))
-	;
+    background-image: url("images/random.svg");
+    filter: drop-shadow(0 0 0.25em rgba(5%, 5%, 5%, 0.2)) drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.5));
 }
 
 .button-img-screenshot {
-	background-image: url("images/screenshot.svg");
+    background-image: url("images/screenshot.svg");
 }
 
 .name {
-	word-break: break-word;
+    word-break: break-word;
 }
 
 .main {
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .talent-select-container {
-	flex-basis: 46%;
+    flex-basis: 46%;
 }
+
 
 /* .talent-select-box {
 } */
 
 .box {
-	margin: 0.25em;
-	padding: 0.25em;
-	color: white;
-	text-shadow:
-		0px 0px 0.3em rgba(0, 0, 0, 0.6),
-		0px 0px 0.2em rgba(0, 0, 0, 0.4)
-	;
+    margin: 0.25em;
+    padding: 0.25em;
+    color: white;
+    text-shadow: 0px 0px 0.3em rgba(0, 0, 0, 0.6), 0px 0px 0.2em rgba(0, 0, 0, 0.4);
 }
 
 .talent-select-box-1 {
-	margin-right: 0;
+    margin-right: 0;
 }
 
 .talent-select-box-2 {
-	margin-left: 0;
+    margin-left: 0;
 }
 
 .talent-select-content {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .talent-select-image {
-	--image-url: url("");
-	background-color: white;
-	background-image: var(--image-url);
-	width: 100%;
-	padding-top: 100%; /* aspect ratio hack */
-	border-radius: 8px;
-	background-position: center;
-	background-size: cover;
+    --image-url: url("");
+    background-color: white;
+    background-image: var(--image-url);
+    width: 100%;
+    padding-top: 100%;
+    /* aspect ratio hack */
+    border-radius: 8px;
+    background-position: center;
+    background-size: cover;
 }
 
 .talent-select-image:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .talent-select-image.dropdown-visible {
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 .talent-select-name {
-	min-height: 2.05em;
-	text-align: center;
-	font-weight: 500;
-	user-select: none;
+    min-height: 2.05em;
+    text-align: center;
+    font-weight: 500;
+    user-select: none;
 }
 
 .talent-select-name.dropdown-visible {
-	visibility: hidden;
+    visibility: hidden;
 }
+
 
 /* .talent-select-name__name {
 } */
 
 .talent-select-name__name:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .talent-dropdown {
-	position: relative;
-	align-self: start;
-	width: 100%;
-	visibility: hidden;
-	z-index: 500;
+    position: relative;
+    align-self: start;
+    width: 100%;
+    visibility: hidden;
+    z-index: 500;
 }
 
 .talent-dropdown.dropdown-visible {
-	visibility: visible;
+    visibility: visible;
 }
 
 .talent-dropdown-content {
-	position: absolute;
-	width: 100%;
-	background-image: linear-gradient(
-		rgba(95%, 95%, 95%, 0.9),
-		rgba(85%, 85%, 85%, 0.85)
-	);
-	z-index: 100;
-	border-bottom-left-radius: 8px;
-	border-bottom-right-radius: 8px;
+    position: absolute;
+    width: 100%;
+    background-image: linear-gradient( rgba(95%, 95%, 95%, 0.9), rgba(85%, 85%, 85%, 0.85));
+    z-index: 100;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 .talent-dropdown-entries {
-	position: relative;
-	max-height: 25em;
-	overflow-y: auto;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+    position: relative;
+    max-height: 25em;
+    overflow-y: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .talent-dropdown-entries__entry {
-	display: flex;
-	align-items: center;
-	user-select: none;
-	padding: 0.2em;
-	padding-left: 0.4em;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    padding: 0.2em;
+    padding-left: 0.4em;
 }
 
 .talent-dropdown-entries__entry:hover {
-	background-color: rgba(95%, 95%, 95%, 0.4);
+    background-color: rgba(95%, 95%, 95%, 0.4);
 }
 
 .talent-dropdown-entries__entry--highlighted {
-	background-color: rgba(100%, 100%, 100%, 0.6);
+    background-color: rgba(100%, 100%, 100%, 0.6);
 }
 
 .talent-dropdown-entries__entry__image {
-	--image-url: url("");
-	background-color: white;
-	background-image: var(--image-url);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-	flex-shrink: 0;
-	border-radius: 0.2em;
-	width: 2.5em;
-	height: 2.5em;
-	margin-right: 0.4em;
+    --image-url: url("");
+    background-color: white;
+    background-image: var(--image-url);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    flex-shrink: 0;
+    border-radius: 0.2em;
+    width: 2.5em;
+    height: 2.5em;
+    margin-right: 0.4em;
 }
 
 .talent-dropdown-entries__entry__name {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	font-size: 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1em;
 }
 
 .talent-select-button-imgs {
-	display: flex;
+    display: flex;
 }
 
 .talent-select-button-imgs.dropdown-visible {
-	visibility: hidden;
+    visibility: hidden;
 }
 
 .result-box {
-	flex-basis: 70%;
-	order: 3;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+    flex-basis: 70%;
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .result-canvas {
-	border-radius: 8px;
-	width: 100%;
-	background-color: white;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 40%;
-	animation-name: result-canvas-loading-delay;
-	animation-duration: 0.2s;
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
+    border-radius: 8px;
+    width: 100%;
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    animation-name: result-canvas-loading-delay;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
 }
 
 .result-button-imgs {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .result-button-imgs .button-img {
-	width: 3.1em;
-	height: 3.1em;
+    width: 3.1em;
+    height: 3.1em;
 }
 
 .result-button-imgs__screenshot {
-	position: absolute;
-	display: grid;
-	place-items: center;
-	right: 0px;
-	top: 50%;
-	transform: translateY(-50%);
-	font-size: 0.8em;
-	visibility: hidden;
+    position: absolute;
+    display: grid;
+    place-items: center;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    visibility: hidden;
 }
 
 .result-name {
-	min-height: 2.5em;
-	text-align: center;
-	font-size: 1.5em;
-	font-weight: 600;
-	letter-spacing: -0.02em;
+    min-height: 2.5em;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+    letter-spacing: -0.02em;
 }
 
 .info-button {
-	width: 2.5em;
-	height: 2.5em;
-	background-color: transparent;
-	background-image: url("images/info-button.webp");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
-	z-index: 1000;
-	animation-name: info-button-anim;
-	animation-duration: 2s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-	animation-play-state: paused;
-
-	/* fixes flickering when resuming rotation animation in firefox */
-	backface-visibility: hidden;
+    width: 2.5em;
+    height: 2.5em;
+    background-color: transparent;
+    background-image: url("images/info-button.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    z-index: 1000;
+    animation-name: info-button-anim;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+    /* fixes flickering when resuming rotation animation in firefox */
+    backface-visibility: hidden;
 }
 
 .info-button:hover {
-	cursor: pointer;
-	animation-play-state: running;
-	background-image: url("images/info-button-animated.webp");
+    cursor: pointer;
+    animation-play-state: running;
+    background-image: url("images/info-button-animated.webp");
 }
 
 .info {
-	visibility: hidden;
-	opacity: 0;
-	animation-fill-mode: forwards;
-	position: fixed;
-	width: 80vw;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%) scale(1);
-	padding: 0.6em;
-	padding-top: 2.2em;
-	background-color: whitesmoke;
-	box-shadow: 0 0 7vmin rgba(0, 0, 0, 0.9);
-	border-radius: 10px;
-	z-index: 900;
-	color: rgb(10%, 10%, 10%);
-	user-select: none;
+    visibility: hidden;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    position: fixed;
+    width: 80vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    padding: 0.6em;
+    padding-top: 2.2em;
+    background-color: whitesmoke;
+    box-shadow: 0 0 7vmin rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    z-index: 900;
+    color: rgb(10%, 10%, 10%);
+    user-select: none;
 }
 
 .info__inner {
-	width: 100%;
-	max-height: 60vh;
-	overflow: auto;
-	padding-bottom: 1em;
+    width: 100%;
+    max-height: 60vh;
+    overflow: auto;
+    padding-bottom: 1em;
 }
 
 .info__close {
-	position: absolute;
-	right: 0.2em;
-	top: 0.2em;
-	width: 2em;
-	height: 2em;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
-	background-image: url("images/info-close.svg");
+    position: absolute;
+    right: 0.2em;
+    top: 0.2em;
+    width: 2em;
+    height: 2em;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("images/info-close.svg");
 }
 
 .info__close:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .info h1:not(:nth-child(1)) {
-	margin-top: 0.8em;
+    margin-top: 0.8em;
 }
 
 .info .background-button {
-	border-radius: 0.3em;
-	padding: 0.7em 0.8em;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	margin: 0.5em 0.1em;
-	margin-bottom: 0;
-	background-color: inherit;
-	font-weight: bold;
+    border-radius: 0.3em;
+    padding: 0.7em 0.8em;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin: 0.5em 0.1em;
+    margin-bottom: 0;
+    background-color: inherit;
+    font-weight: bold;
 }
 
 .info .background-button:hover {
-	background-color: rgb(90%, 90%, 90%);
+    background-color: rgb(90%, 90%, 90%);
 }
 
 .info .background-button:active {
-	background-color: rgb(85%, 85%, 85%);
+    background-color: rgb(85%, 85%, 85%);
 }
 
 .info ul {
-	padding-left: 1.3em;
+    padding-left: 1.3em;
 }
 
 .info ul ul {
-	padding-left: 1em;
+    padding-left: 1em;
 }
 
 .info li {
-	line-height: 1.3em;
+    line-height: 1.3em;
 }
 
 .info li li {
-	list-style-type: "–  ";
+    list-style-type: "–  ";
 }
 
 .info a {
-	color: rgb(30%, 30%, 30%);
-	font-weight: bold;
+    color: rgb(30%, 30%, 30%);
+    font-weight: bold;
 }
 
 .info--in {
-	animation-name: info-in;
-	animation-duration: 0.2s;
-	user-select: auto;
+    animation-name: info-in;
+    animation-duration: 0.2s;
+    user-select: auto;
 }
 
 .info--out {
-	animation-name: info-out;
-	animation-duration: 0.2s;
+    animation-name: info-out;
+    animation-duration: 0.2s;
 }
 
 @keyframes info-button-anim {
-	from {
-		transform: rotateZ(0deg);
-	}
-
-	to {
-		transform: rotateZ(360deg);
-	}
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
 }
 
 @keyframes info-in {
-	from {
-		visibility: visible;
-		opacity: 0;
-		transform: translate(-50%, -50%) scale(1.3);
-	}
-
-	to {
-		visibility: visible;
-		opacity: 1;
-		transform: translate(-50%, -50%) scale(1);
-	}
+    from {
+        visibility: visible;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.3);
+    }
+    to {
+        visibility: visible;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 @keyframes info-out {
-	from {
-		opacity: 1;
-		visibility: visible;
-
-	}
-
-	to {
-		opacity: 0;
-		visibility: hidden;
-		transform: translate(-50%, -50%) scale(0.8);
-	}
+    from {
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
 }
 
 @keyframes result-canvas-loading-delay {
-	0% {
-		background-image: url("");
-	}
-
-	99% {
-		background-image: url(""); /* firefox fix */
-	}
-
-	100% {
-		background-image: url("images/loading-indicator.webp");
-	}
+    0% {
+        background-image: url("");
+    }
+    99% {
+        background-image: url("");
+        /* firefox fix */
+    }
+    100% {
+        background-image: url("images/loading-indicator.webp");
+    }
 }
 
+
 /* Mobile with longer screens */
+
 @media (
-	/* observations on chrome on android, with "max-aspect-ratio":
+/* observations on chrome on android, with "max-aspect-ratio":
 	   decimal values don't work, it has to be a division of ints
 	   it works on a 16:9 screen up until reaching 9/14
 	   it works on a 20:9 screen up until reaching 9/18
 	*/
-	max-aspect-ratio: 9/16
-) {
-	.header {
-		margin-bottom: 0.25em;
-	}
 
-	.talent-select-container {
-		flex-basis: 48%;
-	}
-
-	.result-box {
-		flex-basis: 80%;
-		margin-top: 1em;
-	}
+max-aspect-ratio: 9/16) {
+    .header {
+        margin-bottom: 0.25em;
+    }
+    .talent-select-container {
+        flex-basis: 48%;
+    }
+    .result-box {
+        flex-basis: 80%;
+        margin-top: 1em;
+    }
 }
 
+
 /* Desktop */
-@media (min-width: 450px), (min-aspect-ratio: 0.57), (orientation: landscape) {
-	:root {
-		--max-width: 1200px;
-		--min-width: 600px;
-		--perspective-angle: 5deg;
-	}
 
-	.header {
-		padding-right: 0.8em; /* beware info-button overflow */
-		min-width: var(--min-width);
-	}
-
-	.header__title {
-		font-size: 2em;
-	}
-
-	.info-button {
-		width: 3em;
-		height: 3em;
-	}
-
-	.main {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		flex-wrap: nowrap;
-		justify-content: center;
-		align-items: center;
-		max-width: var(--max-width);
-		min-width: var(--min-width);
-		margin: auto;
-	}
-
-	.box {
-		padding: 0;
-		margin: 0;
-	}
-
-	.talent-select-container {
-		flex-basis: 60%;
-		flex-grow: 1;
-		perspective: max(calc(900px - 60vw), 200px);
-		margin: auto;
-	}
-
-	.talent-select-container-1 {
-		order: 1;
-		margin-left: 1em;
-	}
-
-	.talent-select-container-2 {
-		order: 3;
-		margin-right: 1em;
-	}
-
-	.talent-select-box-1 {
-		transform: rotateY(var(--perspective-angle));
-	}
-
-	.talent-select-box-2 {
-		transform: rotateY(calc(var(--perspective-angle) * -1));
-	}
-
-	.talent-select-name {
-		font-size: 1.5em;
-	}
-
-	.talent-dropdown-content {
-		background-color: unset;
-		background-image: linear-gradient(
-			rgba(100%, 100%, 100%, 0.5),
-			rgba(90%, 90%, 90%, 0.05)
-		);
-	}
-
-	.talent-dropdown-entries {
-		max-height: 15em;
-	}
-
-	.talent-dropdown-entries__entry {
-		padding: 0.2em;
-		padding-left: 0.8em;
-	}
-
-	.talent-dropdown-entries__entry--highlighted {
-		background-color: unset;
-		background-image: linear-gradient(
-			90deg,
-			rgba(100%, 100%, 100%, 0.8) 2%,
-			transparent 2%
-		);
-	}
-
-	.talent-dropdown-entries__entry__image {
-		width: 2em;
-		height: 2em;
-		margin-right: 0.4em;
-	}
-
-	.talent-dropdown-entries__entry__name {
-		white-space: nowrap;
-		font-size: 1em;
-	}
-
-	.button-img {
-		width: 2.4em;
-		height: 2.4em;
-		margin-left: 0.15em;
-		margin-right: 0.15em;
-	}
-
-	.result-box {
-		order: 2;
-		flex-basis: 100%;
-		flex-grow: 1;
-		margin: auto 2em;
-	}
-
-	.result-button-imgs .button-img {
-		width: 3em;
-		height: 3em;
-	}
-
-	.result-name {
-		font-size: 2.5em;
-		min-height: 2.4em;
-	}
-
-	.info {
-		max-width: 60ch;
-		padding-left: 1em;
-	}
-
-	.info ul {
-		padding-left: 1.7em;
-	}
-
-	.info ul ul {
-		padding-left: 1.4em;
-	}
+@media (min-width: 450px),
+(min-aspect-ratio: 0.57),
+(orientation: landscape) {
+     :root {
+        --max-width: 1200px;
+        --min-width: 600px;
+        --perspective-angle: 5deg;
+    }
+    .header {
+        padding-right: 0.8em;
+        /* beware info-button overflow */
+        min-width: var(--min-width);
+    }
+    .header__title {
+        font-size: 2em;
+    }
+    .info-button {
+        width: 3em;
+        height: 3em;
+    }
+    .main {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        max-width: var(--max-width);
+        min-width: var(--min-width);
+        margin: auto;
+    }
+    .box {
+        padding: 0;
+        margin: 0;
+    }
+    .talent-select-container {
+        flex-basis: 60%;
+        flex-grow: 1;
+        perspective: max(calc(900px - 60vw), 200px);
+        margin: auto;
+    }
+    .talent-select-container-1 {
+        order: 1;
+        margin-left: 1em;
+    }
+    .talent-select-container-2 {
+        order: 3;
+        margin-right: 1em;
+    }
+    .talent-select-box-1 {
+        transform: rotateY(var(--perspective-angle));
+    }
+    .talent-select-box-2 {
+        transform: rotateY(calc(var(--perspective-angle) * -1));
+    }
+    .talent-select-name {
+        font-size: 1.5em;
+    }
+    .talent-dropdown-content {
+        background-color: unset;
+        background-image: linear-gradient( rgba(100%, 100%, 100%, 0.5), rgba(90%, 90%, 90%, 0.05));
+    }
+    .talent-dropdown-entries {
+        max-height: 15em;
+    }
+    .talent-dropdown-entries__entry {
+        padding: 0.2em;
+        padding-left: 0.8em;
+    }
+    .talent-dropdown-entries__entry--highlighted {
+        background-color: unset;
+        background-image: linear-gradient( 90deg, rgba(100%, 100%, 100%, 0.8) 2%, transparent 2%);
+    }
+    .talent-dropdown-entries__entry__image {
+        width: 2em;
+        height: 2em;
+        margin-right: 0.4em;
+    }
+    .talent-dropdown-entries__entry__name {
+        white-space: nowrap;
+        font-size: 1em;
+    }
+    .button-img {
+        width: 2.4em;
+        height: 2.4em;
+        margin-left: 0.15em;
+        margin-right: 0.15em;
+    }
+    .result-box {
+        order: 2;
+        flex-basis: 100%;
+        flex-grow: 1;
+        margin: auto 2em;
+    }
+    .result-button-imgs .button-img {
+        width: 3em;
+        height: 3em;
+    }
+    .result-name {
+        font-size: 2.5em;
+        min-height: 2.4em;
+    }
+    .info {
+        max-width: 60ch;
+        padding-left: 1em;
+    }
+    .info ul {
+        padding-left: 1.7em;
+    }
+    .info ul ul {
+        padding-left: 1.4em;
+    }
 }

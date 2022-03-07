@@ -7,6 +7,7 @@
         "lastNameAfter": "kino",
         "firstNameBefore": "so",
         "firstNameAfter": "ora",
+        "category": ["All", "JP0"],
         "drawFirst": {
             "hair": {
                 "colors": ["#865147", "#bc8875", "#c2967e"]
@@ -70,6 +71,7 @@
         "lastNameAfter": "kai",
         "firstNameBefore": "haa",
         "firstNameAfter": "aato",
+        "category": ["All", "JP0"],
         "drawFirst": {
             "hair": {
                 "colors": ["#ffe3ae", "#f9d3a7"]
@@ -133,6 +135,7 @@
         "lastNameAfter": "mata",
         "firstNameBefore": "oka",
         "firstNameAfter": "kayu",
+        "category": ["All"],
         "drawFirst": {
             "hair": {
                 "colors": ["#f7e8ff", "#e7c6ff"]
@@ -196,6 +199,7 @@
         "lastNameAfter": "gami",
         "firstNameBefore": "koro",
         "firstNameAfter": "rone",
+        "category": ["All"],
         "drawFirst": {
             "hair": {
                 "colors": ["#a6706a", "#844d45", "#d39c94"]
@@ -258,6 +262,7 @@
         "lastNameAfter": "sada",
         "firstNameBefore": "peko",
         "firstNameAfter": "kora",
+        "category": ["All"],
         "drawFirst": {
             "hair": {
                 "colors": ["#acc0f2", "#ffffff", "#5f6aaf", "#bdbdd7"]
@@ -318,6 +323,7 @@
         "lastNameAfter": "ryu",
         "firstNameBefore": "coco",
         "firstNameAfter": "coco",
+        "category": ["All"],
         "drawFirst": {
             "hair": {
                 "colors": ["#fd945e", "#fcfa60", "#552039"]
@@ -381,6 +387,7 @@
         "lastNameAfter": "reiji",
         "firstNameBefore": "olli",
         "firstNameAfter": "llie",
+        "category": ["All"],
         "drawFirst": {
             "hair": {
                 "colors": ["#eb0045", "#edb7c7", "#d1c6ca"]
@@ -443,6 +450,7 @@
         "lastNameAfter": "fissa",
         "firstNameBefore": "an",
         "firstNameAfter": "nya",
+        "category": ["All"],
         "drawFirst": {
             "hair": {
                 "colors": ["#99797e", "#f8d176", "#bf977a", "#f6b575"]
@@ -505,6 +513,7 @@
         "lastNameAfter": "mori",
         "firstNameBefore": "calli",
         "firstNameAfter": "lliope",
+        "category": ["All"],
         "drawFirst": {
             "hair": {
                 "colors": ["#f8ccde", "#e48096"]
@@ -567,6 +576,7 @@
         "lastNameAfter": "nashi",
         "firstNameBefore": "kia",
         "firstNameAfter": "ara",
+        "category": ["All"],
         "drawFirst": {
             "hair": {
                 "colors": ["#ff8161", "#bdead7", "#63b8d6"]
@@ -629,6 +639,7 @@
         "lastNameAfter": "mae",
         "firstNameBefore": "ina",
         "firstNameAfter": "'nis",
+        "category": ["All"],
         "drawFirst": {
             "hair": {
                 "colors": ["#695982", "#f3a35f", "#50445e", "#ffba76"]
@@ -691,6 +702,7 @@
         "lastNameAfter": "gawr",
         "firstNameBefore": "gu",
         "firstNameAfter": "ra",
+        "category": ["All"],
         "drawFirst": {
             "hair": {
                 "colors": ["#f3f3f3", "#5e9ad2", "#e2e3e5", "#afebe3"]
@@ -750,6 +762,7 @@
         "lastNameAfter": "tson",
         "firstNameBefore": "ame",
         "firstNameAfter": "melia",
+        "category": ["All"],
         "drawFirst": {
             "hair": {
                 "colors": ["#fad99b", "#f4cb94"]
@@ -802,132 +815,5 @@
             },
             "faceCenterX": 0.5423728813559322
         }
-    },
-
-    "aaa": {
-        "enabled": true,
-        "lastName": "ab",
-        "firstName": "cb",
-        "lastNameBefore": "a",
-        "lastNameAfter": "b",
-        "firstNameBefore": "c",
-        "firstNameAfter": "d",
-        "drawFirst": {
-            "hair": {
-                "colors": ["#00ff00", "#ffff00"]
-            },
-            "body": {
-                "colors": ["#0000ff", "#00ffff", "#4433dd"]
-            },
-            "etc": {
-                "colors": ["#de445d", "#3d70b8", "#ffdb90"]
-            },
-            "mouth": {
-                "x": 0.47651006711409394,
-                "y": 0.6875,
-                "width": 0.8590604026845637,
-                "hasBlend": true
-            },
-            "nose": {
-                "x": 0.711864406779661,
-                "y": 0.525
-            },
-            "eyes": {
-                "areDifferent": false,
-                "left": 0.095,
-                "right": 0.94,
-                "y": 0.49523809523809526
-            }
-        },
-        "drawSecond": {
-            "hair": {
-                "count": 1
-            },
-            "body": {
-                "count": 1
-            },
-            "etc": {
-                "count": 1
-            },
-            "mouth": {
-                "y": 0.3785,
-                "width": 0.043
-            },
-            "nose": {
-                "y": 0.339
-            },
-            "eyes": {
-                "sides": "both",
-                "faceCenterXToEyeDistance": 0.039,
-                "width": 0.0798,
-                "y": 0.29
-            },
-            "faceCenterX": 0.488,
-            "rotation": -1.6
-        }
-    },
-
-    "rushia": {
-        "enabled": true,
-        "lastName": "uruha",
-        "firstName": "rushia",
-        "lastNameBefore": "uru",
-        "lastNameAfter": "ha",
-        "firstNameBefore": "ru",
-        "firstNameAfter": "shia",
-        "drawFirst": {
-            "hair": {
-                "colors": ["#00ff00", "#ffff00"]
-            },
-            "body": {
-                "colors": ["#0000ff", "#00ffff", "#4433dd"]
-            },
-            "etc": {
-                "colors": ["#de445d", "#3d70b8", "#ffdb90"]
-            },
-            "mouth": {
-                "x": 0.47651006711409394,
-                "y": 0.6875,
-                "width": 0.8590604026845637,
-                "hasBlend": true
-            },
-            "nose": {
-                "x": 0.711864406779661,
-                "y": 0.525
-            },
-            "eyes": {
-                "areDifferent": false,
-                "left": 0.095,
-                "right": 0.94,
-                "y": 0.49523809523809526
-            }
-        },
-        "drawSecond": {
-            "hair": {
-                "count": 1
-            },
-            "body": {
-                "count": 1
-            },
-            "etc": {
-                "count": 1
-            },
-            "mouth": {
-                "y": 0.3785,
-                "width": 0.043
-            },
-            "nose": {
-                "y": 0.339
-            },
-            "eyes": {
-                "sides": "both",
-                "faceCenterXToEyeDistance": 0.039,
-                "width": 0.0798,
-                "y": 0.29
-            },
-            "faceCenterX": 0.488,
-            "rotation": -1.6
-        }
     }
-
 }

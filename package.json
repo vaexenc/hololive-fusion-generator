@@ -5,7 +5,7 @@
         "build": "webpack --config ./webpack.prod.js",
         "build:dev": "webpack --config ./webpack.dev.js",
         "dev": "webpack serve --config ./webpack.dev.js --host 0.0.0.0",
-        "deploy": "npm run build && gh-pages --dist ./dist --message a --no-history --branch gsproduction727-gh-pages"
+        "deploy": "npm run build && gh-pages --dist ./dist --message a --no-history"
     },
     "repository": {
         "type": "git",
