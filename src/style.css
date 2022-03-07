@@ -678,6 +678,10 @@ button {
 		transform: scale(1.2);
 	}
 
+	.button-img:active {
+		transform: scale(1.4);
+	}
+
 	.result-box {
 		order: 2;
 		flex-basis: 100%;
