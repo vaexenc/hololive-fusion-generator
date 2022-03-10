@@ -19,12 +19,16 @@ const dropdownModifierSelectors = [
     ".talent-select-name",
     ".talent-select-image"
 ];
-let curCategoryIndex = "All";
 const talentCategories = ["All", "JP0"];
-const talentIds = getTalentIdsEnabledFromCategory(curCategoryIndex);
+let curCategoryIndex = 0;
+const talentIds = getTalentIdsEnabledFromCategory(talentCategories[curCategoryIndex]);
 const talentSelectContainers = [];
+const talentEntries = [];
+const talentIdsInCategories = [];
+const talentIndexes = [...Array(talentIds.length).keys()];
 let backgroundIndex;
-let isCategory = true;
+let isCategoryShown = false;
+let isHalfCategoryAlrDone = false;
 
 // ------------------------------------------------------------------
 // GENERAL
@@ -301,6 +305,8 @@ function onClickDropdownEntry(event) {
     const entry = event.currentTarget; // not .target, might have clicked on child element (image, name)
     const talentSelectContainer = getTalentSelectContainerFromChild(entry);
 
+    isCategoryShown = false;
+
     setTalentSelectContainerTalentIndex(
         talentSelectContainer,
         entry.dataset.talentIndex
@@ -320,15 +326,34 @@ function onClickDropdownCategory(event) {
     const entry = event.currentTarget; // not .target, might have clicked on child element (image, name)
     const talentSelectContainer = getTalentSelectContainerFromChild(entry);
 
+    isCategoryShown = true;
+
     curCategoryIndex = entry.dataset.categoryIndex;
 
-    let talentDropdownEntry = talentSelectContainer.querySelector(".talent-dropdown-entries");
+    const talentDropdownEntry = talentSelectContainer.querySelector(".talent-dropdown-entries");
     talentDropdownEntry.style.display = null;
 
-    let talentDropdownCategory = talentSelectContainer.querySelector(".talent-dropdown-categories");
+    const talentDropdownCategory = talentSelectContainer.querySelector(".talent-dropdown-categories");
     talentDropdownCategory.style.display = "none";
 
-    showDropdown(talentSelectContainer);
+    const talentIdsInThisCategory = talentIdsInCategories[curCategoryIndex];
+    const talentsGlobalIndexInThisCategory = [];
+
+    for (let i = 0; i < talentIdsInThisCategory.length; i++) {
+        talentsGlobalIndexInThisCategory.push(talentIds.findIndex(element => element === talentIdsInThisCategory[i]));
+    }
+
+    const talentDropdownEntries = talentDropdownEntry.children;
+
+    for (let i = 0; i < talentIndexes.length; i++) {
+        if (talentsGlobalIndexInThisCategory.includes(i)) {
+            talentDropdownEntries[i].style.display = null;
+        } else {
+            talentDropdownEntries[i].style.display = "none";
+        }
+    }
+
+    // showDropdown(talentSelectContainer);
 }
 
 function isDropdownVisible(talentSelectContainer) {
@@ -348,8 +373,10 @@ function addDropdownEntry(dropdownElement, talentIndex, id) {
     const fullName = getFullNameStringById(id);
     entry.querySelector(".talent-dropdown-entries__entry__name").innerHTML = fullName;
 
-    let talentDropDownEntry = dropdownElement.querySelector(".talent-dropdown-entries");
+    const talentDropDownEntry = dropdownElement.querySelector(".talent-dropdown-entries");
     talentDropDownEntry.style.display = "none";
+
+    talentEntries.push(entry)
     talentDropDownEntry.appendChild(entry);
 
     /* because entry is of type DocumentFragment things such as setAttribute(),
@@ -364,7 +391,7 @@ function addDropdownCategory(dropdownElement, categoryIndex, categoryName) {
     const entry = cloneNode($(".template-talent-dropdown-category"));
     entry.querySelector(".talent-dropdown-category__entry").innerHTML = categoryName;
 
-    let talentDropDownEntry = dropdownElement.querySelector(".talent-dropdown-categories");
+    const talentDropDownEntry = dropdownElement.querySelector(".talent-dropdown-categories");
     talentDropDownEntry.appendChild(entry);
 
 
@@ -382,11 +409,26 @@ function addEnabledTalentsToDropdown(dropdownElement) {
     }
     for (let i = 0; i < talentCategories.length; i++) {
         addDropdownCategory(dropdownElement, i, talentCategories[i]);
+
+        let talentIdsInThisCategory = [];
+        for (let j = 0; j < talentIds.length; j++) {
+            if (getTalentCategory(getTalentById(talentIds[j])).includes(talentCategories[i])) {
+                talentIdsInThisCategory.push(talentIds[j]);
+            }
+        }
+
+        if (!isHalfCategoryAlrDone) {
+            talentIdsInCategories.push(talentIdsInThisCategory);
+            if (talentIdsInCategories.length > talentCategories.length) {
+                isHalfCategoryAlrDone = true;
+            }
+        }
     }
 }
 
 function onClickOutsideDropdown(event, dropdownElement) {
     if (event.ifDropdownElementJustShown === dropdownElement) return;
+    if (isCategoryShown) return;
     hideDropdown(getTalentSelectContainerFromChild(dropdownElement));
 }
 

@@ -40,7 +40,7 @@ function getTalentId(talentObj) {
 }
 
 function getTalentCategory(talentObj) {
-    return talentObj["category"];
+    return talentObj.category;
 }
 
 function getTalentIdsFromCategory(talentCategory) {
