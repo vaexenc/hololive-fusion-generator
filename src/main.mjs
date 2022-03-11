@@ -248,8 +248,16 @@ function getDropdownEntry(dropdownElement, talentIndex) {
     return dropdownElement.querySelector(`[data-talent-index="${talentIndex}"]`);
 }
 
+function getDropdownCategory(dropdownElement, categoryIndex) {
+    return dropdownElement.querySelector(`[data-category-index="${categoryIndex}"]`);
+}
+
 function highlightDropdownEntry(dropdownEntry) {
     dropdownEntry.classList.add("talent-dropdown-entries__entry--highlighted");
+}
+
+function highlightDropdownCategory(dropdownCategory) {
+    dropdownCategory.classList.add("talent-dropdown-category__entry--highlighted");
 }
 
 function unhighlightDropdownEntries(dropdownElement) {
@@ -258,8 +266,23 @@ function unhighlightDropdownEntries(dropdownElement) {
     }
 }
 
+function unhighlightDropdownCategories(dropdownElement) {
+    for (const category of dropdownElement.querySelectorAll(".talent-dropdown-category__entry")) {
+        category.classList.remove("talent-dropdown-category__entry--highlighted");
+    }
+}
+
 function scrollToDropdownEntry(dropdownEntry) {
     const dropdownEntriesContainer = dropdownEntry.closest(".talent-dropdown-entries");
+    const position =
+        dropdownEntry.offsetTop -
+        dropdownEntriesContainer.offsetHeight / 2 +
+        dropdownEntry.offsetHeight / 2;
+    dropdownEntriesContainer.scrollTop = position;
+}
+
+function scrollToCategoryEntry(dropdownEntry) {
+    const dropdownEntriesContainer = dropdownEntry.closest(".talent-dropdown-categories");
     const position =
         dropdownEntry.offsetTop -
         dropdownEntriesContainer.offsetHeight / 2 +
@@ -273,8 +296,23 @@ function addDropdownModifierToElements(talentSelectContainer) {
     }
 }
 
+function addCategoryModifierToElements(talentSelectContainer) {
+    for (const selector of dropdownModifierSelectors) {
+        talentSelectContainer.querySelector(selector).classList.add("catebgory-visible");
+    }
+}
+
 function getDropdownEntryOfCurrentlySelectedTalent(dropdownElement) {
     return getDropdownEntry(
+        dropdownElement,
+        getTalentSelectContainerTalentIndex(
+            getTalentSelectContainerFromChild(dropdownElement)
+        )
+    );
+}
+
+function getCategoryEntryOfCurrentlySelectedTalent(dropdownElement) {
+    return getDropdownCategory(
         dropdownElement,
         getTalentSelectContainerTalentIndex(
             getTalentSelectContainerFromChild(dropdownElement)
@@ -285,6 +323,15 @@ function getDropdownEntryOfCurrentlySelectedTalent(dropdownElement) {
 function showDropdown(talentSelectContainer) {
     addDropdownModifierToElements(talentSelectContainer);
     scrollToDropdownEntry(
+        getDropdownEntryOfCurrentlySelectedTalent(
+            talentSelectContainer.querySelector(".talent-dropdown")
+        )
+    );
+}
+
+function showCategory(talentSelectContainer) {
+    addCategoryModifierToElements(talentSelectContainer);
+    scrollToCategoryEntry(
         getDropdownEntryOfCurrentlySelectedTalent(
             talentSelectContainer.querySelector(".talent-dropdown")
         )
@@ -328,6 +375,9 @@ function onClickDropdownCategory(event) {
 
     isCategoryShown = true;
 
+    unhighlightDropdownCategories(talentSelectContainer);
+    highlightDropdownCategory(getDropdownCategory(talentSelectContainer, entry.dataset.categoryIndex));
+
     curCategoryIndex = entry.dataset.categoryIndex;
 
     const talentDropdownEntry = talentSelectContainer.querySelector(".talent-dropdown-entries");
@@ -343,17 +393,16 @@ function onClickDropdownCategory(event) {
         talentsGlobalIndexInThisCategory.push(talentIds.findIndex(element => element === talentIdsInThisCategory[i]));
     }
 
-    const talentDropdownEntries = talentDropdownEntry.children;
-
     for (let i = 0; i < talentIndexes.length; i++) {
+        const DropdownEntry = getDropdownEntry(talentSelectContainer, i)
         if (talentsGlobalIndexInThisCategory.includes(i)) {
-            talentDropdownEntries[i].style.display = null;
+            DropdownEntry.style.display = null;
         } else {
-            talentDropdownEntries[i].style.display = "none";
+            DropdownEntry.style.display = "none";
         }
     }
 
-    // showDropdown(talentSelectContainer);
+    showDropdown(talentSelectContainer);
 }
 
 function isDropdownVisible(talentSelectContainer) {
@@ -389,7 +438,7 @@ function addDropdownEntry(dropdownElement, talentIndex, id) {
 
 function addDropdownCategory(dropdownElement, categoryIndex, categoryName) {
     const entry = cloneNode($(".template-talent-dropdown-category"));
-    entry.querySelector(".talent-dropdown-category__entry").innerHTML = categoryName;
+    entry.querySelector(".talent-dropdown-entries__category__name").innerHTML = categoryName;
 
     const talentDropDownEntry = dropdownElement.querySelector(".talent-dropdown-categories");
     talentDropDownEntry.appendChild(entry);
@@ -424,6 +473,7 @@ function addEnabledTalentsToDropdown(dropdownElement) {
             }
         }
     }
+    highlightDropdownCategory(getDropdownCategory(dropdownElement, curCategoryIndex));
 }
 
 function onClickOutsideDropdown(event, dropdownElement) {
