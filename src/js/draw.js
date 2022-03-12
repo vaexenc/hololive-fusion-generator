@@ -159,14 +159,16 @@ function getAlignPos(lengthTarget, length, t) {
 	return lerp(0, lengthTarget - length, t);
 }
 
-function clearCanvas(ctx) {
-	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+function clearCanvas(canvas) {
+	const ctx = canvas.getContext("2d");
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function drawBg(ctx) {
+function drawBg(canvas) {
+	const ctx = canvas.getContext("2d");
 	ctx.save();
 	ctx.fillStyle = "white";
-	ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
 	ctx.restore();
 }
 
@@ -421,10 +423,10 @@ let currentDrawId = 0;
 async function drawFusion(canvasDOM, id1, id2) {
 	const drawId = ++currentDrawId;
 	const ctx = canvasDOM.getContext("2d");
-	clearCanvas(ctx);
+	clearCanvas(canvasDOM);
 	const canvasResult = await drawResult(id1, id2);
 	if (currentDrawId !== drawId) return;
-	drawBg(ctx);
+	drawBg(canvasDOM);
 	const {width: w, height: h} = resizeToContain(
 		canvasDOM.width,
 		canvasDOM.height,
