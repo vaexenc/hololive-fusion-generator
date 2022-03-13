@@ -4,4 +4,6 @@
 
 Dynamically generates combinations of names and images of Hololive members on the fly.
 
-Current development progress: 13 out of 40+ talents
+Current development progress: 13 out of 40+ talents\
+
+## [Preview](https://vaexenc.github.io/hololive-fusion-generator)

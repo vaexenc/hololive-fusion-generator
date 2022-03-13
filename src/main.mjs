@@ -19,6 +19,10 @@ const dropdownModifierSelectors = [
     ".talent-select-name",
     ".talent-select-image"
 ];
+const dropdownCategoryModifierSelectors = [
+    ".talent-dropdown-entries",
+    ".talent-dropdown-categories"
+];
 const talentCategories = ["All", "JP0"];
 let curCategoryIndex = 0;
 const talentIds = getTalentIdsEnabledFromCategory(talentCategories[curCategoryIndex]);
@@ -67,9 +71,18 @@ function getTalentSelectContainerTalentIndex(talentSelectContainer) {
     return parseInt(talentSelectContainer.dataset.talentIndex);
 }
 
+function getTalentSelectContainerCategoryIndex(talentSelectContainer) {
+    return parseInt(talentSelectContainer.dataset.categoryIndex);
+}
+
 function setTalentSelectContainerTalentIndex(talentSelectContainer, talentIndex) {
     talentSelectContainer.dataset.talentIndex = talentIndex;
 }
+
+function setTalentSelectContainerCategoryIndex(talentSelectContainer, categoryIndex) {
+    talentSelectContainer.dataset.categoryIndex = categoryIndex;
+}
+
 
 function getTalentSelectContainerTalentIds() {
     return [
@@ -166,6 +179,7 @@ function initTalentSelectContainers() {
     for (let i = 0; i < 2; i++) {
         const talentSelectContainer = $(`.talent-select-container-${i+1}`);
         setTalentSelectContainerTalentIndex(talentSelectContainer, talentIndex);
+        setTalentSelectContainerCategoryIndex(talentSelectContainer, curCategoryIndex);
 
         talentSelectContainer.querySelector(".talent-select-image").onclick = onClickTalentDropdown;
         talentSelectContainer.querySelector(".talent-select-name__name").onclick = onClickTalentDropdown;
@@ -290,15 +304,9 @@ function scrollToCategoryEntry(dropdownEntry) {
     dropdownEntriesContainer.scrollTop = position;
 }
 
-function addDropdownModifierToElements(talentSelectContainer) {
-    for (const selector of dropdownModifierSelectors) {
+function addDropdownModifierToElements(talentSelectContainer, modifierSelector) {
+    for (const selector of modifierSelector) {
         talentSelectContainer.querySelector(selector).classList.add("dropdown-visible");
-    }
-}
-
-function addCategoryModifierToElements(talentSelectContainer) {
-    for (const selector of dropdownModifierSelectors) {
-        talentSelectContainer.querySelector(selector).classList.add("catebgory-visible");
     }
 }
 
@@ -311,17 +319,17 @@ function getDropdownEntryOfCurrentlySelectedTalent(dropdownElement) {
     );
 }
 
-function getCategoryEntryOfCurrentlySelectedTalent(dropdownElement) {
+function getCategoryEntryOfCurrentlySelectedCategory(dropdownElement) {
     return getDropdownCategory(
         dropdownElement,
-        getTalentSelectContainerTalentIndex(
+        getTalentSelectContainerCategoryIndex(
             getTalentSelectContainerFromChild(dropdownElement)
         )
     );
 }
 
 function showDropdown(talentSelectContainer) {
-    addDropdownModifierToElements(talentSelectContainer);
+    addDropdownModifierToElements(talentSelectContainer, dropdownModifierSelectors);
     scrollToDropdownEntry(
         getDropdownEntryOfCurrentlySelectedTalent(
             talentSelectContainer.querySelector(".talent-dropdown")
@@ -330,22 +338,26 @@ function showDropdown(talentSelectContainer) {
 }
 
 function showCategory(talentSelectContainer) {
-    addCategoryModifierToElements(talentSelectContainer);
+    addDropdownModifierToElements(talentSelectContainer, dropdownCategoryModifierSelectors);
     scrollToCategoryEntry(
-        getDropdownEntryOfCurrentlySelectedTalent(
+        getCategoryEntryOfCurrentlySelectedCategory(
             talentSelectContainer.querySelector(".talent-dropdown")
         )
     );
 }
 
-function removeDropdownModifierFromElements(talentSelectContainer) {
-    for (const selector of dropdownModifierSelectors) {
+function removeDropdownModifierFromElements(talentSelectContainer, modifierSelector) {
+    for (const selector of modifierSelector) {
         talentSelectContainer.querySelector(selector).classList.remove("dropdown-visible");
     }
 }
 
 function hideDropdown(talentSelectContainer) {
-    removeDropdownModifierFromElements(talentSelectContainer);
+    removeDropdownModifierFromElements(talentSelectContainer, dropdownModifierSelectors);
+}
+
+function hideCategory(talentSelectContainer) {
+    removeDropdownModifierFromElements(talentSelectContainer, dropdownCategoryModifierSelectors);
 }
 
 function onClickDropdownEntry(event) {
@@ -354,16 +366,12 @@ function onClickDropdownEntry(event) {
 
     isCategoryShown = false;
 
+    hideCategory(talentSelectContainer);
+
     setTalentSelectContainerTalentIndex(
         talentSelectContainer,
         entry.dataset.talentIndex
     );
-
-    let talentDropdownEntry = talentSelectContainer.querySelector(".talent-dropdown-entries");
-    talentDropdownEntry.style.display = "none";
-
-    let talentDropdownCategory = talentSelectContainer.querySelector(".talent-dropdown-categories");
-    talentDropdownCategory.style.display = null;
 
     hideDropdown(talentSelectContainer);
     update();
@@ -375,16 +383,19 @@ function onClickDropdownCategory(event) {
 
     isCategoryShown = true;
 
+    showDropdown(talentSelectContainer);
+
     unhighlightDropdownCategories(talentSelectContainer);
     highlightDropdownCategory(getDropdownCategory(talentSelectContainer, entry.dataset.categoryIndex));
 
+    setTalentSelectContainerCategoryIndex(
+        talentSelectContainer,
+        entry.dataset.categoryIndex
+    );
+
+    showCategory(talentSelectContainer);
+
     curCategoryIndex = entry.dataset.categoryIndex;
-
-    const talentDropdownEntry = talentSelectContainer.querySelector(".talent-dropdown-entries");
-    talentDropdownEntry.style.display = null;
-
-    const talentDropdownCategory = talentSelectContainer.querySelector(".talent-dropdown-categories");
-    talentDropdownCategory.style.display = "none";
 
     const talentIdsInThisCategory = talentIdsInCategories[curCategoryIndex];
     const talentsGlobalIndexInThisCategory = [];
@@ -402,7 +413,7 @@ function onClickDropdownCategory(event) {
         }
     }
 
-    showDropdown(talentSelectContainer);
+    hideCategory(talentSelectContainer);
 }
 
 function isDropdownVisible(talentSelectContainer) {
@@ -413,6 +424,7 @@ function onClickTalentDropdown(event) {
     const talentSelectContainer = getTalentSelectContainerFromChild(event.target);
     if (isDropdownVisible(talentSelectContainer)) return;
     showDropdown(talentSelectContainer);
+    showCategory(talentSelectContainer);
     event.ifDropdownElementJustShown = talentSelectContainer.querySelector(".talent-dropdown");
 }
 
@@ -422,15 +434,15 @@ function addDropdownEntry(dropdownElement, talentIndex, id) {
     const fullName = getFullNameStringById(id);
     entry.querySelector(".talent-dropdown-entries__entry__name").innerHTML = fullName;
 
-    const talentDropDownEntry = dropdownElement.querySelector(".talent-dropdown-entries");
-    talentDropDownEntry.style.display = "none";
+    const talentDropdownEntry = dropdownElement.querySelector(".talent-dropdown-entries");
+    talentDropdownEntry.classList.add("dropdown-visible")
 
     talentEntries.push(entry)
-    talentDropDownEntry.appendChild(entry);
+    talentDropdownEntry.appendChild(entry);
 
     /* because entry is of type DocumentFragment things such as setAttribute(),
        dataset and events can't be used on it */
-    const appendedEntry = talentDropDownEntry.lastElementChild;
+    const appendedEntry = talentDropdownEntry.lastElementChild;
     appendedEntry.dataset.talentIndex = talentIndex;
     appendedEntry.onclick = onClickDropdownEntry;
     appendedEntry.onmouseup = onClickDropdownEntry;
@@ -440,13 +452,13 @@ function addDropdownCategory(dropdownElement, categoryIndex, categoryName) {
     const entry = cloneNode($(".template-talent-dropdown-category"));
     entry.querySelector(".talent-dropdown-entries__category__name").innerHTML = categoryName;
 
-    const talentDropDownEntry = dropdownElement.querySelector(".talent-dropdown-categories");
-    talentDropDownEntry.appendChild(entry);
-
+    const talentDropdownEntry = dropdownElement.querySelector(".talent-dropdown-categories");
+    talentDropdownEntry.classList.add("dropdown-visible")
+    talentDropdownEntry.appendChild(entry);
 
     /* because entry is of type DocumentFragment things such as setAttribute(),
        dataset and events can't be used on it */
-    const appendedEntry = talentDropDownEntry.lastElementChild;
+    const appendedEntry = talentDropdownEntry.lastElementChild;
     appendedEntry.dataset.categoryIndex = categoryIndex;
     appendedEntry.onclick = onClickDropdownCategory;
     appendedEntry.onmouseup = onClickDropdownCategory;

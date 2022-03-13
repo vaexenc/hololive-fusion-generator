@@ -232,6 +232,11 @@ button {
     overflow-y: auto;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
+    content-visibility: visible;
+}
+
+.talent-dropdown-entries.dropdown-visible {
+    content-visibility: hidden;
 }
 
 .talent-dropdown-entries__entry {
@@ -270,8 +275,12 @@ button {
     font-size: 1em;
 }
 
-.talent-dropdown.category-visible {
-    visibility: visible;
+.talent-dropdown-categories {
+    content-visibility: hidden;
+}
+
+.talent-dropdown-categories.dropdown-visible {
+    content-visibility: visible;
 }
 
 .talent-dropdown-category__entry {
