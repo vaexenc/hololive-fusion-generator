@@ -19,19 +19,13 @@ const dropdownModifierSelectors = [
     ".talent-select-name",
     ".talent-select-image"
 ];
-const dropdownCategoryModifierSelectors = [
-    ".talent-dropdown-entries",
-    ".talent-dropdown-categories"
-];
 const talentCategories = ["All", "JP0"];
-let curCategoryIndex = 0;
-const talentIds = getTalentIdsEnabledFromCategory(talentCategories[curCategoryIndex]);
+const talentIds = getTalentIdsEnabledFromCategory(talentCategories[0]);
 const talentSelectContainers = [];
 const talentEntries = [];
 const talentIdsInCategories = [];
 const talentIndexes = [...Array(talentIds.length).keys()];
 let backgroundIndex;
-let isCategoryShown = false;
 let isHalfCategoryAlrDone = false;
 
 // ------------------------------------------------------------------
@@ -179,7 +173,7 @@ function initTalentSelectContainers() {
     for (let i = 0; i < 2; i++) {
         const talentSelectContainer = $(`.talent-select-container-${i+1}`);
         setTalentSelectContainerTalentIndex(talentSelectContainer, talentIndex);
-        setTalentSelectContainerCategoryIndex(talentSelectContainer, curCategoryIndex);
+        setTalentSelectContainerCategoryIndex(talentSelectContainer, 0);
 
         talentSelectContainer.querySelector(".talent-select-image").onclick = onClickTalentDropdown;
         talentSelectContainer.querySelector(".talent-select-name__name").onclick = onClickTalentDropdown;
@@ -338,7 +332,16 @@ function showDropdown(talentSelectContainer) {
 }
 
 function showCategory(talentSelectContainer) {
-    addDropdownModifierToElements(talentSelectContainer, dropdownCategoryModifierSelectors);
+    talentSelectContainer.querySelector(".talent-dropdown-categories").classList.add("dropdown-visible");
+    scrollToCategoryEntry(
+        getCategoryEntryOfCurrentlySelectedCategory(
+            talentSelectContainer.querySelector(".talent-dropdown")
+        )
+    );
+}
+
+function showEntry(talentSelectContainer) {
+    talentSelectContainer.querySelector(".talent-dropdown-entries").classList.add("dropdown-visible");
     scrollToCategoryEntry(
         getCategoryEntryOfCurrentlySelectedCategory(
             talentSelectContainer.querySelector(".talent-dropdown")
@@ -357,49 +360,32 @@ function hideDropdown(talentSelectContainer) {
 }
 
 function hideCategory(talentSelectContainer) {
-    removeDropdownModifierFromElements(talentSelectContainer, dropdownCategoryModifierSelectors);
+    talentSelectContainer.querySelector(".talent-dropdown-categories").classList.remove("dropdown-visible");
+}
+
+function hideEntry(talentSelectContainer) {
+    talentSelectContainer.querySelector(".talent-dropdown-entries").classList.remove("dropdown-visible");
 }
 
 function onClickDropdownEntry(event) {
     const entry = event.currentTarget; // not .target, might have clicked on child element (image, name)
     const talentSelectContainer = getTalentSelectContainerFromChild(entry);
 
-    isCategoryShown = false;
-
-    hideCategory(talentSelectContainer);
-
     setTalentSelectContainerTalentIndex(
         talentSelectContainer,
         entry.dataset.talentIndex
     );
 
+    hideEntry(talentSelectContainer);
     hideDropdown(talentSelectContainer);
     update();
 }
 
-function onClickDropdownCategory(event) {
-    const entry = event.currentTarget; // not .target, might have clicked on child element (image, name)
-    const talentSelectContainer = getTalentSelectContainerFromChild(entry);
-
-    isCategoryShown = true;
-
-    showDropdown(talentSelectContainer);
-
-    unhighlightDropdownCategories(talentSelectContainer);
-    highlightDropdownCategory(getDropdownCategory(talentSelectContainer, entry.dataset.categoryIndex));
-
-    setTalentSelectContainerCategoryIndex(
-        talentSelectContainer,
-        entry.dataset.categoryIndex
-    );
-
-    showCategory(talentSelectContainer);
-
-    curCategoryIndex = entry.dataset.categoryIndex;
-
-    const talentIdsInThisCategory = talentIdsInCategories[curCategoryIndex];
+function showTalentinCategory(categoryIndex, talentSelectContainer) {
+    const talentIdsInThisCategory = talentIdsInCategories[categoryIndex];
     const talentsGlobalIndexInThisCategory = [];
 
+    // List all talent index that are available within the category
     for (let i = 0; i < talentIdsInThisCategory.length; i++) {
         talentsGlobalIndexInThisCategory.push(talentIds.findIndex(element => element === talentIdsInThisCategory[i]));
     }
@@ -407,13 +393,33 @@ function onClickDropdownCategory(event) {
     for (let i = 0; i < talentIndexes.length; i++) {
         const DropdownEntry = getDropdownEntry(talentSelectContainer, i)
         if (talentsGlobalIndexInThisCategory.includes(i)) {
-            DropdownEntry.style.display = null;
+            DropdownEntry.classList.add("dropdown-visible");
         } else {
-            DropdownEntry.style.display = "none";
+            DropdownEntry.classList.remove("dropdown-visible");
         }
     }
+}
+
+function onClickDropdownCategory(event) {
+    const entry = event.currentTarget; // not .target, might have clicked on child element (image, name)
+    const talentSelectContainer = getTalentSelectContainerFromChild(entry);
+    const categoryIndex = entry.dataset.categoryIndex;
+
+    unhighlightDropdownCategories(talentSelectContainer);
+    highlightDropdownCategory(
+        getDropdownCategory(talentSelectContainer, categoryIndex)
+    );
+
+    setTalentSelectContainerCategoryIndex(
+        talentSelectContainer,
+        categoryIndex
+    );
+
+    showTalentinCategory(categoryIndex, talentSelectContainer);
 
     hideCategory(talentSelectContainer);
+    showEntry(talentSelectContainer);
+    event.ifDropdownCategoryJustShown = talentSelectContainer.querySelector(".talent-dropdown")
 }
 
 function isDropdownVisible(talentSelectContainer) {
@@ -423,6 +429,7 @@ function isDropdownVisible(talentSelectContainer) {
 function onClickTalentDropdown(event) {
     const talentSelectContainer = getTalentSelectContainerFromChild(event.target);
     if (isDropdownVisible(talentSelectContainer)) return;
+    hideEntry(talentSelectContainer);
     showDropdown(talentSelectContainer);
     showCategory(talentSelectContainer);
     event.ifDropdownElementJustShown = talentSelectContainer.querySelector(".talent-dropdown");
@@ -435,8 +442,6 @@ function addDropdownEntry(dropdownElement, talentIndex, id) {
     entry.querySelector(".talent-dropdown-entries__entry__name").innerHTML = fullName;
 
     const talentDropdownEntry = dropdownElement.querySelector(".talent-dropdown-entries");
-    talentDropdownEntry.classList.add("dropdown-visible")
-
     talentEntries.push(entry)
     talentDropdownEntry.appendChild(entry);
 
@@ -453,7 +458,6 @@ function addDropdownCategory(dropdownElement, categoryIndex, categoryName) {
     entry.querySelector(".talent-dropdown-entries__category__name").innerHTML = categoryName;
 
     const talentDropdownEntry = dropdownElement.querySelector(".talent-dropdown-categories");
-    talentDropdownEntry.classList.add("dropdown-visible")
     talentDropdownEntry.appendChild(entry);
 
     /* because entry is of type DocumentFragment things such as setAttribute(),
@@ -485,13 +489,17 @@ function addEnabledTalentsToDropdown(dropdownElement) {
             }
         }
     }
-    highlightDropdownCategory(getDropdownCategory(dropdownElement, curCategoryIndex));
+    highlightDropdownCategory(getDropdownCategory(dropdownElement, 0));
 }
 
 function onClickOutsideDropdown(event, dropdownElement) {
     if (event.ifDropdownElementJustShown === dropdownElement) return;
-    if (isCategoryShown) return;
-    hideDropdown(getTalentSelectContainerFromChild(dropdownElement));
+    if (event.ifDropdownCategoryJustShown === dropdownElement) return;
+    console.log(event)
+    const talentSelectContainer = getTalentSelectContainerFromChild(dropdownElement);
+    hideEntry(talentSelectContainer);
+    hideCategory(talentSelectContainer);
+    hideDropdown(talentSelectContainer);
 }
 
 function onKeydownDropdown(event, dropdownElement) {

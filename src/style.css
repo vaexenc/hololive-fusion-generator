@@ -230,21 +230,35 @@ button {
     position: relative;
     max-height: 25em;
     overflow-y: auto;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    content-visibility: visible;
+    margin: 0em;
+    padding: 0em;
+    visibility: hidden;
+    content-visibility: hidden;
 }
 
 .talent-dropdown-entries.dropdown-visible {
-    content-visibility: hidden;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding: 0.2em;
+    padding-left: 0.8em;
+    visibility: visible;
+    content-visibility: visible;
 }
 
 .talent-dropdown-entries__entry {
     display: flex;
     align-items: center;
     user-select: none;
+    visibility: hidden;
+    padding: 0em;
+    content-visibility: hidden;
+}
+
+.talent-dropdown-entries__entry.dropdown-visible {
     padding: 0.2em;
     padding-left: 0.4em;
+    visibility: visible;
+    content-visibility: visible;
 }
 
 .talent-dropdown-entries__entry:hover {
@@ -276,10 +290,18 @@ button {
 }
 
 .talent-dropdown-categories {
+    margin: 0em;
+    padding: 0em;
+    visibility: hidden;
     content-visibility: hidden;
 }
 
 .talent-dropdown-categories.dropdown-visible {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding: 0.2em;
+    padding-left: 0.8em;
+    visibility: visible;
     content-visibility: visible;
 }
 
@@ -287,8 +309,6 @@ button {
     display: flex;
     align-items: center;
     user-select: none;
-    padding: 0.2em;
-    padding-left: 0.4em;
 }
 
 .talent-dropdown-category__entry:hover {
@@ -625,7 +645,7 @@ max-aspect-ratio: 9/16) {
     .talent-dropdown-entries {
         max-height: 15em;
     }
-    .talent-dropdown-entries__entry {
+    .talent-dropdown-entries__entry.dropdown- {
         padding: 0.2em;
         padding-left: 0.8em;
     }
@@ -648,15 +668,12 @@ max-aspect-ratio: 9/16) {
     .talent-dropdown-category__entry {
         padding: 0.2em;
         padding-left: 0.8em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
     }
     .talent-dropdown-category__entry--highlighted {
         background-color: unset;
         background-image: linear-gradient( 90deg, rgba(100%, 100%, 100%, 0.8) 2%, transparent 2%);
-    }
-    .talent-dropdown-category__entry__image {
-        width: 2em;
-        height: 2em;
-        margin-right: 0.4em;
     }
     .talent-dropdown-category__entry__name {
         white-space: nowrap;
