@@ -32,8 +32,9 @@ let isHalfCategoryAlrDone = false;
 // GENERAL
 // ------------------------------------------------------------------
 
-function keepTalentIndexWithinBounds(talentIndex) {
-    return mod(talentIndex, talentIds.length);
+function keepTalentIndexWithinBounds(talentIndex, talentTotal) {
+
+    return mod(talentIndex, talentTotal);
 }
 
 function cloneNode(template) {
@@ -99,7 +100,8 @@ function talentPrevious(talentSelectContainer) {
     setTalentSelectContainerTalentIndex(
         talentSelectContainer,
         keepTalentIndexWithinBounds(
-            getTalentSelectContainerTalentIndex(talentSelectContainer) - 1
+            getTalentSelectContainerTalentIndex(talentSelectContainer) - 1,
+            talentIds.length
         )
     );
     update();
@@ -109,7 +111,8 @@ function talentNext(talentSelectContainer) {
     setTalentSelectContainerTalentIndex(
         talentSelectContainer,
         keepTalentIndexWithinBounds(
-            getTalentSelectContainerTalentIndex(talentSelectContainer) + 1
+            getTalentSelectContainerTalentIndex(talentSelectContainer) + 1,
+            talentIds.length
         )
     );
     update();
@@ -128,13 +131,14 @@ function talentSelectContainerRandomize(talentSelectContainer) {
     const talentIndex = getTalentSelectContainerTalentIndex(talentSelectContainer);
     let newTalentIndex;
     if (talentIds.length === 2) {
-        newTalentIndex = keepTalentIndexWithinBounds(talentIndex + 1);
+        newTalentIndex = keepTalentIndexWithinBounds(talentIndex + 1, talentIds.length);
     } else {
         const otherTalentIndex = getTalentSelectContainerTalentIndex(
             getOtherTalentSelectContainer(talentSelectContainer)
         );
         newTalentIndex = getRandomIntUnique(talentIds.length, [talentIndex, otherTalentIndex]);
     }
+    setTalentSelectContainerCategoryIndex(talentSelectContainer, 0)
     setTalentSelectContainerTalentIndex(talentSelectContainer, newTalentIndex);
     update();
 }
@@ -151,11 +155,13 @@ function onClickRandomBoth() {
     const oldTalentIndex2 = getTalentSelectContainerTalentIndex(talentSelectContainers[1]);
     let newTalentIndex2 = oldTalentIndex2;
     if (talentIds.length === 2) {
-        newTalentIndex2 = keepTalentIndexWithinBounds(newTalentIndex1 + 1);
+        newTalentIndex2 = keepTalentIndexWithinBounds(newTalentIndex1 + 1, talentIds.length);
     } else {
         newTalentIndex2 = getRandomIntUnique(talentIds.length, [oldTalentIndex2, newTalentIndex1]);
     }
+    setTalentSelectContainerCategoryIndex(talentSelectContainers[0], 0)
     setTalentSelectContainerTalentIndex(talentSelectContainers[0], newTalentIndex1);
+    setTalentSelectContainerCategoryIndex(talentSelectContainers[1], 0)
     setTalentSelectContainerTalentIndex(talentSelectContainers[1], newTalentIndex2);
     update();
 }
@@ -405,11 +411,6 @@ function onClickDropdownCategory(event) {
     const talentSelectContainer = getTalentSelectContainerFromChild(entry);
     const categoryIndex = entry.dataset.categoryIndex;
 
-    unhighlightDropdownCategories(talentSelectContainer);
-    highlightDropdownCategory(
-        getDropdownCategory(talentSelectContainer, categoryIndex)
-    );
-
     setTalentSelectContainerCategoryIndex(
         talentSelectContainer,
         categoryIndex
@@ -419,7 +420,8 @@ function onClickDropdownCategory(event) {
 
     hideCategory(talentSelectContainer);
     showEntry(talentSelectContainer);
-    event.ifDropdownCategoryJustShown = talentSelectContainer.querySelector(".talent-dropdown")
+
+    event.ifDropdownCategoryJustShown = talentSelectContainer.querySelector(".talent-dropdown");
 }
 
 function isDropdownVisible(talentSelectContainer) {
@@ -495,7 +497,6 @@ function addEnabledTalentsToDropdown(dropdownElement) {
 function onClickOutsideDropdown(event, dropdownElement) {
     if (event.ifDropdownElementJustShown === dropdownElement) return;
     if (event.ifDropdownCategoryJustShown === dropdownElement) return;
-    console.log(event)
     const talentSelectContainer = getTalentSelectContainerFromChild(dropdownElement);
     hideEntry(talentSelectContainer);
     hideCategory(talentSelectContainer);
@@ -540,10 +541,15 @@ function initDropdowns() {
 }
 
 function updateTalentSelectDropdown(talentSelectContainer) {
-    unhighlightDropdownEntries(talentSelectContainer.querySelector(".talent-dropdown"));
+    const dropdownElement = talentSelectContainer.querySelector(".talent-dropdown")
+    unhighlightDropdownEntries(dropdownElement);
+    unhighlightDropdownCategories(dropdownElement);
     const entryOfCurrentTalent = getDropdownEntryOfCurrentlySelectedTalent(talentSelectContainer);
+    const entryOfCurrentCategory = getCategoryEntryOfCurrentlySelectedCategory(talentSelectContainer);
     highlightDropdownEntry(entryOfCurrentTalent);
+    highlightDropdownCategory(entryOfCurrentCategory);
     scrollToDropdownEntry(entryOfCurrentTalent);
+    scrollToCategoryEntry(entryOfCurrentCategory);
 }
 
 // ------------------------------------------------------------------
