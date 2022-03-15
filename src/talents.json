@@ -7,7 +7,7 @@
         "lastNameAfter": "kino",
         "firstNameBefore": "so",
         "firstNameAfter": "ora",
-        "category": ["All", "JP0"],
+        "category": ["All", "Japanese"],
         "drawFirst": {
             "hair": {
                 "colors": ["#865147", "#bc8875", "#c2967e"]
@@ -71,7 +71,7 @@
         "lastNameAfter": "kai",
         "firstNameBefore": "haa",
         "firstNameAfter": "aato",
-        "category": ["All", "JP0"],
+        "category": ["All", "Japanese"],
         "drawFirst": {
             "hair": {
                 "colors": ["#ffe3ae", "#f9d3a7"]
@@ -135,7 +135,7 @@
         "lastNameAfter": "mata",
         "firstNameBefore": "oka",
         "firstNameAfter": "kayu",
-        "category": ["All"],
+        "category": ["All", "Japanese"],
         "drawFirst": {
             "hair": {
                 "colors": ["#f7e8ff", "#e7c6ff"]
@@ -199,7 +199,7 @@
         "lastNameAfter": "gami",
         "firstNameBefore": "koro",
         "firstNameAfter": "rone",
-        "category": ["All"],
+        "category": ["All", "Japanese"],
         "drawFirst": {
             "hair": {
                 "colors": ["#a6706a", "#844d45", "#d39c94"]
@@ -262,7 +262,7 @@
         "lastNameAfter": "sada",
         "firstNameBefore": "peko",
         "firstNameAfter": "kora",
-        "category": ["All"],
+        "category": ["All", "Japanese"],
         "drawFirst": {
             "hair": {
                 "colors": ["#acc0f2", "#ffffff", "#5f6aaf", "#bdbdd7"]
@@ -323,7 +323,7 @@
         "lastNameAfter": "ryu",
         "firstNameBefore": "coco",
         "firstNameAfter": "coco",
-        "category": ["All"],
+        "category": ["All", "Japanese"],
         "drawFirst": {
             "hair": {
                 "colors": ["#fd945e", "#fcfa60", "#552039"]
@@ -387,7 +387,7 @@
         "lastNameAfter": "reiji",
         "firstNameBefore": "olli",
         "firstNameAfter": "llie",
-        "category": ["All"],
+        "category": ["All", "Indonesia"],
         "drawFirst": {
             "hair": {
                 "colors": ["#eb0045", "#edb7c7", "#d1c6ca"]
@@ -450,7 +450,7 @@
         "lastNameAfter": "fissa",
         "firstNameBefore": "an",
         "firstNameAfter": "nya",
-        "category": ["All"],
+        "category": ["All", "Indonesia"],
         "drawFirst": {
             "hair": {
                 "colors": ["#99797e", "#f8d176", "#bf977a", "#f6b575"]
@@ -513,7 +513,7 @@
         "lastNameAfter": "mori",
         "firstNameBefore": "calli",
         "firstNameAfter": "lliope",
-        "category": ["All"],
+        "category": ["All", "English"],
         "drawFirst": {
             "hair": {
                 "colors": ["#f8ccde", "#e48096"]
@@ -576,7 +576,7 @@
         "lastNameAfter": "nashi",
         "firstNameBefore": "kia",
         "firstNameAfter": "ara",
-        "category": ["All"],
+        "category": ["All", "English"],
         "drawFirst": {
             "hair": {
                 "colors": ["#ff8161", "#bdead7", "#63b8d6"]
@@ -639,7 +639,7 @@
         "lastNameAfter": "mae",
         "firstNameBefore": "ina",
         "firstNameAfter": "'nis",
-        "category": ["All"],
+        "category": ["All", "English"],
         "drawFirst": {
             "hair": {
                 "colors": ["#695982", "#f3a35f", "#50445e", "#ffba76"]
@@ -702,7 +702,7 @@
         "lastNameAfter": "gawr",
         "firstNameBefore": "gu",
         "firstNameAfter": "ra",
-        "category": ["All"],
+        "category": ["All", "English"],
         "drawFirst": {
             "hair": {
                 "colors": ["#f3f3f3", "#5e9ad2", "#e2e3e5", "#afebe3"]
@@ -762,7 +762,7 @@
         "lastNameAfter": "tson",
         "firstNameBefore": "ame",
         "firstNameAfter": "melia",
-        "category": ["All"],
+        "category": ["All", "English"],
         "drawFirst": {
             "hair": {
                 "colors": ["#fad99b", "#f4cb94"]

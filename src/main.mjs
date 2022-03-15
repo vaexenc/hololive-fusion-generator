@@ -18,7 +18,7 @@ const dropdownModifierSelectors = [
     ".talent-select-name",
     ".talent-select-image"
 ];
-const talentCategories = ["All", "JP0"];
+const talentCategories = ["All", "Japanese", "English", "Indonesia"];
 const talentIds = getTalentIdsEnabledFromCategory(talentCategories[0]);
 const talentSelectContainers = [];
 const talentIndexCategories = [];
@@ -537,14 +537,14 @@ function initDropdowns() {
 
 function updateTalentSelectDropdown(talentSelectContainer) {
     const dropdownElement = talentSelectContainer.querySelector(".talent-dropdown")
-    unhighlightDropdownCategories(dropdownElement);
     const entryOfCurrentCategory = getCategoryEntryOfCurrentlySelectedCategory(talentSelectContainer);
+    unhighlightDropdownCategories(dropdownElement);
     highlightDropdownCategory(entryOfCurrentCategory);
-    scrollToDropdownEntry(entryOfCurrentTalent);
+    scrollToCategoryEntry(entryOfCurrentCategory);
     const entryOfCurrentTalent = getDropdownEntryOfCurrentlySelectedTalent(talentSelectContainer);
     unhighlightDropdownEntries(dropdownElement);
     highlightDropdownEntry(entryOfCurrentTalent);
-    scrollToCategoryEntry(entryOfCurrentCategory);
+    scrollToDropdownEntry(entryOfCurrentTalent);
 }
 
 // ------------------------------------------------------------------
