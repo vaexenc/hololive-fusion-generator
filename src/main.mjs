@@ -22,9 +22,7 @@ const dropdownModifierSelectors = [
 const talentCategories = ["All", "JP0"];
 const talentIds = getTalentIdsEnabledFromCategory(talentCategories[0]);
 const talentSelectContainers = [];
-const talentEntries = [];
 const talentIndexCategories = [];
-const talentIndexes = [...Array(talentIds.length).keys()];
 let backgroundIndex;
 
 // ------------------------------------------------------------------
@@ -170,6 +168,10 @@ function onClickRandomBoth() {
 }
 
 function onClickSwap() {
+    const categoryIndex1 = getTalentSelectContainerCategoryIndex(talentSelectContainers[0]);
+    const categoryIndex2 = getTalentSelectContainerCategoryIndex(talentSelectContainers[1]);
+    setTalentSelectContainerCategoryIndex(talentSelectContainers[0], categoryIndex2);
+    setTalentSelectContainerCategoryIndex(talentSelectContainers[1], categoryIndex1);
     const talentIndex1 = getTalentSelectContainerTalentIndex(talentSelectContainers[0]);
     const talentIndex2 = getTalentSelectContainerTalentIndex(talentSelectContainers[1]);
     setTalentSelectContainerTalentIndex(talentSelectContainers[0], talentIndex2);
@@ -393,7 +395,7 @@ function onClickDropdownEntry(event) {
 function showTalentinCategory(categoryIndex, talentSelectContainer) {
     const talentIndexThisCategory = talentIndexCategories[categoryIndex];
 
-    for (let i = 0; i < talentIndexes.length; i++) {
+    for (let i = 0; i < talentIds.length; i++) {
         const DropdownEntry = getDropdownEntry(talentSelectContainer, i)
         if (talentIndexThisCategory.includes(i)) {
             DropdownEntry.classList.add("dropdown-visible");
@@ -441,7 +443,6 @@ function addDropdownEntry(dropdownElement, talentIndex, id) {
     entry.querySelector(".talent-dropdown-entries__entry__name").innerHTML = fullName;
 
     const talentDropdownEntry = dropdownElement.querySelector(".talent-dropdown-entries");
-    talentEntries.push(entry)
     talentDropdownEntry.appendChild(entry);
 
     /* because entry is of type DocumentFragment things such as setAttribute(),
@@ -537,13 +538,13 @@ function initDropdowns() {
 
 function updateTalentSelectDropdown(talentSelectContainer) {
     const dropdownElement = talentSelectContainer.querySelector(".talent-dropdown")
-    unhighlightDropdownEntries(dropdownElement);
     unhighlightDropdownCategories(dropdownElement);
-    const entryOfCurrentTalent = getDropdownEntryOfCurrentlySelectedTalent(talentSelectContainer);
     const entryOfCurrentCategory = getCategoryEntryOfCurrentlySelectedCategory(talentSelectContainer);
-    highlightDropdownEntry(entryOfCurrentTalent);
     highlightDropdownCategory(entryOfCurrentCategory);
     scrollToDropdownEntry(entryOfCurrentTalent);
+    const entryOfCurrentTalent = getDropdownEntryOfCurrentlySelectedTalent(talentSelectContainer);
+    unhighlightDropdownEntries(dropdownElement);
+    highlightDropdownEntry(entryOfCurrentTalent);
     scrollToCategoryEntry(entryOfCurrentCategory);
 }
 
