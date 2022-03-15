@@ -23,10 +23,9 @@ const talentCategories = ["All", "JP0"];
 const talentIds = getTalentIdsEnabledFromCategory(talentCategories[0]);
 const talentSelectContainers = [];
 const talentEntries = [];
-const talentIdsInCategories = [];
+const talentIndexCategories = [];
 const talentIndexes = [...Array(talentIds.length).keys()];
 let backgroundIndex;
-let isHalfCategoryAlrDone = false;
 
 // ------------------------------------------------------------------
 // GENERAL
@@ -96,13 +95,20 @@ function getTalentSelectContainerFromChild(element) {
     return element.closest(".talent-select-container");
 }
 
+function findTalentInCategory(talentSelectContainer, offset) {
+    const categoryIndex = getTalentSelectContainerCategoryIndex(talentSelectContainer);
+    const talentInCategoryIndex = talentIndexCategories[categoryIndex];
+    const globalTalentIndex = getTalentSelectContainerTalentIndex(talentSelectContainer);
+    const localTalentIndex = talentInCategoryIndex.indexOf(globalTalentIndex);
+    const prevLocalTalentIndex = keepTalentIndexWithinBounds(localTalentIndex + offset, talentInCategoryIndex.length)
+    const prevGlobalTalentIndex = talentInCategoryIndex[prevLocalTalentIndex];
+    return prevGlobalTalentIndex;
+}
+
 function talentPrevious(talentSelectContainer) {
     setTalentSelectContainerTalentIndex(
         talentSelectContainer,
-        keepTalentIndexWithinBounds(
-            getTalentSelectContainerTalentIndex(talentSelectContainer) - 1,
-            talentIds.length
-        )
+        findTalentInCategory(talentSelectContainer, -1)
     );
     update();
 }
@@ -110,10 +116,7 @@ function talentPrevious(talentSelectContainer) {
 function talentNext(talentSelectContainer) {
     setTalentSelectContainerTalentIndex(
         talentSelectContainer,
-        keepTalentIndexWithinBounds(
-            getTalentSelectContainerTalentIndex(talentSelectContainer) + 1,
-            talentIds.length
-        )
+        findTalentInCategory(talentSelectContainer, +1)
     );
     update();
 }
@@ -388,17 +391,11 @@ function onClickDropdownEntry(event) {
 }
 
 function showTalentinCategory(categoryIndex, talentSelectContainer) {
-    const talentIdsInThisCategory = talentIdsInCategories[categoryIndex];
-    const talentsGlobalIndexInThisCategory = [];
-
-    // List all talent index that are available within the category
-    for (let i = 0; i < talentIdsInThisCategory.length; i++) {
-        talentsGlobalIndexInThisCategory.push(talentIds.findIndex(element => element === talentIdsInThisCategory[i]));
-    }
+    const talentIndexThisCategory = talentIndexCategories[categoryIndex];
 
     for (let i = 0; i < talentIndexes.length; i++) {
         const DropdownEntry = getDropdownEntry(talentSelectContainer, i)
-        if (talentsGlobalIndexInThisCategory.includes(i)) {
+        if (talentIndexThisCategory.includes(i)) {
             DropdownEntry.classList.add("dropdown-visible");
         } else {
             DropdownEntry.classList.remove("dropdown-visible");
@@ -480,17 +477,15 @@ function addEnabledTalentsToDropdown(dropdownElement) {
         let talentIdsInThisCategory = [];
         for (let j = 0; j < talentIds.length; j++) {
             if (getTalentCategory(getTalentById(talentIds[j])).includes(talentCategories[i])) {
-                talentIdsInThisCategory.push(talentIds[j]);
+                talentIdsInThisCategory.push(j);
             }
         }
 
-        if (!isHalfCategoryAlrDone) {
-            talentIdsInCategories.push(talentIdsInThisCategory);
-            if (talentIdsInCategories.length > talentCategories.length) {
-                isHalfCategoryAlrDone = true;
-            }
+        if (talentIndexCategories.length < talentCategories.length) {
+            talentIndexCategories.push(talentIdsInThisCategory);
         }
     }
+
     highlightDropdownCategory(getDropdownCategory(dropdownElement, 0));
 }
 
