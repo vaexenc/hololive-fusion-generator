@@ -6,7 +6,6 @@ import {
     calculateTalentVariationsEnabled,
     getTalentById,
     getTalentCountEnabled,
-    getTalentIdsEnabled,
     getTalentCategory,
     getTalentIdsEnabledFromCategory
 } from "./talent.js";
