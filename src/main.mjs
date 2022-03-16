@@ -178,6 +178,15 @@ function onClickSwap() {
     update();
 }
 
+function onClickScreenshot() {
+    let canvas = $(".result-canvas");
+    let link = document.createElement("a");
+    let talentName = $(".result-name").innerHTML
+    link.download = talentName + ".png";
+    link.href = canvas.toDataURL("image/png")
+    link.click();
+}
+
 function initTalentSelectContainers() {
     const talentIndex = getRandomInt(talentIds.length);
     for (let i = 0; i < 2; i++) {
@@ -205,6 +214,7 @@ function initResult() {
     const resultContainer = $(".result-box");
     resultContainer.querySelector(".button-img-random").onclick = onClickRandomBoth;
     resultContainer.querySelector(".button-img-swap").onclick = onClickSwap;
+    resultContainer.querySelector(".button-img-screenshot").onclick = onClickScreenshot;
 }
 
 function updateTalentSelectImage(talentSelectContainer) {
