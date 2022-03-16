@@ -230,10 +230,28 @@ button {
     position: relative;
     max-height: 25em;
     overflow-y: auto;
-    margin: 0em;
-    padding: 0em;
-    visibility: hidden;
-    content-visibility: hidden;
+    display: none;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.40) rgba(0, 0, 0, 0);
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .talent-dropdown-entries {
+        margin-right: 1px;
+    }
+}
+
+.talent-dropdown-entries::-webkit-scrollbar {
+    width: 4px;
+}
+
+.talent-dropdown-entries::-webkit-scrollbar-track {
+    opacity: 0;
+}
+
+.talent-dropdown-entries::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.40);
 }
 
 .talent-dropdown-entries.dropdown-visible {
@@ -241,24 +259,19 @@ button {
     margin-bottom: 0.5em;
     padding: 0.2em;
     padding-left: 0.8em;
-    visibility: visible;
-    content-visibility: visible;
+    display: block;
 }
 
 .talent-dropdown-entries__entry {
-    display: flex;
     align-items: center;
     user-select: none;
-    padding: 0em;
-    visibility: hidden;
-    content-visibility: hidden;
+    display: none;
 }
 
 .talent-dropdown-entries__entry.dropdown-visible {
     padding: 0.2em;
     padding-left: 0.4em;
-    visibility: visible;
-    content-visibility: visible;
+    display: flex;
 }
 
 .talent-dropdown-entries__entry:hover {
@@ -290,10 +303,7 @@ button {
 }
 
 .talent-dropdown-categories {
-    margin: 0em;
-    padding: 0em;
-    visibility: hidden;
-    content-visibility: hidden;
+    display: none;
 }
 
 .talent-dropdown-categories.dropdown-visible {
@@ -301,8 +311,7 @@ button {
     margin-bottom: 0.5em;
     padding: 0.2em;
     padding-left: 0.8em;
-    visibility: visible;
-    content-visibility: visible;
+    display: block;
 }
 
 .talent-dropdown-category__entry {
@@ -650,24 +659,18 @@ max-aspect-ratio: 9/16) {
     .talent-dropdown-entries:hover {
         overflow-y: auto;
     }
+    /*Hack to make scrollbar use transition on webkit*/
     @media screen and (-webkit-min-device-pixel-ratio:0) {
         .talent-dropdown-entries {
             background-color: rgba(0, 0, 0, 0);
-            -webkit-background-clip: text;
+            background-clip: text;
             transition: background-color .5s;
         }
         .talent-dropdown-entries:hover {
             background-color: rgba(0, 0, 0, 0.40);
         }
     }
-    .talent-dropdown-entries::-webkit-scrollbar {
-        width: 5px;
-    }
-    .talent-dropdown-entries::-webkit-scrollbar-track {
-        opacity: 0;
-    }
     .talent-dropdown-entries::-webkit-scrollbar-thumb {
-        border-radius: 5px;
         background-color: inherit;
     }
     .talent-dropdown-entries__entry.dropdown- {
