@@ -663,14 +663,18 @@ max-aspect-ratio: 9/16) {
     @media screen and (-webkit-min-device-pixel-ratio:0) {
         .talent-dropdown-entries {
             background-color: rgba(0, 0, 0, 0);
-            background-clip: text;
+            -webkit-background-clip: text;
             transition: background-color .5s;
         }
         .talent-dropdown-entries:hover {
             background-color: rgba(0, 0, 0, 0.40);
         }
     }
+    .talent-dropdown-entries::-webkit-scrollbar {
+        width: 5px;
+    }
     .talent-dropdown-entries::-webkit-scrollbar-thumb {
+        border-radius: 5px;
         background-color: inherit;
     }
     .talent-dropdown-entries__entry.dropdown- {
