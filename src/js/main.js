@@ -12,8 +12,40 @@ import "no-darkreader";
 // TALENT SELECT, TALENT RESULT
 // ------------------------------------------------------------------
 
+const unitinuTypes = [
+	{
+		side: "none",
+		angled: "none"
+	},
+	{
+		side: "left",
+		angled: "none"
+	},
+	{
+		side: "left",
+		angled: "up"
+	},
+	{
+		side: "left",
+		angled: "down"
+	},
+	{
+		side: "right",
+		angled: "none"
+	},
+	{
+		side: "right",
+		angled: "up"
+	},
+	{
+		side: "right",
+		angled: "down"
+	}
+];
 const talentIds = getTalentIdsEnabled();
 const talentSelectContainers = [];
+
+let unitinuTypesIndex = 0;
 
 function keepTalentIndexWithinBounds(talentIndex) {
 	return mod(talentIndex, talentIds.length);
@@ -125,6 +157,31 @@ function onClickSwap() {
 	update();
 }
 
+function removeUnitinuClasses(element) {
+	for (const className of [...element.classList]) {
+		if (className.startsWith("unitinu-")) {
+			element.classList.remove(className);
+		}
+	}
+}
+
+function addUnitinuClasses(element, unitinuType) {
+	element.classList.add("unitinu-side-" + unitinuType.side);
+	element.classList.add("unitinu-angled-" + unitinuType.angled);
+}
+
+function updateUnitinuClasses(element, unitinuType) {
+	removeUnitinuClasses(element);
+	addUnitinuClasses(element, unitinuType);
+}
+
+function onClickUnitinu() {
+	unitinuTypesIndex = (unitinuTypesIndex + 1) % unitinuTypes.length;
+	updateUnitinuClasses($(".button-img-unitinu-container"), unitinuTypes[unitinuTypesIndex]);
+	updateUnitinuClasses($(".result-name-container"), unitinuTypes[unitinuTypesIndex]);
+	update();
+}
+
 function initTalentSelectContainers() {
 	const talentIndex = getRandomInt(talentIds.length);
 	for (let i = 0; i < 2; i++) {
@@ -152,6 +209,10 @@ function initResult() {
 	const resultContainer = $(".result-box");
 	resultContainer.querySelector(".button-img-random").onclick = onClickRandomBoth;
 	resultContainer.querySelector(".button-img-swap").onclick = onClickSwap;
+
+	const unitinuButtonContainer = resultContainer.querySelector(".button-img-unitinu-container");
+	unitinuButtonContainer.onclick = onClickUnitinu;
+	updateUnitinuClasses(unitinuButtonContainer, unitinuTypes[unitinuTypesIndex]);
 }
 
 function updateTalentSelectImage(talentSelectContainer) {
@@ -183,12 +244,18 @@ function updateTalentSelectContainers() {
 function updateResultImage() {
 	const resultCanvas = $(".result-canvas");
 	resetCSSAnimation(resultCanvas);
-	drawFusion(resultCanvas, ...getTalentSelectContainerTalentIds());
+	drawFusion(
+		resultCanvas,
+		...getTalentSelectContainerTalentIds(),
+		unitinuTypes[unitinuTypesIndex]
+	);
 }
 
 function updateResultName() {
 	const [talentId1, talentId2] = getTalentSelectContainerTalentIds();
-	$(".result-name").innerHTML = getFusionStringByIds(talentId1, talentId2);
+	const fusionString = getFusionStringByIds(talentId1, talentId2);
+	$(".result-name").innerHTML = fusionString;
+	$(".result-name-copy").innerHTML = fusionString;
 }
 
 function updateResult() {

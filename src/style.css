@@ -120,6 +120,42 @@ button {
 		drop-shadow(0 0 0.05em rgba(5%, 5%, 5%, 0.5));
 }
 
+.button-img-unitinu {
+	background-image: url("images/unitinu.svg");
+}
+
+.button-img-unitinu-container {
+	--angle: 13deg;
+}
+
+.button-img-unitinu-container.unitinu-side-none {
+	opacity: 0.35;
+}
+
+.button-img-unitinu-container.unitinu-side-none:hover {
+	opacity: 0.45;
+}
+
+.button-img-unitinu-container.unitinu-side-left.unitinu-angled-up {
+	transform: rotateZ(calc(var(--angle) * -1));
+}
+
+.button-img-unitinu-container.unitinu-side-left.unitinu-angled-down {
+	transform: rotateZ(calc(var(--angle)));
+}
+
+.button-img-unitinu-container.unitinu-side-right {
+	transform: scaleX(-1);
+}
+
+.button-img-unitinu-container.unitinu-side-right.unitinu-angled-up {
+	transform: scaleX(-1) rotateZ(calc(var(--angle) * -1));
+}
+
+.button-img-unitinu-container.unitinu-side-right.unitinu-angled-down {
+	transform: scaleX(-1) rotateZ(calc(var(--angle)));
+}
+
 .name {
 	word-break: break-word;
 }
@@ -306,12 +342,51 @@ button {
 	height: 3.1em;
 }
 
-.result-name {
-	min-height: 2.5em;
+.result-name-container {
+	position: relative;
+	width: 100%;
 	text-align: center;
 	font-size: 1.5em;
 	font-weight: 600;
+	min-height: 2.5em;
 	letter-spacing: -0.02em;
+}
+
+.result-name,
+.result-name-copy {
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.result-name-copy {
+	display: none;
+}
+
+.result-name-container.unitinu-side-left,
+.result-name-container.unitinu-side-right {
+	user-select: none;
+	word-spacing: 100vw;
+}
+
+.result-name-container.unitinu-side-left .result-name-copy,
+.result-name-container.unitinu-side-right .result-name-copy {
+	display: block;
+}
+
+.result-name-container.unitinu-side-left > * {
+	clip-path: inset(0 50% 0 0);
+	padding-right: 2em;
+}
+
+.result-name-container.unitinu-side-right > * {
+	clip-path: inset(0 0 0 50%);
+	padding-left: 2em;
+}
+
+.result-name-container.unitinu-side-right .result-name,
+.result-name-container.unitinu-side-left .result-name-copy {
+	transform: scaleX(-1);
 }
 
 .info-button {
@@ -698,7 +773,7 @@ button {
 		height: 3em;
 	}
 
-	.result-name {
+	.result-name-container {
 		font-size: 2.5em;
 		min-height: 2.4em;
 	}

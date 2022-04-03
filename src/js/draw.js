@@ -2,8 +2,9 @@ import {getTalentById} from "./lib/talent.js";
 
 const path = "images/talents/";
 const ext = ".webp";
-
 const paletteTypes = ["hair", "body", "etc"];
+const rectPointTypes = ["topLeft", "topRight", "bottomLeft", "bottomRight"];
+const unitinuAngle = degToRad(6);
 
 function createImage(url) {
 	const image = new Image();
@@ -122,6 +123,10 @@ function degToRad(angle) {
 	return (angle * Math.PI) / 180;
 }
 
+// function radToDeg(angle) {
+// 	return (angle * 180) / Math.PI;
+// }
+
 function proportionalScaleWidth(widthNew, widthOld, heightOld) {
 	const factor = widthNew / widthOld;
 	return {
@@ -238,11 +243,354 @@ function drawEyes(ctx, imageManifest, talent1Draw, talent2Draw) {
 	}
 }
 
-async function drawResult(id1, id2) {
+function cloneCanvas(canvas) {
+	const newCanvas = document.createElement("canvas");
+	newCanvas.width = canvas.width;
+	newCanvas.height = canvas.height;
+	const ctx = newCanvas.getContext("2d");
+	ctx.drawImage(canvas, 0, 0);
+	return newCanvas;
+}
+
+function createHorizontalFlip(canvas) {
+	const canvasClone = cloneCanvas(canvas);
+	const ctx = canvasClone.getContext("2d");
+	ctx.translate(canvas.width, 0);
+	ctx.scale(-1, 1);
+	ctx.drawImage(canvas, 0, 0);
+	return canvasClone;
+}
+
+function getDistance(x1, y1, x2, y2) {
+	return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
+}
+
+function getAngle(x1, y1, x2, y2) {
+	return Math.atan2(y2 - y1, x2 - x1);
+}
+
+function getPoint(x, y, angleRad, distance) {
+	const newX = distance * Math.cos(angleRad) + x;
+	const newY = distance * Math.sin(angleRad) + y;
+	return {x: newX, y: newY};
+}
+
+function getBoundingBoxRect(rect) {
+	let left = Infinity,
+		right = -Infinity,
+		top = Infinity,
+		bottom = -Infinity;
+
+	for (const point of rectPointTypes) {
+		left = Math.min(left, rect[point].x);
+		right = Math.max(right, rect[point].x);
+		top = Math.min(top, rect[point].y);
+		bottom = Math.max(bottom, rect[point].y);
+	}
+
+	return {
+		left: left,
+		right: right,
+		top: top,
+		bottom: bottom,
+		width: right - left,
+		height: bottom - top
+	};
+}
+
+function getRectAngle(rect) {
+	return getAngle(rect.topLeft.x, rect.topLeft.y, rect.topRight.x, rect.topRight.y);
+}
+
+function translateRect(rect, x, y) {
+	for (const rectPointType of rectPointTypes) {
+		if (x) rect[rectPointType].x += x;
+		if (y) rect[rectPointType].y += y;
+	}
+}
+
+function getRectFittingIntoHeight(rect, height) {
+	const heightRatio = height / getBoundingBoxRect(rect).height;
+	const angle = getRectAngle(rect);
+
+	const rectWidth = getDistance(rect.topLeft.x, rect.topLeft.y, rect.topRight.x, rect.topRight.y);
+	const rectHeight = getDistance(
+		rect.topLeft.x,
+		rect.topLeft.y,
+		rect.bottomLeft.x,
+		rect.bottomLeft.y
+	);
+
+	const topLeft = {x: 0, y: 0};
+	const topRight = getPoint(topLeft.x, topLeft.y, angle, rectWidth * heightRatio);
+	const bottomLeft = getPoint(
+		topLeft.x,
+		topLeft.y,
+		angle + Math.PI / 2,
+		rectHeight * heightRatio
+	);
+	const bottomRight = getPoint(
+		topRight.x,
+		topRight.y,
+		angle + Math.PI / 2,
+		rectHeight * heightRatio
+	);
+
+	const newRect = {
+		topLeft: topLeft,
+		topRight: topRight,
+		bottomLeft: bottomLeft,
+		bottomRight: bottomRight
+	};
+
+	translateRect(newRect, 0, -getBoundingBoxRect(newRect).top);
+
+	return newRect;
+}
+
+function collisionLineLine(line1, line2) {
+	const uA =
+		((line2.x2 - line2.x1) * (line1.y1 - line2.y1) -
+			(line2.y2 - line2.y1) * (line1.x1 - line2.x1)) /
+		((line2.y2 - line2.y1) * (line1.x2 - line1.x1) -
+			(line2.x2 - line2.x1) * (line1.y2 - line1.y1));
+	const uB =
+		((line1.x2 - line1.x1) * (line1.y1 - line2.y1) -
+			(line1.y2 - line1.y1) * (line1.x1 - line2.x1)) /
+		((line2.y2 - line2.y1) * (line1.x2 - line1.x1) -
+			(line2.x2 - line2.x1) * (line1.y2 - line1.y1));
+
+	if (uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1) {
+		return {
+			intersectionX: line1.x1 + uA * (line1.x2 - line1.x1),
+			intersectionY: line1.y1 + uA * (line1.y2 - line1.y1)
+		};
+	}
+
+	return null;
+}
+
+function collisionLineRect(line, rect) {
+	const intersections = [];
+
+	intersections.push(
+		collisionLineLine(line, {
+			x1: rect.topLeft.x,
+			y1: rect.topLeft.y,
+			x2: rect.topRight.x,
+			y2: rect.topRight.y
+		})
+	);
+
+	intersections.push(
+		collisionLineLine(line, {
+			x1: rect.topRight.x,
+			y1: rect.topRight.y,
+			x2: rect.bottomRight.x,
+			y2: rect.bottomRight.y
+		})
+	);
+
+	intersections.push(
+		collisionLineLine(line, {
+			x1: rect.bottomRight.x,
+			y1: rect.bottomRight.y,
+			x2: rect.bottomLeft.x,
+			y2: rect.bottomLeft.y
+		})
+	);
+
+	intersections.push(
+		collisionLineLine(line, {
+			x1: rect.bottomLeft.x,
+			y1: rect.bottomLeft.y,
+			x2: rect.topLeft.x,
+			y2: rect.topLeft.y
+		})
+	);
+
+	return intersections.filter((v) => Boolean(v));
+}
+
+function getRotatedPoint(point, origin, angle) {
+	return getPoint(
+		origin.x,
+		origin.y,
+		getAngle(origin.x, origin.y, point.x, point.y) + angle,
+		getDistance(origin.x, origin.y, point.x, point.y)
+	);
+}
+
+function createHalfFromLeftSide(canvas, chinX, chinY, cutoutAngle) {
+	const cutoutWidth = canvas.width / 2;
+	const cutoutHeight = canvas.height;
+
+	const topLeft = {x: 0, y: 0};
+	const topRight = getPoint(topLeft.x, topLeft.y, cutoutAngle, cutoutWidth);
+	const bottomLeft = getPoint(topLeft.x, topLeft.y, cutoutAngle + Math.PI / 2, cutoutHeight);
+	const bottomRight = getPoint(topRight.x, topRight.y, cutoutAngle + Math.PI / 2, cutoutHeight);
+
+	const rectCutout = getRectFittingIntoHeight(
+		{
+			topLeft: topLeft,
+			topRight: topRight,
+			bottomLeft: bottomLeft,
+			bottomRight: bottomRight
+		},
+		canvas.height
+	);
+
+	translateRect(rectCutout, -1000000);
+
+	const intersections = collisionLineRect(
+		{x1: chinX, y1: chinY, x2: -1000000, y2: chinY},
+		rectCutout
+	);
+	let horizontalShiftAmount = Infinity;
+	for (const intersection of intersections) {
+		horizontalShiftAmount = Math.min(
+			horizontalShiftAmount,
+			getDistance(chinX, chinY, intersection.intersectionX, intersection.intersectionY)
+		);
+	}
+
+	translateRect(rectCutout, horizontalShiftAmount);
+
+	const canvasPaddedSize = getDistance(0, 0, canvas.width, canvas.height);
+	const canvasPadded = document.createElement("canvas");
+	canvasPadded.width = canvasPaddedSize;
+	canvasPadded.height = canvasPaddedSize;
+	const canvasPaddedCtx = canvasPadded.getContext("2d");
+	drawBg(canvasPadded);
+	canvasPaddedCtx.drawImage(
+		canvas,
+		(canvasPaddedSize - canvas.width) / 2,
+		(canvasPaddedSize - canvas.height) / 2
+	);
+
+	const canvasPaddedRotated = document.createElement("canvas");
+	canvasPaddedRotated.width = canvasPaddedSize;
+	canvasPaddedRotated.height = canvasPaddedSize;
+	const canvasPaddedRotatedCtx = canvasPaddedRotated.getContext("2d");
+	canvasPaddedRotatedCtx.translate(canvasPaddedSize / 2, canvasPaddedSize / 2);
+	canvasPaddedRotatedCtx.rotate(-cutoutAngle);
+	canvasPaddedRotatedCtx.translate(-canvas.width / 2, -canvas.height / 2);
+	canvasPaddedRotatedCtx.drawImage(canvas, 0, 0);
+
+	translateRect(
+		rectCutout,
+		(canvasPaddedSize - canvas.width) / 2,
+		(canvasPaddedSize - canvas.height) / 2
+	);
+
+	const canvasFinal = document.createElement("canvas");
+	canvasFinal.width = cutoutWidth;
+	canvasFinal.height = cutoutHeight;
+	const canvasFinalCtx = canvasFinal.getContext("2d");
+	const rectTopLeftFinal = getRotatedPoint(
+		{x: rectCutout.topLeft.x, y: rectCutout.topLeft.y},
+		{
+			x: canvasPaddedRotated.width / 2,
+			y: canvasPaddedRotated.height / 2
+		},
+		-cutoutAngle
+	);
+
+	canvasFinalCtx.drawImage(
+		canvasPaddedRotated,
+		rectTopLeftFinal.x,
+		rectTopLeftFinal.y,
+		getDistance(
+			rectCutout.topLeft.x,
+			rectCutout.topLeft.y,
+			rectCutout.topRight.x,
+			rectCutout.topRight.y
+		),
+		getDistance(
+			rectCutout.topLeft.x,
+			rectCutout.topLeft.y,
+			rectCutout.bottomLeft.x,
+			rectCutout.bottomLeft.y
+		),
+		0,
+		0,
+		canvasFinal.width,
+		canvasFinal.height
+	);
+
+	return canvasFinal;
+}
+
+function createHalfFromRightSide(canvas, chinX, chinY, cutoutAngle) {
+	return createHalfFromLeftSide(
+		createHorizontalFlip(canvas),
+		canvas.width - chinX,
+		chinY,
+		cutoutAngle
+	);
+}
+
+function createCanvasMirrorToRight(canvas) {
+	const newCanvas = document.createElement("canvas");
+	newCanvas.width = canvas.width * 2;
+	newCanvas.height = canvas.height;
+	const ctx = newCanvas.getContext("2d");
+	ctx.drawImage(canvas, 0, 0);
+	ctx.translate(newCanvas.width, 0);
+	ctx.scale(-1, 1);
+	ctx.drawImage(canvas, 0, 0);
+	return newCanvas;
+}
+
+function drawUnitinu(canvas, unitinuType, chinX, chinY, talentRotation) {
+	if (unitinuType.side === "none") return;
+
+	let cutoutAngle;
+	if (unitinuType.angled === "up") {
+		cutoutAngle = unitinuAngle * -1;
+	} else if (unitinuType.angled === "down") {
+		cutoutAngle = unitinuAngle;
+	} else {
+		cutoutAngle = 0;
+	}
+
+	if (!talentRotation) talentRotation = 0;
+	const {x: chinXRotated, y: chinYRotated} = getRotatedPoint(
+		{x: chinX, y: chinY},
+		{x: 0, y: 0},
+		degToRad(talentRotation)
+	);
+
+	let createHalfFunction;
+	if (unitinuType.side === "left") {
+		createHalfFunction = createHalfFromLeftSide;
+	} else {
+		createHalfFunction = createHalfFromRightSide;
+	}
+
+	return createCanvasMirrorToRight(
+		createHalfFunction(canvas, chinXRotated, chinYRotated, cutoutAngle)
+	);
+}
+
+async function drawResult(id1, id2, unitinuType) {
 	const canvas = document.createElement("canvas");
 
 	if (id1 === id2) {
-		return drawOriginalTalent(canvas, id1);
+		const originalTalentResult = await drawOriginalTalent(canvas, id1);
+
+		if (unitinuType.side !== "none") {
+			const drawSecond = getTalentById(id1).draw.second;
+			return drawUnitinu(
+				originalTalentResult,
+				unitinuType,
+				originalTalentResult.width * drawSecond.faceCenterX,
+				originalTalentResult.height * drawSecond.unitinu.faceChinY,
+				drawSecond.rotation
+			);
+		}
+
+		return originalTalentResult;
 	}
 
 	const ctx = canvas.getContext("2d");
@@ -415,16 +763,26 @@ async function drawResult(id1, id2) {
 		drawEyes(ctx, imageManifest, talent1Draw, talent2Draw);
 	}
 
+	if (unitinuType.side !== "none") {
+		return drawUnitinu(
+			canvas,
+			unitinuType,
+			faceCenterX,
+			baseImage.height * talent2Draw.unitinu.faceChinY,
+			rotation
+		);
+	}
+
 	return canvas;
 }
 
 let currentDrawId = 0;
 
-async function drawFusion(canvasDOM, id1, id2) {
+async function drawFusion(canvasDOM, id1, id2, unitinuType) {
 	const drawId = ++currentDrawId;
 	const ctx = canvasDOM.getContext("2d");
 	clearCanvas(canvasDOM);
-	const canvasResult = await drawResult(id1, id2);
+	const canvasResult = await drawResult(id1, id2, unitinuType);
 	if (currentDrawId !== drawId) return;
 	drawBg(canvasDOM);
 	const {width: w, height: h} = resizeToContain(
