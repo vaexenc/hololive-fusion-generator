@@ -435,6 +435,10 @@ function onKeydownDropdown(event, dropdownElement) {
 
 		Enter: () => {
 			hideDropdown(talentSelectContainer);
+		},
+
+		Escape: () => {
+			hideDropdown(talentSelectContainer);
 		}
 	};
 
