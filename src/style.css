@@ -526,8 +526,13 @@ button {
 	line-height: 1.3em;
 }
 
-.info li li {
-	list-style-type: "–  ";
+.info li::marker {
+	content: "🍙 ";
+	font-size: 0.9em;
+}
+
+.info li li::marker {
+	font-size: 0.8em;
 }
 
 .info a {
