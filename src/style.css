@@ -72,7 +72,7 @@ button {
 	justify-content: space-between;
 	align-items: center;
 	font-size: 1rem;
-	padding-left: 0.5em;
+	padding-left: 15px;
 	padding-right: 0.6em; /* beware info-button rotation overflow */
 	padding-top: 0.2em;
 }
