@@ -80,7 +80,10 @@ button {
 .header__title {
 	font-family: "Pacifico";
 	font-size: 1.4em;
+	font-weight: normal;
+	margin: 0;
 	color: white;
+	text-transform: lowercase;
 	text-shadow: 0px 0px 0.75em rgba(5%, 5%, 5%, 0.3);
 	user-select: none;
 }
@@ -488,7 +491,7 @@ button {
 	cursor: pointer;
 }
 
-.info h1:not(:nth-child(1)) {
+.info h2:not(:first-child) {
 	margin-top: 0.8em;
 }
 
