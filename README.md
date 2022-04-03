@@ -1,4 +1,4 @@
-# hololive-fusion-generator
+# Hololive Fusion Generator
 
 ### [Try it out!](https://vaexenc.github.io/hololive-fusion-generator)
 
