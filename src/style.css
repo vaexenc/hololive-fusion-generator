@@ -78,7 +78,7 @@ button {
 }
 
 .header__title {
-	font-family: "Pacifico";
+	font-family: "Pacifico", sans-serif;
 	font-size: 1.4em;
 	font-weight: normal;
 	margin: 0;
