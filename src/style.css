@@ -163,7 +163,7 @@ button {
 	word-break: break-word;
 }
 
-.main {
+main {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
@@ -667,7 +667,7 @@ button {
 		height: 3em;
 	}
 
-	.main {
+	main {
 		position: absolute;
 		inset: 0;
 		flex-wrap: nowrap;

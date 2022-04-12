@@ -60,7 +60,7 @@ function createAndInsertTalentSelectContainerElements() {
 			.classList.add(`talent-select-container-${i}`);
 		clone.querySelector(".talent-select-box").classList.add(`talent-select-box-${i}`);
 		clone.querySelector(".talent-dropdown").classList.add(`talent-dropdown-${i}`);
-		$(".main").appendChild(clone);
+		$("main").appendChild(clone);
 	}
 }
 
