@@ -727,6 +727,20 @@ main {
 
 	.talent-dropdown-entries {
 		max-height: 15em;
+		scrollbar-width: thin;
+		scrollbar-color: rgba(100%, 100%, 100%, 0.8) transparent;
+	}
+
+	.talent-dropdown-entries::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	.talent-dropdown-entries::-webkit-scrollbar-thumb {
+		background-color: rgba(100%, 100%, 100%, 0.8);
+	}
+
+	.talent-dropdown-entries::-webkit-scrollbar-track {
+		background-color: transparent;
 	}
 
 	.talent-dropdown-entries__entry {
