@@ -72,9 +72,9 @@ button {
 	justify-content: space-between;
 	align-items: center;
 	font-size: 1rem;
-	padding-left: 10px;
+	padding-left: 15px;
+	padding-right: 0.6em; /* beware info-button rotation overflow */
 	padding-top: 0.2em;
-	overflow: hidden;
 }
 
 .header__title {
@@ -653,8 +653,7 @@ main {
 	}
 
 	.header {
-		padding-left: 15px;
-		padding-right: 5px;
+		padding-right: 0.8em; /* beware info-button overflow */
 		min-width: var(--min-width);
 	}
 
