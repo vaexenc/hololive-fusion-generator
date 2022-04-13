@@ -630,17 +630,9 @@ main {
 		flex-basis: 48%;
 	}
 
-	.talent-select-image {
-		margin-bottom: 3px;
-	}
-
 	.result-box {
 		flex-basis: 80%;
 		margin-top: 1em;
-	}
-
-	.result-canvas {
-		margin-bottom: 3px;
 	}
 }
 
@@ -705,10 +697,6 @@ main {
 
 	.talent-select-box-2 {
 		transform: rotateY(calc(var(--perspective-angle) * -1));
-	}
-
-	.talent-select-image {
-		margin-bottom: 4px;
 	}
 
 	.talent-select-image:hover {
@@ -784,10 +772,6 @@ main {
 		flex-basis: 100%;
 		flex-grow: 1;
 		margin: auto 2em;
-	}
-
-	.result-canvas {
-		margin-bottom: 4px;
 	}
 
 	.result-button-imgs .button-img {
