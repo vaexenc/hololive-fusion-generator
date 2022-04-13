@@ -630,9 +630,17 @@ main {
 		flex-basis: 48%;
 	}
 
+	.talent-select-name__name {
+		margin-top: 3px;
+	}
+
 	.result-box {
 		flex-basis: 80%;
 		margin-top: 1em;
+	}
+
+	.result-name {
+		margin-top: 3px;
 	}
 }
 
@@ -705,6 +713,7 @@ main {
 
 	.talent-select-name {
 		font-size: 1.5em;
+		margin-top: 4px;
 	}
 
 	.talent-dropdown-content {
@@ -782,6 +791,7 @@ main {
 	.result-name-container {
 		font-size: 2.5em;
 		min-height: 2.4em;
+		margin-top: 4px;
 	}
 
 	.info {
