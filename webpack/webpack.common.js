@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
@@ -35,6 +36,7 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({template: "./src/index.html"}),
 		new MiniCssExtractPlugin({filename: "style-[contenthash].css"}),
-		new CopyWebpackPlugin({patterns: [{from: "static"}]})
+		new CopyWebpackPlugin({patterns: [{from: "static"}]}),
+		new HTMLInlineCSSWebpackPlugin()
 	]
 };
