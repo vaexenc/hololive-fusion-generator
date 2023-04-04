@@ -2,6 +2,6 @@
 
 ### [Try it out!](https://vaexenc.github.io/hololive-fusion-generator)
 
-Dynamically generates combinations of names and images of Hololive members on the fly.
+Dynamically generate combinations of names and portraits of Hololive characters automatically on the fly.
 
-Current development progress: 14 out of 50+ talents
+Currently features 14 out of 50+ talents. Made in vanilla js.
