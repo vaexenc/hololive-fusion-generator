@@ -72,6 +72,77 @@
 		}
 	},
 
+	"fubuki": {
+		"id": "fubuki",
+		"enabled": true,
+		"name": {
+			"last": "shirakami",
+			"first": "fubuki",
+			"lastBefore": "shira",
+			"lastAfter": "kami",
+			"firstBefore": "fubu",
+			"firstAfter": "buki"
+		},
+		"draw": {
+			"first": {
+				"hair": {
+					"colors": ["#fffffa", "#ede8e6", "#3b373b"]
+				},
+				"body": {
+					"colors": ["#fffffa", "#a2e1ff", "#3c383c"]
+				},
+				"etc": {
+					"colors": ["#c2b4aa"]
+				},
+				"mouth": {
+					"x": 0.5,
+					"y": 0.7777,
+					"width": 0.92,
+					"hasSub": true
+				},
+				"nose": {
+					"x": 0.4626865671641791,
+					"y": 0.8210526315789474,
+					"hasSub": true
+				},
+				"eyes": {
+					"areDifferent": false,
+					"xLeft": 0.155,
+					"xRight": 0.92,
+					"y": 0.5
+				}
+			},
+			"second": {
+				"hair": {
+					"count": 2
+				},
+				"body": {
+					"count": 2
+				},
+				"etc": {
+					"count": 1
+				},
+				"mouth": {
+					"y": 0.4554118447923758,
+					"width": 0.044
+				},
+				"nose": {
+					"y": 0.3951667801225323
+				},
+				"eyes": {
+					"sides": "both",
+					"faceCenterXToEyeDistance": 0.038,
+					"width": 0.068,
+					"y": 0.3573859768550034
+				},
+				"faceCenterX": 0.5,
+				"unitinu": {
+					"faceChinY": 0.5010211027910143
+				}
+			}
+		}
+	},
+
 	"haato": {
 		"id": "haato",
 		"enabled": true,
