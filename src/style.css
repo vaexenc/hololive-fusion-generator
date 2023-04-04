@@ -440,7 +440,10 @@ main {
 .info::before {
 	content: "";
 	position: absolute;
-	inset: 0;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 	border-radius: var(--border-radius);
 	background-image: url("images/mogu.webp");
 	background-repeat: no-repeat;
@@ -452,7 +455,10 @@ main {
 .info::after {
 	content: "";
 	position: absolute;
-	inset: 0;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 	border-radius: var(--border-radius);
 	background-image: url("images/loading-indicator.webp");
 	background-repeat: no-repeat;
@@ -668,7 +674,10 @@ main {
 
 	main {
 		position: absolute;
-		inset: 0;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
 		flex-wrap: nowrap;
 		justify-content: center;
 		align-items: center;
