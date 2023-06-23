@@ -468,6 +468,26 @@ function updateTalentSelectDropdown(talentSelectContainer) {
 	scrollToDropdownEntry(entryOfCurrentTalent);
 }
 
+function selectTalentsWithUrlParameters() {
+	const urlParams = new URLSearchParams(window.location.search);
+
+	if (urlParams.get("f") && talentIds.indexOf(urlParams.get("f")) >= 0) {
+		setTalentSelectContainerTalentIndex(
+			talentSelectContainers[0],
+			talentIds.indexOf(urlParams.get("f"))
+		);
+	}
+
+	if (urlParams.get("s") && talentIds.indexOf(urlParams.get("s")) >= 0) {
+		setTalentSelectContainerTalentIndex(
+			talentSelectContainers[1],
+			talentIds.indexOf(urlParams.get("s"))
+		);
+	}
+
+	update();
+}
+
 // ------------------------------------------------------------------
 // MAIN
 // ------------------------------------------------------------------
@@ -478,6 +498,7 @@ function main() {
 	decideBackground();
 	initInfo();
 	onClickRandomBoth();
+	selectTalentsWithUrlParameters();
 }
 
 main();
