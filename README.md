@@ -1,6 +1,6 @@
 # Hololive Fusion Generator
 
-### [Try it out!](https://vaexenc.github.io/hololive-fusion-generator)
+### [Try it out!](http://hololive-fusion-generator.toomuchofheaven.com/)
 
 Dynamically generate combinations of names and portraits of Hololive characters automatically on the fly.
 
