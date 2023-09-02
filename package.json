@@ -4,8 +4,9 @@
     "test": "jest --verbose",
     "build": "webpack --config ./webpack/webpack.prod.js",
     "build:dev": "webpack --config ./webpack/webpack.dev.js",
+	"postbuild": "copy CNAME dist",
     "dev": "webpack serve --config ./webpack/webpack.dev.js --host 0.0.0.0",
-    "deploy": "npm run build && gh-pages --dist ./dist --message a --no-history"
+    "deploy": "npm run build && npm run postbuild && gh-pages --dist ./dist --message a --no-history"
   },
   "repository": {
     "type": "git",
