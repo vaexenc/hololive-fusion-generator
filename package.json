@@ -13,6 +13,7 @@
     "url": "https://github.com/vaexenc/hololive-fusion-generator.git"
   },
   "private": true,
+  "license": "MIT",
   "dependencies": {
     "copy-webpack-plugin": "^10.2.1",
     "css-loader": "^6.5.1",
